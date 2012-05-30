@@ -273,6 +273,23 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXLegacyTarget section */
+		CB35A70015769221008318EE /* appledoc */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "--project-name BeamMusicPlayerViewController --project-company \"BeamApp UG\" --company-id com.beamapp --output ${PROJECT_DIR}/Documentation --no-create-docset --no-repeat-first-par --logformat xcode ${PROJECT_DIR}/BeamMusicPlayerExample/Source/BeamMusicPlayerViewController.h ${PROJECT_DIR}/BeamMusicPlayerExample/Source/BeamMusicPlayerDataSource.h ${PROJECT_DIR}/BeamMusicPlayerExample/Source/BeamMusicPlayerDelegate.h";
+			buildConfigurationList = CB35A70115769221008318EE /* Build configuration list for PBXLegacyTarget "appledoc" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/local/bin/appledoc;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = appledoc;
+			passBuildSettingsInEnvironment = 1;
+			productName = appledoc;
+		};
+/* End PBXLegacyTarget section */
+
 /* Begin PBXNativeTarget section */
 		97B7AA2D15760AAF0014E693 /* BeamMusicPlayerExample */ = {
 			isa = PBXNativeTarget;
@@ -334,6 +351,7 @@
 			targets = (
 				97B7AA2D15760AAF0014E693 /* BeamMusicPlayerExample */,
 				97B7AA5115760AAF0014E693 /* BeamMusicPlayerExampleTests */,
+				CB35A70015769221008318EE /* appledoc */,
 			);
 		};
 /* End PBXProject section */
@@ -554,6 +572,39 @@
 			};
 			name = Release;
 		};
+		CB35A70215769221008318EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				DEBUGGING_SYMBOLS = YES;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		CB35A70315769221008318EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -583,6 +634,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		CB35A70115769221008318EE /* Build configuration list for PBXLegacyTarget "appledoc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB35A70215769221008318EE /* Debug */,
+				CB35A70315769221008318EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
