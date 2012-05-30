@@ -87,9 +87,6 @@
 -(void)pause;
 
 
-/**
- * Action sent from the Play/Pause button 
- */
 -(IBAction)playAction:(id)sender;
 
 @end

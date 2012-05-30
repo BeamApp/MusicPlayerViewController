@@ -1,0 +1,545 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>BeamMusicPlayerDataSource Protocol Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">BeamMusicPlayerViewController </a></h1>
+				<a id="developerHome" href="../index.html">BeamApp UG</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">BeamMusicPlayerDataSource Protocol Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/albumForTrack:inPlayer:">&nbsp;&nbsp;&nbsp;&nbsp;- albumForTrack:inPlayer:</option>
+	
+	<option value="//api/name/artistForTrack:inPlayer:">&nbsp;&nbsp;&nbsp;&nbsp;- artistForTrack:inPlayer:</option>
+	
+	<option value="//api/name/artworkForTrack:preferredSize:player:">&nbsp;&nbsp;&nbsp;&nbsp;- artworkForTrack:preferredSize:player:</option>
+	
+	<option value="//api/name/lengthForTrack:inPlayer:">&nbsp;&nbsp;&nbsp;&nbsp;- lengthForTrack:inPlayer:</option>
+	
+	<option value="//api/name/numberOfTracksInPlayer:">&nbsp;&nbsp;&nbsp;&nbsp;- numberOfTracksInPlayer:</option>
+	
+	<option value="//api/name/titleForTrack:inPlayer:">&nbsp;&nbsp;&nbsp;&nbsp;- titleForTrack:inPlayer:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/albumForTrack:inPlayer:">albumForTrack:inPlayer:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/artistForTrack:inPlayer:">artistForTrack:inPlayer:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/artworkForTrack:preferredSize:player:">artworkForTrack:preferredSize:player:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/lengthForTrack:inPlayer:">lengthForTrack:inPlayer:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/numberOfTracksInPlayer:">numberOfTracksInPlayer:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/titleForTrack:inPlayer:">titleForTrack:inPlayer:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="BeamMusicPlayerDataSource Protocol Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">BeamMusicPlayerDataSource Protocol Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">BeamMusicPlayerDataSource.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The DataSource for the Music Player provides all data necessary to display
+a player UI filled with the appropriate information.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/titleForTrack:inPlayer:">&ndash;&nbsp;titleForTrack:inPlayer:</a></code>
+		<span class="tooltip"><p>Returns the title of the given track and player as a NSString. You can return nil for no title.</p></span>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/artistForTrack:inPlayer:">&ndash;&nbsp;artistForTrack:inPlayer:</a></code>
+		<span class="tooltip"><p>Returns the artist for the given track in the given player. Nil is an acceptable return value.</p></span>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/albumForTrack:inPlayer:">&ndash;&nbsp;albumForTrack:inPlayer:</a></code>
+		<span class="tooltip"><p>Returns the album for the given track in the given player. Nil is an acceptable return value.</p></span>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/lengthForTrack:inPlayer:">&ndash;&nbsp;lengthForTrack:inPlayer:</a></code>
+		<span class="tooltip"><p>Returns the length for the given track in the given player as seconds. Your implementation must provide a
+value larger than 0.</p></span>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/numberOfTracksInPlayer:">&ndash;&nbsp;numberOfTracksInPlayer:</a></code>
+		<span class="tooltip"><p>Returns the number of tracks for the given player. If you do not implement this method
+or return anything smaller than 2, one track is assumed and the skip-buttons are disabled.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/artworkForTrack:preferredSize:player:">&ndash;&nbsp;artworkForTrack:preferredSize:player:</a></code>
+		<span class="tooltip"><p>Returns a UIImage containing the artwork for the given track in the given player. If the preferredSize is not NULL, the implementation should try to provide an image that is as close to the preferred size as possible.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/albumForTrack:inPlayer:" title="albumForTrack:inPlayer:"></a>
+	<h3 class="subsubtitle method-title">albumForTrack:inPlayer:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the album for the given track in the given player. Nil is an acceptable return value.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)albumForTrack:(NSUInteger)<em>trackNumber</em> inPlayer:(BeamMusicPlayerViewController *)<em>player</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BeamMusicPlayerDataSource.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/artistForTrack:inPlayer:" title="artistForTrack:inPlayer:"></a>
+	<h3 class="subsubtitle method-title">artistForTrack:inPlayer:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the artist for the given track in the given player. Nil is an acceptable return value.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)artistForTrack:(NSUInteger)<em>trackNumber</em> inPlayer:(BeamMusicPlayerViewController *)<em>player</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BeamMusicPlayerDataSource.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/artworkForTrack:preferredSize:player:" title="artworkForTrack:preferredSize:player:"></a>
+	<h3 class="subsubtitle method-title">artworkForTrack:preferredSize:player:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns a UIImage containing the artwork for the given track in the given player. If the preferredSize is not NULL, the implementation should try to provide an image that is as close to the preferred size as possible.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (UIImage *)artworkForTrack:(NSUInteger)<em>trackNumber</em> preferredSize:(CGSize)<em>size</em> player:(BeamMusicPlayerViewController *)<em>player</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BeamMusicPlayerDataSource.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/lengthForTrack:inPlayer:" title="lengthForTrack:inPlayer:"></a>
+	<h3 class="subsubtitle method-title">lengthForTrack:inPlayer:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the length for the given track in the given player as seconds. Your implementation must provide a
+value larger than 0.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (CGFloat)lengthForTrack:(NSUInteger)<em>trackNumber</em> inPlayer:(BeamMusicPlayerViewController *)<em>player</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BeamMusicPlayerDataSource.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/numberOfTracksInPlayer:" title="numberOfTracksInPlayer:"></a>
+	<h3 class="subsubtitle method-title">numberOfTracksInPlayer:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the number of tracks for the given player. If you do not implement this method
+or return anything smaller than 2, one track is assumed and the skip-buttons are disabled.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSUInteger)numberOfTracksInPlayer:(BeamMusicPlayerViewController *)<em>player</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BeamMusicPlayerDataSource.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/titleForTrack:inPlayer:" title="titleForTrack:inPlayer:"></a>
+	<h3 class="subsubtitle method-title">titleForTrack:inPlayer:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the title of the given track and player as a NSString. You can return nil for no title.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)titleForTrack:(NSUInteger)<em>trackNumber</em> inPlayer:(BeamMusicPlayerViewController *)<em>player</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BeamMusicPlayerDataSource.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2012 BeamApp UG. All rights reserved. (Last updated: 2012-05-30)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>
