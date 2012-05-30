@@ -1,0 +1,4 @@
+build/
+BeamMusicPlayerExample.xcodeproj/xcuserdata/
+BeamMusicPlayerExample.xcodeproj/project.xcworkspace/xcuserdata/
+*.DS_Store
