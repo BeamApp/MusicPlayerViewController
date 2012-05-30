@@ -82,7 +82,7 @@
 }
 
 -(UIImage*)artworkForTrack:(NSUInteger)trackNumber preferredSize:(CGSize)size player:(BeamMusicPlayerViewController *)player {
-    NSData* urlData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://991.com/newGallery/Counting-Crows-Accidentally-In-L-292037.jpg"]];
+    NSData* urlData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://a3.mzstatic.com/us/r1000/045/Features/7f/50/ee/dj.zygromnm.600x600-75.jpg"]];
     
     UIImage* image = [UIImage imageWithData:urlData];
     return image;
