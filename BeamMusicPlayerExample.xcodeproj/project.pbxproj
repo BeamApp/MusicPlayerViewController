@@ -1,0 +1,462 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		97B7AA3315760AAF0014E693 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B7AA3215760AAF0014E693 /* UIKit.framework */; };
+		97B7AA3515760AAF0014E693 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B7AA3415760AAF0014E693 /* Foundation.framework */; };
+		97B7AA3715760AAF0014E693 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B7AA3615760AAF0014E693 /* CoreGraphics.framework */; };
+		97B7AA3D15760AAF0014E693 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 97B7AA3B15760AAF0014E693 /* InfoPlist.strings */; };
+		97B7AA3F15760AAF0014E693 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B7AA3E15760AAF0014E693 /* main.m */; };
+		97B7AA4315760AAF0014E693 /* BeamAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B7AA4215760AAF0014E693 /* BeamAppDelegate.m */; };
+		97B7AA4615760AAF0014E693 /* BeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B7AA4515760AAF0014E693 /* BeamViewController.m */; };
+		97B7AA4915760AAF0014E693 /* BeamViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97B7AA4715760AAF0014E693 /* BeamViewController_iPhone.xib */; };
+		97B7AA4C15760AAF0014E693 /* BeamViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97B7AA4A15760AAF0014E693 /* BeamViewController_iPad.xib */; };
+		97B7AA5415760AAF0014E693 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B7AA5315760AAF0014E693 /* SenTestingKit.framework */; };
+		97B7AA5515760AAF0014E693 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B7AA3215760AAF0014E693 /* UIKit.framework */; };
+		97B7AA5615760AAF0014E693 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B7AA3415760AAF0014E693 /* Foundation.framework */; };
+		97B7AA5E15760AAF0014E693 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 97B7AA5C15760AAF0014E693 /* InfoPlist.strings */; };
+		97B7AA6115760AAF0014E693 /* BeamMusicPlayerExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B7AA6015760AAF0014E693 /* BeamMusicPlayerExampleTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		97B7AA5715760AAF0014E693 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 97B7AA2515760AAD0014E693 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 97B7AA2D15760AAF0014E693;
+			remoteInfo = BeamMusicPlayerExample;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		97B7AA2E15760AAF0014E693 /* BeamMusicPlayerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeamMusicPlayerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		97B7AA3215760AAF0014E693 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		97B7AA3415760AAF0014E693 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		97B7AA3615760AAF0014E693 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		97B7AA3A15760AAF0014E693 /* BeamMusicPlayerExample-Info.plist */ = {isa = PBXFileReference; path = "BeamMusicPlayerExample-Info.plist"; sourceTree = "<group>"; };
+		97B7AA3C15760AAF0014E693 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		97B7AA3E15760AAF0014E693 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		97B7AA4015760AAF0014E693 /* BeamMusicPlayerExample-Prefix.pch */ = {isa = PBXFileReference; path = "BeamMusicPlayerExample-Prefix.pch"; sourceTree = "<group>"; };
+		97B7AA4115760AAF0014E693 /* BeamAppDelegate.h */ = {isa = PBXFileReference; path = BeamAppDelegate.h; sourceTree = "<group>"; };
+		97B7AA4215760AAF0014E693 /* BeamAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeamAppDelegate.m; sourceTree = "<group>"; };
+		97B7AA4415760AAF0014E693 /* BeamViewController.h */ = {isa = PBXFileReference; path = BeamViewController.h; sourceTree = "<group>"; };
+		97B7AA4515760AAF0014E693 /* BeamViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeamViewController.m; sourceTree = "<group>"; };
+		97B7AA4815760AAF0014E693 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/BeamViewController_iPhone.xib; sourceTree = "<group>"; };
+		97B7AA4B15760AAF0014E693 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/BeamViewController_iPad.xib; sourceTree = "<group>"; };
+		97B7AA5215760AAF0014E693 /* BeamMusicPlayerExampleTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeamMusicPlayerExampleTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		97B7AA5315760AAF0014E693 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		97B7AA5B15760AAF0014E693 /* BeamMusicPlayerExampleTests-Info.plist */ = {isa = PBXFileReference; path = "BeamMusicPlayerExampleTests-Info.plist"; sourceTree = "<group>"; };
+		97B7AA5D15760AAF0014E693 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		97B7AA5F15760AAF0014E693 /* BeamMusicPlayerExampleTests.h */ = {isa = PBXFileReference; path = BeamMusicPlayerExampleTests.h; sourceTree = "<group>"; };
+		97B7AA6015760AAF0014E693 /* BeamMusicPlayerExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeamMusicPlayerExampleTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		97B7AA2B15760AAF0014E693 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97B7AA3315760AAF0014E693 /* UIKit.framework in Frameworks */,
+				97B7AA3515760AAF0014E693 /* Foundation.framework in Frameworks */,
+				97B7AA3715760AAF0014E693 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		97B7AA4E15760AAF0014E693 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97B7AA5415760AAF0014E693 /* SenTestingKit.framework in Frameworks */,
+				97B7AA5515760AAF0014E693 /* UIKit.framework in Frameworks */,
+				97B7AA5615760AAF0014E693 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		97B7AA2315760AAD0014E693 = {
+			isa = PBXGroup;
+			children = (
+				97B7AA3815760AAF0014E693 /* BeamMusicPlayerExample */,
+				97B7AA5915760AAF0014E693 /* BeamMusicPlayerExampleTests */,
+				97B7AA3115760AAF0014E693 /* Frameworks */,
+				97B7AA2F15760AAF0014E693 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		97B7AA2F15760AAF0014E693 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				97B7AA2E15760AAF0014E693 /* BeamMusicPlayerExample.app */,
+				97B7AA5215760AAF0014E693 /* BeamMusicPlayerExampleTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		97B7AA3115760AAF0014E693 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				97B7AA3215760AAF0014E693 /* UIKit.framework */,
+				97B7AA3415760AAF0014E693 /* Foundation.framework */,
+				97B7AA3615760AAF0014E693 /* CoreGraphics.framework */,
+				97B7AA5315760AAF0014E693 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		97B7AA3815760AAF0014E693 /* BeamMusicPlayerExample */ = {
+			isa = PBXGroup;
+			children = (
+				97B7AA4115760AAF0014E693 /* BeamAppDelegate.h */,
+				97B7AA4215760AAF0014E693 /* BeamAppDelegate.m */,
+				97B7AA4415760AAF0014E693 /* BeamViewController.h */,
+				97B7AA4515760AAF0014E693 /* BeamViewController.m */,
+				97B7AA4715760AAF0014E693 /* BeamViewController_iPhone.xib */,
+				97B7AA4A15760AAF0014E693 /* BeamViewController_iPad.xib */,
+				97B7AA3915760AAF0014E693 /* Supporting Files */,
+			);
+			path = BeamMusicPlayerExample;
+			sourceTree = "<group>";
+		};
+		97B7AA3915760AAF0014E693 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				97B7AA3A15760AAF0014E693 /* BeamMusicPlayerExample-Info.plist */,
+				97B7AA3B15760AAF0014E693 /* InfoPlist.strings */,
+				97B7AA3E15760AAF0014E693 /* main.m */,
+				97B7AA4015760AAF0014E693 /* BeamMusicPlayerExample-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		97B7AA5915760AAF0014E693 /* BeamMusicPlayerExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				97B7AA5F15760AAF0014E693 /* BeamMusicPlayerExampleTests.h */,
+				97B7AA6015760AAF0014E693 /* BeamMusicPlayerExampleTests.m */,
+				97B7AA5A15760AAF0014E693 /* Supporting Files */,
+			);
+			path = BeamMusicPlayerExampleTests;
+			sourceTree = "<group>";
+		};
+		97B7AA5A15760AAF0014E693 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				97B7AA5B15760AAF0014E693 /* BeamMusicPlayerExampleTests-Info.plist */,
+				97B7AA5C15760AAF0014E693 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		97B7AA2D15760AAF0014E693 /* BeamMusicPlayerExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 97B7AA6415760AAF0014E693 /* Build configuration list for PBXNativeTarget "BeamMusicPlayerExample" */;
+			buildPhases = (
+				97B7AA2A15760AAF0014E693 /* Sources */,
+				97B7AA2B15760AAF0014E693 /* Frameworks */,
+				97B7AA2C15760AAF0014E693 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BeamMusicPlayerExample;
+			productName = BeamMusicPlayerExample;
+			productReference = 97B7AA2E15760AAF0014E693 /* BeamMusicPlayerExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		97B7AA5115760AAF0014E693 /* BeamMusicPlayerExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 97B7AA6715760AAF0014E693 /* Build configuration list for PBXNativeTarget "BeamMusicPlayerExampleTests" */;
+			buildPhases = (
+				97B7AA4D15760AAF0014E693 /* Sources */,
+				97B7AA4E15760AAF0014E693 /* Frameworks */,
+				97B7AA4F15760AAF0014E693 /* Resources */,
+				97B7AA5015760AAF0014E693 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				97B7AA5815760AAF0014E693 /* PBXTargetDependency */,
+			);
+			name = BeamMusicPlayerExampleTests;
+			productName = BeamMusicPlayerExampleTests;
+			productReference = 97B7AA5215760AAF0014E693 /* BeamMusicPlayerExampleTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		97B7AA2515760AAD0014E693 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = Beam;
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = n/a;
+			};
+			buildConfigurationList = 97B7AA2815760AAD0014E693 /* Build configuration list for PBXProject "BeamMusicPlayerExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 97B7AA2315760AAD0014E693;
+			productRefGroup = 97B7AA2F15760AAF0014E693 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				97B7AA2D15760AAF0014E693 /* BeamMusicPlayerExample */,
+				97B7AA5115760AAF0014E693 /* BeamMusicPlayerExampleTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		97B7AA2C15760AAF0014E693 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97B7AA3D15760AAF0014E693 /* InfoPlist.strings in Resources */,
+				97B7AA4915760AAF0014E693 /* BeamViewController_iPhone.xib in Resources */,
+				97B7AA4C15760AAF0014E693 /* BeamViewController_iPad.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		97B7AA4F15760AAF0014E693 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97B7AA5E15760AAF0014E693 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		97B7AA5015760AAF0014E693 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		97B7AA2A15760AAF0014E693 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97B7AA3F15760AAF0014E693 /* main.m in Sources */,
+				97B7AA4315760AAF0014E693 /* BeamAppDelegate.m in Sources */,
+				97B7AA4615760AAF0014E693 /* BeamViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		97B7AA4D15760AAF0014E693 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97B7AA6115760AAF0014E693 /* BeamMusicPlayerExampleTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		97B7AA5815760AAF0014E693 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 97B7AA2D15760AAF0014E693 /* BeamMusicPlayerExample */;
+			targetProxy = 97B7AA5715760AAF0014E693 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		97B7AA3B15760AAF0014E693 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				97B7AA3C15760AAF0014E693 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		97B7AA4715760AAF0014E693 /* BeamViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				97B7AA4815760AAF0014E693 /* en */,
+			);
+			name = BeamViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		97B7AA4A15760AAF0014E693 /* BeamViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				97B7AA4B15760AAF0014E693 /* en */,
+			);
+			name = BeamViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		97B7AA5C15760AAF0014E693 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				97B7AA5D15760AAF0014E693 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		97B7AA6215760AAF0014E693 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		97B7AA6315760AAF0014E693 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		97B7AA6515760AAF0014E693 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BeamMusicPlayerExample/BeamMusicPlayerExample-Prefix.pch";
+				INFOPLIST_FILE = "BeamMusicPlayerExample/BeamMusicPlayerExample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		97B7AA6615760AAF0014E693 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BeamMusicPlayerExample/BeamMusicPlayerExample-Prefix.pch";
+				INFOPLIST_FILE = "BeamMusicPlayerExample/BeamMusicPlayerExample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		97B7AA6815760AAF0014E693 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BeamMusicPlayerExample.app/BeamMusicPlayerExample";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BeamMusicPlayerExample/BeamMusicPlayerExample-Prefix.pch";
+				INFOPLIST_FILE = "BeamMusicPlayerExampleTests/BeamMusicPlayerExampleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		97B7AA6915760AAF0014E693 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BeamMusicPlayerExample.app/BeamMusicPlayerExample";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BeamMusicPlayerExample/BeamMusicPlayerExample-Prefix.pch";
+				INFOPLIST_FILE = "BeamMusicPlayerExampleTests/BeamMusicPlayerExampleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		97B7AA2815760AAD0014E693 /* Build configuration list for PBXProject "BeamMusicPlayerExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97B7AA6215760AAF0014E693 /* Debug */,
+				97B7AA6315760AAF0014E693 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		97B7AA6415760AAF0014E693 /* Build configuration list for PBXNativeTarget "BeamMusicPlayerExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97B7AA6515760AAF0014E693 /* Debug */,
+				97B7AA6615760AAF0014E693 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		97B7AA6715760AAF0014E693 /* Build configuration list for PBXNativeTarget "BeamMusicPlayerExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97B7AA6815760AAF0014E693 /* Debug */,
+				97B7AA6915760AAF0014E693 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 97B7AA2515760AAD0014E693 /* Project object */;
+}
