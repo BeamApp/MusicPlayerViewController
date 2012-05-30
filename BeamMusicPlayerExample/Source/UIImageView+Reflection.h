@@ -1,5 +1,5 @@
 //
-//  BeamViewController.h
+//  UIImageView+Reflection.h
 //  BeamMusicPlayerExample
 //
 //  Created by Moritz Haarmann on 30.05.12.
@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BeamViewController : UIViewController
+@interface UIImageView (Reflection)
+- (UIImage *)reflectedImageWithHeight:(NSUInteger)height;
 
 @end

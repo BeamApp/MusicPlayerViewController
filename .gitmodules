@@ -1,0 +1,3 @@
+[submodule "OBSlider"]
+	path = OBSlider
+	url = https://github.com/ole/OBSlider.git
