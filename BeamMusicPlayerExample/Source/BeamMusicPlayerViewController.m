@@ -191,7 +191,7 @@
         self.playbackTickTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(playbackTick:) userInfo:nil repeats:YES];
         
         if ( self.delegate && [self.delegate respondsToSelector:@selector(playerDidStartPlaying:)] ){
-            [self.delegate playerDidStartPlaying:self];
+            [self.delegate musicPlayerDidStartPlaying:self];
         }
         
     }
@@ -204,7 +204,7 @@
         self.playbackTickTimer = nil;
         
         if ( self.delegate && [self.delegate respondsToSelector:@selector(playerDidStopPlaying:)] ){
-            [self.delegate playerDidStartPlaying:self];
+            [self.delegate musicPlayerDidStartPlaying:self];
         }
     }
 }
