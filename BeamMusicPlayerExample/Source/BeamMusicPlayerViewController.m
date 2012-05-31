@@ -217,7 +217,7 @@
         
         self.playbackTickTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(playbackTick:) userInfo:nil repeats:YES];
         
-        if ( [self.delegate respondsToSelector:@selector(playerDidStartPlaying:)] ){
+        if ( [self.delegate respondsToSelector:@selector(musicPlayerDidStartPlaying:)] ){
             [self.delegate musicPlayerDidStartPlaying:self];
         }
         [self adjustPlayButtonState];
@@ -230,7 +230,7 @@
         [self.playbackTickTimer invalidate];
         self.playbackTickTimer = nil;
         
-        if ( [self.delegate respondsToSelector:@selector(playerDidStopPlaying:)] ){
+        if ( [self.delegate respondsToSelector:@selector(musicPlayerDidStopPlaying:)] ){
             [self.delegate musicPlayerDidStopPlaying:self];
         }
         
@@ -300,10 +300,11 @@
 -(void)playbackTick:(id)unused {
     // Only tick forward if not scrobbling.
     if ( !self.scrobbling ){
-        self->currentPlaybackPosition += 1.0;
-        [self updateSeekUI];
-        if ( self->currentPlaybackPosition > self.currentTrackLength ){
+        if ( self->currentPlaybackPosition+1.0 > self.currentTrackLength ){
             [self next];
+        } else {
+            self->currentPlaybackPosition += 1.0f;
+            [self updateSeekUI];
         }
     }
 }
