@@ -35,7 +35,7 @@
 
 #import "BeamMusicPlayerViewController.h"
 #import "UIImageView+Reflection.h"
-
+#import "NSDateFormatter+Duration.h"
 
 @interface BeamMusicPlayerViewController()
 
@@ -65,7 +65,10 @@
 @property (nonatomic,weak) IBOutlet UILabel* timeElapsedLabel; // Elapsed Time Label
 @property (nonatomic,weak) IBOutlet UILabel* timeRemainingLabel; // Remaining Time Label
 @property (nonatomic,weak) IBOutlet UIButton* shuffleButton; // Shuffle Button
-@property (nonatomic,weak) IBOutlet UIButton* repeatButton; // Repeat button 
+@property (nonatomic,weak) IBOutlet UIButton* repeatButton; // Repeat button
+
+@property (nonatomic) CGFloat currentTrackLength;
+@property (nonatomic) NSUInteger numberOfTracks;
 
 @end
 
@@ -95,6 +98,8 @@
 @synthesize repeatButton;
 @synthesize durationFormatter;
 @synthesize coverArtGestureRecognizer;
+@synthesize currentTrackLength;
+@synthesize numberOfTracks;
 
 - (void)viewDidLoad
 {
@@ -141,8 +146,6 @@
     }
 }
 
--(void)awakeFromNib {
-}
 
 #pragma mark - Playback Management
 
@@ -170,14 +173,12 @@
             if ( track == self.currentTrack ){
             
                 // If there is no image given, use the placeholder
-                if ( image  == nil ){
-                    image = [UIImage imageNamed:@"noartplaceholder.png"];
-                }
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
+                if ( image  != nil ){
+                    dispatch_async(dispatch_get_main_queue(), ^{
                     self.albumArtImageView.image = image;
                     self.albumArtReflection.image = [self.albumArtImageView reflectedImageWithHeight:self.albumArtReflection.frame.size.height];
                 });
+            }
             
             } else {
                 NSLog(@"Discarded Response, Invalid for this cycle.");
@@ -206,6 +207,15 @@
         self->currentPlaybackPosition = 0;
         
         [self updateUIForCurrentTrack];
+        
+        
+        self.currentTrackLength = [self.dataSource musicPlayer:self lengthForTrack:self.currentTrack];
+        self.numberOfTracks = [self.dataSource numberOfTracksInPlayer:self];
+        
+        // Slider
+        self.progressSlider.maximumValue = self.currentTrackLength;
+        self.progressSlider.minimumValue = 0;
+        
         self.playbackTickTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(playbackTick:) userInfo:nil repeats:YES];
         
         if ( self.delegate && [self.delegate respondsToSelector:@selector(playerDidStartPlaying:)] ){
@@ -222,7 +232,7 @@
         self.playbackTickTimer = nil;
         
         if ( self.delegate && [self.delegate respondsToSelector:@selector(playerDidStopPlaying:)] ){
-            [self.delegate musicPlayerDidStartPlaying:self];
+            [self.delegate musicPlayerDidStopPlaying:self];
         }
     }
 }
@@ -240,7 +250,7 @@
  */
 -(void)changeTrack:(NSUInteger)newTrack {
     BOOL shouldChange = YES;
-    if ( self.delegate && [self.delegate respondsToSelector:@selector(musicPlayer:shoulChangeTrack::) ]){
+    if ( self.delegate && [self.delegate respondsToSelector:@selector(musicPlayer:shoulChangeTrack:) ]){
         shouldChange = [self.delegate musicPlayer:self shouldChangeTrack:newTrack];
     }
     
@@ -268,6 +278,14 @@
  * Tick method called each second when playing back.
  */
 -(void)playbackTick:(id)unused {
+    self->currentPlaybackPosition += 1.0;
+    NSString* elapsed = [NSDateFormatter formattedDuration:(long)self.currentPlaybackPosition];
+    NSString* remaining = [NSDateFormatter formattedDuration:(self.currentTrackLength-self.currentPlaybackPosition)*-1];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.timeElapsedLabel.text =elapsed;
+        self.timeRemainingLabel.text =remaining;
+        self.progressSlider.value = self.currentPlaybackPosition;
+    });
     
 }
 

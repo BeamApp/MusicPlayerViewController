@@ -89,8 +89,18 @@
  */
 -(void)pause;
 
+/**
+ * Skips to the next track. 
+ *
+ * If there is no next track, this method does nothing, if there is, it skips one track forward and informs the delegate. In case the BeamMusicPlayerDelegate implements the musicPlayer:shouldChangeTrack: method and returns NO, the track is not changed.
+ */
 -(void)next;
 
+/**
+ * Skips to the previous track. 
+ *
+ * If there is no previous track, i.e. the current track number is 0, this method does nothing, if there is, it skips one track backward and informs the delegate. In case the BeamMusicPlayerDelegate implements the musicPlayer:shouldChangeTrack: method and returns NO, the track is not changed.
+ */
 -(void)previous;
 
 -(IBAction)nextAction:(id)sender;
