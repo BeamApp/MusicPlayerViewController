@@ -169,7 +169,7 @@
     self.albumTitleLabel.text = [self.dataSource musicPlayer:self albumForTrack:self.currentTrack];
     
     // We only request the coverart if the delegate responds to it.
-    if (self.dataSource && [self.dataSource respondsToSelector:@selector(musicPlayer:artworkForTrack:receivingBlock:)]) {
+    if ( [self.dataSource respondsToSelector:@selector(musicPlayer:artworkForTrack:receivingBlock:)]) {
         
         // Copy the current track to another variable, otherwise we would just access the current one.
         NSUInteger track = self.currentTrack;
@@ -217,7 +217,7 @@
         
         self.playbackTickTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(playbackTick:) userInfo:nil repeats:YES];
         
-        if ( self.delegate && [self.delegate respondsToSelector:@selector(playerDidStartPlaying:)] ){
+        if ( [self.delegate respondsToSelector:@selector(playerDidStartPlaying:)] ){
             [self.delegate musicPlayerDidStartPlaying:self];
         }
         [self adjustPlayButtonState];
@@ -230,7 +230,7 @@
         [self.playbackTickTimer invalidate];
         self.playbackTickTimer = nil;
         
-        if ( self.delegate && [self.delegate respondsToSelector:@selector(playerDidStopPlaying:)] ){
+        if ( [self.delegate respondsToSelector:@selector(playerDidStopPlaying:)] ){
             [self.delegate musicPlayerDidStopPlaying:self];
         }
         
@@ -252,7 +252,7 @@
  */
 -(void)changeTrack:(NSUInteger)newTrack {
     BOOL shouldChange = YES;
-    if ( self.delegate && [self.delegate respondsToSelector:@selector(musicPlayer:shoulChangeTrack:) ]){
+    if ( [self.delegate respondsToSelector:@selector(musicPlayer:shoulChangeTrack:) ]){
         shouldChange = [self.delegate musicPlayer:self shouldChangeTrack:newTrack];
     }
     
@@ -277,7 +277,7 @@
         self.progressSlider.maximumValue = self.currentTrackLength;
         self.progressSlider.minimumValue = 0;
 
-        if ( self.delegate && [self.delegate respondsToSelector:@selector(musicPlayer:didChangeTrack:) ]){
+        if ( [self.delegate respondsToSelector:@selector(musicPlayer:didChangeTrack:) ]){
             [self.delegate musicPlayer:self didChangeTrack:newTrack];
         }
         [self updateUIForCurrentTrack];
