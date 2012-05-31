@@ -44,17 +44,17 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/albumForTrack:inPlayer:">&nbsp;&nbsp;&nbsp;&nbsp;- albumForTrack:inPlayer:</option>
+	<option value="//api/name/musicPlayer:albumForTrack:">&nbsp;&nbsp;&nbsp;&nbsp;- musicPlayer:albumForTrack:</option>
 	
-	<option value="//api/name/artistForTrack:inPlayer:">&nbsp;&nbsp;&nbsp;&nbsp;- artistForTrack:inPlayer:</option>
+	<option value="//api/name/musicPlayer:artistForTrack:">&nbsp;&nbsp;&nbsp;&nbsp;- musicPlayer:artistForTrack:</option>
 	
-	<option value="//api/name/artworkForTrack:preferredSize:player:">&nbsp;&nbsp;&nbsp;&nbsp;- artworkForTrack:preferredSize:player:</option>
+	<option value="//api/name/musicPlayer:artworkForTrack:receivingBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- musicPlayer:artworkForTrack:receivingBlock:</option>
 	
-	<option value="//api/name/lengthForTrack:inPlayer:">&nbsp;&nbsp;&nbsp;&nbsp;- lengthForTrack:inPlayer:</option>
+	<option value="//api/name/musicPlayer:lengthForTrack:">&nbsp;&nbsp;&nbsp;&nbsp;- musicPlayer:lengthForTrack:</option>
+	
+	<option value="//api/name/musicPlayer:titleForTrack:">&nbsp;&nbsp;&nbsp;&nbsp;- musicPlayer:titleForTrack:</option>
 	
 	<option value="//api/name/numberOfTracksInPlayer:">&nbsp;&nbsp;&nbsp;&nbsp;- numberOfTracksInPlayer:</option>
-	
-	<option value="//api/name/titleForTrack:inPlayer:">&nbsp;&nbsp;&nbsp;&nbsp;- titleForTrack:inPlayer:</option>
 	
 	
 	
@@ -84,17 +84,17 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/albumForTrack:inPlayer:">albumForTrack:inPlayer:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/musicPlayer:albumForTrack:">musicPlayer:albumForTrack:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/artistForTrack:inPlayer:">artistForTrack:inPlayer:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/musicPlayer:artistForTrack:">musicPlayer:artistForTrack:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/artworkForTrack:preferredSize:player:">artworkForTrack:preferredSize:player:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/musicPlayer:artworkForTrack:receivingBlock:">musicPlayer:artworkForTrack:receivingBlock:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/lengthForTrack:inPlayer:">lengthForTrack:inPlayer:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/musicPlayer:lengthForTrack:">musicPlayer:lengthForTrack:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/musicPlayer:titleForTrack:">musicPlayer:titleForTrack:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/numberOfTracksInPlayer:">numberOfTracksInPlayer:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/titleForTrack:inPlayer:">titleForTrack:inPlayer:</a></span></li>
 	
 </ul></li>
 
@@ -133,7 +133,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>The DataSource for the Music Player provides all data necessary to display
+						<p>The DataSource for the <a href="../Classes/BeamMusicPlayerViewController.html">BeamMusicPlayerViewController</a> provides all data necessary to display
 a player UI filled with the appropriate information.</p>
 					</div>
 					
@@ -152,29 +152,29 @@ a player UI filled with the appropriate information.</p>
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/titleForTrack:inPlayer:">&ndash;&nbsp;titleForTrack:inPlayer:</a></code>
+		<code><a href="#//api/name/musicPlayer:titleForTrack:">&ndash;&nbsp;musicPlayer:titleForTrack:</a></code>
 		<span class="tooltip"><p>Returns the title of the given track and player as a NSString. You can return nil for no title.</p></span>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/artistForTrack:inPlayer:">&ndash;&nbsp;artistForTrack:inPlayer:</a></code>
-		<span class="tooltip"><p>Returns the artist for the given track in the given player. Nil is an acceptable return value.</p></span>
+		<code><a href="#//api/name/musicPlayer:artistForTrack:">&ndash;&nbsp;musicPlayer:artistForTrack:</a></code>
+		<span class="tooltip"><p>Returns the artist for the given track in the given <a href="../Classes/BeamMusicPlayerViewController.html">BeamMusicPlayerViewController</a>.</p></span>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/albumForTrack:inPlayer:">&ndash;&nbsp;albumForTrack:inPlayer:</a></code>
-		<span class="tooltip"><p>Returns the album for the given track in the given player. Nil is an acceptable return value.</p></span>
+		<code><a href="#//api/name/musicPlayer:albumForTrack:">&ndash;&nbsp;musicPlayer:albumForTrack:</a></code>
+		<span class="tooltip"><p>Returns the album for the given track in the given <a href="../Classes/BeamMusicPlayerViewController.html">BeamMusicPlayerViewController</a>.</p></span>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/lengthForTrack:inPlayer:">&ndash;&nbsp;lengthForTrack:inPlayer:</a></code>
-		<span class="tooltip"><p>Returns the length for the given track in the given player as seconds. Your implementation must provide a
+		<code><a href="#//api/name/musicPlayer:lengthForTrack:">&ndash;&nbsp;musicPlayer:lengthForTrack:</a></code>
+		<span class="tooltip"><p>Returns the length for the given track in the given <a href="../Classes/BeamMusicPlayerViewController.html">BeamMusicPlayerViewController</a>. Your implementation must provide a
 value larger than 0.</p></span>
 	</span>
 	
@@ -189,8 +189,8 @@ or return anything smaller than 2, one track is assumed and the skip-buttons are
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/artworkForTrack:preferredSize:player:">&ndash;&nbsp;artworkForTrack:preferredSize:player:</a></code>
-		<span class="tooltip"><p>Returns a UIImage containing the artwork for the given track in the given player. If the preferredSize is not NULL, the implementation should try to provide an image that is as close to the preferred size as possible.</p></span>
+		<code><a href="#//api/name/musicPlayer:artworkForTrack:receivingBlock:">&ndash;&nbsp;musicPlayer:artworkForTrack:receivingBlock:</a></code>
+		<span class="tooltip"><p>Returns the artwork for a given track.</p></span>
 	</span>
 	
 	
@@ -212,22 +212,42 @@ or return anything smaller than 2, one track is assumed and the skip-buttons are
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/albumForTrack:inPlayer:" title="albumForTrack:inPlayer:"></a>
-	<h3 class="subsubtitle method-title">albumForTrack:inPlayer:</h3>
+	<a name="//api/name/musicPlayer:albumForTrack:" title="musicPlayer:albumForTrack:"></a>
+	<h3 class="subsubtitle method-title">musicPlayer:albumForTrack:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Returns the album for the given track in the given player. Nil is an acceptable return value.</p>
+		<p>Returns the album for the given track in the given <a href="../Classes/BeamMusicPlayerViewController.html">BeamMusicPlayerViewController</a>.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (NSString *)albumForTrack:(NSUInteger)<em>trackNumber</em> inPlayer:(BeamMusicPlayerViewController *)<em>player</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (NSString *)musicPlayer:(BeamMusicPlayerViewController *)<em>player</em> albumForTrack:(NSUInteger)<em>trackNumber</em></code></div>
 
     
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>player</em></dt>
+			<dd><p>the <a href="../Classes/BeamMusicPlayerViewController.html">BeamMusicPlayerViewController</a> that is making this request.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>trackNumber</em></dt>
+			<dd><p>the track number this request is for.</p></dd>
+		</dl>
+		
+	</div>
 	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A string to use as the album name of the track. If you return nil, this track will have no album name.</p>
+	</div>
 	
 	
 	
@@ -248,22 +268,42 @@ or return anything smaller than 2, one track is assumed and the skip-buttons are
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/artistForTrack:inPlayer:" title="artistForTrack:inPlayer:"></a>
-	<h3 class="subsubtitle method-title">artistForTrack:inPlayer:</h3>
+	<a name="//api/name/musicPlayer:artistForTrack:" title="musicPlayer:artistForTrack:"></a>
+	<h3 class="subsubtitle method-title">musicPlayer:artistForTrack:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Returns the artist for the given track in the given player. Nil is an acceptable return value.</p>
+		<p>Returns the artist for the given track in the given <a href="../Classes/BeamMusicPlayerViewController.html">BeamMusicPlayerViewController</a>.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (NSString *)artistForTrack:(NSUInteger)<em>trackNumber</em> inPlayer:(BeamMusicPlayerViewController *)<em>player</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (NSString *)musicPlayer:(BeamMusicPlayerViewController *)<em>player</em> artistForTrack:(NSUInteger)<em>trackNumber</em></code></div>
 
     
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>player</em></dt>
+			<dd><p>the <a href="../Classes/BeamMusicPlayerViewController.html">BeamMusicPlayerViewController</a> that is making this request.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>trackNumber</em></dt>
+			<dd><p>the track number this request is for.</p></dd>
+		</dl>
+		
+	</div>
 	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A string to use as the artist name of the track. If you return nil, this track will have no artist name.</p>
+	</div>
 	
 	
 	
@@ -284,26 +324,51 @@ or return anything smaller than 2, one track is assumed and the skip-buttons are
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/artworkForTrack:preferredSize:player:" title="artworkForTrack:preferredSize:player:"></a>
-	<h3 class="subsubtitle method-title">artworkForTrack:preferredSize:player:</h3>
+	<a name="//api/name/musicPlayer:artworkForTrack:receivingBlock:" title="musicPlayer:artworkForTrack:receivingBlock:"></a>
+	<h3 class="subsubtitle method-title">musicPlayer:artworkForTrack:receivingBlock:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Returns a UIImage containing the artwork for the given track in the given player. If the preferredSize is not NULL, the implementation should try to provide an image that is as close to the preferred size as possible.</p>
+		<p>Returns the artwork for a given track.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (UIImage *)artworkForTrack:(NSUInteger)<em>trackNumber</em> preferredSize:(CGSize)<em>size</em> player:(BeamMusicPlayerViewController *)<em>player</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)musicPlayer:(BeamMusicPlayerViewController *)<em>player</em> artworkForTrack:(NSUInteger)<em>trackNumber</em> receivingBlock:(BeamMusicPlayerReceivingBlock)<em>receivingBlock</em></code></div>
 
     
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>player</em></dt>
+			<dd><p>the <a href="../Classes/BeamMusicPlayerViewController.html">BeamMusicPlayerViewController</a> that needs artwork.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>trackNumber</em></dt>
+			<dd><p>the index of the track for which the artwork is requested.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>receivingBlock</em></dt>
+			<dd><p>a block of type BeamMusicPlayerReceivingBlock that needs to be called when the image is prepared by the receiver.</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
 	
 	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The artwork is returned using a receiving block ( BeamMusicPlayerReceivingBlock ) that takes an UIImage and an optional error. If you supply nil as an image, a placeholder will be shown.</p>
+	</div>
 	
 	
 	
@@ -320,23 +385,99 @@ or return anything smaller than 2, one track is assumed and the skip-buttons are
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/lengthForTrack:inPlayer:" title="lengthForTrack:inPlayer:"></a>
-	<h3 class="subsubtitle method-title">lengthForTrack:inPlayer:</h3>
+	<a name="//api/name/musicPlayer:lengthForTrack:" title="musicPlayer:lengthForTrack:"></a>
+	<h3 class="subsubtitle method-title">musicPlayer:lengthForTrack:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Returns the length for the given track in the given player as seconds. Your implementation must provide a
+		<p>Returns the length for the given track in the given <a href="../Classes/BeamMusicPlayerViewController.html">BeamMusicPlayerViewController</a>. Your implementation must provide a
 value larger than 0.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (CGFloat)lengthForTrack:(NSUInteger)<em>trackNumber</em> inPlayer:(BeamMusicPlayerViewController *)<em>player</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (CGFloat)musicPlayer:(BeamMusicPlayerViewController *)<em>player</em> lengthForTrack:(NSUInteger)<em>trackNumber</em></code></div>
 
     
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>player</em></dt>
+			<dd><p>the <a href="../Classes/BeamMusicPlayerViewController.html">BeamMusicPlayerViewController</a> that is making this request.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>trackNumber</em></dt>
+			<dd><p>the track number this request is for.</p></dd>
+		</dl>
+		
+	</div>
 	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>length in seconds</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BeamMusicPlayerDataSource.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/musicPlayer:titleForTrack:" title="musicPlayer:titleForTrack:"></a>
+	<h3 class="subsubtitle method-title">musicPlayer:titleForTrack:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the title of the given track and player as a NSString. You can return nil for no title.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)musicPlayer:(BeamMusicPlayerViewController *)<em>player</em> titleForTrack:(NSUInteger)<em>trackNumber</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>player</em></dt>
+			<dd><p>the <a href="../Classes/BeamMusicPlayerViewController.html">BeamMusicPlayerViewController</a> that is making this request.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>trackNumber</em></dt>
+			<dd><p>the track number this request is for.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A string to use as the title of the track. If you return nil, this track will have no title.</p>
+	</div>
 	
 	
 	
@@ -373,43 +514,22 @@ or return anything smaller than 2, one track is assumed and the skip-buttons are
 
     
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>player</em></dt>
+			<dd><p>the <a href="../Classes/BeamMusicPlayerViewController.html">BeamMusicPlayerViewController</a> that is making this request.</p></dd>
+		</dl>
+		
+	</div>
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BeamMusicPlayerDataSource.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/titleForTrack:inPlayer:" title="titleForTrack:inPlayer:"></a>
-	<h3 class="subsubtitle method-title">titleForTrack:inPlayer:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Returns the title of the given track and player as a NSString. You can return nil for no title.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (NSString *)titleForTrack:(NSUInteger)<em>trackNumber</em> inPlayer:(BeamMusicPlayerViewController *)<em>player</em></code></div>
-
-    
-	
-	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>number of available tracks</p>
+	</div>
 	
 	
 	
@@ -442,7 +562,7 @@ or return anything smaller than 2, one track is assumed and the skip-buttons are
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 BeamApp UG. All rights reserved. (Last updated: 2012-05-30)</span><br />
+						<p><span class="copyright">&copy; 2012 BeamApp UG. All rights reserved. (Last updated: 2012-05-31)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						

@@ -21,36 +21,42 @@
 
 /**
  * Called by the player after the player started playing a song.
+ * @param player the BeamMusicPlayerViewController sending the message
  */
 -(void)musicPlayerDidStartPlaying:(BeamMusicPlayerViewController*)player;
 
 /**
  * Called after a user presses the "play"-button but before the player actually starts playing.
- * If the value returned is NO, the player won't start playing, if you don't implement this method or
- * return YES, the player starts.
+ * @param player the BeamMusicPlayerViewController sending the message
+ * @return  If the value returned is NO, the player won't start playing. YES, tells the player to starts. Default is YES.
  */
 -(BOOL)musicPlayerShouldStartPlaying:(BeamMusicPlayerViewController*)player;
 
 /**
  * Called after the player stopped playing. This method is called both when the current song ends 
  * and if the user stops the playback. 
+ * @param player the BeamMusicPlayerViewController sending the message
  */
 -(void)musicPlayerDidStopPlaying:(BeamMusicPlayerViewController*)player;
 
 /**
  * Called after the player stopped playing the last track.
+ * @param player the BeamMusicPlayerViewController sending the message
  */
 -(void)musicPlayerDidStopPlayingLastTrack:(BeamMusicPlayerViewController*)player;
 
 
 /**
- * Called before the player stops playing but after the user initiated the stop action. By returning NO here,
- * the delegate may prevent the player from stopping the playback. 
+ * Called before the player stops playing but after the user initiated the stop action.
+ * @param player the BeamMusicPlayerViewController sending the message
+ * @return By returning NO here, the delegate may prevent the player from stopping the playback. Default YES.
  */
 -(BOOL)musicPlayerShouldStopPlaying:(BeamMusicPlayerViewController*)player;
 
 /**
  * Called after the player seeked or scrubbed to a new position. This is mostly the result of a user interaction.
+ * @param player the BeamMusicPlayerViewController sending the message
+ * @param position new position in seconds
  */
 -(void)musicPlayer:(BeamMusicPlayerViewController*)player didSeekToPosition:(CGFloat)position;
 
@@ -60,7 +66,7 @@
  * If an implementation returns NO, the track will not be changed, if it returns YES the track will be changed. If you do not implement this method, YES is assumed. 
  * @param player the BeamMusicPlayerViewController sending the message
  * @param track a NSUInteger containing the number of the new track
- * @return YES if the track can be changed, NO if not. 
+ * @return YES if the track can be changed, NO if not. Default YES.
  */
 -(BOOL)musicPlayer:(BeamMusicPlayerViewController*)player shouldChangeTrack:(NSUInteger)track;
 

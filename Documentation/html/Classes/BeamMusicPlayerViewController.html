@@ -44,11 +44,15 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
+	<option value="//api/name/next">&nbsp;&nbsp;&nbsp;&nbsp;- next</option>
+	
 	<option value="//api/name/pause">&nbsp;&nbsp;&nbsp;&nbsp;- pause</option>
 	
 	<option value="//api/name/play">&nbsp;&nbsp;&nbsp;&nbsp;- play</option>
 	
 	<option value="//api/name/preparePlayer">&nbsp;&nbsp;&nbsp;&nbsp;- preparePlayer</option>
+	
+	<option value="//api/name/previous">&nbsp;&nbsp;&nbsp;&nbsp;- previous</option>
 	
 	<option value="//api/name/reloadData">&nbsp;&nbsp;&nbsp;&nbsp;- reloadData</option>
 	
@@ -80,11 +84,15 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/next">next</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pause">pause</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/play">play</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/preparePlayer">preparePlayer</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/previous">previous</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/reloadData">reloadData</a></span></li>
 	
@@ -113,6 +121,9 @@
 						<tr>
 	<td class="specification-title">Inherits from</td>
 	<td class="specification-value">UIViewController</td>
+</tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">OBSliderDelegate</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
 	<td class="specification-value">BeamMusicPlayerViewController.h</td>
@@ -171,6 +182,20 @@ is provided using the datasource property, events can be intercepted using the d
 	</span>
 	
 	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/next">&ndash;&nbsp;next</a></code>
+		<span class="tooltip"><p>Skips to the next track.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/previous">&ndash;&nbsp;previous</a></code>
+		<span class="tooltip"><p>Skips to the previous track.</p></span>
+	</span>
+	
+	
 </li>
 						</ul>
 						
@@ -187,6 +212,47 @@ is provided using the datasource property, events can be intercepted using the d
 					<div class="section section-methods">
 						<a title="Instance Methods" name="instance_methods"></a>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/next" title="next"></a>
+	<h3 class="subsubtitle method-title">next</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Skips to the next track.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)next</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>If there is no next track, this method does nothing, if there is, it skips one track forward and informs the delegate. In case the <a href="../Protocols/BeamMusicPlayerDelegate.html">BeamMusicPlayerDelegate</a> implements the musicPlayer:shouldChangeTrack: method and returns NO, the track is not changed.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BeamMusicPlayerViewController.h</code><br />
+	</div>				
+	
+	
+</div>
 						
 						<div class="section-method">
 	<a name="//api/name/pause" title="pause"></a>
@@ -284,7 +350,48 @@ is provided using the datasource property, events can be intercepted using the d
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Loads the first track using the information provided by the datasource and displays it.</p>
+		<p>Loads the first track using the information provided by the <a href="../Protocols/BeamMusicPlayerDataSource.html">BeamMusicPlayerDataSource</a> and displays it.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BeamMusicPlayerViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/previous" title="previous"></a>
+	<h3 class="subsubtitle method-title">previous</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Skips to the previous track.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)previous</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>If there is no previous track, i.e. the current track number is 0, this method does nothing, if there is, it skips one track backward and informs the delegate. In case the <a href="../Protocols/BeamMusicPlayerDelegate.html">BeamMusicPlayerDelegate</a> implements the musicPlayer:shouldChangeTrack: method and returns NO, the track is not changed.</p>
 	</div>
 	
 	
@@ -350,7 +457,7 @@ is provided using the datasource property, events can be intercepted using the d
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 BeamApp UG. All rights reserved. (Last updated: 2012-05-30)</span><br />
+						<p><span class="copyright">&copy; 2012 BeamApp UG. All rights reserved. (Last updated: 2012-05-31)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						

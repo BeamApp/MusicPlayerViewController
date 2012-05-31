@@ -24,22 +24,34 @@ typedef void(^BeamMusicPlayerReceivingBlock)(UIImage* image, NSError** error);
 
 /**
  * Returns the title of the given track and player as a NSString. You can return nil for no title.
+ * @param player the BeamMusicPlayerViewController that is making this request.
+ * @param trackNumber the track number this request is for.
+ * @return A string to use as the title of the track. If you return nil, this track will have no title.
  */
 -(NSString*)musicPlayer:(BeamMusicPlayerViewController*)player titleForTrack:(NSUInteger)trackNumber;
 
 /**
- * Returns the artist for the given track in the given BeamMusicPlayerViewController. Nil is an acceptable return value.
+ * Returns the artist for the given track in the given BeamMusicPlayerViewController.
+ * @param player the BeamMusicPlayerViewController that is making this request.
+ * @param trackNumber the track number this request is for.
+ * @return A string to use as the artist name of the track. If you return nil, this track will have no artist name.
  */
 -(NSString*)musicPlayer:(BeamMusicPlayerViewController*)player artistForTrack:(NSUInteger)trackNumber;
 
 /**
-* Returns the album for the given track in the given BeamMusicPlayerViewController. Nil is an acceptable return value.
+* Returns the album for the given track in the given BeamMusicPlayerViewController.
+ * @param player the BeamMusicPlayerViewController that is making this request.
+ * @param trackNumber the track number this request is for.
+ * @return A string to use as the album name of the track. If you return nil, this track will have no album name.
 */
 -(NSString*)musicPlayer:(BeamMusicPlayerViewController*)player albumForTrack:(NSUInteger)trackNumber;
 
 /**
- * Returns the length for the given track in the given BeamMusicPlayerViewController as seconds. Your implementation must provide a 
+ * Returns the length for the given track in the given BeamMusicPlayerViewController. Your implementation must provide a 
  * value larger than 0.
+ * @param player the BeamMusicPlayerViewController that is making this request.
+ * @param trackNumber the track number this request is for.
+ * @return length in seconds
  */
 -(CGFloat)musicPlayer:(BeamMusicPlayerViewController*)player lengthForTrack:(NSUInteger)trackNumber;
 
@@ -48,6 +60,8 @@ typedef void(^BeamMusicPlayerReceivingBlock)(UIImage* image, NSError** error);
 /**
  * Returns the number of tracks for the given player. If you do not implement this method
  * or return anything smaller than 2, one track is assumed and the skip-buttons are disabled.
+ * @param player the BeamMusicPlayerViewController that is making this request.
+ * @return number of available tracks
  */
 -(NSUInteger)numberOfTracksInPlayer:(BeamMusicPlayerViewController*)player;
 
