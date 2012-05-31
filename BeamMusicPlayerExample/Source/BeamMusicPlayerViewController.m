@@ -150,19 +150,21 @@
  */
 -(void)updateUIForCurrentTrack {
     
-    self.artistNameLabel.text = [self.dataSource artistForTrack:self.currentTrack inPlayer:self];
-    self.trackTitleLabel.text = [self.dataSource titleForTrack:self.currentTrack inPlayer:self];
-    self.albumTitleLabel.text = [self.dataSource albumForTrack:self.currentTrack inPlayer:self];
+    self.artistNameLabel.text = [self.dataSource musicPlayer:self artistForTrack:self.currentTrack];
+    self.trackTitleLabel.text = [self.dataSource musicPlayer:self titleForTrack:self.currentTrack];
+    self.albumTitleLabel.text = [self.dataSource musicPlayer:self albumForTrack:self.currentTrack];
     
     // We only request the coverart if the delegate responds to it.
     if ( self.dataSource && [self.dataSource respondsToSelector:@selector(artworkForTrack:preferredSize:player:)]) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-            UIImage* albumArt=  [self.dataSource artworkForTrack:self.currentTrack preferredSize:self.albumArtImageView.frame.size player:self];
+            // Pixels would be nice 
+            UIImage* albumArt =  [self.dataSource musicPlayer:self artworkForTrack:self.currentTrack preferredSize:self.albumArtImageView.frame.size];
+            
             dispatch_async(dispatch_get_main_queue(), ^{
-                
                 self.albumArtImageView.image = albumArt;
                 self.albumArtReflection.image = [self.albumArtImageView reflectedImageWithHeight:self.albumArtReflection.frame.size.height];
             });
+            
         });
     } else {
         // Otherwise, we'll stick with the placeholder.

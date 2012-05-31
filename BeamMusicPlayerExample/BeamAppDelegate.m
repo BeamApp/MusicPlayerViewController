@@ -69,26 +69,26 @@
 
 # pragma mark - BeamMusicPlayer Delegate
 
--(NSString*)titleForTrack:(NSUInteger)trackNumber inPlayer:(BeamMusicPlayerViewController *)player {
+-(NSString*)musicPlayer:(BeamMusicPlayerViewController*)player titleForTrack:(NSUInteger)trackNumber {
     return @"Some Title";
 }
 
--(NSString*)albumForTrack:(NSUInteger)trackNumber inPlayer:(BeamMusicPlayerViewController *)player {
+-(NSString*)musicPlayer:(BeamMusicPlayerViewController*)player albumForTrack:(NSUInteger)trackNumber {
     return @"Album"
     ;}
 
--(NSString*)artistForTrack:(NSUInteger)trackNumber inPlayer:(BeamMusicPlayerViewController *)player {
+-(NSString*)musicPlayer:(BeamMusicPlayerViewController*)player  artistForTrack:(NSUInteger)trackNumber{
     return @"The Best Artist";
 }
 
--(UIImage*)artworkForTrack:(NSUInteger)trackNumber preferredSize:(CGSize)size player:(BeamMusicPlayerViewController *)player {
+-(UIImage*)musicPlayer:(BeamMusicPlayerViewController*)player  artworkForTrack:(NSUInteger)trackNumber preferredSize:(CGSize)size{
     NSData* urlData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://a3.mzstatic.com/us/r1000/045/Features/7f/50/ee/dj.zygromnm.600x600-75.jpg"]];
     
     UIImage* image = [UIImage imageWithData:urlData];
     return image;
 }
 
--(CGFloat)lengthForTrack:(NSUInteger)trackNumber inPlayer:(BeamMusicPlayerViewController *)player {
+-(CGFloat)musicPlayer:(BeamMusicPlayerViewController*)player lengthForTrack:(NSUInteger)trackNumber{
     return 124;
 }
 

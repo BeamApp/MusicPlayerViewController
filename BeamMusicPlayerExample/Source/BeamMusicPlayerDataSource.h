@@ -19,23 +19,23 @@
 /**
  * Returns the title of the given track and player as a NSString. You can return nil for no title.
  */
--(NSString*)titleForTrack:(NSUInteger)trackNumber inPlayer:(BeamMusicPlayerViewController*)player;
+-(NSString*)musicPlayer:(BeamMusicPlayerViewController*)player titleForTrack:(NSUInteger)trackNumber;
 
 /**
  * Returns the artist for the given track in the given player. Nil is an acceptable return value.
  */
--(NSString*)artistForTrack:(NSUInteger)trackNumber inPlayer:(BeamMusicPlayerViewController*)player;
+-(NSString*)musicPlayer:(BeamMusicPlayerViewController*)player artistForTrack:(NSUInteger)trackNumber;
 
 /**
 * Returns the album for the given track in the given player. Nil is an acceptable return value.
 */
--(NSString*)albumForTrack:(NSUInteger)trackNumber inPlayer:(BeamMusicPlayerViewController*)player;
+-(NSString*)musicPlayer:(BeamMusicPlayerViewController*)player albumForTrack:(NSUInteger)trackNumber;
 
 /**
  * Returns the length for the given track in the given player as seconds. Your implementation must provide a 
  * value larger than 0.
  */
--(CGFloat)lengthForTrack:(NSUInteger)trackNumber inPlayer:(BeamMusicPlayerViewController*)player;
+-(CGFloat)musicPlayer:(BeamMusicPlayerViewController*)player lengthForTrack:(NSUInteger)trackNumber;
 
 @optional
 
@@ -48,6 +48,6 @@
 /**
  * Returns a UIImage containing the artwork for the given track in the given player. If the preferredSize is not NULL, the implementation should try to provide an image that is as close to the preferred size as possible.
  */
--(UIImage*)artworkForTrack:(NSUInteger)trackNumber preferredSize:(CGSize)size player:(BeamMusicPlayerViewController*)player;
+-(UIImage*)musicPlayer:(BeamMusicPlayerViewController*)player artworkForTrack:(NSUInteger)trackNumber preferredSize:(CGSize)size;
 
 @end
