@@ -40,7 +40,7 @@
 
 @class BeamMusicPlayerViewController;
 
-@interface BeamAppDelegate : UIResponder <UIApplicationDelegate, BeamMusicPlayerDelegate, BeamMusicPlayerDataSource>
+@interface BeamAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

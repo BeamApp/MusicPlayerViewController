@@ -11,6 +11,10 @@
 
 @implementation BeamIpodExampleProvider
 
+@synthesize musicPlayer;
+@synthesize controller;
+@synthesize mediaItems;
+
 -(id)init {
     self = [super init];
     if ( self ){
