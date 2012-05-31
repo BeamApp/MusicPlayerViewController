@@ -101,7 +101,7 @@
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">268</int>
 						<array class="NSMutableArray" key="NSSubviews">
-							<object class="IBUIView" id="952618918">
+							<object class="IBUIView" id="993709798">
 								<reference key="NSNextResponder" ref="662525002"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrameSize">{320, 49}</string>
@@ -110,7 +110,7 @@
 								<reference key="NSNextKeyView" ref="682923431"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<reference key="IBUIBackgroundColor" ref="90663917"/>
-								<float key="IBUIAlpha">0.69999998807907104</float>
+								<float key="IBUIAlpha">0.80000001192092896</float>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
 							<object class="IBUISlider" id="682923431">
@@ -131,7 +131,7 @@
 						<string key="NSFrame">{{0, 412}, {320, 49}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="952618918"/>
+						<reference key="NSNextKeyView" ref="993709798"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
@@ -769,7 +769,7 @@
 						<reference key="object" ref="662525002"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="682923431"/>
-							<reference ref="952618918"/>
+							<reference ref="993709798"/>
 						</array>
 						<reference key="parent" ref="774585933"/>
 						<string key="objectName">Volume Slider</string>
@@ -900,7 +900,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">62</int>
-						<reference key="object" ref="952618918"/>
+						<reference key="object" ref="993709798"/>
 						<reference key="parent" ref="662525002"/>
 					</object>
 				</array>
