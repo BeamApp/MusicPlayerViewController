@@ -67,6 +67,7 @@
 @property (nonatomic,weak) IBOutlet UIButton* repeatButton; // Repeat button
 @property (nonatomic,weak) IBOutlet UILabel* scrobbleHelpLabel; // The Scrobble Usage hint Label
 @property (nonatomic,weak) IBOutlet UILabel* numberOfTracksLabel; // Track x of y or the scrobble speed
+@property (nonatomic,weak) IBOutlet UIImageView* scrobbleHighlightShadow; // It's reflection
 
 
 @property (nonatomic) CGFloat currentTrackLength; // The Length of the currently playing track
@@ -106,6 +107,7 @@
 @synthesize scrobbling;
 @synthesize scrobbleHelpLabel;
 @synthesize numberOfTracksLabel;
+@synthesize scrobbleHighlightShadow;
 
 - (void)viewDidLoad
 {
@@ -218,7 +220,7 @@
         if ( self.delegate && [self.delegate respondsToSelector:@selector(playerDidStartPlaying:)] ){
             [self.delegate musicPlayerDidStartPlaying:self];
         }
-        
+        [self adjustPlayButtonState];
     }
 }
 
@@ -231,6 +233,9 @@
         if ( self.delegate && [self.delegate respondsToSelector:@selector(playerDidStopPlaying:)] ){
             [self.delegate musicPlayerDidStopPlaying:self];
         }
+        
+        [self adjustPlayButtonState];
+
     }
 }
 
@@ -251,6 +256,13 @@
         shouldChange = [self.delegate musicPlayer:self shouldChangeTrack:newTrack];
     }
     
+    if ( newTrack > numberOfTracks-1 ){
+        shouldChange = NO;
+        // If we can't next, stop the playback.
+        self->currentPlaybackPosition = self.currentTrackLength;
+        [self pause];
+    }
+    
     if ( shouldChange ){
         [self pause];
         
@@ -264,11 +276,12 @@
         // Slider
         self.progressSlider.maximumValue = self.currentTrackLength;
         self.progressSlider.minimumValue = 0;
-        [self updateUIForCurrentTrack];
 
         if ( self.delegate && [self.delegate respondsToSelector:@selector(musicPlayer:didChangeTrack:) ]){
             [self.delegate musicPlayer:self didChangeTrack:newTrack];
         }
+        [self updateUIForCurrentTrack];
+        [self updateSeekUI];
         [self updateTrackDisplay];
         [self play];
     }
@@ -289,6 +302,9 @@
     if ( !self.scrobbling ){
         self->currentPlaybackPosition += 1.0;
         [self updateSeekUI];
+        if ( self->currentPlaybackPosition > self.currentTrackLength ){
+            [self next];
+        }
     }
 }
 
@@ -319,10 +335,8 @@
 -(IBAction)playAction:(UIBarButtonItem*)sender {
     if ( self.playing ){
         [self pause];
-        self.playButton.image = [UIImage imageNamed:@"play.png"];
     } else {
         [self play];
-        self.playButton.image = [UIImage imageNamed:@"pause.png"];
     }
 }
 
@@ -346,8 +360,12 @@
     }
 }
 
--(void)adjustButtonStates {
-    
+-(void)adjustPlayButtonState {
+    if ( !self.playing ){
+        self.playButton.image = [UIImage imageNamed:@"play.png"];
+    } else {
+        self.playButton.image = [UIImage imageNamed:@"pause.png"];
+    }
 }
 
 #pragma mark - OBSlider delegate methods
@@ -396,7 +414,7 @@
         self.repeatButton.alpha = 1-alpha;
         self.shuffleButton.alpha = 1-alpha;
         self.scrobbleHelpLabel.alpha = alpha;
-        
+        self.scrobbleHighlightShadow.alpha = alpha;
     }];
 }
 
