@@ -101,12 +101,13 @@
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">268</int>
 						<array class="NSMutableArray" key="NSSubviews">
-							<object class="IBUIView" id="511701674">
+							<object class="IBUIView" id="952618918">
 								<reference key="NSNextResponder" ref="662525002"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrameSize">{320, 49}</string>
 								<reference key="NSSuperview" ref="662525002"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="682923431"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<reference key="IBUIBackgroundColor" ref="90663917"/>
 								<float key="IBUIAlpha">0.69999998807907104</float>
@@ -115,9 +116,10 @@
 							<object class="IBUISlider" id="682923431">
 								<reference key="NSNextResponder" ref="662525002"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{18, 20}, {284, 23}}</string>
+								<string key="NSFrame">{{18, 14}, {284, 23}}</string>
 								<reference key="NSSuperview" ref="662525002"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -129,7 +131,7 @@
 						<string key="NSFrame">{{0, 412}, {320, 49}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="682923431"/>
+						<reference key="NSNextKeyView" ref="952618918"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
@@ -617,6 +619,38 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">timeElapsedLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="267258542"/>
+					</object>
+					<int key="connectionID">63</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">timeRemainingLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="1068399126"/>
+					</object>
+					<int key="connectionID">64</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">repeatButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="761831766"/>
+					</object>
+					<int key="connectionID">65</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">shuffleButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="1073174749"/>
+					</object>
+					<int key="connectionID">66</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">titleView</string>
 						<reference key="source" ref="546333562"/>
 						<reference key="destination" ref="720318041"/>
@@ -630,6 +664,22 @@
 						<reference key="destination" ref="372490531"/>
 					</object>
 					<int key="connectionID">45</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">previousAction:</string>
+						<reference key="source" ref="697697531"/>
+						<reference key="destination" ref="372490531"/>
+					</object>
+					<int key="connectionID">68</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">nextAction:</string>
+						<reference key="source" ref="646048802"/>
+						<reference key="destination" ref="372490531"/>
+					</object>
+					<int key="connectionID">67</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -719,7 +769,7 @@
 						<reference key="object" ref="662525002"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="682923431"/>
-							<reference ref="511701674"/>
+							<reference ref="952618918"/>
 						</array>
 						<reference key="parent" ref="774585933"/>
 						<string key="objectName">Volume Slider</string>
@@ -850,7 +900,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">62</int>
-						<reference key="object" ref="511701674"/>
+						<reference key="object" ref="952618918"/>
 						<reference key="parent" ref="662525002"/>
 					</object>
 				</array>
@@ -899,7 +949,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">62</int>
+			<int key="maxID">68</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -914,17 +964,20 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">BeamMusicPlayerViewController</string>
 					<string key="superclassName">UIViewController</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">playAction:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">playAction:</string>
-						<object class="IBActionInfo" key="NS.object.0">
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="nextAction:">id</string>
+						<string key="playAction:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="nextAction:">
+							<string key="name">nextAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="playAction:">
 							<string key="name">playAction:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-					</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="albumArtImageView">UIImageView</string>
 						<string key="albumArtReflection">UIImageView</string>

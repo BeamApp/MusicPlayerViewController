@@ -78,15 +78,25 @@
     ;}
 
 -(NSString*)musicPlayer:(BeamMusicPlayerViewController*)player  artistForTrack:(NSUInteger)trackNumber{
-    return @"The Best Artist";
+    NSArray* artists = [NSArray arrayWithObjects:@"Michael Jackson", @"Metallica",@"Metric", @"Guns'n'Roses", nil];
+    return [artists objectAtIndex:trackNumber%artists.count];
 }
 
--(UIImage*)musicPlayer:(BeamMusicPlayerViewController*)player  artworkForTrack:(NSUInteger)trackNumber preferredSize:(CGSize)size{
-    NSData* urlData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://a3.mzstatic.com/us/r1000/045/Features/7f/50/ee/dj.zygromnm.600x600-75.jpg"]];
+-(void)musicPlayer:(BeamMusicPlayerViewController *)player artworkForTrack:(NSUInteger)trackNumber receivingBlock:(BeamMusicPlayerReceivingBlock)receivingBlock {
     
-    UIImage* image = [UIImage imageWithData:urlData];
-    return image;
+    NSArray* urls = [NSArray arrayWithObjects:@"http://a3.mzstatic.com/us/r1000/045/Features/7f/50/ee/dj.zygromnm.600x600-75.jpg",
+                     @"http://1.bp.blogspot.com/-On89IVASeEY/T6qmvCPoplI/AAAAAAAADdY/EMfLc0d0Zrc/s1600/Metallica-The_Black_Album-Front.jpg", @"http://bighassle.com/wp-content/files_mf/1323966289metric_cover_hires.jpg", @"http://4.bp.blogspot.com/_Sowy7lo69Wo/TIb42GfHtAI/AAAAAAAAADM/x8nqGY3IpE8/s1600/Appetite%2Bfor%2BDestruction%2BCover.JPG", nil];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        NSString* urlString = [urls objectAtIndex:trackNumber%urls.count];
+        NSData* urlData = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
+        
+        UIImage* image = [UIImage imageWithData:urlData];
+        receivingBlock(image,nil);
+    });
 }
+
+
 
 -(CGFloat)musicPlayer:(BeamMusicPlayerViewController*)player lengthForTrack:(NSUInteger)trackNumber{
     return 124;

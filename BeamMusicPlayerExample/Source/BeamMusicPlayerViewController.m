@@ -36,6 +36,7 @@
 #import "BeamMusicPlayerViewController.h"
 #import "UIImageView+Reflection.h"
 
+
 @interface BeamMusicPlayerViewController()
 
 @property (nonatomic,weak) IBOutlet UISlider* volumeSlider; // Volume Slider
@@ -155,17 +156,34 @@
     self.albumTitleLabel.text = [self.dataSource musicPlayer:self albumForTrack:self.currentTrack];
     
     // We only request the coverart if the delegate responds to it.
-    if ( self.dataSource && [self.dataSource respondsToSelector:@selector(artworkForTrack:preferredSize:player:)]) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-            // Pixels would be nice 
-            UIImage* albumArt =  [self.dataSource musicPlayer:self artworkForTrack:self.currentTrack preferredSize:self.albumArtImageView.frame.size];
+    if (self.dataSource && [self.dataSource respondsToSelector:@selector(musicPlayer:artworkForTrack:receivingBlock:)]) {
+        
+        // Copy the current track to another variable, otherwise we would just access the current one.
+        NSUInteger track = self.currentTrack;
+        
+        // Placeholder as long as we are loading
+        self.albumArtImageView.image = [UIImage imageNamed:@"noartplaceholder.png"];
+        self.albumArtReflection.image = [self.albumArtImageView reflectedImageWithHeight:self.albumArtReflection.frame.size.height];
+        
+        // Request the image. 
+        [self.dataSource musicPlayer:self artworkForTrack:self.currentTrack receivingBlock:^(UIImage *image, NSError *__autoreleasing *error) {
+            if ( track == self.currentTrack ){
             
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.albumArtImageView.image = albumArt;
-                self.albumArtReflection.image = [self.albumArtImageView reflectedImageWithHeight:self.albumArtReflection.frame.size.height];
-            });
+                // If there is no image given, use the placeholder
+                if ( image  == nil ){
+                    image = [UIImage imageNamed:@"noartplaceholder.png"];
+                }
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.albumArtImageView.image = image;
+                    self.albumArtReflection.image = [self.albumArtImageView reflectedImageWithHeight:self.albumArtReflection.frame.size.height];
+                });
             
-        });
+            } else {
+                NSLog(@"Discarded Response, Invalid for this cycle.");
+            }
+        }];
+        
     } else {
         // Otherwise, we'll stick with the placeholder.
         self.albumArtImageView.image = [UIImage imageNamed:@"noartplaceholder.png"];
@@ -209,6 +227,36 @@
     }
 }
 
+-(void)next {
+    [self changeTrack:self->currentTrack+1];
+}
+
+-(void)previous {
+    [self changeTrack:self->currentTrack-1];
+}
+
+/*
+ * Changes the track to the new track given. 
+ */
+-(void)changeTrack:(NSUInteger)newTrack {
+    BOOL shouldChange = YES;
+    if ( self.delegate && [self.delegate respondsToSelector:@selector(musicPlayer:shoulChangeTrack::) ]){
+        shouldChange = [self.delegate musicPlayer:self shouldChangeTrack:newTrack];
+    }
+    
+    if ( shouldChange ){
+        [self pause];
+        self->currentPlaybackPosition = 0;
+        
+        self.currentTrack = newTrack;
+        if ( self.delegate && [self.delegate respondsToSelector:@selector(musicPlayer:didChangeTrack:) ]){
+            [self.delegate musicPlayer:self didChangeTrack:newTrack];
+        }
+        
+        [self play];
+    }
+}
+
 /**
  * Reloads data from the data source and updates the player. If the player is currently playing, the playback is stopped.
  */
@@ -238,6 +286,15 @@
         self.playButton.image = [UIImage imageNamed:@"pause.png"];
     }
 }
+
+-(IBAction)nextAction:(id)sender {
+    [self next];
+}
+
+-(IBAction)previousAction:(id)sender {
+    [self previous];
+}
+
 
 /**
  * Called when the cover art is tapped. Either shows or hides the scrobble-ui

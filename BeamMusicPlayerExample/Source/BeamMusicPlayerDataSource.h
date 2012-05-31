@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ * Block Type used to receive images from the BeamMusicPlayerDataSource
+ */
+typedef void(^BeamMusicPlayerReceivingBlock)(UIImage* image, NSError** error);
+
+
 @class BeamMusicPlayerViewController;
 
 /**
@@ -45,9 +51,7 @@
  */
 -(NSUInteger)numberOfTracksInPlayer:(BeamMusicPlayerViewController*)player;
 
-/**
- * Returns a UIImage containing the artwork for the given track in the given player. If the preferredSize is not NULL, the implementation should try to provide an image that is as close to the preferred size as possible.
- */
--(UIImage*)musicPlayer:(BeamMusicPlayerViewController*)player artworkForTrack:(NSUInteger)trackNumber preferredSize:(CGSize)size;
+
+-(void)musicPlayer:(BeamMusicPlayerViewController*)player artworkForTrack:(NSUInteger)trackNumber receivingBlock:(BeamMusicPlayerReceivingBlock)receivingBlock;
 
 @end

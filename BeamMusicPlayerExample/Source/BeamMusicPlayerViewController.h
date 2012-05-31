@@ -38,6 +38,7 @@
 #import "BeamMusicPlayerDelegate.h"
 #import "BeamMusicPlayerDataSource.h"
 
+
 /**
  * The Music Player component. This is a drop-in view controller and provides the UI for a music player.
  * It does not actually play music, just visualize music that is played somewhere else. The data to display
@@ -59,6 +60,8 @@
  */
 -(void)reloadData;
 
+
+
 /**
  * Seeks to the position in seconds specified.
  */
@@ -67,7 +70,7 @@
 /**
  * Prepares the player: 
  *
- * Loads the first track using the information provided by the datasource and displays it. 
+ * Loads the first track using the information provided by the BeamMusicPlayerDataSource and displays it. 
  */
 -(void)preparePlayer;
 
@@ -86,7 +89,11 @@
  */
 -(void)pause;
 
+-(void)next;
 
+-(void)previous;
+
+-(IBAction)nextAction:(id)sender;
 -(IBAction)playAction:(id)sender;
 
 @end
