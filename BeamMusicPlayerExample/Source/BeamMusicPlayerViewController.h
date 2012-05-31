@@ -51,9 +51,10 @@
 
 // Public API methods go here.
 
-@property (nonatomic) NSUInteger currentTrack;
-@property (nonatomic,readonly) BOOL playing;
-@property (nonatomic,readonly) CGFloat currentPlaybackPosition;
+@property (nonatomic) NSUInteger currentTrack; // The index of the currently set track
+@property (nonatomic,readonly) BOOL playing; // Whether the player is in play-state
+@property (nonatomic,readonly) CGFloat currentPlaybackPosition; // The Current Playback position in seconds
+@property (nonatomic) CGFloat volume; // The Volume of the player
 
 /**
  * Reloads data from the data source and updates the player. If the player is currently playing, the playback is stopped.

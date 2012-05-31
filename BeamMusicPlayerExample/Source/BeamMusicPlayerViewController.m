@@ -330,6 +330,16 @@
     }
 }
 
+#pragma mark - Volume
+
+-(void)setVolume:(CGFloat)volume {
+    self.volumeSlider.value = volume;
+}
+
+-(CGFloat)volume {
+    return self.volumeSlider.value;
+}
+
 #pragma mark - User Interface ACtions
 
 -(IBAction)playAction:(UIBarButtonItem*)sender {
@@ -430,6 +440,15 @@
     
     [self updateSeekUI];
     
+}
+
+/*
+ * Action triggered by the volume slider
+ */
+-(IBAction)volumeSliderValueChanged:(id)sender {
+    if ( [self.delegate respondsToSelector:@selector(musicPlayer:didChangeVolume:)]) {
+        [self.delegate musicPlayer:self didChangeVolume:self.volumeSlider.value];
+    }
 }
 
 
