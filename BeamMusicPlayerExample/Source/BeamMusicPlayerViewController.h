@@ -37,14 +37,14 @@
 #import <UIKit/UIKit.h>
 #import "BeamMusicPlayerDelegate.h"
 #import "BeamMusicPlayerDataSource.h"
-
+#import "OBSlider.h"
 
 /**
  * The Music Player component. This is a drop-in view controller and provides the UI for a music player.
  * It does not actually play music, just visualize music that is played somewhere else. The data to display
  * is provided using the datasource property, events can be intercepted using the delegate-property.
  */
-@interface BeamMusicPlayerViewController : UIViewController
+@interface BeamMusicPlayerViewController : UIViewController<OBSliderDelegate>
 
 @property (nonatomic,weak) id<BeamMusicPlayerDelegate> delegate;
 @property (nonatomic,weak) id<BeamMusicPlayerDataSource> dataSource;
@@ -105,5 +105,6 @@
 
 -(IBAction)nextAction:(id)sender;
 -(IBAction)playAction:(id)sender;
+-(IBAction)sliderValueChanged:(id)slider;
 
 @end

@@ -58,7 +58,6 @@
 
 @property (nonatomic,strong) NSTimer* playbackTickTimer; // Ticks each seconds when playing.
 
-@property (nonatomic,strong) NSDateFormatter* durationFormatter; // Formatter used for the elapsed / remaining time.
 @property (nonatomic,strong) UITapGestureRecognizer* coverArtGestureRecognizer; // Tap Recognizer used to dim in / out the scrobble overlay.
 
 @property (nonatomic,weak) IBOutlet UIView* scrobbleOverlay; // Overlay that serves as a container for all components visible only in scrobble-mode
@@ -66,9 +65,14 @@
 @property (nonatomic,weak) IBOutlet UILabel* timeRemainingLabel; // Remaining Time Label
 @property (nonatomic,weak) IBOutlet UIButton* shuffleButton; // Shuffle Button
 @property (nonatomic,weak) IBOutlet UIButton* repeatButton; // Repeat button
+@property (nonatomic,weak) IBOutlet UILabel* scrobbleHelpLabel; // The Scrobble Usage hint Label
+@property (nonatomic,weak) IBOutlet UILabel* numberOfTracksLabel; // Track x of y or the scrobble speed
 
-@property (nonatomic) CGFloat currentTrackLength;
-@property (nonatomic) NSUInteger numberOfTracks;
+
+@property (nonatomic) CGFloat currentTrackLength; // The Length of the currently playing track
+@property (nonatomic) NSUInteger numberOfTracks; // Number of tracks
+
+@property (nonatomic) BOOL scrobbling; // Whether the player is currently scrobbling
 
 @end
 
@@ -96,10 +100,12 @@
 @synthesize timeRemainingLabel;
 @synthesize shuffleButton;
 @synthesize repeatButton;
-@synthesize durationFormatter;
 @synthesize coverArtGestureRecognizer;
 @synthesize currentTrackLength;
 @synthesize numberOfTracks;
+@synthesize scrobbling;
+@synthesize scrobbleHelpLabel;
+@synthesize numberOfTracksLabel;
 
 - (void)viewDidLoad
 {
@@ -127,7 +133,9 @@
     CGRect toolbarRect = self.controlsToolbar.frame;
     toolbarRect.size.height = 48;
     self.controlsToolbar.frame = toolbarRect;
-	// Do any additional setup after loading the view, typically from a nib.
+
+    // Set UI to non-scrobble
+    [self setScrobbleUI:NO];
 }
 
 - (void)viewDidUnload
@@ -196,7 +204,7 @@
  * Prepares the player for track 0.
  */
 -(void)preparePlayer {
-    self.currentTrack = 0;
+    [self changeTrack:0];
     [self updateUIForCurrentTrack];
 }
 
@@ -204,17 +212,6 @@
 -(void)play {
     if ( !self.playing ){
         self->playing = YES;
-        self->currentPlaybackPosition = 0;
-        
-        [self updateUIForCurrentTrack];
-        
-        
-        self.currentTrackLength = [self.dataSource musicPlayer:self lengthForTrack:self.currentTrack];
-        self.numberOfTracks = [self.dataSource numberOfTracksInPlayer:self];
-        
-        // Slider
-        self.progressSlider.maximumValue = self.currentTrackLength;
-        self.progressSlider.minimumValue = 0;
         
         self.playbackTickTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(playbackTick:) userInfo:nil repeats:YES];
         
@@ -256,13 +253,23 @@
     
     if ( shouldChange ){
         [self pause];
-        self->currentPlaybackPosition = 0;
         
+        // Update state to match new track
+        self->currentPlaybackPosition = 0;
         self.currentTrack = newTrack;
+        
+        self.currentTrackLength = [self.dataSource musicPlayer:self lengthForTrack:self.currentTrack];
+        self.numberOfTracks = [self.dataSource numberOfTracksInPlayer:self];
+        
+        // Slider
+        self.progressSlider.maximumValue = self.currentTrackLength;
+        self.progressSlider.minimumValue = 0;
+        [self updateUIForCurrentTrack];
+
         if ( self.delegate && [self.delegate respondsToSelector:@selector(musicPlayer:didChangeTrack:) ]){
             [self.delegate musicPlayer:self didChangeTrack:newTrack];
         }
-        
+        [self updateTrackDisplay];
         [self play];
     }
 }
@@ -278,7 +285,17 @@
  * Tick method called each second when playing back.
  */
 -(void)playbackTick:(id)unused {
-    self->currentPlaybackPosition += 1.0;
+    // Only tick forward if not scrobbling.
+    if ( !self.scrobbling ){
+        self->currentPlaybackPosition += 1.0;
+        [self updateSeekUI];
+    }
+}
+
+/*
+ * Updates the remaining and elapsed time label, as well as the progress bar's value
+ */
+-(void)updateSeekUI {
     NSString* elapsed = [NSDateFormatter formattedDuration:(long)self.currentPlaybackPosition];
     NSString* remaining = [NSDateFormatter formattedDuration:(self.currentTrackLength-self.currentPlaybackPosition)*-1];
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -286,11 +303,15 @@
         self.timeRemainingLabel.text =remaining;
         self.progressSlider.value = self.currentPlaybackPosition;
     });
-    
 }
 
--(void)updateSeekUI {
-    
+/*
+ * Updates the Track Display ( Track 10 of 10 )
+ */
+-(void)updateTrackDisplay {
+    if ( !self.scrobbling ){
+        self.numberOfTracksLabel.text = [NSString stringWithFormat:@"Track %d of %d", self.currentTrack+1, self.numberOfTracks];
+    }
 }
 
 #pragma mark - User Interface ACtions
@@ -328,5 +349,70 @@
 -(void)adjustButtonStates {
     
 }
+
+#pragma mark - OBSlider delegate methods
+
+/**
+ * Called whenever the scrubber changes it's speed. Used to update the display of the scrobble speed.
+ */
+-(void)slider:(OBSlider *)slider didChangeScrubbingSpeed:(CGFloat)speed {
+    if ( speed == 1.0 ){
+        self.numberOfTracksLabel.text = @"Hi-Speed Scrubbing";
+    } else if ( speed == 0.5 ){
+        self.numberOfTracksLabel.text = @"Half-Speed Scrubbing";
+        
+    }else if ( speed == 0.25 ){
+        self.numberOfTracksLabel.text = @"Quarter-Speed Scrubbing";
+        
+    } else {
+        self.numberOfTracksLabel.text = @"Fine Scrubbing";
+    }
+}
+
+/**
+ * Dims away the repeat and shuffle button
+ */
+-(void)sliderDidBeginScrubbing:(OBSlider *)slider {
+    self.scrobbling = YES;
+    [self setScrobbleUI:YES];
+
+}
+
+/**
+ * Shows the repeat and shuffle button and hides the scrobble help
+ */
+-(void)sliderDidEndScrubbing:(OBSlider *)slider {
+    self.scrobbling = NO;
+    [self setScrobbleUI:NO];
+    [self updateTrackDisplay];
+}
+
+/*
+ * Updates the UI according to the current scrobble state given.
+ */
+-(void)setScrobbleUI:(BOOL)scrobbleState {
+    float alpha = ( scrobbleState ? 1 : 0 );
+    [UIView animateWithDuration:0.25 animations:^{
+        self.repeatButton.alpha = 1-alpha;
+        self.shuffleButton.alpha = 1-alpha;
+        self.scrobbleHelpLabel.alpha = alpha;
+        
+    }];
+}
+
+/*
+ * Action triggered by the continous track progress slider
+ */
+-(IBAction)sliderValueChanged:(id)slider {
+    self->currentPlaybackPosition = self.progressSlider.value;
+    
+    if ( [self.delegate respondsToSelector:@selector(musicPlayer:didSeekToPosition:)]) {
+        [self.delegate musicPlayer:self didSeekToPosition:self->currentPlaybackPosition];
+    }
+    
+    [self updateSeekUI];
+    
+}
+
 
 @end
