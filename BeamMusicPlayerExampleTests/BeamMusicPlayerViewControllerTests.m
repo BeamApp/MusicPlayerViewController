@@ -57,5 +57,17 @@
     STAssertNotNil(viewController.navigationItem.rightBarButtonItem, @"action button visible");
 }
 
+- (void)testBackButtonInvisibleIfNoDelegateMethod {
+    id delegateWithoutAnyMethods = [NSObject new];
+    viewController.delegate = delegateWithoutAnyMethods;
+    STAssertFalse([viewController.delegate respondsToSelector:@selector(musicPlayerBackRequested:)], @"mock does not provide method");
+    STAssertNil(viewController.navigationItem.rightBarButtonItem, @"Back button invisible");
+    
+    id delegateWithAllMethods = [OCMockObject mockForProtocol:@protocol(BeamMusicPlayerDelegate)];
+    viewController.delegate = delegateWithAllMethods;
+    STAssertTrue([viewController.delegate respondsToSelector:@selector(musicPlayerBackRequested:)], @"mock does provide method");
+    STAssertNotNil(viewController.navigationItem.rightBarButtonItem, @"Back button visible");
+}
+
 
 @end

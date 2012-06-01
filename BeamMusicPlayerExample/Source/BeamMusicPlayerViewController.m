@@ -197,6 +197,11 @@
         [self.delegate respondsToSelector:@selector(musicPlayerActionRequested:)]
         ? self.actionButton
         : nil;
+    
+    self.navigationItem.leftBarButtonItem =
+        [self.delegate respondsToSelector:@selector(musicPlayerBackRequested:)]
+        ? self.backButton
+        : nil;
 }
 
 
@@ -641,6 +646,12 @@
     self.shuffling = !self.shuffling;
     if ( [self.delegate respondsToSelector:@selector(musicPlayer:didChangeShuffleState:)]) {
         [self.delegate musicPlayer:self didChangeShuffleState:self.shuffling];
+    }
+}
+
+- (IBAction)backButtonAction:(id)sender {
+    if ( [self.delegate respondsToSelector:@selector(musicPlayerBackRequested:)]) {
+        [self.delegate musicPlayerBackRequested:self];
     }
 }
 

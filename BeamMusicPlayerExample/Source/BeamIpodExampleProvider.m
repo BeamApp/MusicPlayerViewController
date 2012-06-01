@@ -106,4 +106,11 @@
     
 }
 
+-(void)musicPlayerBackRequested:(BeamMusicPlayerViewController *)musicPlayer {
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Action" message:@"The Player's back button was pressed." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+    [alertView show];
+    
+}
+
+
 @end
