@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <MediaPlayer/MediaPlayer.h>
 @class BeamMusicPlayerViewController;
 
 
@@ -87,6 +87,25 @@
  * @param volume A float holding the volume on a range from 0.0f to 1.0f
  */
 -(void)musicPlayer:(BeamMusicPlayerViewController*)player didChangeVolume:(CGFloat)volume;
+
+/**
+ * Called when the player changes it's shuffle state.
+ *
+ * YES indicates the player is shuffling now, i.e. randomly selecting a next track from the valid range of tracks, NO
+ * means there is no shuffling.
+ * @param player The BeamMusicPlayerViewController that changes the shuffle state
+ * @param shuffling YES if shuffling, NO if not
+ */
+-(void)musicPlayer:(BeamMusicPlayerViewController*)player didChangeShuffleState:(BOOL)shuffling;
+
+/**
+ * Called when the player changes it's repeat mode.
+ *
+ * The repeat modes are taken from MediaPlayer framework and indicate whether the player is in No Repeat, Repeat Once or Repeat All mode.
+ * @param player The BeamMusicPlayerViewController that changes the repeat mode.
+ * @param shuffling a MPMusicRepeatMode indicating the currently active mode.
+ */
+-(void)musicPlayer:(BeamMusicPlayerViewController*)player didChangeRepeatMode:(MPMusicRepeatMode)repeatMode;
 
 @end
 

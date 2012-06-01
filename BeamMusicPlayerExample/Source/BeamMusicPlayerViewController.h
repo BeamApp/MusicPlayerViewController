@@ -55,6 +55,8 @@
 @property (nonatomic,readonly) BOOL playing; // Whether the player is in play-state
 @property (nonatomic,readonly) CGFloat currentPlaybackPosition; // The Current Playback position in seconds
 @property (nonatomic) CGFloat volume; // The Volume of the player
+@property (nonatomic) MPMusicRepeatMode repeatMode; // The current repeat mode of the player
+@property (nonatomic) BOOL shuffling; // YES if the player is shuffling, NO if not
 
 /**
  * Reloads data from the data source and updates the player. If the player is currently playing, the playback is stopped.

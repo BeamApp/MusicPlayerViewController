@@ -36,6 +36,7 @@
 #import "BeamMusicPlayerViewController.h"
 #import "UIImageView+Reflection.h"
 #import "NSDateFormatter+Duration.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface BeamMusicPlayerViewController()
 
@@ -108,6 +109,8 @@
 @synthesize scrobbleHelpLabel;
 @synthesize numberOfTracksLabel;
 @synthesize scrobbleHighlightShadow;
+@synthesize repeatMode;
+@synthesize shuffling;
 
 - (void)viewDidLoad
 {
@@ -122,7 +125,6 @@
     UIImage* sliderBlueTrack = [[UIImage imageNamed:@"VolumeBlueTrack.png"] stretchableImageWithLeftCapWidth:5.0 topCapHeight:0];
     UIImage* slideWhiteTrack = [[UIImage imageNamed:@"VolumeWhiteTrack.png"] stretchableImageWithLeftCapWidth:5.0 topCapHeight:0];
     UIImage* knob = [UIImage imageNamed:@"VolumeKnob"];
-    CGImageRef originalImage = knob.CGImage;
     
     [[UISlider appearanceWhenContainedIn:[self class], nil] setThumbImage:knob forState:UIControlStateNormal];
     
@@ -332,12 +334,44 @@
     }
 }
 
+-(void)updateRepeatButton {
+    MPMusicRepeatMode currentMode = self->repeatMode;
+    NSString* imageName = nil;
+    switch (currentMode) {
+        case MPMusicRepeatModeDefault:
+            imageName = @"repeat_off.png";
+            break;
+        case MPMusicRepeatModeOne:
+            imageName = @"repeat_on_1.png";
+            break;
+        case MPMusicRepeatModeAll:
+            imageName = @"repeat_on.png";
+            break;
+    }
+    if ( imageName )
+        [self.repeatButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+}
+
+#pragma mark Repeat mode
+
+-(void)setRepeatMode:(int)newRepeatMode {
+    self->repeatMode = newRepeatMode;
+    [self updateRepeatButton];
+}
+
+
 #pragma mark - Volume
 
+/*
+ * Setting the volume really just changes the slider
+ */
 -(void)setVolume:(CGFloat)volume {
     self.volumeSlider.value = volume;
 }
 
+/*
+ * The Volume value is the slider value
+ */
 -(CGFloat)volume {
     return self.volumeSlider.value;
 }
@@ -452,6 +486,30 @@
 -(IBAction)volumeSliderValueChanged:(id)sender {
     if ( [self.delegate respondsToSelector:@selector(musicPlayer:didChangeVolume:)]) {
         [self.delegate musicPlayer:self didChangeVolume:self.volumeSlider.value];
+    }
+}
+
+/*
+ * Action triggered by the repeat mode button
+ */
+-(IBAction)repeatModeButtonAction:(id)sender{
+    MPMusicRepeatMode currentMode = self.repeatMode;
+    switch (currentMode) {
+        case MPMusicRepeatModeDefault:
+            self.repeatMode = MPMusicRepeatModeAll;
+            break;
+        case MPMusicRepeatModeOne:
+            self.repeatMode = MPMusicRepeatModeDefault;
+            break;
+        case MPMusicRepeatModeAll:
+            self.repeatMode = MPMusicRepeatModeOne ;
+            break;
+        default:
+            self.repeatMode = MPMusicRepeatModeOne;
+            break;
+    }
+    if ( [self.delegate respondsToSelector:@selector(musicPlayer:didChangeRepeatMode:)]) {
+        [self.delegate musicPlayer:self didChangeRepeatMode:self.repeatMode];
     }
 }
 
