@@ -365,11 +365,13 @@
  * Called when the cover art is tapped. Either shows or hides the scrobble-ui
  */
 -(IBAction)coverArtTapped:(id)sender {
-    if ( self.scrobbleOverlay.alpha == 0 ){
-        [self.scrobbleOverlay setAlpha:1];
-    } else {
-        [self.scrobbleOverlay setAlpha:0];
-    }
+    [UIView animateWithDuration:0.25 animations:^{
+        if ( self.scrobbleOverlay.alpha == 0 ){
+            [self.scrobbleOverlay setAlpha:1];
+        } else {
+            [self.scrobbleOverlay setAlpha:0];
+        }
+    }];
 }
 
 -(void)adjustPlayButtonState {
