@@ -98,4 +98,10 @@
     [self.musicPlayer setCurrentPlaybackTime:position];
 }
 
+-(void)musicPlayerActionRequested:(BeamMusicPlayerViewController *)musicPlayer {
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Action" message:@"The Player's action button was pressed." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+    [alertView show];
+    
+}
+
 @end

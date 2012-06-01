@@ -107,5 +107,13 @@
  */
 -(void)musicPlayer:(BeamMusicPlayerViewController*)player didChangeRepeatMode:(MPMusicRepeatMode)repeatMode;
 
+/**
+ * Called when the action button in the music view controller is pressed.
+ *
+ * You can interact based on this event to present additional interaction options for a user or change behaviour.
+ * @param musicPlayer the BeamMusicPlayerViewController that received the action
+ */
+-(void)musicPlayerActionRequested:(BeamMusicPlayerViewController*)musicPlayer;
+
 @end
 

@@ -521,10 +521,22 @@
     }
 }
 
+/*
+ * Changes the shuffle mode and calls the delegate
+ */
 -(IBAction)shuffleButtonAction:(id)sender {
     self.shuffling = !self.shuffling;
     if ( [self.delegate respondsToSelector:@selector(musicPlayer:didChangeShuffleState:)]) {
         [self.delegate musicPlayer:self didChangeShuffleState:self.shuffling];
+    }
+}
+
+/*
+ * Just forward the action message to the delegate
+ */
+-(IBAction)actionButtonAction:(id)sender {
+    if ( [self.delegate respondsToSelector:@selector(musicPlayerActionRequested:)]) {
+        [self.delegate musicPlayerActionRequested:self];
     }
 }
 
