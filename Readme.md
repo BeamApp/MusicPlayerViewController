@@ -1,7 +1,7 @@
 MusicPlayerViewController
 =========================
 
-![SCreenshot](https://raw.github.com/BeamApp/MusicPlayerViewController/Documentation/images/screen.png)
+![SCreenshot](https://github.com/BeamApp/MusicPlayerViewController/raw/master/Documentation/images/screen.png)
 
 MusicPlayerViewController aimes to be a drop-in component that serves as an UI for a Music Player on iPhone and is replicating the Music.app's user interface.
 
