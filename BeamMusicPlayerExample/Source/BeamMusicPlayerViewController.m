@@ -122,7 +122,8 @@
     UIImage* sliderBlueTrack = [[UIImage imageNamed:@"VolumeBlueTrack.png"] stretchableImageWithLeftCapWidth:5.0 topCapHeight:0];
     UIImage* slideWhiteTrack = [[UIImage imageNamed:@"VolumeWhiteTrack.png"] stretchableImageWithLeftCapWidth:5.0 topCapHeight:0];
     UIImage* knob = [UIImage imageNamed:@"VolumeKnob"];
-    knob = [UIImage imageWithCGImage:knob.CGImage scale:2.0 orientation:UIImageOrientationUp];
+    CGImageRef originalImage = knob.CGImage;
+    
     [[UISlider appearanceWhenContainedIn:[self class], nil] setThumbImage:knob forState:UIControlStateNormal];
     
    // [[UISlider appearanceWhenContainedIn:[self class], nil] setMinimumValueImage:[UIImage imageNamed:@"VolumeBlueMusicCap.png"]];
@@ -150,7 +151,7 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+        return UIInterfaceOrientationIsPortrait(interfaceOrientation);
     } else {
         return YES;
     }
