@@ -36,6 +36,7 @@
 #import "BeamAppDelegate.h"
 
 #import "BeamMusicPlayerViewController.h"
+#import "BeamMinimalExampleProvider.h"
 
 @implementation BeamAppDelegate
 
@@ -56,20 +57,31 @@
     } else {
         self.viewController = [[BeamMusicPlayerViewController alloc] initWithNibName:@"BeamMusicPlayerViewController_iPad" bundle:nil];
     }
+    
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+
+
+    
+#if TARGET_IPHONE_SIMULATOR
+    self.exampleProvider = [BeamMinimalExampleProvider new];
+
+    self.viewController.dataSource = self.exampleProvider;
+#else
     self.exampleProvider = [BeamIpodExampleProvider new];
-    self.exampleProvider.controller = self.viewController;
+    ((BeamIpodExampleProvider*)self.exampleProvider).controller = self.viewController;
     self.viewController.dataSource = self.exampleProvider;
     self.viewController.delegate = self.exampleProvider;
-    
-    self.viewController.shouldHideNextTrackButtonAtBoundary = YES;
-    self.viewController.shouldHidePreviousTrackButtonAtBoundary = YES;
+#endif
 
-    [self.viewController reloadData];
-    [self.viewController play];
-    
-    return YES;
+
+self.viewController.shouldHideNextTrackButtonAtBoundary = YES;
+self.viewController.shouldHidePreviousTrackButtonAtBoundary = YES;
+
+[self.viewController reloadData];
+[self.viewController play];
+return YES;
+
 }
 
 

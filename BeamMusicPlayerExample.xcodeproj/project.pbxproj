@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9708EED51579146F0097F43F /* BeamMinimalExampleProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9708EED41579146F0097F43F /* BeamMinimalExampleProvider.m */; };
 		9755DA9E1578BE2800B5431E /* AutoScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9755DA9C1578BBA700B5431E /* AutoScrollLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9755DAA01578C20800B5431E /* fade_overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9755DA9F1578C20800B5431E /* fade_overlay@2x.png */; };
 		9755DAA21578C2BE00B5431E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9755DAA11578C2BE00B5431E /* QuartzCore.framework */; };
@@ -64,6 +65,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9708EED31579146F0097F43F /* BeamMinimalExampleProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BeamMinimalExampleProvider.h; path = "Example Providers/BeamMinimalExampleProvider.h"; sourceTree = "<group>"; };
+		9708EED41579146F0097F43F /* BeamMinimalExampleProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BeamMinimalExampleProvider.m; path = "Example Providers/BeamMinimalExampleProvider.m"; sourceTree = "<group>"; };
 		9755DA9B1578BBA700B5431E /* AutoScrollLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoScrollLabel.h; sourceTree = "<group>"; };
 		9755DA9C1578BBA700B5431E /* AutoScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoScrollLabel.m; sourceTree = "<group>"; };
 		9755DA9F1578C20800B5431E /* fade_overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fade_overlay@2x.png"; sourceTree = "<group>"; };
@@ -149,6 +152,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9708EED11579143C0097F43F /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				97CA28291577B68B003D8938 /* BeamIpodExampleProvider.h */,
+				97CA282A1577B68B003D8938 /* BeamIpodExampleProvider.m */,
+				9708EED31579146F0097F43F /* BeamMinimalExampleProvider.h */,
+				9708EED41579146F0097F43F /* BeamMinimalExampleProvider.m */,
+			);
+			name = Example;
+			sourceTree = "<group>";
+		};
 		9755DA9A1578BB9700B5431E /* AutoScrollLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +207,7 @@
 		97B7AA3815760AAF0014E693 /* BeamMusicPlayerExample */ = {
 			isa = PBXGroup;
 			children = (
+				9708EED11579143C0097F43F /* Example */,
 				97DE4F35157639FC00D077E3 /* Categories */,
 				97DE4F2E15762CB200D077E3 /* 3rd Party */,
 				97DE4F181576212900D077E3 /* Resources */,
@@ -200,8 +215,6 @@
 				97B7AA4115760AAF0014E693 /* BeamAppDelegate.h */,
 				97B7AA4215760AAF0014E693 /* BeamAppDelegate.m */,
 				97B7AA3915760AAF0014E693 /* Supporting Files */,
-				97CA28291577B68B003D8938 /* BeamIpodExampleProvider.h */,
-				97CA282A1577B68B003D8938 /* BeamIpodExampleProvider.m */,
 			);
 			path = BeamMusicPlayerExample;
 			sourceTree = "<group>";
@@ -470,6 +483,7 @@
 				97CA281C15778872003D8938 /* NSDateFormatter+Duration.m in Sources */,
 				97CA282B1577B68B003D8938 /* BeamIpodExampleProvider.m in Sources */,
 				9755DA9E1578BE2800B5431E /* AutoScrollLabel.m in Sources */,
+				9708EED51579146F0097F43F /* BeamMinimalExampleProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
