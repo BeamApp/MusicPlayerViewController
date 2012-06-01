@@ -207,7 +207,8 @@
         [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
         [[self.albumArtImageView layer] addAnimation:transition forKey:@"SlideOutandInImagek"];
 
-        
+        [[self.albumArtReflection layer] addAnimation:transition forKey:@"SlideOutandInImagek"];
+
 
         // Request the image. 
         [self.dataSource musicPlayer:self artworkForTrack:self.currentTrack receivingBlock:^(UIImage *image, NSError *__autoreleasing *error) {
