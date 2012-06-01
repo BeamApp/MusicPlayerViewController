@@ -11,6 +11,6 @@
 /**
  * Minimal example datasource for the BeamMusicPlayerViewController
  */
-@interface BeamMinimalExampleProvider : NSObject<BeamMusicPlayerDataSource>
+@interface BeamMinimalExampleProvider : NSObject<BeamMusicPlayerDataSource, BeamMusicPlayerDelegate>
 
 @end
