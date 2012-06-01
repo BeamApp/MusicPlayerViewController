@@ -38,6 +38,7 @@
 #import "NSDateFormatter+Duration.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "AutoScrollLabel.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface BeamMusicPlayerViewController()
 
@@ -77,6 +78,9 @@
 
 @property (nonatomic) BOOL scrobbling; // Whether the player is currently scrobbling
 
+@property (nonatomic) BOOL imageIsPlaceholder; // Whether the currently shown image is a placeholder
+@property (nonatomic) BOOL lastDirectionChangePositive; // Whether the last direction change was positive.
+
 @end
 
 @implementation BeamMusicPlayerViewController
@@ -112,6 +116,7 @@
 @synthesize scrobbleHighlightShadow;
 @synthesize repeatMode;
 @synthesize shuffling;
+@synthesize lastDirectionChangePositive;
 
 - (void)viewDidLoad
 {
@@ -194,7 +199,16 @@
         // Placeholder as long as we are loading
         self.albumArtImageView.image = [UIImage imageNamed:@"noartplaceholder.png"];
         self.albumArtReflection.image = [self.albumArtImageView reflectedImageWithHeight:self.albumArtReflection.frame.size.height];
+        self.imageIsPlaceholder = YES;
         
+        CATransition* transition = [CATransition animation];
+        transition.type = kCATransitionPush;
+        transition.subtype = self.lastDirectionChangePositive ? kCATransitionFromRight : kCATransitionFromLeft;
+        [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+        [[self.albumArtImageView layer] addAnimation:transition forKey:@"SlideOutandInImagek"];
+
+        
+
         // Request the image. 
         [self.dataSource musicPlayer:self artworkForTrack:self.currentTrack receivingBlock:^(UIImage *image, NSError *__autoreleasing *error) {
             if ( track == self.currentTrack ){
@@ -257,10 +271,14 @@
 }
 
 -(void)next {
+    self.lastDirectionChangePositive = YES;
+
     [self changeTrack:self->currentTrack+1];
 }
 
 -(void)previous {
+    self.lastDirectionChangePositive = NO;
+
     [self changeTrack:self->currentTrack-1];
 }
 
