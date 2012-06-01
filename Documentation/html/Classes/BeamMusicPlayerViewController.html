@@ -38,6 +38,33 @@
 	
 	
 	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/currentPlaybackPosition">&nbsp;&nbsp;&nbsp;&nbsp;currentPlaybackPosition</option>
+	
+	<option value="//api/name/currentTrack">&nbsp;&nbsp;&nbsp;&nbsp;currentTrack</option>
+	
+	<option value="//api/name/dataSource">&nbsp;&nbsp;&nbsp;&nbsp;dataSource</option>
+	
+	<option value="//api/name/delegate">&nbsp;&nbsp;&nbsp;&nbsp;delegate</option>
+	
+	<option value="//api/name/displayScale">&nbsp;&nbsp;&nbsp;&nbsp;displayScale</option>
+	
+	<option value="//api/name/playing">&nbsp;&nbsp;&nbsp;&nbsp;playing</option>
+	
+	<option value="//api/name/preferredSizeForCoverArt">&nbsp;&nbsp;&nbsp;&nbsp;preferredSizeForCoverArt</option>
+	
+	<option value="//api/name/repeatMode">&nbsp;&nbsp;&nbsp;&nbsp;repeatMode</option>
+	
+	<option value="//api/name/shouldHideNextTrackButtonAtBoundary">&nbsp;&nbsp;&nbsp;&nbsp;shouldHideNextTrackButtonAtBoundary</option>
+	
+	<option value="//api/name/shouldHidePreviousTrackButtonAtBoundary">&nbsp;&nbsp;&nbsp;&nbsp;shouldHidePreviousTrackButtonAtBoundary</option>
+	
+	<option value="//api/name/shuffling">&nbsp;&nbsp;&nbsp;&nbsp;shuffling</option>
+	
+	<option value="//api/name/volume">&nbsp;&nbsp;&nbsp;&nbsp;volume</option>
+	
+	
 	
 	
 	
@@ -50,7 +77,7 @@
 	
 	<option value="//api/name/play">&nbsp;&nbsp;&nbsp;&nbsp;- play</option>
 	
-	<option value="//api/name/preparePlayer">&nbsp;&nbsp;&nbsp;&nbsp;- preparePlayer</option>
+	<option value="//api/name/playTrack:atPosition:volume:">&nbsp;&nbsp;&nbsp;&nbsp;- playTrack:atPosition:volume:</option>
 	
 	<option value="//api/name/previous">&nbsp;&nbsp;&nbsp;&nbsp;- previous</option>
 	
@@ -72,11 +99,47 @@
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Managing the Delegate and the Data Source">Managing the Delegate and the Data Source</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Controlling Playback and Sound">Controlling Playback and Sound</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Controlling User Interaction">Controlling User Interaction</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Misc">Misc</a></span></li>
+	
 </ul></li>
 
 
 
 
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/currentPlaybackPosition">currentPlaybackPosition</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/currentTrack">currentTrack</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/dataSource">dataSource</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/delegate">delegate</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/displayScale">displayScale</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/playing">playing</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/preferredSizeForCoverArt">preferredSizeForCoverArt</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/repeatMode">repeatMode</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/shouldHideNextTrackButtonAtBoundary">shouldHideNextTrackButtonAtBoundary</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/shouldHidePreviousTrackButtonAtBoundary">shouldHidePreviousTrackButtonAtBoundary</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/shuffling">shuffling</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/volume">volume</a></span></li>
+	
+</ul></li>
 
 
 
@@ -90,7 +153,7 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/play">play</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/preparePlayer">preparePlayer</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/playTrack:atPosition:volume:">playTrack:atPosition:volume:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/previous">previous</a></span></li>
 	
@@ -150,28 +213,92 @@ is provided using the datasource property, events can be intercepted using the d
 						<h2 class="subtitle subtitle-tasks">Tasks</h2>
 						
 						
-						
-						
+						<a title="Managing the Delegate and the Data Source" name="task_Managing the Delegate and the Data Source"></a>
+						<h3 class="subsubtitle task-title">Managing the Delegate and the Data Source</h3>
 
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/reloadData">&ndash;&nbsp;reloadData</a></code>
-		<span class="tooltip"><p>Reloads data from the data source and updates the player. If the player is currently playing, the playback is stopped.</p></span>
+		<code><a href="#//api/name/delegate">&nbsp;&nbsp;delegate</a></code>
+		<span class="tooltip"><p>The <a href="../Protocols/BeamMusicPlayerDelegate.html">BeamMusicPlayerDelegate</a> object that acts as the delegate of the receiving music player.</p></span>
 	</span>
-	
+	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/preparePlayer">&ndash;&nbsp;preparePlayer</a></code>
-		<span class="tooltip"><p>Prepares the player:</p></span>
+		<code><a href="#//api/name/dataSource">&nbsp;&nbsp;dataSource</a></code>
+		<span class="tooltip"><p>The <a href="../Protocols/BeamMusicPlayerDataSource.html">BeamMusicPlayerDataSource</a> object that acts as the data source of the receiving music player.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/reloadData">&ndash;&nbsp;reloadData</a></code>
+		<span class="tooltip"><p>Reloads data from the data source and updates the player. If the player is currently <a href="#//api/name/playing">playing</a>, the playback is stopped.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Controlling Playback and Sound" name="task_Controlling Playback and Sound"></a>
+						<h3 class="subsubtitle task-title">Controlling Playback and Sound</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/currentTrack">&nbsp;&nbsp;currentTrack</a></code>
+		<span class="tooltip"><p>The index of the currently set track</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/playing">&nbsp;&nbsp;playing</a></code>
+		<span class="tooltip"><p>YES, if the player is in play-state</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/currentPlaybackPosition">&nbsp;&nbsp;currentPlaybackPosition</a></code>
+		<span class="tooltip"><p>The Current Playback position in seconds</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/repeatMode">&nbsp;&nbsp;repeatMode</a></code>
+		<span class="tooltip"><p>The current repeat mode of the player.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/shuffling">&nbsp;&nbsp;shuffling</a></code>
+		<span class="tooltip"><p>YES, if the player is shuffling</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/volume">&nbsp;&nbsp;volume</a></code>
+		<span class="tooltip"><p>The Volume of the player. Valid values range from 0.0f to 1.0f</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/playTrack:atPosition:volume:">&ndash;&nbsp;playTrack:atPosition:volume:</a></code>
+		<span class="tooltip"><p>Plays a given track using the supplied options.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/play">&ndash;&nbsp;play</a></code>
-		<span class="tooltip"><p>Starts playback. If the player is already playing, this method does nothing except wasting some cycles.</p></span>
+		<span class="tooltip"><p>Starts playback. If the player is already <a href="#//api/name/playing">playing</a>, this method does nothing except wasting some cycles.</p></span>
 	</span>
 	
 	
@@ -199,11 +326,493 @@ is provided using the datasource property, events can be intercepted using the d
 </li>
 						</ul>
 						
+						
+						<a title="Controlling User Interaction" name="task_Controlling User Interaction"></a>
+						<h3 class="subsubtitle task-title">Controlling User Interaction</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/shouldHidePreviousTrackButtonAtBoundary">&nbsp;&nbsp;shouldHidePreviousTrackButtonAtBoundary</a></code>
+		<span class="tooltip"><p>If set to yes, the Previous-Track Button will be disabled if the first track of the set is played or set.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/shouldHideNextTrackButtonAtBoundary">&nbsp;&nbsp;shouldHideNextTrackButtonAtBoundary</a></code>
+		<span class="tooltip"><p>If set to yes, the Next-Track Button will be disabled if the last track of the set is played or set.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Misc" name="task_Misc"></a>
+						<h3 class="subsubtitle task-title">Misc</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/preferredSizeForCoverArt">&nbsp;&nbsp;preferredSizeForCoverArt</a></code>
+		<span class="tooltip"><p>The preferred size for cover art in points</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/displayScale">&nbsp;&nbsp;displayScale</a></code>
+		<span class="tooltip"><p>Returns the scale factor of the image ( 2.0 for Retina )</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
 					</div>
 					
 					
 					
 					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/currentPlaybackPosition" title="currentPlaybackPosition"></a>
+	<h3 class="subsubtitle method-title">currentPlaybackPosition</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The Current Playback position in seconds</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) CGFloat currentPlaybackPosition</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BeamMusicPlayerViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/currentTrack" title="currentTrack"></a>
+	<h3 class="subsubtitle method-title">currentTrack</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The index of the currently set track</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) NSUInteger currentTrack</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BeamMusicPlayerViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/dataSource" title="dataSource"></a>
+	<h3 class="subsubtitle method-title">dataSource</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The <a href="../Protocols/BeamMusicPlayerDataSource.html">BeamMusicPlayerDataSource</a> object that acts as the data source of the receiving music player.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, weak) id&lt;&gt; dataSource</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BeamMusicPlayerViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/delegate" title="delegate"></a>
+	<h3 class="subsubtitle method-title">delegate</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The <a href="../Protocols/BeamMusicPlayerDelegate.html">BeamMusicPlayerDelegate</a> object that acts as the delegate of the receiving music player.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, weak) id&lt;&gt; delegate</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BeamMusicPlayerViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/displayScale" title="displayScale"></a>
+	<h3 class="subsubtitle method-title">displayScale</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the scale factor of the image ( 2.0 for Retina )</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) CGFloat displayScale</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BeamMusicPlayerViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/playing" title="playing"></a>
+	<h3 class="subsubtitle method-title">playing</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>YES, if the player is in play-state</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL playing</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BeamMusicPlayerViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/preferredSizeForCoverArt" title="preferredSizeForCoverArt"></a>
+	<h3 class="subsubtitle method-title">preferredSizeForCoverArt</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The preferred size for cover art in points</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) CGSize preferredSizeForCoverArt</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BeamMusicPlayerViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/repeatMode" title="repeatMode"></a>
+	<h3 class="subsubtitle method-title">repeatMode</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The current repeat mode of the player.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) MPMusicRepeatMode repeatMode</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BeamMusicPlayerViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/shouldHideNextTrackButtonAtBoundary" title="shouldHideNextTrackButtonAtBoundary"></a>
+	<h3 class="subsubtitle method-title">shouldHideNextTrackButtonAtBoundary</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>If set to yes, the Next-Track Button will be disabled if the last track of the set is played or set.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL shouldHideNextTrackButtonAtBoundary</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BeamMusicPlayerViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/shouldHidePreviousTrackButtonAtBoundary" title="shouldHidePreviousTrackButtonAtBoundary"></a>
+	<h3 class="subsubtitle method-title">shouldHidePreviousTrackButtonAtBoundary</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>If set to yes, the Previous-Track Button will be disabled if the first track of the set is played or set.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL shouldHidePreviousTrackButtonAtBoundary</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BeamMusicPlayerViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/shuffling" title="shuffling"></a>
+	<h3 class="subsubtitle method-title">shuffling</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>YES, if the player is shuffling</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL shuffling</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BeamMusicPlayerViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/volume" title="volume"></a>
+	<h3 class="subsubtitle method-title">volume</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The Volume of the player. Valid values range from 0.0f to 1.0f</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) CGFloat volume</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BeamMusicPlayerViewController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
 					
 					
 					
@@ -237,7 +846,8 @@ is provided using the datasource property, events can be intercepted using the d
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>If there is no next track, this method does nothing, if there is, it skips one track forward and informs the delegate. In case the <a href="../Protocols/BeamMusicPlayerDelegate.html">BeamMusicPlayerDelegate</a> implements the musicPlayer:shouldChangeTrack: method and returns NO, the track is not changed.</p>
+		<p>If there is no next track, this method does nothing, if there is, it skips one track forward and informs the delegate.
+In case <a href="../Protocols/BeamMusicPlayerDelegate.html#//api/name/musicPlayer:shouldChangeTrack:">[BeamMusicPlayerDelegate musicPlayer:shouldChangeTrack:]</a> returns NO, the track is not changed.</p>
 	</div>
 	
 	
@@ -297,7 +907,7 @@ is provided using the datasource property, events can be intercepted using the d
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Starts playback. If the player is already playing, this method does nothing except wasting some cycles.</p>
+		<p>Starts playback. If the player is already <a href="#//api/name/playing">playing</a>, this method does nothing except wasting some cycles.</p>
 	</div>		
 	
     
@@ -327,31 +937,46 @@ is provided using the datasource property, events can be intercepted using the d
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/preparePlayer" title="preparePlayer"></a>
-	<h3 class="subsubtitle method-title">preparePlayer</h3>
+	<a name="//api/name/playTrack:atPosition:volume:" title="playTrack:atPosition:volume:"></a>
+	<h3 class="subsubtitle method-title">playTrack:atPosition:volume:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Prepares the player:</p>
+		<p>Plays a given track using the supplied options.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)preparePlayer</code></div>
+	<div class="method-subsection method-declaration"><code>- (void)playTrack:(NSUInteger)<em>track</em> atPosition:(CGFloat)<em>position</em> volume:(CGFloat)<em>volume</em></code></div>
 
     
 	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Loads the first track using the information provided by the <a href="../Protocols/BeamMusicPlayerDataSource.html">BeamMusicPlayerDataSource</a> and displays it.</p>
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>track</em></dt>
+			<dd><p>the track that&rsquo;s to be played</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>position</em></dt>
+			<dd><p>the position in the track at which the playback should begin</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>volume</em></dt>
+			<dd><p>the Volume of the playback</p></dd>
+		</dl>
+		
 	</div>
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -391,7 +1016,8 @@ is provided using the datasource property, events can be intercepted using the d
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>If there is no previous track, i.e. the current track number is 0, this method does nothing, if there is, it skips one track backward and informs the delegate. In case the <a href="../Protocols/BeamMusicPlayerDelegate.html">BeamMusicPlayerDelegate</a> implements the musicPlayer:shouldChangeTrack: method and returns NO, the track is not changed.</p>
+		<p>If there is no previous track, i.e. the current track number is 0, this method does nothing, if there is, it skips one track backward and informs the delegate.
+In case the <a href="../Protocols/BeamMusicPlayerDelegate.html#//api/name/musicPlayer:shouldChangeTrack:">[BeamMusicPlayerDelegate musicPlayer:shouldChangeTrack:]</a> returns NO, the track is not changed.</p>
 	</div>
 	
 	
@@ -415,7 +1041,7 @@ is provided using the datasource property, events can be intercepted using the d
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Reloads data from the data source and updates the player. If the player is currently playing, the playback is stopped.</p>
+		<p>Reloads data from the data source and updates the player. If the player is currently <a href="#//api/name/playing">playing</a>, the playback is stopped.</p>
 	</div>		
 	
     
@@ -457,7 +1083,7 @@ is provided using the datasource property, events can be intercepted using the d
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 BeamApp UG. All rights reserved. (Last updated: 2012-05-31)</span><br />
+						<p><span class="copyright">&copy; 2012 BeamApp UG. All rights reserved. (Last updated: 2012-06-01)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						

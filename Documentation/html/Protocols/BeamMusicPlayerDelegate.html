@@ -44,6 +44,10 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
+	<option value="//api/name/musicPlayer:didChangeRepeatMode:">&nbsp;&nbsp;&nbsp;&nbsp;- musicPlayer:didChangeRepeatMode:</option>
+	
+	<option value="//api/name/musicPlayer:didChangeShuffleState:">&nbsp;&nbsp;&nbsp;&nbsp;- musicPlayer:didChangeShuffleState:</option>
+	
 	<option value="//api/name/musicPlayer:didChangeTrack:">&nbsp;&nbsp;&nbsp;&nbsp;- musicPlayer:didChangeTrack:</option>
 	
 	<option value="//api/name/musicPlayer:didChangeVolume:">&nbsp;&nbsp;&nbsp;&nbsp;- musicPlayer:didChangeVolume:</option>
@@ -51,6 +55,8 @@
 	<option value="//api/name/musicPlayer:didSeekToPosition:">&nbsp;&nbsp;&nbsp;&nbsp;- musicPlayer:didSeekToPosition:</option>
 	
 	<option value="//api/name/musicPlayer:shouldChangeTrack:">&nbsp;&nbsp;&nbsp;&nbsp;- musicPlayer:shouldChangeTrack:</option>
+	
+	<option value="//api/name/musicPlayerActionRequested:">&nbsp;&nbsp;&nbsp;&nbsp;- musicPlayerActionRequested:</option>
 	
 	<option value="//api/name/musicPlayerDidStartPlaying:">&nbsp;&nbsp;&nbsp;&nbsp;- musicPlayerDidStartPlaying:</option>
 	
@@ -90,6 +96,10 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/musicPlayer:didChangeRepeatMode:">musicPlayer:didChangeRepeatMode:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/musicPlayer:didChangeShuffleState:">musicPlayer:didChangeShuffleState:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/musicPlayer:didChangeTrack:">musicPlayer:didChangeTrack:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/musicPlayer:didChangeVolume:">musicPlayer:didChangeVolume:</a></span></li>
@@ -97,6 +107,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/musicPlayer:didSeekToPosition:">musicPlayer:didSeekToPosition:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/musicPlayer:shouldChangeTrack:">musicPlayer:shouldChangeTrack:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/musicPlayerActionRequested:">musicPlayerActionRequested:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/musicPlayerDidStartPlaying:">musicPlayerDidStartPlaying:</a></span></li>
 	
@@ -226,6 +238,27 @@ and if the user stops the playback.</p></span>
 	</span>
 	
 	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/musicPlayer:didChangeShuffleState:">&ndash;&nbsp;musicPlayer:didChangeShuffleState:</a></code>
+		<span class="tooltip"><p>Called when the player changes it&rsquo;s shuffle state.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/musicPlayer:didChangeRepeatMode:">&ndash;&nbsp;musicPlayer:didChangeRepeatMode:</a></code>
+		<span class="tooltip"><p>Called when the player changes it&rsquo;s repeat mode.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/musicPlayerActionRequested:">&ndash;&nbsp;musicPlayerActionRequested:</a></code>
+		<span class="tooltip"><p>Called when the action button in the music view controller is pressed.</p></span>
+	</span>
+	
+	
 </li>
 						</ul>
 						
@@ -242,6 +275,119 @@ and if the user stops the playback.</p></span>
 					<div class="section section-methods">
 						<a title="Instance Methods" name="instance_methods"></a>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/musicPlayer:didChangeRepeatMode:" title="musicPlayer:didChangeRepeatMode:"></a>
+	<h3 class="subsubtitle method-title">musicPlayer:didChangeRepeatMode:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Called when the player changes it&rsquo;s repeat mode.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)musicPlayer:(BeamMusicPlayerViewController *)<em>player</em> didChangeRepeatMode:(MPMusicRepeatMode)<em>repeatMode</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>player</em></dt>
+			<dd><p>The <a href="../Classes/BeamMusicPlayerViewController.html">BeamMusicPlayerViewController</a> that changes the repeat mode.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>repeatMode</em></dt>
+			<dd><p>a MPMusicRepeatMode indicating the currently active mode.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The repeat modes are taken from MediaPlayer framework and indicate whether the player is in No Repeat, Repeat Once or Repeat All mode.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BeamMusicPlayerDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/musicPlayer:didChangeShuffleState:" title="musicPlayer:didChangeShuffleState:"></a>
+	<h3 class="subsubtitle method-title">musicPlayer:didChangeShuffleState:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Called when the player changes it&rsquo;s shuffle state.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)musicPlayer:(BeamMusicPlayerViewController *)<em>player</em> didChangeShuffleState:(BOOL)<em>shuffling</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>player</em></dt>
+			<dd><p>The <a href="../Classes/BeamMusicPlayerViewController.html">BeamMusicPlayerViewController</a> that changes the shuffle state</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>shuffling</em></dt>
+			<dd><p>YES if shuffling, NO if not</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>YES indicates the player is shuffling now, i.e. randomly selecting a next track from the valid range of tracks, NO
+means there is no shuffling.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BeamMusicPlayerDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
 						
 						<div class="section-method">
 	<a name="//api/name/musicPlayer:didChangeTrack:" title="musicPlayer:didChangeTrack:"></a>
@@ -451,6 +597,57 @@ and if the user stops the playback.</p></span>
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>If an implementation returns NO, the track will not be changed, if it returns YES the track will be changed. If you do not implement this method, YES is assumed.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BeamMusicPlayerDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/musicPlayerActionRequested:" title="musicPlayerActionRequested:"></a>
+	<h3 class="subsubtitle method-title">musicPlayerActionRequested:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Called when the action button in the music view controller is pressed.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)musicPlayerActionRequested:(BeamMusicPlayerViewController *)<em>musicPlayer</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>musicPlayer</em></dt>
+			<dd><p>the <a href="../Classes/BeamMusicPlayerViewController.html">BeamMusicPlayerViewController</a> that received the action</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>You can interact based on this event to present additional interaction options for a user or change behaviour.</p>
 	</div>
 	
 	
@@ -721,7 +918,7 @@ and if the user stops the playback.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 BeamApp UG. All rights reserved. (Last updated: 2012-05-31)</span><br />
+						<p><span class="copyright">&copy; 2012 BeamApp UG. All rights reserved. (Last updated: 2012-06-01)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						

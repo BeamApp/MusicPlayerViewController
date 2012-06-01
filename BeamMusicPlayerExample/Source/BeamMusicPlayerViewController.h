@@ -46,21 +46,16 @@
  */
 @interface BeamMusicPlayerViewController : UIViewController<OBSliderDelegate>
 
+
+/// --------------------------------
+/// @name Managing the Delegate and the Data Source
+/// --------------------------------
+
+/// The BeamMusicPlayerDelegate object that acts as the delegate of the receiving music player.
 @property (nonatomic,weak) id<BeamMusicPlayerDelegate> delegate;
+
+/// The BeamMusicPlayerDataSource object that acts as the data source of the receiving music player.
 @property (nonatomic,weak) id<BeamMusicPlayerDataSource> dataSource;
-
-// Public API methods go here.
-
-@property (nonatomic) NSUInteger currentTrack; // The index of the currently set track
-@property (nonatomic,readonly) BOOL playing; // Whether the player is in play-state
-@property (nonatomic,readonly) CGFloat currentPlaybackPosition; // The Current Playback position in seconds
-@property (nonatomic) CGFloat volume; // The Volume of the player
-@property (nonatomic) MPMusicRepeatMode repeatMode; // The current repeat mode of the player
-@property (nonatomic) BOOL shuffling; // YES if the player is shuffling, NO if not
-@property (nonatomic, readonly) CGSize preferredSizeForCoverArt; // The preferred size for cover art in points
-@property (nonatomic, readonly) CGFloat displayScale; // Returns the scale factor of the image ( Retina )
-@property (nonatomic) BOOL shouldHidePreviousTrackButtonAtBoundary; // If set to yes, the Previous-Track Button will be disabled if the first track of the set is played or set.
-@property (nonatomic) BOOL shouldHideNextTrackButtonAtBoundary; // If set to yes, the Next-Track Button will be disabled if the last track of the set is played or set.
 
 /**
  * Reloads data from the data source and updates the player. If the player is currently playing, the playback is stopped.
@@ -68,10 +63,32 @@
 -(void)reloadData;
 
 
+/// --------------------------------
+/// @name Controlling Playback and Sound
+/// --------------------------------
+
+/// The index of the currently set track
+@property (nonatomic) NSUInteger currentTrack; 
+
+/// YES, if the player is in play-state
+@property (nonatomic,readonly) BOOL playing; 
+
+/// The Current Playback position in seconds
+@property (nonatomic,readonly) CGFloat currentPlaybackPosition; 
+
+/// The current repeat mode of the player.
+@property (nonatomic) MPMusicRepeatMode repeatMode; 
+
+/// YES, if the player is shuffling
+@property (nonatomic) BOOL shuffling; 
+
+/// The Volume of the player. Valid values range from 0.0f to 1.0f
+@property (nonatomic) CGFloat volume;
+
 /**
  * Plays a given track using the supplied options.
  *
- * @param Track the track that's to be played
+ * @param track the track that's to be played
  * @param position the position in the track at which the playback should begin
  * @param volume the Volume of the playback 
  */
@@ -96,16 +113,43 @@
 /**
  * Skips to the next track. 
  *
- * If there is no next track, this method does nothing, if there is, it skips one track forward and informs the delegate. In case the BeamMusicPlayerDelegate implements the musicPlayer:shouldChangeTrack: method and returns NO, the track is not changed.
+ * If there is no next track, this method does nothing, if there is, it skips one track forward and informs the delegate.
+ * In case [BeamMusicPlayerDelegate musicPlayer:shouldChangeTrack:] returns NO, the track is not changed.
  */
 -(void)next;
 
 /**
  * Skips to the previous track. 
  *
- * If there is no previous track, i.e. the current track number is 0, this method does nothing, if there is, it skips one track backward and informs the delegate. In case the BeamMusicPlayerDelegate implements the musicPlayer:shouldChangeTrack: method and returns NO, the track is not changed.
+ * If there is no previous track, i.e. the current track number is 0, this method does nothing, if there is, it skips one track backward and informs the delegate.
+ * In case the [BeamMusicPlayerDelegate musicPlayer:shouldChangeTrack:] returns NO, the track is not changed.
  */
 -(void)previous;
+
+
+/// --------------------------------
+/// @name Controlling User Interaction
+/// --------------------------------
+
+/// If set to yes, the Previous-Track Button will be disabled if the first track of the set is played or set.
+@property (nonatomic) BOOL shouldHidePreviousTrackButtonAtBoundary; 
+
+/// If set to yes, the Next-Track Button will be disabled if the last track of the set is played or set.
+@property (nonatomic) BOOL shouldHideNextTrackButtonAtBoundary; 
+
+
+/// --------------------------------
+/// @name Misc
+/// --------------------------------
+
+/// The preferred size for cover art in points
+@property (nonatomic, readonly) CGSize preferredSizeForCoverArt; 
+
+/// Returns the scale factor of the image ( 2.0 for Retina )
+@property (nonatomic, readonly) CGFloat displayScale; 
+
+
+
 
 -(IBAction)nextAction:(id)sender;
 -(IBAction)playAction:(id)sender;
