@@ -573,4 +573,15 @@
     }
 }
 
+#pragma mark Cover ARt resolution handling
+
+-(CGSize)preferredSizeForCoverArt {
+    return self.albumArtImageView.frame.size;
+}
+
+-(CGFloat)displayScale {
+    return [UIScreen mainScreen].scale;
+}
+
+
 @end

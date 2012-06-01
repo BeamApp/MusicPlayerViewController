@@ -57,7 +57,8 @@
 @property (nonatomic) CGFloat volume; // The Volume of the player
 @property (nonatomic) MPMusicRepeatMode repeatMode; // The current repeat mode of the player
 @property (nonatomic) BOOL shuffling; // YES if the player is shuffling, NO if not
-
+@property (nonatomic) CGSize preferredSizeForCoverArt; // The preferred size for cover art in points
+@property (nonatomic) CGFloat displayScale; // Returns the scale factor of the image ( Retina )
 /**
  * Reloads data from the data source and updates the player. If the player is currently playing, the playback is stopped.
  */
