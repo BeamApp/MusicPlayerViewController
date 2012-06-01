@@ -2,18 +2,18 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1296</int>
-		<string key="IBDocument.SystemVersion">12A206j</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2429</string>
-		<string key="IBDocument.AppKitVersion">1172.1</string>
-		<string key="IBDocument.HIToolboxVersion">613.00</string>
+		<string key="IBDocument.SystemVersion">11E53</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2182</string>
+		<string key="IBDocument.AppKitVersion">1138.47</string>
+		<string key="IBDocument.HIToolboxVersion">569.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1421</string>
+			<string key="NS.object.0">1181</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBProxyObject</string>
-			<string>IBUIImageView</string>
 			<string>IBUIBarButtonItem</string>
+			<string>IBUIImageView</string>
 			<string>IBUIToolbar</string>
 			<string>IBUILabel</string>
 			<string>IBUIButton</string>
@@ -129,6 +129,7 @@
 								<string key="NSFrame">{{18, 14}, {284, 23}}</string>
 								<reference key="NSSuperview" ref="662525002"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -457,7 +458,7 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUIView" id="720318041">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUILabel" id="580380735">
@@ -465,7 +466,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{0, -1}, {200, 19}}</string>
 						<reference key="NSSuperview" ref="720318041"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="949447879"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -495,7 +495,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{0, 12}, {200, 19}}</string>
 						<reference key="NSSuperview" ref="720318041"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="527282778"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -518,7 +517,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{0, 25}, {200, 19}}</string>
 						<reference key="NSSuperview" ref="720318041"/>
-						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -541,8 +539,6 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{200, 44}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="580380735"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<object class="NSColor" key="IBUIBackgroundColor" id="54823016">
@@ -552,7 +548,7 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUIView" id="53878954">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIView" id="311401416">
@@ -560,7 +556,6 @@
 						<int key="NSvFlags">290</int>
 						<string key="NSFrame">{{0, -1}, {200, 19}}</string>
 						<reference key="NSSuperview" ref="53878954"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="309051780"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
@@ -575,7 +570,6 @@
 						<int key="NSvFlags">290</int>
 						<string key="NSFrame">{{0, 12}, {200, 19}}</string>
 						<reference key="NSSuperview" ref="53878954"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="650723945"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
@@ -590,7 +584,6 @@
 						<int key="NSvFlags">290</int>
 						<string key="NSFrame">{{0, 25}, {200, 19}}</string>
 						<reference key="NSSuperview" ref="53878954"/>
-						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -601,8 +594,6 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{200, 44}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="311401416"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<reference key="IBUIBackgroundColor" ref="54823016"/>
@@ -778,6 +769,22 @@
 						<reference key="destination" ref="546333562"/>
 					</object>
 					<int key="connectionID">97</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">actionButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="303479867"/>
+					</object>
+					<int key="connectionID">98</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">backButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="293618477"/>
+					</object>
+					<int key="connectionID">99</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -1173,7 +1180,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">97</int>
+			<int key="maxID">99</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1208,10 +1215,12 @@
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="actionButton">UIBarButtonItem</string>
 						<string key="albumArtImageView">UIImageView</string>
 						<string key="albumArtReflection">UIImageView</string>
 						<string key="albumTitleLabel">AutoScrollLabel</string>
 						<string key="artistNameLabel">AutoScrollLabel</string>
+						<string key="backButton">UIBarButtonItem</string>
 						<string key="controlsToolbar">UIToolbar</string>
 						<string key="fastForwardButton">UIBarButtonItem</string>
 						<string key="navigationItem">UINavigationItem</string>
@@ -1230,6 +1239,10 @@
 						<string key="volumeSlider">UISlider</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="actionButton">
+							<string key="name">actionButton</string>
+							<string key="candidateClassName">UIBarButtonItem</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="albumArtImageView">
 							<string key="name">albumArtImageView</string>
 							<string key="candidateClassName">UIImageView</string>
@@ -1245,6 +1258,10 @@
 						<object class="IBToOneOutletInfo" key="artistNameLabel">
 							<string key="name">artistNameLabel</string>
 							<string key="candidateClassName">AutoScrollLabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="backButton">
+							<string key="name">backButton</string>
+							<string key="candidateClassName">UIBarButtonItem</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="controlsToolbar">
 							<string key="name">controlsToolbar</string>
@@ -1361,6 +1378,6 @@
 			<string key="shadow_highlight.png">{640, 128}</string>
 			<string key="shuffle_off.png">{16, 16}</string>
 		</dictionary>
-		<string key="IBCocoaTouchPluginVersion">1421</string>
+		<string key="IBCocoaTouchPluginVersion">1181</string>
 	</data>
 </archive>

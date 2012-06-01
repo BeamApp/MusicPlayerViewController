@@ -51,6 +51,8 @@
 
 @property (nonatomic,weak) IBOutlet UIToolbar* controlsToolbar; // Encapsulates the Play, Forward, Rewind buttons
 
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *actionButton; // retain, since controller keeps a reference while it might be detached from view hierarchy
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *backButton; // retain, since controller keeps a reference while it might be detached from view hierarchy
 
 @property (nonatomic,weak) IBOutlet UIBarButtonItem* rewindButton; // Previous Track
 @property (nonatomic,weak) IBOutlet UIBarButtonItem* fastForwardButton; // Next Track
@@ -90,6 +92,8 @@
 @synthesize trackTitleLabel;
 @synthesize albumTitleLabel;
 @synthesize artistNameLabel;
+@synthesize actionButton;
+@synthesize backButton;
 @synthesize rewindButton;
 @synthesize fastForwardButton;
 @synthesize playButton;
@@ -171,6 +175,8 @@
 
 - (void)viewDidUnload
 {
+    self.actionButton = nil;
+    self.backButton = nil;
     [super viewDidUnload];
     self.coverArtGestureRecognizer = nil;
     // Release any retained subviews of the main view.
@@ -183,6 +189,14 @@
     } else {
         return YES;
     }
+}
+
+-(void)setDelegate:(id<BeamMusicPlayerDelegate>)value {
+    self->delegate = value;
+    self.navigationItem.rightBarButtonItem =
+        [self.delegate respondsToSelector:@selector(musicPlayerActionRequested:)]
+        ? self.actionButton
+        : nil;
 }
 
 
