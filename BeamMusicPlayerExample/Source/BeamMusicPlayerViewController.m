@@ -359,6 +359,14 @@
     [self updateRepeatButton];
 }
 
+#pragma mark Shuffling ( Every day I'm )
+
+-(void)setShuffling:(BOOL)newShuffling {
+    self->shuffling = newShuffling;
+    
+    NSString* imageName = ( self.shuffling ? @"shuffle_on.png" : @"shuffle_off.png");
+    [self.shuffleButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+}
 
 #pragma mark - Volume
 
@@ -513,5 +521,11 @@
     }
 }
 
+-(IBAction)shuffleButtonAction:(id)sender {
+    self.shuffling = !self.shuffling;
+    if ( [self.delegate respondsToSelector:@selector(musicPlayer:didChangeShuffleState:)]) {
+        [self.delegate musicPlayer:self didChangeShuffleState:self.shuffling];
+    }
+}
 
 @end
