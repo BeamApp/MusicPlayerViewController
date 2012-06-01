@@ -72,6 +72,7 @@ typedef void(^BeamMusicPlayerReceivingBlock)(UIImage* image, NSError** error);
  * @param player the BeamMusicPlayerViewController that needs artwork.
  * @param trackNumber the index of the track for which the artwork is requested.
  * @param receivingBlock a block of type BeamMusicPlayerReceivingBlock that needs to be called when the image is prepared by the receiver.
+ * @see [BeamMusicPlayerViewController preferredSizeForCoverArt]
  */
 -(void)musicPlayer:(BeamMusicPlayerViewController*)player artworkForTrack:(NSUInteger)trackNumber receivingBlock:(BeamMusicPlayerReceivingBlock)receivingBlock;
 

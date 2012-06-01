@@ -142,13 +142,8 @@
 /// @name Misc
 /// --------------------------------
 
-/// The preferred size for cover art in points
+/// The preferred size for cover art in pixels
 @property (nonatomic, readonly) CGSize preferredSizeForCoverArt; 
-
-/// Returns the scale factor of the image ( 2.0 for Retina )
-@property (nonatomic, readonly) CGFloat displayScale; 
-
-
 
 
 -(IBAction)nextAction:(id)sender;

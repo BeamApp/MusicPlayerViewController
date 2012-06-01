@@ -124,7 +124,6 @@
 @synthesize shouldHidePreviousTrackButtonAtBoundary;
 @synthesize navigationItem;
 @synthesize preferredSizeForCoverArt;
-@synthesize displayScale;
 
 - (void)viewDidLoad
 {
@@ -643,7 +642,9 @@
 #pragma mark Cover Art resolution handling
 
 -(CGSize)preferredSizeForCoverArt {
-    return self.albumArtImageView.frame.size;
+    CGFloat scale = UIScreen.mainScreen.scale;
+    CGSize points = self.albumArtImageView.frame.size;
+    return  CGSizeMake(points.width * scale, points.height * scale);
 }
 
 -(CGFloat)displayScale {

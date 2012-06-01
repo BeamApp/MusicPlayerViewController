@@ -71,7 +71,7 @@
     MPMediaItem* item = [self.mediaItems objectAtIndex:trackNumber];
     MPMediaItemArtwork* artwork = [item valueForProperty:MPMediaItemPropertyArtwork];
     if ( artwork ){
-        UIImage* foo = [artwork imageWithSize:CGSizeMake(500, 500)];
+        UIImage* foo = [artwork imageWithSize:player.preferredSizeForCoverArt];
         receivingBlock(foo, nil);
     } else {
         receivingBlock(nil,nil);
