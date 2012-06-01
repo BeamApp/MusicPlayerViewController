@@ -51,6 +51,7 @@
 		97E9DA68157674D000620689 /* repeat_on_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97E9DA65157674D000620689 /* repeat_on_1@2x.png */; };
 		97E9DA69157674D000620689 /* repeat_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97E9DA66157674D000620689 /* repeat_on@2x.png */; };
 		97E9DA6B1576754400620689 /* scrubberglow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97E9DA6A1576754400620689 /* scrubberglow@2x.png */; };
+		97F6D19815791C8F008FA75B /* backbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97F6D19715791C8F008FA75B /* backbutton@2x.png */; };
 		CB35A6FF1576918F008318EE /* BeamMusicPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB35A6FE1576918F008318EE /* BeamMusicPlayerViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +121,7 @@
 		97E9DA65157674D000620689 /* repeat_on_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "repeat_on_1@2x.png"; sourceTree = "<group>"; };
 		97E9DA66157674D000620689 /* repeat_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "repeat_on@2x.png"; sourceTree = "<group>"; };
 		97E9DA6A1576754400620689 /* scrubberglow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scrubberglow@2x.png"; sourceTree = "<group>"; };
+		97F6D19715791C8F008FA75B /* backbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backbutton@2x.png"; sourceTree = "<group>"; };
 		CB35A6F81576916C008318EE /* BeamMusicPlayerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeamMusicPlayerDataSource.h; sourceTree = "<group>"; };
 		CB35A6F91576916C008318EE /* BeamMusicPlayerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeamMusicPlayerDelegate.h; sourceTree = "<group>"; };
 		CB35A6FD1576918F008318EE /* BeamMusicPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeamMusicPlayerViewController.h; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 		97DE4F181576212900D077E3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				97F6D19715791C8F008FA75B /* backbutton@2x.png */,
 				9755DA9F1578C20800B5431E /* fade_overlay@2x.png */,
 				97E9DA6A1576754400620689 /* scrubberglow@2x.png */,
 				97E9DA64157674D000620689 /* repeat_off@2x.png */,
@@ -441,6 +444,7 @@
 				97CA28261577AF31003D8938 /* shadow.png in Resources */,
 				97CA28281577AFE0003D8938 /* shadow_highlight.png in Resources */,
 				9755DAA01578C20800B5431E /* fade_overlay@2x.png in Resources */,
+				97F6D19815791C8F008FA75B /* backbutton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

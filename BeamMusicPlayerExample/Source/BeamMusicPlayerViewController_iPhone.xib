@@ -56,8 +56,11 @@
 							<object class="IBUINavigationItem" id="546333562">
 								<reference key="IBUINavigationBar" ref="146668208"/>
 								<string key="IBUITitle">Title</string>
-								<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="531899058">
-									<string key="IBUITitle">Item</string>
+								<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="293618477">
+									<object class="NSCustomResource" key="IBUIImage">
+										<string key="NSClassName">NSImage</string>
+										<string key="NSResourceName">backbutton.png</string>
+									</object>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 									<int key="IBUIStyle">1</int>
 									<reference key="IBUINavigationItem" ref="546333562"/>
@@ -164,7 +167,6 @@
 									<string key="NSResourceName">prevtrack.png</string>
 								</object>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<float key="IBUIWidth">42</float>
 								<reference key="IBUIToolbar" ref="578893802"/>
 							</object>
 							<object class="IBUIBarButtonItem" id="356141574">
@@ -178,7 +180,6 @@
 									<string key="NSResourceName">play.png</string>
 								</object>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<float key="IBUIWidth">60</float>
 								<reference key="IBUIToolbar" ref="578893802"/>
 							</object>
 							<object class="IBUIBarButtonItem" id="760091794">
@@ -560,7 +561,7 @@
 						<string key="NSFrame">{{0, -1}, {200, 19}}</string>
 						<reference key="NSSuperview" ref="53878954"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="316256962"/>
+						<reference key="NSNextKeyView" ref="309051780"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -569,13 +570,13 @@
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
-					<object class="IBUIView" id="316256962">
+					<object class="IBUIView" id="309051780">
 						<reference key="NSNextResponder" ref="53878954"/>
 						<int key="NSvFlags">290</int>
 						<string key="NSFrame">{{0, 12}, {200, 19}}</string>
 						<reference key="NSSuperview" ref="53878954"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="464468328"/>
+						<reference key="NSNextKeyView" ref="650723945"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -584,7 +585,7 @@
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
-					<object class="IBUIView" id="464468328">
+					<object class="IBUIView" id="650723945">
 						<reference key="NSNextResponder" ref="53878954"/>
 						<int key="NSvFlags">290</int>
 						<string key="NSFrame">{{0, 25}, {200, 19}}</string>
@@ -750,7 +751,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">trackTitleLabel</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="316256962"/>
+						<reference key="destination" ref="309051780"/>
 					</object>
 					<int key="connectionID">92</int>
 				</object>
@@ -758,7 +759,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">albumTitleLabel</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="464468328"/>
+						<reference key="destination" ref="650723945"/>
 					</object>
 					<int key="connectionID">93</int>
 				</object>
@@ -769,6 +770,14 @@
 						<reference key="destination" ref="311401416"/>
 					</object>
 					<int key="connectionID">94</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">navigationItem</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="546333562"/>
+					</object>
+					<int key="connectionID">97</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -901,7 +910,7 @@
 						<reference key="object" ref="546333562"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="303479867"/>
-							<reference ref="531899058"/>
+							<reference ref="293618477"/>
 						</array>
 						<reference key="parent" ref="146668208"/>
 					</object>
@@ -1086,8 +1095,8 @@
 						<reference key="object" ref="53878954"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="311401416"/>
-							<reference ref="316256962"/>
-							<reference ref="464468328"/>
+							<reference ref="309051780"/>
+							<reference ref="650723945"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -1098,17 +1107,17 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">90</int>
-						<reference key="object" ref="316256962"/>
+						<reference key="object" ref="309051780"/>
 						<reference key="parent" ref="53878954"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">91</int>
-						<reference key="object" ref="464468328"/>
+						<reference key="object" ref="650723945"/>
 						<reference key="parent" ref="53878954"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">95</int>
-						<reference key="object" ref="531899058"/>
+						<reference key="object" ref="293618477"/>
 						<reference key="parent" ref="546333562"/>
 					</object>
 				</array>
@@ -1164,7 +1173,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">95</int>
+			<int key="maxID">97</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1205,6 +1214,7 @@
 						<string key="artistNameLabel">AutoScrollLabel</string>
 						<string key="controlsToolbar">UIToolbar</string>
 						<string key="fastForwardButton">UIBarButtonItem</string>
+						<string key="navigationItem">UINavigationItem</string>
 						<string key="numberOfTracksLabel">UILabel</string>
 						<string key="playButton">UIBarButtonItem</string>
 						<string key="progressSlider">UISlider</string>
@@ -1243,6 +1253,10 @@
 						<object class="IBToOneOutletInfo" key="fastForwardButton">
 							<string key="name">fastForwardButton</string>
 							<string key="candidateClassName">UIBarButtonItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="navigationItem">
+							<string key="name">navigationItem</string>
+							<string key="candidateClassName">UINavigationItem</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="numberOfTracksLabel">
 							<string key="name">numberOfTracksLabel</string>
@@ -1336,6 +1350,7 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="backbutton.png">{16, 16}</string>
 			<string key="nexttrack.png">{16, 16}</string>
 			<string key="noartplaceholder@2x.png">{512, 512}</string>
 			<string key="play.png">{16, 16}</string>

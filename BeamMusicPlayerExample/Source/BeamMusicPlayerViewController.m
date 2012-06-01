@@ -81,6 +81,8 @@
 @property (nonatomic) BOOL imageIsPlaceholder; // Whether the currently shown image is a placeholder
 @property (nonatomic) BOOL lastDirectionChangePositive; // Whether the last direction change was positive.
 
+@property (nonatomic,weak) IBOutlet UINavigationItem* navigationItem;
+
 @end
 
 @implementation BeamMusicPlayerViewController
@@ -120,6 +122,7 @@
 @synthesize imageIsPlaceholder;
 @synthesize shouldHideNextTrackButtonAtBoundary;
 @synthesize shouldHidePreviousTrackButtonAtBoundary;
+@synthesize navigationItem;
 
 - (void)viewDidLoad
 {
@@ -162,7 +165,7 @@
 
     self.trackTitleLabel.textColor = [UIColor whiteColor];
     [self.trackTitleLabel setFont:[UIFont boldSystemFontOfSize:12]];
-
+    
 }
 
 - (void)viewDidUnload
@@ -270,14 +273,31 @@
 
 -(void)next {
     self.lastDirectionChangePositive = YES;
-
     [self changeTrack:self->currentTrack+1];
+
+
 }
 
 -(void)previous {
     self.lastDirectionChangePositive = NO;
 
     [self changeTrack:self->currentTrack-1];
+}
+
+/*
+ * Called when the player finished playing the current track. 
+ */
+-(void)currentTrackFinished {
+    [self pause];
+    if ( self.repeatMode != MPMusicRepeatModeOne ){
+        [self next];
+        [self play];
+
+    } else {
+        self->currentPlaybackPosition = 0;
+        [self updateSeekUI];
+        [self play];
+    }
 }
 
 -(void)playTrack:(NSUInteger)track atPosition:(CGFloat)position volume:(CGFloat)volume {
@@ -320,6 +340,7 @@
         if ( [self.delegate respondsToSelector:@selector(musicPlayer:didChangeTrack:) ]){
             [self.delegate musicPlayer:self didChangeTrack:newTrack];
         }
+                
         [self updateUIForCurrentTrack];
         [self updateSeekUI];
         [self updateTrackDisplay];
@@ -347,7 +368,7 @@
     // Only tick forward if not scrobbling.
     if ( !self.scrobbling ){
         if ( self->currentPlaybackPosition+1.0 > self.currentTrackLength ){
-            [self next];
+            [self currentTrackFinished];
         } else {
             self->currentPlaybackPosition += 1.0f;
             [self updateSeekUI];
