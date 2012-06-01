@@ -67,6 +67,7 @@
     self.exampleProvider = [BeamMinimalExampleProvider new];
 
     self.viewController.dataSource = self.exampleProvider;
+    self.viewController.delegate = self.exampleProvider;
 #else
     self.exampleProvider = [BeamIpodExampleProvider new];
     ((BeamIpodExampleProvider*)self.exampleProvider).controller = self.viewController;

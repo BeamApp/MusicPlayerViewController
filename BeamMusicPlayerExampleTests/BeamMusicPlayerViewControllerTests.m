@@ -15,7 +15,9 @@
 - (void)setUp
 {
     [super setUp];
-    self.viewController = [BeamMusicPlayerViewController new];
+    self.viewController = [[BeamMusicPlayerViewController alloc] initWithNibName:@"BeamMusicPlayerViewController_iPhone" bundle:nil];
+    // force view controler to load from nib
+    [self.viewController performSelector:@selector(view)];
 }
 
 - (void)tearDown
@@ -24,6 +26,9 @@
     [super tearDown];
 }
 
+- (void)testViewControllerLoadedFromNib {
+    STAssertNotNil([viewController performSelector:@selector(navigationItem)], @"outlets loaded");
+}
 
 - (void)testMockedDataSourceWorksInGeneral
 {
@@ -42,11 +47,14 @@
 
 - (void)testActionButtonInvisibleIfNoDelegateMethod {
     id delegateWithoutAnyMethods = [NSObject new];
-    STAssertFalse([delegateWithoutAnyMethods respondsToSelector:@selector(musicPlayerActionRequested:)], @"mock does not provide method");
-    
     viewController.delegate = delegateWithoutAnyMethods;
-    [viewController reloadData];
-    viewController.
+    STAssertFalse([viewController.delegate respondsToSelector:@selector(musicPlayerActionRequested:)], @"mock does not provide method");
+    STAssertNil(viewController.navigationItem.rightBarButtonItem, @"action button invisible");
+    
+    id delegateWithAllMethods = [OCMockObject mockForProtocol:@protocol(BeamMusicPlayerDelegate)];
+    viewController.delegate = delegateWithAllMethods;
+    STAssertTrue([viewController.delegate respondsToSelector:@selector(musicPlayerActionRequested:)], @"mock does provide method");
+    STAssertNotNil(viewController.navigationItem.rightBarButtonItem, @"action button visible");
 }
 
 

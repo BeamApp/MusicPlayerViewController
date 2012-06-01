@@ -52,10 +52,10 @@
 /// --------------------------------
 
 /// The BeamMusicPlayerDelegate object that acts as the delegate of the receiving music player.
-@property (nonatomic,weak) id<BeamMusicPlayerDelegate> delegate;
+@property (nonatomic,assign) id<BeamMusicPlayerDelegate> delegate;
 
 /// The BeamMusicPlayerDataSource object that acts as the data source of the receiving music player.
-@property (nonatomic,weak) id<BeamMusicPlayerDataSource> dataSource;
+@property (nonatomic,assign) id<BeamMusicPlayerDataSource> dataSource;
 
 /**
  * Reloads data from the data source and updates the player. If the player is currently playing, the playback is stopped.
