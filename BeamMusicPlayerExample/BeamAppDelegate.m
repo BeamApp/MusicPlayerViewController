@@ -63,7 +63,11 @@
     self.viewController.dataSource = self.exampleProvider;
     self.viewController.delegate = self.exampleProvider;
     
-    [self.viewController preparePlayer];
+    self.viewController.shouldHideNextTrackButtonAtBoundary = YES;
+    self.viewController.shouldHidePreviousTrackButtonAtBoundary = YES;
+
+    [self.viewController reloadData];
+    [self.viewController play];
     
     return YES;
 }

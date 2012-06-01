@@ -59,24 +59,24 @@
 @property (nonatomic) BOOL shuffling; // YES if the player is shuffling, NO if not
 @property (nonatomic) CGSize preferredSizeForCoverArt; // The preferred size for cover art in points
 @property (nonatomic) CGFloat displayScale; // Returns the scale factor of the image ( Retina )
+@property (nonatomic) BOOL shouldHidePreviousTrackButtonAtBoundary;
+@property (nonatomic) BOOL shouldHideNextTrackButtonAtBoundary;
+
 /**
  * Reloads data from the data source and updates the player. If the player is currently playing, the playback is stopped.
  */
 -(void)reloadData;
 
 
-
 /**
- * Seeks to the position in seconds specified.
- */
-//-(void)seekToPosition:(CGFloat)position;
-
-/**
- * Prepares the player: 
+ * Plays a given track using the supplied options.
  *
- * Loads the first track using the information provided by the BeamMusicPlayerDataSource and displays it. 
+ * @param Track the track that's to be played
+ * @param position the position in the track at which the playback should begin
+ * @param volume the Volume of the playback 
  */
--(void)preparePlayer;
+-(void)playTrack:(NSUInteger)track atPosition:(CGFloat)position volume:(CGFloat)volume;
+
 
 /**
  * Starts playback. If the player is already playing, this method does nothing except wasting some cycles.

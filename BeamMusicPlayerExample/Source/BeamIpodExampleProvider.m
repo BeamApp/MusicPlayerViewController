@@ -28,6 +28,8 @@
         
         [self.musicPlayer setQueueWithQuery:everything];
         
+        [self.controller reloadData];
+        [self.controller play];
         // This HACK hides the volume overlay when changing the volume.
         // It's insipired by http://stackoverflow.com/questions/3845222/iphone-sdk-how-to-disable-the-volume-indicator-view-if-the-hardware-buttons-ar
         MPVolumeView* view = [MPVolumeView new];

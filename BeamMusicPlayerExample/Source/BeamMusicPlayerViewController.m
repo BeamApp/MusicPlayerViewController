@@ -117,6 +117,9 @@
 @synthesize repeatMode;
 @synthesize shuffling;
 @synthesize lastDirectionChangePositive;
+@synthesize imageIsPlaceholder;
+@synthesize shouldHideNextTrackButtonAtBoundary;
+@synthesize shouldHidePreviousTrackButtonAtBoundary;
 
 - (void)viewDidLoad
 {
@@ -234,13 +237,7 @@
     }
 }
 
-/**
- * Prepares the player for track 0.
- */
--(void)preparePlayer {
-    [self changeTrack:0];
-    [self updateUIForCurrentTrack];
-}
+
 
 
 -(void)play {
@@ -319,6 +316,7 @@
         [self updateUIForCurrentTrack];
         [self updateSeekUI];
         [self updateTrackDisplay];
+        [self adjustDirectionalButtonStates];
         [self play];
     }
 }
@@ -327,6 +325,11 @@
  * Reloads data from the data source and updates the player. If the player is currently playing, the playback is stopped.
  */
 -(void)reloadData {
+    if ( self.playing )
+        [self pause];
+    
+    [self changeTrack:0];
+    [self updateUIForCurrentTrack];
     
 }
 
@@ -449,12 +452,46 @@
     }];
 }
 
+
+
+#pragma mark - Playback button state management
+
+/*
+ * Adjusts the directional buttons to comply with the shouldHide-Button settings.
+ */
+-(void)adjustDirectionalButtonStates {
+    if ( self.currentTrack+1 == self.numberOfTracks && self.shouldHideNextTrackButtonAtBoundary ){
+        self.fastForwardButton.enabled = NO;
+    } else {
+        self.fastForwardButton.enabled = YES;
+    }
+    
+    if ( self.currentTrack == 0 && self.shouldHidePreviousTrackButtonAtBoundary ){
+        self.rewindButton.enabled = NO;
+    } else {
+        self.rewindButton.enabled = YES;
+    }
+}
+
+/*
+ * Adjusts the state of the play button to match the current state of the player
+ */
 -(void)adjustPlayButtonState {
     if ( !self.playing ){
         self.playButton.image = [UIImage imageNamed:@"play.png"];
     } else {
         self.playButton.image = [UIImage imageNamed:@"pause.png"];
     }
+}
+
+-(void)setShouldHideNextTrackButtonAtBoundary:(BOOL)newShouldHideNextTrackButtonAtBoundary {
+    self->shouldHideNextTrackButtonAtBoundary = newShouldHideNextTrackButtonAtBoundary;
+    [self adjustDirectionalButtonStates];
+}
+
+-(void)setShouldHidePreviousTrackButtonAtBoundary:(BOOL)newShouldHidePreviousTrackButtonAtBoundary {
+    self->shouldHidePreviousTrackButtonAtBoundary = newShouldHidePreviousTrackButtonAtBoundary;
+    [self adjustDirectionalButtonStates];
 }
 
 #pragma mark - OBSlider delegate methods
@@ -573,7 +610,7 @@
     }
 }
 
-#pragma mark Cover ARt resolution handling
+#pragma mark Cover Art resolution handling
 
 -(CGSize)preferredSizeForCoverArt {
     return self.albumArtImageView.frame.size;
