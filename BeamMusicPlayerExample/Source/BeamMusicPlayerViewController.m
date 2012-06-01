@@ -280,8 +280,15 @@
     [self changeTrack:self->currentTrack-1];
 }
 
+-(void)playTrack:(NSUInteger)track atPosition:(CGFloat)position volume:(CGFloat)volume {
+    self.volume = volume;
+    [self changeTrack:track];
+    self->currentPlaybackPosition = position;
+    [self play];
+}
+
 /*
- * Changes the track to the new track given. 
+ * Changes the track to the new track given.
  */
 -(void)changeTrack:(NSUInteger)newTrack {
     BOOL shouldChange = YES;
