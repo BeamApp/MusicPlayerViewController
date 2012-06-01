@@ -25,7 +25,6 @@
 }
 
 
-
 - (void)testMockedDataSourceWorksInGeneral
 {
     id ds = [OCMockObject mockForProtocol:@protocol(BeamMusicPlayerDataSource)];
@@ -38,6 +37,16 @@
 
     STAssertEquals(expected, actual, @"mocked length");
     [ds verify];
+}
+
+
+- (void)testActionButtonInvisibleIfNoDelegateMethod {
+    id delegateWithoutAnyMethods = [NSObject new];
+    STAssertFalse([delegateWithoutAnyMethods respondsToSelector:@selector(musicPlayerActionRequested:)], @"mock does not provide method");
+    
+    viewController.delegate = delegateWithoutAnyMethods;
+    [viewController reloadData];
+    viewController.
 }
 
 
