@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9755DA9E1578BE2800B5431E /* AutoScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9755DA9C1578BBA700B5431E /* AutoScrollLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		9755DAA01578C20800B5431E /* fade_overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9755DA9F1578C20800B5431E /* fade_overlay@2x.png */; };
+		9755DAA21578C2BE00B5431E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9755DAA11578C2BE00B5431E /* QuartzCore.framework */; };
 		97B7AA3315760AAF0014E693 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B7AA3215760AAF0014E693 /* UIKit.framework */; };
 		97B7AA3515760AAF0014E693 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B7AA3415760AAF0014E693 /* Foundation.framework */; };
 		97B7AA3715760AAF0014E693 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B7AA3615760AAF0014E693 /* CoreGraphics.framework */; };
@@ -61,6 +64,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9755DA9B1578BBA700B5431E /* AutoScrollLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoScrollLabel.h; sourceTree = "<group>"; };
+		9755DA9C1578BBA700B5431E /* AutoScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoScrollLabel.m; sourceTree = "<group>"; };
+		9755DA9F1578C20800B5431E /* fade_overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fade_overlay@2x.png"; sourceTree = "<group>"; };
+		9755DAA11578C2BE00B5431E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		97B7AA2E15760AAF0014E693 /* BeamMusicPlayerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeamMusicPlayerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97B7AA3215760AAF0014E693 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		97B7AA3415760AAF0014E693 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -121,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9755DAA21578C2BE00B5431E /* QuartzCore.framework in Frameworks */,
 				97CA282D1577B6A9003D8938 /* MediaPlayer.framework in Frameworks */,
 				97B7AA3315760AAF0014E693 /* UIKit.framework in Frameworks */,
 				97B7AA3515760AAF0014E693 /* Foundation.framework in Frameworks */,
@@ -141,9 +149,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9755DA9A1578BB9700B5431E /* AutoScrollLabel */ = {
+			isa = PBXGroup;
+			children = (
+				9755DA9B1578BBA700B5431E /* AutoScrollLabel.h */,
+				9755DA9C1578BBA700B5431E /* AutoScrollLabel.m */,
+			);
+			name = AutoScrollLabel;
+			sourceTree = "<group>";
+		};
 		97B7AA2315760AAD0014E693 = {
 			isa = PBXGroup;
 			children = (
+				9755DAA11578C2BE00B5431E /* QuartzCore.framework */,
 				97CA282C1577B6A9003D8938 /* MediaPlayer.framework */,
 				97B7AA3815760AAF0014E693 /* BeamMusicPlayerExample */,
 				97B7AA5915760AAF0014E693 /* BeamMusicPlayerExampleTests */,
@@ -221,6 +239,7 @@
 		97DE4F181576212900D077E3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9755DA9F1578C20800B5431E /* fade_overlay@2x.png */,
 				97E9DA6A1576754400620689 /* scrubberglow@2x.png */,
 				97E9DA64157674D000620689 /* repeat_off@2x.png */,
 				97E9DA65157674D000620689 /* repeat_on_1@2x.png */,
@@ -250,6 +269,7 @@
 		97DE4F2E15762CB200D077E3 /* 3rd Party */ = {
 			isa = PBXGroup;
 			children = (
+				9755DA9A1578BB9700B5431E /* AutoScrollLabel */,
 				97DE4F2F15762CC200D077E3 /* OBSlider */,
 			);
 			name = "3rd Party";
@@ -407,6 +427,7 @@
 				97CA27FC1577588D003D8938 /* BeamMusicPlayerViewController_iPad.xib in Resources */,
 				97CA28261577AF31003D8938 /* shadow.png in Resources */,
 				97CA28281577AFE0003D8938 /* shadow_highlight.png in Resources */,
+				9755DAA01578C20800B5431E /* fade_overlay@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +469,7 @@
 				CB35A6FF1576918F008318EE /* BeamMusicPlayerViewController.m in Sources */,
 				97CA281C15778872003D8938 /* NSDateFormatter+Duration.m in Sources */,
 				97CA282B1577B68B003D8938 /* BeamIpodExampleProvider.m in Sources */,
+				9755DA9E1578BE2800B5431E /* AutoScrollLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

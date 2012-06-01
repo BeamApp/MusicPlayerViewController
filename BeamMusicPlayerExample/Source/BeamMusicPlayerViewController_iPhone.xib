@@ -439,7 +439,7 @@
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MC43NQA</bytes>
-					<object class="NSColorSpace" key="NSCustomColorSpace">
+					<object class="NSColorSpace" key="NSCustomColorSpace" id="133242440">
 						<int key="NSID">2</int>
 					</object>
 				</object>
@@ -450,7 +450,7 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUIView" id="720318041">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUILabel" id="580380735">
@@ -458,6 +458,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{0, -1}, {200, 19}}</string>
 						<reference key="NSSuperview" ref="720318041"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="949447879"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -487,6 +488,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{0, 12}, {200, 19}}</string>
 						<reference key="NSSuperview" ref="720318041"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="527282778"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -509,6 +511,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{0, 25}, {200, 19}}</string>
 						<reference key="NSSuperview" ref="720318041"/>
+						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -531,12 +534,71 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{200, 44}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="580380735"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
-				<object class="NSColor" key="IBUIBackgroundColor">
+				<object class="NSColor" key="IBUIBackgroundColor" id="54823016">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MCAwAA</bytes>
 				</object>
+				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+			</object>
+			<object class="IBUIView" id="53878954">
+				<reference key="NSNextResponder"/>
+				<int key="NSvFlags">274</int>
+				<array class="NSMutableArray" key="NSSubviews">
+					<object class="IBUIView" id="311401416">
+						<reference key="NSNextResponder" ref="53878954"/>
+						<int key="NSvFlags">290</int>
+						<string key="NSFrame">{{0, -1}, {200, 19}}</string>
+						<reference key="NSSuperview" ref="53878954"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="335306148"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MQA</bytes>
+							<reference key="NSCustomColorSpace" ref="133242440"/>
+						</object>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+					</object>
+					<object class="IBUIView" id="335306148">
+						<reference key="NSNextResponder" ref="53878954"/>
+						<int key="NSvFlags">290</int>
+						<string key="NSFrame">{{0, 12}, {200, 19}}</string>
+						<reference key="NSSuperview" ref="53878954"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="880751629"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MQA</bytes>
+							<reference key="NSCustomColorSpace" ref="133242440"/>
+						</object>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+					</object>
+					<object class="IBUIView" id="880751629">
+						<reference key="NSNextResponder" ref="53878954"/>
+						<int key="NSvFlags">290</int>
+						<string key="NSFrame">{{0, 25}, {200, 19}}</string>
+						<reference key="NSSuperview" ref="53878954"/>
+						<reference key="NSWindow"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MQA</bytes>
+							<reference key="NSCustomColorSpace" ref="133242440"/>
+						</object>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+					</object>
+				</array>
+				<string key="NSFrameSize">{200, 44}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView" ref="311401416"/>
+				<string key="NSReuseIdentifierKey">_NS:9</string>
+				<reference key="IBUIBackgroundColor" ref="54823016"/>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 		</array>
@@ -549,30 +611,6 @@
 						<reference key="destination" ref="774585933"/>
 					</object>
 					<int key="connectionID">7</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">artistNameLabel</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="580380735"/>
-					</object>
-					<int key="connectionID">37</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">albumTitleLabel</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="527282778"/>
-					</object>
-					<int key="connectionID">38</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">trackTitleLabel</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="949447879"/>
-					</object>
-					<int key="connectionID">39</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -704,11 +742,35 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">trackTitleLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="335306148"/>
+					</object>
+					<int key="connectionID">92</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">albumTitleLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="880751629"/>
+					</object>
+					<int key="connectionID">93</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">artistNameLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="311401416"/>
+					</object>
+					<int key="connectionID">94</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">titleView</string>
 						<reference key="source" ref="546333562"/>
-						<reference key="destination" ref="720318041"/>
+						<reference key="destination" ref="53878954"/>
 					</object>
-					<int key="connectionID">14</int>
+					<int key="connectionID">86</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -1012,6 +1074,31 @@
 						<reference key="object" ref="627743492"/>
 						<reference key="parent" ref="774585933"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">81</int>
+						<reference key="object" ref="53878954"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="311401416"/>
+							<reference ref="335306148"/>
+							<reference ref="880751629"/>
+						</array>
+						<reference key="parent" ref="0"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">88</int>
+						<reference key="object" ref="311401416"/>
+						<reference key="parent" ref="53878954"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">90</int>
+						<reference key="object" ref="335306148"/>
+						<reference key="parent" ref="53878954"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">91</int>
+						<reference key="object" ref="880751629"/>
+						<reference key="parent" ref="53878954"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -1051,16 +1138,31 @@
 				<string key="62.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="74.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="75.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="81.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="88.CustomClassName">AutoScrollLabel</string>
+				<string key="88.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="9.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="90.CustomClassName">AutoScrollLabel</string>
+				<string key="90.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="91.CustomClassName">AutoScrollLabel</string>
+				<string key="91.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">80</int>
+			<int key="maxID">94</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">AutoScrollLabel</string>
+					<string key="superclassName">UIView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/AutoScrollLabel.h</string>
+					</object>
+				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">BeamMusicPlayerViewController</string>
 					<string key="superclassName">UIViewController</string>
@@ -1086,8 +1188,8 @@
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="albumArtImageView">UIImageView</string>
 						<string key="albumArtReflection">UIImageView</string>
-						<string key="albumTitleLabel">UILabel</string>
-						<string key="artistNameLabel">UILabel</string>
+						<string key="albumTitleLabel">AutoScrollLabel</string>
+						<string key="artistNameLabel">AutoScrollLabel</string>
 						<string key="controlsToolbar">UIToolbar</string>
 						<string key="fastForwardButton">UIBarButtonItem</string>
 						<string key="numberOfTracksLabel">UILabel</string>
@@ -1101,7 +1203,7 @@
 						<string key="shuffleButton">UIButton</string>
 						<string key="timeElapsedLabel">UILabel</string>
 						<string key="timeRemainingLabel">UILabel</string>
-						<string key="trackTitleLabel">UILabel</string>
+						<string key="trackTitleLabel">AutoScrollLabel</string>
 						<string key="volumeSlider">UISlider</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -1115,11 +1217,11 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="albumTitleLabel">
 							<string key="name">albumTitleLabel</string>
-							<string key="candidateClassName">UILabel</string>
+							<string key="candidateClassName">AutoScrollLabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="artistNameLabel">
 							<string key="name">artistNameLabel</string>
-							<string key="candidateClassName">UILabel</string>
+							<string key="candidateClassName">AutoScrollLabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="controlsToolbar">
 							<string key="name">controlsToolbar</string>
@@ -1175,7 +1277,7 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="trackTitleLabel">
 							<string key="name">trackTitleLabel</string>
-							<string key="candidateClassName">UILabel</string>
+							<string key="candidateClassName">AutoScrollLabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="volumeSlider">
 							<string key="name">volumeSlider</string>

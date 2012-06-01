@@ -37,15 +37,16 @@
 #import "UIImageView+Reflection.h"
 #import "NSDateFormatter+Duration.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "AutoScrollLabel.h"
 
 @interface BeamMusicPlayerViewController()
 
 @property (nonatomic,weak) IBOutlet UISlider* volumeSlider; // Volume Slider
 @property (nonatomic,weak) IBOutlet UISlider* progressSlider; // Progress Slider buried in the Progress View
 
-@property (nonatomic,weak) IBOutlet UILabel* trackTitleLabel; // The Title Label
-@property (nonatomic,weak) IBOutlet UILabel* albumTitleLabel; // Album Label
-@property (nonatomic,weak) IBOutlet UILabel* artistNameLabel; // Artist Name Label
+@property (nonatomic,weak) IBOutlet AutoScrollLabel* trackTitleLabel; // The Title Label
+@property (nonatomic,weak) IBOutlet AutoScrollLabel* albumTitleLabel; // Album Label
+@property (nonatomic,weak) IBOutlet AutoScrollLabel* artistNameLabel; // Artist Name Label
 
 @property (nonatomic,weak) IBOutlet UIToolbar* controlsToolbar; // Encapsulates the Play, Forward, Rewind buttons
 
@@ -127,20 +128,33 @@
     UIImage* knob = [UIImage imageNamed:@"VolumeKnob"];
     
     [[UISlider appearanceWhenContainedIn:[self class], nil] setThumbImage:knob forState:UIControlStateNormal];
-    
-   // [[UISlider appearanceWhenContainedIn:[self class], nil] setMinimumValueImage:[UIImage imageNamed:@"VolumeBlueMusicCap.png"]];
-   // [[UISlider appearanceWhenContainedIn:[self class], nil] setMaximumValueImage:[UIImage imageNamed:@"VolumeWhiteMusicCap.png"]];
+
     [[UISlider appearance] setMinimumTrackImage:sliderBlueTrack forState:UIControlStateNormal];
     [[UISlider appearance] setMaximumTrackImage:slideWhiteTrack forState:UIControlStateNormal];
 
     // The Original Toolbar is 48px high in the iPod/Music app
-    
     CGRect toolbarRect = self.controlsToolbar.frame;
     toolbarRect.size.height = 48;
     self.controlsToolbar.frame = toolbarRect;
 
     // Set UI to non-scrobble
     [self setScrobbleUI:NO];
+    
+    // Set up labels. These are autoscrolling and need code-base setup.
+    [self.artistNameLabel setShadowColor:[UIColor blackColor]];
+    [self.artistNameLabel setShadowOffset:CGSizeMake(0, -1)];
+    [self.artistNameLabel setTextColor:[UIColor lightTextColor]];
+    [self.artistNameLabel setFont:[UIFont boldSystemFontOfSize:12]];
+
+    
+    [self.albumTitleLabel setShadowColor:[UIColor blackColor]];
+    [self.albumTitleLabel setShadowOffset:CGSizeMake(0, -1)];
+    [self.albumTitleLabel setTextColor:[UIColor lightTextColor]];
+    [self.albumTitleLabel setFont:[UIFont boldSystemFontOfSize:12]];
+
+    self.trackTitleLabel.textColor = [UIColor whiteColor];
+    [self.trackTitleLabel setFont:[UIFont boldSystemFontOfSize:12]];
+
 }
 
 - (void)viewDidUnload
@@ -170,7 +184,7 @@
     self.artistNameLabel.text = [self.dataSource musicPlayer:self artistForTrack:self.currentTrack];
     self.trackTitleLabel.text = [self.dataSource musicPlayer:self titleForTrack:self.currentTrack];
     self.albumTitleLabel.text = [self.dataSource musicPlayer:self albumForTrack:self.currentTrack];
-    
+
     // We only request the coverart if the delegate responds to it.
     if ( [self.dataSource respondsToSelector:@selector(musicPlayer:artworkForTrack:receivingBlock:)]) {
         
