@@ -123,6 +123,8 @@
 @synthesize shouldHideNextTrackButtonAtBoundary;
 @synthesize shouldHidePreviousTrackButtonAtBoundary;
 @synthesize navigationItem;
+@synthesize preferredSizeForCoverArt;
+@synthesize displayScale;
 
 - (void)viewDidLoad
 {

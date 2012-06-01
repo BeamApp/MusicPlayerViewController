@@ -57,8 +57,8 @@
 @property (nonatomic) CGFloat volume; // The Volume of the player
 @property (nonatomic) MPMusicRepeatMode repeatMode; // The current repeat mode of the player
 @property (nonatomic) BOOL shuffling; // YES if the player is shuffling, NO if not
-@property (nonatomic) CGSize preferredSizeForCoverArt; // The preferred size for cover art in points
-@property (nonatomic) CGFloat displayScale; // Returns the scale factor of the image ( Retina )
+@property (nonatomic, readonly) CGSize preferredSizeForCoverArt; // The preferred size for cover art in points
+@property (nonatomic, readonly) CGFloat displayScale; // Returns the scale factor of the image ( Retina )
 @property (nonatomic) BOOL shouldHidePreviousTrackButtonAtBoundary; // If set to yes, the Previous-Track Button will be disabled if the first track of the set is played or set.
 @property (nonatomic) BOOL shouldHideNextTrackButtonAtBoundary; // If set to yes, the Next-Track Button will be disabled if the last track of the set is played or set.
 
