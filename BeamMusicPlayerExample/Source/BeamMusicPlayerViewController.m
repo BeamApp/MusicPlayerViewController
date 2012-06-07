@@ -218,7 +218,6 @@
 -(void)updateUIForCurrentTrack {
     
     self.artistNameLabel.text = [self.dataSource musicPlayer:self artistForTrack:self.currentTrack];
-    NSLog(@"artistNameLabel.text: %@", self.artistNameLabel.text);
     self.trackTitleLabel.text = [self.dataSource musicPlayer:self titleForTrack:self.currentTrack];
     self.albumTitleLabel.text = [self.dataSource musicPlayer:self albumForTrack:self.currentTrack];
 
@@ -315,15 +314,15 @@
  * Called when the player finished playing the current track. 
  */
 -(void)currentTrackFinished {
-    [self pause];
+//    [self pause];
     if ( self.repeatMode != MPMusicRepeatModeOne ){
         [self next];
-        [self play];
+//        [self play];
 
     } else {
         self->currentPlaybackPosition = 0;
         [self updateSeekUI];
-        [self play];
+//        [self play];
     }
 }
 
@@ -354,7 +353,7 @@
     }
     
     if ( shouldChange ){
-        [self pause];
+//        [self pause];
         
         // Update state to match new track
         self->currentPlaybackPosition = 0;
@@ -374,7 +373,7 @@
         [self updateSeekUI];
         [self updateTrackDisplay];
         [self adjustDirectionalButtonStates];
-        [self play];
+  //      [self play];
     }
     return shouldChange;
 }
@@ -383,8 +382,8 @@
  * Reloads data from the data source and updates the player. If the player is currently playing, the playback is stopped.
  */
 -(void)reloadData {
-    if ( self.playing )
-        [self pause];
+//    if ( self.playing )
+//        [self pause];
     
     [self changeTrack:0];
     [self updateUIForCurrentTrack];

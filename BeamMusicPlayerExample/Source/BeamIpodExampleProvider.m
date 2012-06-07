@@ -15,12 +15,21 @@
 @synthesize query;
 @synthesize backBlock;
 @synthesize actionBlock;
+@synthesize onAskingForDataPropagationBlock;
 
 -(id)init {
     self = [super init];
     if ( self ){
         
         self.musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
+        
+        [musicPlayer beginGeneratingPlaybackNotifications];
+        
+        [[NSNotificationCenter defaultCenter] addObserverForName:nil object:self.musicPlayer queue:nil usingBlock:^(NSNotification* notification){
+            if(onAskingForDataPropagationBlock)
+                onAskingForDataPropagationBlock(self);
+        }];
+        
         
         // Using an unspecific query we extract all files from the library for playback.
         //MPMediaQuery *everything = [[MPMediaQuery alloc] init];
@@ -44,6 +53,11 @@
     [controller view];
     
     [controller playTrack:musicPlayer.indexOfNowPlayingItem atPosition:musicPlayer.currentPlaybackTime volume:-1];
+    controller.volume = musicPlayer.volume;
+    if(musicPlayer.playbackState == MPMusicPlaybackStatePlaying)
+        [controller play];
+    else
+        [controller pause];
     propagatingData = NO;
 }
 
@@ -62,7 +76,6 @@
 
 -(NSString*)musicPlayer:(BeamMusicPlayerViewController *)player artistForTrack:(NSUInteger)trackNumber {
     MPMediaItem* item = [self.mediaItems objectAtIndex:trackNumber];
-    NSLog(@"musicPlayer artistForTrack:%d -> item: %@", trackNumber, item);
     return [item valueForProperty:MPMediaItemPropertyArtist];
 }
 
@@ -97,8 +110,7 @@
 
 -(void)musicPlayer:(BeamMusicPlayerViewController *)player didChangeTrack:(NSUInteger)track {
     if(!propagatingData)
-        [self.musicPlayer setNowPlayingItem:[self.mediaItems objectAtIndex:track]];
-    NSLog(@"did change");
+        [self.musicPlayer setNowPlayingItem:[self.mediaItems objectAtIndex:track]];    
 }
 
 -(void)musicPlayerDidStartPlaying:(BeamMusicPlayerViewController *)player {
