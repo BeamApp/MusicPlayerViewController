@@ -12,24 +12,20 @@
 @implementation BeamIpodExampleProvider
 
 @synthesize musicPlayer;
-@synthesize controller;
-@synthesize mediaItems;
+@synthesize query;
+@synthesize backBlock;
+@synthesize actionBlock;
 
 -(id)init {
     self = [super init];
     if ( self ){
         
-        self.musicPlayer = [MPMusicPlayerController applicationMusicPlayer];
+        self.musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
         
         // Using an unspecific query we extract all files from the library for playback.
-        MPMediaQuery *everything = [[MPMediaQuery alloc] init];
-
-        self.mediaItems = [everything items];
+        //MPMediaQuery *everything = [[MPMediaQuery alloc] init];
         
-        [self.musicPlayer setQueueWithQuery:everything];
-        
-        [self.controller reloadData];
-        [self.controller play];
+//        [self.musicPlayer setQueueWithQuery:everything];
         // This HACK hides the volume overlay when changing the volume.
         // It's insipired by http://stackoverflow.com/questions/3845222/iphone-sdk-how-to-disable-the-volume-indicator-view-if-the-hardware-buttons-ar
         MPVolumeView* view = [MPVolumeView new];
@@ -41,6 +37,24 @@
     return self;
 }
 
+-(void)propagateDataTo:(BeamMusicPlayerViewController*) controller {
+    propagatingData = YES;
+//    [controller reloadData];
+    // ensure controller's UI has been loaded from NIB
+    [controller view];
+    
+    [controller playTrack:musicPlayer.indexOfNowPlayingItem atPosition:musicPlayer.currentPlaybackTime volume:-1];
+    propagatingData = NO;
+}
+
+-(void)setQuery:(MPMediaQuery *)aQuery {
+    query = aQuery;
+}
+
+-(NSArray *)mediaItems {
+    return self.query.items;
+}
+
 -(NSString*)musicPlayer:(BeamMusicPlayerViewController *)player albumForTrack:(NSUInteger)trackNumber {
     MPMediaItem* item = [self.mediaItems objectAtIndex:trackNumber];
     return [item valueForProperty:MPMediaItemPropertyAlbumTitle];
@@ -48,6 +62,7 @@
 
 -(NSString*)musicPlayer:(BeamMusicPlayerViewController *)player artistForTrack:(NSUInteger)trackNumber {
     MPMediaItem* item = [self.mediaItems objectAtIndex:trackNumber];
+    NSLog(@"musicPlayer artistForTrack:%d -> item: %@", trackNumber, item);
     return [item valueForProperty:MPMediaItemPropertyArtist];
 }
 
@@ -81,35 +96,39 @@
 #pragma mark Delegate Methods ( Used to control the music player )
 
 -(void)musicPlayer:(BeamMusicPlayerViewController *)player didChangeTrack:(NSUInteger)track {
-    [self.musicPlayer setNowPlayingItem:[self.mediaItems objectAtIndex:track]];
+    if(!propagatingData)
+        [self.musicPlayer setNowPlayingItem:[self.mediaItems objectAtIndex:track]];
+    NSLog(@"did change");
 }
 
 -(void)musicPlayerDidStartPlaying:(BeamMusicPlayerViewController *)player {
-    [self.musicPlayer play];
+    if(!propagatingData)
+        [self.musicPlayer play];
 }
 
 -(void)musicPlayerDidStopPlaying:(BeamMusicPlayerViewController *)player {
-    [self.musicPlayer pause];
+    if(!propagatingData)
+        [self.musicPlayer pause];
 }
 
 -(void)musicPlayer:(BeamMusicPlayerViewController *)player didChangeVolume:(CGFloat)volume {
-    [self.musicPlayer setVolume:volume];
+    if(!propagatingData)
+        [self.musicPlayer setVolume:volume];
 }
 
 -(void)musicPlayer:(BeamMusicPlayerViewController *)player didSeekToPosition:(CGFloat)position {
-    [self.musicPlayer setCurrentPlaybackTime:position];
+    if(!propagatingData)
+        [self.musicPlayer setCurrentPlaybackTime:position];
 }
 
--(void)musicPlayerActionRequested:(BeamMusicPlayerViewController *)musicPlayer {
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Action" message:@"The Player's action button was pressed." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
-    [alertView show];
-    
+-(void)musicPlayerActionRequested:(BeamMusicPlayerViewController *)aMusicPlayer {
+    if(actionBlock)
+        actionBlock(aMusicPlayer);
 }
 
--(void)musicPlayerBackRequested:(BeamMusicPlayerViewController *)musicPlayer {
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Action" message:@"The Player's back button was pressed." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
-    [alertView show];
-    
+-(void)musicPlayerBackRequested:(BeamMusicPlayerViewController *)aMusicPlayer {
+    if(backBlock)
+        backBlock(aMusicPlayer);
 }
 
 

@@ -42,37 +42,37 @@
 
 @interface BeamMusicPlayerViewController()
 
-@property (nonatomic,weak) IBOutlet UISlider* volumeSlider; // Volume Slider
-@property (nonatomic,weak) IBOutlet UISlider* progressSlider; // Progress Slider buried in the Progress View
+@property (nonatomic,assign) IBOutlet UISlider* volumeSlider; // Volume Slider
+@property (nonatomic,assign) IBOutlet UISlider* progressSlider; // Progress Slider buried in the Progress View
 
-@property (nonatomic,weak) IBOutlet AutoScrollLabel* trackTitleLabel; // The Title Label
-@property (nonatomic,weak) IBOutlet AutoScrollLabel* albumTitleLabel; // Album Label
-@property (nonatomic,weak) IBOutlet AutoScrollLabel* artistNameLabel; // Artist Name Label
+@property (nonatomic,assign) IBOutlet AutoScrollLabel* trackTitleLabel; // The Title Label
+@property (nonatomic,assign) IBOutlet AutoScrollLabel* albumTitleLabel; // Album Label
+@property (nonatomic,assign) IBOutlet AutoScrollLabel* artistNameLabel; // Artist Name Label
 
-@property (nonatomic,weak) IBOutlet UIToolbar* controlsToolbar; // Encapsulates the Play, Forward, Rewind buttons
+@property (nonatomic,assign) IBOutlet UIToolbar* controlsToolbar; // Encapsulates the Play, Forward, Rewind buttons
 
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *actionButton; // retain, since controller keeps a reference while it might be detached from view hierarchy
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *backButton; // retain, since controller keeps a reference while it might be detached from view hierarchy
 
-@property (nonatomic,weak) IBOutlet UIBarButtonItem* rewindButton; // Previous Track
-@property (nonatomic,weak) IBOutlet UIBarButtonItem* fastForwardButton; // Next Track
-@property (nonatomic,weak) IBOutlet UIBarButtonItem* playButton; // Play
+@property (nonatomic,assign) IBOutlet UIBarButtonItem* rewindButton; // Previous Track
+@property (nonatomic,assign) IBOutlet UIBarButtonItem* fastForwardButton; // Next Track
+@property (nonatomic,assign) IBOutlet UIBarButtonItem* playButton; // Play
 
-@property (nonatomic,weak) IBOutlet UIImageView* albumArtImageView; // Album Art Image View
-@property (nonatomic,weak) IBOutlet UIImageView* albumArtReflection; // It's reflection
+@property (nonatomic,assign) IBOutlet UIImageView* albumArtImageView; // Album Art Image View
+@property (nonatomic,assign) IBOutlet UIImageView* albumArtReflection; // It's reflection
 
 @property (nonatomic,strong) NSTimer* playbackTickTimer; // Ticks each seconds when playing.
 
 @property (nonatomic,strong) UITapGestureRecognizer* coverArtGestureRecognizer; // Tap Recognizer used to dim in / out the scrobble overlay.
 
-@property (nonatomic,weak) IBOutlet UIView* scrobbleOverlay; // Overlay that serves as a container for all components visible only in scrobble-mode
-@property (nonatomic,weak) IBOutlet UILabel* timeElapsedLabel; // Elapsed Time Label
-@property (nonatomic,weak) IBOutlet UILabel* timeRemainingLabel; // Remaining Time Label
-@property (nonatomic,weak) IBOutlet UIButton* shuffleButton; // Shuffle Button
-@property (nonatomic,weak) IBOutlet UIButton* repeatButton; // Repeat button
-@property (nonatomic,weak) IBOutlet UILabel* scrobbleHelpLabel; // The Scrobble Usage hint Label
-@property (nonatomic,weak) IBOutlet UILabel* numberOfTracksLabel; // Track x of y or the scrobble speed
-@property (nonatomic,weak) IBOutlet UIImageView* scrobbleHighlightShadow; // It's reflection
+@property (nonatomic,assign) IBOutlet UIView* scrobbleOverlay; // Overlay that serves as a container for all components visible only in scrobble-mode
+@property (nonatomic,assign) IBOutlet UILabel* timeElapsedLabel; // Elapsed Time Label
+@property (nonatomic,assign) IBOutlet UILabel* timeRemainingLabel; // Remaining Time Label
+@property (nonatomic,assign) IBOutlet UIButton* shuffleButton; // Shuffle Button
+@property (nonatomic,assign) IBOutlet UIButton* repeatButton; // Repeat button
+@property (nonatomic,assign) IBOutlet UILabel* scrobbleHelpLabel; // The Scrobble Usage hint Label
+@property (nonatomic,assign) IBOutlet UILabel* numberOfTracksLabel; // Track x of y or the scrobble speed
+@property (nonatomic,assign) IBOutlet UIImageView* scrobbleHighlightShadow; // It's reflection
 
 
 @property (nonatomic) CGFloat currentTrackLength; // The Length of the currently playing track
@@ -83,7 +83,7 @@
 @property (nonatomic) BOOL imageIsPlaceholder; // Whether the currently shown image is a placeholder
 @property (nonatomic) BOOL lastDirectionChangePositive; // Whether the last direction change was positive.
 
-@property (nonatomic,weak) IBOutlet UINavigationItem* navigationItem;
+@property (nonatomic,assign) IBOutlet UINavigationItem* navigationItem;
 
 @end
 
@@ -128,6 +128,11 @@
 @synthesize shouldHidePreviousTrackButtonAtBoundary;
 @synthesize navigationItem;
 @synthesize preferredSizeForCoverArt;
+
++(id)controllerFromNib {
+    // TODO: find correct NIB depending on device
+    return [[self alloc] initWithNibName:@"BeamMusicPlayerViewController_iPhone" bundle:nil];
+}
 
 - (void)viewDidLoad
 {
@@ -213,6 +218,7 @@
 -(void)updateUIForCurrentTrack {
     
     self.artistNameLabel.text = [self.dataSource musicPlayer:self artistForTrack:self.currentTrack];
+    NSLog(@"artistNameLabel.text: %@", self.artistNameLabel.text);
     self.trackTitleLabel.text = [self.dataSource musicPlayer:self titleForTrack:self.currentTrack];
     self.albumTitleLabel.text = [self.dataSource musicPlayer:self albumForTrack:self.currentTrack];
 
@@ -227,13 +233,14 @@
         self.albumArtReflection.image = [self.albumArtImageView reflectedImageWithHeight:self.albumArtReflection.frame.size.height];
         self.imageIsPlaceholder = YES;
         
-        CATransition* transition = [CATransition animation];
-        transition.type = kCATransitionPush;
-        transition.subtype = self.lastDirectionChangePositive ? kCATransitionFromRight : kCATransitionFromLeft;
-        [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
-        [[self.albumArtImageView layer] addAnimation:transition forKey:@"SlideOutandInImagek"];
-
-        [[self.albumArtReflection layer] addAnimation:transition forKey:@"SlideOutandInImagek"];
+//        CATransition* transition = [CATransition animation];
+//        transition.type = kCATransitionPush;
+//        // TODO: handle cases where a reload was necessary without skipping to another track (e.g. first title)
+//        transition.subtype = self.lastDirectionChangePositive ? kCATransitionFromRight : kCATransitionFromLeft;
+//        [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+//        [[self.albumArtImageView layer] addAnimation:transition forKey:@"SlideOutandInImagek"];
+//
+//        [[self.albumArtReflection layer] addAnimation:transition forKey:@"SlideOutandInImagek"];
 
 
         // Request the image. 
@@ -321,20 +328,23 @@
 }
 
 -(void)playTrack:(NSUInteger)track atPosition:(CGFloat)position volume:(CGFloat)volume {
-    self.volume = volume;
-    [self changeTrack:track];
-    self->currentPlaybackPosition = position;
-    [self play];
+    if(volume>0)
+        self.volume = volume;
+    if([self changeTrack:track]) {
+        self->currentPlaybackPosition = position;
+    }
 }
 
 /*
  * Changes the track to the new track given.
  */
--(void)changeTrack:(NSUInteger)newTrack {
+-(BOOL)changeTrack:(NSUInteger)newTrack {
     BOOL shouldChange = YES;
     if ( [self.delegate respondsToSelector:@selector(musicPlayer:shoulChangeTrack:) ]){
         shouldChange = [self.delegate musicPlayer:self shouldChangeTrack:newTrack];
     }
+    
+    self.numberOfTracks = [self.dataSource numberOfTracksInPlayer:self];
     
     if ( newTrack > numberOfTracks-1 ){
         shouldChange = NO;
@@ -351,7 +361,6 @@
         self.currentTrack = newTrack;
         
         self.currentTrackLength = [self.dataSource musicPlayer:self lengthForTrack:self.currentTrack];
-        self.numberOfTracks = [self.dataSource numberOfTracksInPlayer:self];
         
         // Slider
         self.progressSlider.maximumValue = self.currentTrackLength;
@@ -367,6 +376,7 @@
         [self adjustDirectionalButtonStates];
         [self play];
     }
+    return shouldChange;
 }
 
 /**
