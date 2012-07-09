@@ -339,7 +339,7 @@
  */
 -(BOOL)changeTrack:(NSUInteger)newTrack {
     BOOL shouldChange = YES;
-    if ( [self.delegate respondsToSelector:@selector(musicPlayer:shoulChangeTrack:) ]){
+    if ( [self.delegate respondsToSelector:@selector(musicPlayer:shouldChangeTrack:) ]){
         shouldChange = [self.delegate musicPlayer:self shouldChangeTrack:newTrack];
     }
     
