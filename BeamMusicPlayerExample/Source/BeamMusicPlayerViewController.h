@@ -44,7 +44,7 @@
  * It does not actually play music, just visualize music that is played somewhere else. The data to display
  * is provided using the datasource property, events can be intercepted using the delegate-property.
  */
-@interface BeamMusicPlayerViewController : UIViewController<OBSliderDelegate>
+@interface BeamMusicPlayerViewController : UIViewController
 
 
 /// --------------------------------

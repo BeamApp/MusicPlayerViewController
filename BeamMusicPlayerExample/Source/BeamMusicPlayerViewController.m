@@ -43,7 +43,7 @@
 @interface BeamMusicPlayerViewController()
 
 @property (nonatomic,weak) IBOutlet UISlider* volumeSlider; // Volume Slider
-@property (nonatomic,weak) IBOutlet UISlider* progressSlider; // Progress Slider buried in the Progress View
+@property (nonatomic,weak) IBOutlet OBSlider* progressSlider; // Progress Slider buried in the Progress View
 
 @property (nonatomic,weak) IBOutlet AutoScrollLabel* trackTitleLabel; // The Title Label
 @property (nonatomic,weak) IBOutlet AutoScrollLabel* albumTitleLabel; // Album Label
@@ -542,12 +542,12 @@
     [self adjustDirectionalButtonStates];
 }
 
-#pragma mark - OBSlider delegate methods
+#pragma mark - scrubbing slider
 
 /**
  * Called whenever the scrubber changes it's speed. Used to update the display of the scrobble speed.
  */
--(void)slider:(OBSlider *)slider didChangeScrubbingSpeed:(CGFloat)speed {
+-(void)updateUIForScrubbingSpeed:(CGFloat)speed {
     if ( speed == 1.0 ){
         self.numberOfTracksLabel.text = @"Hi-Speed Scrubbing";
     } else if ( speed == 0.5 ){
@@ -564,16 +564,15 @@
 /**
  * Dims away the repeat and shuffle button
  */
--(void)sliderDidBeginScrubbing:(OBSlider *)slider {
+- (IBAction)sliderDidBeginScrubbing:(id)sender {
     self.scrobbling = YES;
     [self setScrobbleUI:YES];
-
 }
 
 /**
  * Shows the repeat and shuffle button and hides the scrobble help
  */
--(void)sliderDidEndScrubbing:(OBSlider *)slider {
+- (IBAction)sliderDidEndScrubbing:(id)sender {
     self.scrobbling = NO;
     [self setScrobbleUI:NO];
     [self updateTrackDisplay];
@@ -597,6 +596,7 @@
  */
 -(IBAction)sliderValueChanged:(id)slider {
     self->currentPlaybackPosition = self.progressSlider.value;
+    [self updateUIForScrubbingSpeed: self.progressSlider.scrubbingSpeed];
     
     if ( [self.delegate respondsToSelector:@selector(musicPlayer:didSeekToPosition:)]) {
         [self.delegate musicPlayer:self didSeekToPosition:self->currentPlaybackPosition];
