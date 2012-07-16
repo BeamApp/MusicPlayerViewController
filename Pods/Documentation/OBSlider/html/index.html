@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>OBSlider 1.1.0 Reference</title>
+		<link rel="stylesheet" type="text/css" href="css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="index.html">OBSlider 1.1.0 </a></h1>
+				<a id="developerHome" href="index.html">Ole Begemann</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">OBSlider 1.1.0 Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar"></ul>
+		</header>
+		<article>
+			<div id="overview_contents" role="main">
+				<div class="main-navigation navigation-top">
+					<a href="hierarchy.html">Next</a>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">OBSlider 1.1.0 Reference</h1>
+					</div>		
+				</div>
+				<div id="container">
+					
+					<div class="section section-overview index-overview">
+						
+						
+						<h1><a href="Classes/OBSlider.html">OBSlider</a></h1>
+
+<p>A <code>UISlider</code> subclass that adds variable scrubbing speeds (as seen in the iPod app on iOS) to <code>UISlider</code>.</p>
+
+<p>Written by <a href="http://oleb.net">Ole Begemann</a>, January 2011.</p>
+
+<h2>Usage</h2>
+
+<p>Copy <a href="Classes/OBSlider.html"><code>OBSlider</code></a>.h<code>and</code><a href="Classes/OBSlider.html"><code>OBSlider</code></a>.m<code>to your project and instantiate an</code><a href="Classes/OBSlider.html"><code>OBSlider</code></a> wherever you would use a <code>UISlider</code>. If you create the slider in Interface Builder, set its class to <a href="Classes/OBSlider.html"><code>OBSlider</code></a> on the Identity tab.</p>
+
+<p>The slider works with variable scrubbing speeds out of the box. In the action method you have assigned to <code>UIControlEventValueChanged</code>, you can access the <code>scrubbingSpeed</code> variable to get the current scrubbing speed. <code>Scrubbing</code>scrubbingSpeed<code>is a</code>float<code>where</code>1.0f` is the normal scrubbing speed.</p>
+
+<p>To modify which scrubbing speed should be set at which vertical offset position of the user&rsquo;s touch, you can modify the <code>scrubbingSpeeds</code> and <code>scrubbingSpeedChangePositions</code> arrays. Both arrays should contain the same number of objects. <code>scrubbingSpeedChangePositions</code> should indicate the vertical offsets at which scrubbing speed changes should take place in ascending order. The first entry in this array should always be <code>[NSNumber numberWithFloat:0.0f]</code>. <code>scrubbingSpeeds</code> should contain the actual values for the scrubbing speed that correspond to the offset positions.</p>
+
+<p>The default values for the two arrays are:</p>
+
+<pre><code>scrubbingSpeeds = [NSArray arrayWithObjects:
+ [NSNumber numberWithFloat:1.0f],
+ [NSNumber numberWithFloat:0.5f],
+ [NSNumber numberWithFloat:0.25f],
+ [NSNumber numberWithFloat:0.1f],
+ nil];
+
+scrubbingSpeedChangePositions = [NSArray arrayWithObjects:
+ [NSNumber numberWithFloat:0.0f],
+ [NSNumber numberWithFloat:50.0f],
+ [NSNumber numberWithFloat:100.0f],
+ [NSNumber numberWithFloat:150.0f],
+ nil];
+</code></pre>
+
+<p>(That is, scrubbing speed changes from 100% to 50% to 25% to 10% when the user moves the finger upward/downward by 50.0/100.0/150.0 points, respectively.)</p>
+
+<h2>Requirements</h2>
+
+<p><code>OBSlider</code> 1.0.0 (tagged with 1.0.0) works in iOS 3.0+.</p>
+
+<p>With version 1.1.0 (tagged 1.1.0) I converted the source code to Automatic Reference Counting (ARC) and raised the deployment target of the demo app to iOS 5.0. If you want to support earlier iOS versions, please check out the 1.0.0 tag.</p>
+
+<h2>Demo</h2>
+
+<p>Open the demo project <code>OBSliderDemo.xcodeproj</code> in Xcode and run it on an iPhone or the iPhone Simulator. Drag the slider around and, while dragging, move your finger upwards/downwards to adjust the scrubbing speed.</p>
+
+<h2>Untested</h2>
+
+<p>The class is basically untested. Please report bugs via the issue tracker on GitHub.</p>
+
+<h2>License</h2>
+
+<p>Licensed under the MIT license. You can use the code in your commercial and non-commercial projects.</p>
+
+<h2>Contributors</h2>
+
+<ul>
+<li><a href="https://github.com/ole">Ole Begemann</a></li>
+<li><a href="https://github.com/dlinsin">David Linsin</a>: iOS 3.x compatibility</li>
+<li><a href="https://github.com/sylverb">Sylver Bruneau</a>: iPod.app-like slider behavior (as you drag towards the slider, the thumb meets your finger at the slider)</li>
+<li><a href="https://github.com/bradsokol">Brad Sokol</a>: Position the thumb more precisely when the user drags their finger back towards the slider</li>
+</ul>
+
+
+<p>Thanks!</p>
+						
+						
+					</div>
+					
+                        
+                    
+					
+					
+					<div class="index-column">
+						<h2 class="index-title">Class References</h2>
+						<ul>
+							
+							<li><a href="Classes/OBSlider.html">OBSlider</a></li>
+							
+						</ul>
+					</div>
+					
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<a href="hierarchy.html">Next</a>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2012 Ole Begemann. All rights reserved. (Last updated: 2012-07-16)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
+						
+	
+					</div>
+				</div>
+			</div>
+		</article>		
+	</body>
+</html>

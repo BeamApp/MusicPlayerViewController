@@ -1,0 +1,5 @@
+PODS:
+  - OBSlider (1.1.0)
+
+DEPENDENCIES:
+  - OBSlider
