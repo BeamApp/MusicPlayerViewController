@@ -15,7 +15,7 @@ static const CGFloat kDefaultReflectionOpacity = 0.40;
 
 #pragma mark - Image Reflection
 
-CGImageRef CreateGradientImage(int pixelsWide, int pixelsHigh)
+CGImageRef BeamCreateGradientImage(int pixelsWide, int pixelsHigh)
 {
     CGImageRef theCGImage = NULL;
     
@@ -66,7 +66,7 @@ CGImageRef CreateGradientImage(int pixelsWide, int pixelsHigh)
     // create a 2 bit CGImage containing a gradient that will be used for masking the 
     // main view content to create the 'fade' of the reflection.  The CGImageCreateWithMask
     // function will stretch the bitmap image as required, so we can create a 1 pixel wide gradient
-    CGImageRef gradientMaskImage = CreateGradientImage(1, height);
+    CGImageRef gradientMaskImage = BeamCreateGradientImage(1, height);
     
     // create an image by masking the bitmap of the mainView content with the gradient view
     // then release the  pre-masked content bitmap and the gradient bitmap
