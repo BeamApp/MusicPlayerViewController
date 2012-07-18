@@ -10,7 +10,6 @@
 		6164600534AD45B89AACF5D9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D255CDAD8A6E4F49A1799F78 /* libPods.a */; };
 		9708EED51579146F0097F43F /* BeamMinimalExampleProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9708EED41579146F0097F43F /* BeamMinimalExampleProvider.m */; };
 		9755DA9E1578BE2800B5431E /* AutoScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9755DA9C1578BBA700B5431E /* AutoScrollLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9755DAA01578C20800B5431E /* fade_overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9755DA9F1578C20800B5431E /* fade_overlay@2x.png */; };
 		9755DAA21578C2BE00B5431E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9755DAA11578C2BE00B5431E /* QuartzCore.framework */; };
 		97B7AA3315760AAF0014E693 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B7AA3215760AAF0014E693 /* UIKit.framework */; };
 		97B7AA3515760AAF0014E693 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B7AA3415760AAF0014E693 /* Foundation.framework */; };
@@ -23,38 +22,14 @@
 		97B7AA5615760AAF0014E693 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B7AA3415760AAF0014E693 /* Foundation.framework */; };
 		97B7AA5E15760AAF0014E693 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 97B7AA5C15760AAF0014E693 /* InfoPlist.strings */; };
 		97B7AA6115760AAF0014E693 /* BeamMusicPlayerExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B7AA6015760AAF0014E693 /* BeamMusicPlayerExampleTests.m */; };
-		97CA27F91577587A003D8938 /* BeamMusicPlayerViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97CA27F81577587A003D8938 /* BeamMusicPlayerViewController_iPhone.xib */; };
-		97CA27FC1577588D003D8938 /* BeamMusicPlayerViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97CA27FB1577588D003D8938 /* BeamMusicPlayerViewController_iPad.xib */; };
 		97CA281C15778872003D8938 /* NSDateFormatter+Duration.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CA281B15778872003D8938 /* NSDateFormatter+Duration.m */; };
-		97CA28261577AF31003D8938 /* shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 97CA28251577AF31003D8938 /* shadow.png */; };
-		97CA28281577AFE0003D8938 /* shadow_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 97CA28271577AFE0003D8938 /* shadow_highlight.png */; };
 		97CA282B1577B68B003D8938 /* BeamIpodExampleProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CA282A1577B68B003D8938 /* BeamIpodExampleProvider.m */; };
 		97CA282D1577B6A9003D8938 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97CA282C1577B6A9003D8938 /* MediaPlayer.framework */; };
-		97DE4F221576212900D077E3 /* volume-slider-fat-filled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97DE4F191576212900D077E3 /* volume-slider-fat-filled@2x.png */; };
-		97DE4F231576212900D077E3 /* volume-slider-fat-unfilled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97DE4F1A1576212900D077E3 /* volume-slider-fat-unfilled@2x.png */; };
-		97DE4F241576212900D077E3 /* VolumeBlueCap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97DE4F1B1576212900D077E3 /* VolumeBlueCap@2x.png */; };
-		97DE4F251576212900D077E3 /* VolumeBlueFill@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97DE4F1C1576212900D077E3 /* VolumeBlueFill@2x.png */; };
-		97DE4F261576212900D077E3 /* VolumeBlueTrack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97DE4F1D1576212900D077E3 /* VolumeBlueTrack@2x.png */; };
-		97DE4F271576212900D077E3 /* VolumeKnob@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97DE4F1E1576212900D077E3 /* VolumeKnob@2x.png */; };
-		97DE4F281576212900D077E3 /* VolumeWhiteMusicCap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97DE4F1F1576212900D077E3 /* VolumeWhiteMusicCap@2x.png */; };
-		97DE4F291576212900D077E3 /* VolumeWhiteMusicFill@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97DE4F201576212900D077E3 /* VolumeWhiteMusicFill@2x.png */; };
-		97DE4F2A1576212900D077E3 /* VolumeWhiteTrack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97DE4F211576212900D077E3 /* VolumeWhiteTrack@2x.png */; };
-		97DE4F3415762E5100D077E3 /* noartplaceholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97DE4F3315762E5100D077E3 /* noartplaceholder@2x.png */; };
 		97DE4F3815763A0F00D077E3 /* UIImageView+Reflection.m in Sources */ = {isa = PBXBuildFile; fileRef = 97DE4F3715763A0F00D077E3 /* UIImageView+Reflection.m */; };
-		97DE4F3A157644EE00D077E3 /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97DE4F39157644EE00D077E3 /* play@2x.png */; };
-		97DE4F3E1576455600D077E3 /* nexttrack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97DE4F3B1576455600D077E3 /* nexttrack@2x.png */; };
-		97DE4F3F1576455600D077E3 /* pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97DE4F3C1576455600D077E3 /* pause@2x.png */; };
-		97DE4F401576455600D077E3 /* prevtrack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97DE4F3D1576455600D077E3 /* prevtrack@2x.png */; };
-		97E9DA61157674C000620689 /* shuffle_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97E9DA5F157674C000620689 /* shuffle_off@2x.png */; };
-		97E9DA62157674C000620689 /* shuffle_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97E9DA60157674C000620689 /* shuffle_on@2x.png */; };
-		97E9DA67157674D000620689 /* repeat_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97E9DA64157674D000620689 /* repeat_off@2x.png */; };
-		97E9DA68157674D000620689 /* repeat_on_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97E9DA65157674D000620689 /* repeat_on_1@2x.png */; };
-		97E9DA69157674D000620689 /* repeat_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97E9DA66157674D000620689 /* repeat_on@2x.png */; };
-		97E9DA6B1576754400620689 /* scrubberglow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97E9DA6A1576754400620689 /* scrubberglow@2x.png */; };
-		97F6D19815791C8F008FA75B /* backbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97F6D19715791C8F008FA75B /* backbutton@2x.png */; };
 		CB35A6FF1576918F008318EE /* BeamMusicPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB35A6FE1576918F008318EE /* BeamMusicPlayerViewController.m */; };
 		CB46FE1415795405004BE46A /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB46FE1315795405004BE46A /* libOCMock.a */; };
 		CB46FE17157955B7004BE46A /* BeamMusicPlayerViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB46FE16157955B7004BE46A /* BeamMusicPlayerViewControllerTests.m */; };
+		CBCD885B15B44165001B7A1D /* BeamMusicPlayerController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CBCD885A15B44165001B7A1D /* BeamMusicPlayerController.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,7 +48,6 @@
 		9708EED41579146F0097F43F /* BeamMinimalExampleProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BeamMinimalExampleProvider.m; path = "Example Providers/BeamMinimalExampleProvider.m"; sourceTree = "<group>"; };
 		9755DA9B1578BBA700B5431E /* AutoScrollLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoScrollLabel.h; sourceTree = "<group>"; };
 		9755DA9C1578BBA700B5431E /* AutoScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoScrollLabel.m; sourceTree = "<group>"; };
-		9755DA9F1578C20800B5431E /* fade_overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fade_overlay@2x.png"; sourceTree = "<group>"; };
 		9755DAA11578C2BE00B5431E /* QuartzCore.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		97B7AA2E15760AAF0014E693 /* BeamMusicPlayerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeamMusicPlayerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97B7AA3215760AAF0014E693 /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -91,38 +65,13 @@
 		97B7AA5D15760AAF0014E693 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		97B7AA5F15760AAF0014E693 /* BeamMusicPlayerExampleTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeamMusicPlayerExampleTests.h; sourceTree = "<group>"; };
 		97B7AA6015760AAF0014E693 /* BeamMusicPlayerExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeamMusicPlayerExampleTests.m; sourceTree = "<group>"; };
-		97CA27F81577587A003D8938 /* BeamMusicPlayerViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeamMusicPlayerViewController_iPhone.xib; sourceTree = "<group>"; };
-		97CA27FB1577588D003D8938 /* BeamMusicPlayerViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeamMusicPlayerViewController_iPad.xib; sourceTree = "<group>"; };
 		97CA281A15778872003D8938 /* NSDateFormatter+Duration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDateFormatter+Duration.h"; path = "BeamMusicPlayerExample/Source/NSDateFormatter+Duration.h"; sourceTree = "<group>"; };
 		97CA281B15778872003D8938 /* NSDateFormatter+Duration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDateFormatter+Duration.m"; path = "BeamMusicPlayerExample/Source/NSDateFormatter+Duration.m"; sourceTree = "<group>"; };
-		97CA28251577AF31003D8938 /* shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shadow.png; sourceTree = "<group>"; };
-		97CA28271577AFE0003D8938 /* shadow_highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shadow_highlight.png; sourceTree = "<group>"; };
 		97CA28291577B68B003D8938 /* BeamIpodExampleProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BeamIpodExampleProvider.h; path = Source/BeamIpodExampleProvider.h; sourceTree = "<group>"; };
 		97CA282A1577B68B003D8938 /* BeamIpodExampleProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BeamIpodExampleProvider.m; path = Source/BeamIpodExampleProvider.m; sourceTree = "<group>"; };
 		97CA282C1577B6A9003D8938 /* MediaPlayer.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		97DE4F191576212900D077E3 /* volume-slider-fat-filled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "volume-slider-fat-filled@2x.png"; sourceTree = "<group>"; };
-		97DE4F1A1576212900D077E3 /* volume-slider-fat-unfilled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "volume-slider-fat-unfilled@2x.png"; sourceTree = "<group>"; };
-		97DE4F1B1576212900D077E3 /* VolumeBlueCap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VolumeBlueCap@2x.png"; sourceTree = "<group>"; };
-		97DE4F1C1576212900D077E3 /* VolumeBlueFill@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VolumeBlueFill@2x.png"; sourceTree = "<group>"; };
-		97DE4F1D1576212900D077E3 /* VolumeBlueTrack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VolumeBlueTrack@2x.png"; sourceTree = "<group>"; };
-		97DE4F1E1576212900D077E3 /* VolumeKnob@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VolumeKnob@2x.png"; sourceTree = "<group>"; };
-		97DE4F1F1576212900D077E3 /* VolumeWhiteMusicCap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VolumeWhiteMusicCap@2x.png"; sourceTree = "<group>"; };
-		97DE4F201576212900D077E3 /* VolumeWhiteMusicFill@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VolumeWhiteMusicFill@2x.png"; sourceTree = "<group>"; };
-		97DE4F211576212900D077E3 /* VolumeWhiteTrack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VolumeWhiteTrack@2x.png"; sourceTree = "<group>"; };
-		97DE4F3315762E5100D077E3 /* noartplaceholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "noartplaceholder@2x.png"; sourceTree = "<group>"; };
 		97DE4F3615763A0F00D077E3 /* UIImageView+Reflection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+Reflection.h"; path = "BeamMusicPlayerExample/Source/UIImageView+Reflection.h"; sourceTree = "<group>"; };
 		97DE4F3715763A0F00D077E3 /* UIImageView+Reflection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+Reflection.m"; path = "BeamMusicPlayerExample/Source/UIImageView+Reflection.m"; sourceTree = "<group>"; };
-		97DE4F39157644EE00D077E3 /* play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play@2x.png"; sourceTree = "<group>"; };
-		97DE4F3B1576455600D077E3 /* nexttrack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nexttrack@2x.png"; sourceTree = "<group>"; };
-		97DE4F3C1576455600D077E3 /* pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause@2x.png"; sourceTree = "<group>"; };
-		97DE4F3D1576455600D077E3 /* prevtrack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "prevtrack@2x.png"; sourceTree = "<group>"; };
-		97E9DA5F157674C000620689 /* shuffle_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shuffle_off@2x.png"; sourceTree = "<group>"; };
-		97E9DA60157674C000620689 /* shuffle_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shuffle_on@2x.png"; sourceTree = "<group>"; };
-		97E9DA64157674D000620689 /* repeat_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "repeat_off@2x.png"; sourceTree = "<group>"; };
-		97E9DA65157674D000620689 /* repeat_on_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "repeat_on_1@2x.png"; sourceTree = "<group>"; };
-		97E9DA66157674D000620689 /* repeat_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "repeat_on@2x.png"; sourceTree = "<group>"; };
-		97E9DA6A1576754400620689 /* scrubberglow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scrubberglow@2x.png"; sourceTree = "<group>"; };
-		97F6D19715791C8F008FA75B /* backbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backbutton@2x.png"; sourceTree = "<group>"; };
 		CB35A6F81576916C008318EE /* BeamMusicPlayerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeamMusicPlayerDataSource.h; sourceTree = "<group>"; };
 		CB35A6F91576916C008318EE /* BeamMusicPlayerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeamMusicPlayerDelegate.h; sourceTree = "<group>"; };
 		CB35A6FD1576918F008318EE /* BeamMusicPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeamMusicPlayerViewController.h; sourceTree = "<group>"; };
@@ -136,6 +85,7 @@
 		CB46FE1315795405004BE46A /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
 		CB46FE15157955B7004BE46A /* BeamMusicPlayerViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeamMusicPlayerViewControllerTests.h; sourceTree = "<group>"; };
 		CB46FE16157955B7004BE46A /* BeamMusicPlayerViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeamMusicPlayerViewControllerTests.m; sourceTree = "<group>"; };
+		CBCD885A15B44165001B7A1D /* BeamMusicPlayerController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BeamMusicPlayerController.bundle; sourceTree = "<group>"; };
 		D255CDAD8A6E4F49A1799F78 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -227,7 +177,6 @@
 				9708EED11579143C0097F43F /* Example */,
 				97DE4F35157639FC00D077E3 /* Categories */,
 				97DE4F2E15762CB200D077E3 /* 3rd Party */,
-				97DE4F181576212900D077E3 /* Resources */,
 				97E9DA6C157682A700620689 /* Music Player */,
 				97B7AA4115760AAF0014E693 /* BeamAppDelegate.h */,
 				97B7AA4215760AAF0014E693 /* BeamAppDelegate.m */,
@@ -269,37 +218,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		97DE4F181576212900D077E3 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				97F6D19715791C8F008FA75B /* backbutton@2x.png */,
-				9755DA9F1578C20800B5431E /* fade_overlay@2x.png */,
-				97E9DA6A1576754400620689 /* scrubberglow@2x.png */,
-				97E9DA64157674D000620689 /* repeat_off@2x.png */,
-				97E9DA65157674D000620689 /* repeat_on_1@2x.png */,
-				97E9DA66157674D000620689 /* repeat_on@2x.png */,
-				97E9DA5F157674C000620689 /* shuffle_off@2x.png */,
-				97E9DA60157674C000620689 /* shuffle_on@2x.png */,
-				97DE4F3B1576455600D077E3 /* nexttrack@2x.png */,
-				97DE4F3C1576455600D077E3 /* pause@2x.png */,
-				97DE4F3D1576455600D077E3 /* prevtrack@2x.png */,
-				97DE4F39157644EE00D077E3 /* play@2x.png */,
-				97DE4F3315762E5100D077E3 /* noartplaceholder@2x.png */,
-				97DE4F191576212900D077E3 /* volume-slider-fat-filled@2x.png */,
-				97DE4F1A1576212900D077E3 /* volume-slider-fat-unfilled@2x.png */,
-				97DE4F1B1576212900D077E3 /* VolumeBlueCap@2x.png */,
-				97DE4F1C1576212900D077E3 /* VolumeBlueFill@2x.png */,
-				97DE4F1D1576212900D077E3 /* VolumeBlueTrack@2x.png */,
-				97DE4F1E1576212900D077E3 /* VolumeKnob@2x.png */,
-				97DE4F1F1576212900D077E3 /* VolumeWhiteMusicCap@2x.png */,
-				97DE4F201576212900D077E3 /* VolumeWhiteMusicFill@2x.png */,
-				97DE4F211576212900D077E3 /* VolumeWhiteTrack@2x.png */,
-				97CA28251577AF31003D8938 /* shadow.png */,
-				97CA28271577AFE0003D8938 /* shadow_highlight.png */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		97DE4F2E15762CB200D077E3 /* 3rd Party */ = {
 			isa = PBXGroup;
 			children = (
@@ -324,8 +242,7 @@
 		97E9DA6C157682A700620689 /* Music Player */ = {
 			isa = PBXGroup;
 			children = (
-				97CA27FB1577588D003D8938 /* BeamMusicPlayerViewController_iPad.xib */,
-				97CA27F81577587A003D8938 /* BeamMusicPlayerViewController_iPhone.xib */,
+				CBCD885A15B44165001B7A1D /* BeamMusicPlayerController.bundle */,
 				CB35A6FD1576918F008318EE /* BeamMusicPlayerViewController.h */,
 				CB35A6FE1576918F008318EE /* BeamMusicPlayerViewController.m */,
 				CB35A6F81576916C008318EE /* BeamMusicPlayerDataSource.h */,
@@ -449,32 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				97B7AA3D15760AAF0014E693 /* InfoPlist.strings in Resources */,
-				97DE4F221576212900D077E3 /* volume-slider-fat-filled@2x.png in Resources */,
-				97DE4F231576212900D077E3 /* volume-slider-fat-unfilled@2x.png in Resources */,
-				97DE4F241576212900D077E3 /* VolumeBlueCap@2x.png in Resources */,
-				97DE4F251576212900D077E3 /* VolumeBlueFill@2x.png in Resources */,
-				97DE4F261576212900D077E3 /* VolumeBlueTrack@2x.png in Resources */,
-				97DE4F271576212900D077E3 /* VolumeKnob@2x.png in Resources */,
-				97DE4F281576212900D077E3 /* VolumeWhiteMusicCap@2x.png in Resources */,
-				97DE4F291576212900D077E3 /* VolumeWhiteMusicFill@2x.png in Resources */,
-				97DE4F2A1576212900D077E3 /* VolumeWhiteTrack@2x.png in Resources */,
-				97DE4F3415762E5100D077E3 /* noartplaceholder@2x.png in Resources */,
-				97DE4F3A157644EE00D077E3 /* play@2x.png in Resources */,
-				97DE4F3E1576455600D077E3 /* nexttrack@2x.png in Resources */,
-				97DE4F3F1576455600D077E3 /* pause@2x.png in Resources */,
-				97DE4F401576455600D077E3 /* prevtrack@2x.png in Resources */,
-				97E9DA61157674C000620689 /* shuffle_off@2x.png in Resources */,
-				97E9DA62157674C000620689 /* shuffle_on@2x.png in Resources */,
-				97E9DA67157674D000620689 /* repeat_off@2x.png in Resources */,
-				97E9DA68157674D000620689 /* repeat_on_1@2x.png in Resources */,
-				97E9DA69157674D000620689 /* repeat_on@2x.png in Resources */,
-				97E9DA6B1576754400620689 /* scrubberglow@2x.png in Resources */,
-				97CA27F91577587A003D8938 /* BeamMusicPlayerViewController_iPhone.xib in Resources */,
-				97CA27FC1577588D003D8938 /* BeamMusicPlayerViewController_iPad.xib in Resources */,
-				97CA28261577AF31003D8938 /* shadow.png in Resources */,
-				97CA28281577AFE0003D8938 /* shadow_highlight.png in Resources */,
-				9755DAA01578C20800B5431E /* fade_overlay@2x.png in Resources */,
-				97F6D19815791C8F008FA75B /* backbutton@2x.png in Resources */,
+				CBCD885B15B44165001B7A1D /* BeamMusicPlayerController.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
