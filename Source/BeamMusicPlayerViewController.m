@@ -132,6 +132,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     // Scrobble Ovelray alpha should be 0, initialize the gesture recognizer
     self.scrobbleOverlay.alpha = 0;
     self.coverArtGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(coverArtTapped:)];
@@ -139,9 +140,9 @@
     
     // Knobs for the sliders
     
-    UIImage* sliderBlueTrack = [[UIImage imageNamed:@"VolumeBlueTrack.png"] stretchableImageWithLeftCapWidth:5.0 topCapHeight:0];
-    UIImage* slideWhiteTrack = [[UIImage imageNamed:@"VolumeWhiteTrack.png"] stretchableImageWithLeftCapWidth:5.0 topCapHeight:0];
-    UIImage* knob = [UIImage imageNamed:@"VolumeKnob"];
+    UIImage* sliderBlueTrack = [[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/VolumeBlueTrack.png"] stretchableImageWithLeftCapWidth:5.0 topCapHeight:0];
+    UIImage* slideWhiteTrack = [[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/VolumeWhiteTrack.png"] stretchableImageWithLeftCapWidth:5.0 topCapHeight:0];
+    UIImage* knob = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/VolumeKnob"];
     
     [[UISlider appearanceWhenContainedIn:[self class], nil] setThumbImage:knob forState:UIControlStateNormal];
 
@@ -223,7 +224,7 @@
         NSUInteger track = self.currentTrack;
         
         // Placeholder as long as we are loading
-        self.albumArtImageView.image = [UIImage imageNamed:@"noartplaceholder.png"];
+        self.albumArtImageView.image = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/noartplaceholder.png"];
         self.albumArtReflection.image = [self.albumArtImageView reflectedImageWithHeight:self.albumArtReflection.frame.size.height];
         self.imageIsPlaceholder = YES;
         
@@ -255,7 +256,7 @@
         
     } else {
         // Otherwise, we'll stick with the placeholder.
-        self.albumArtImageView.image = [UIImage imageNamed:@"noartplaceholder.png"];
+        self.albumArtImageView.image = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/noartplaceholder.png"];
         self.albumArtReflection.image = [self.albumArtImageView reflectedImageWithHeight:self.albumArtReflection.frame.size.height];
     }
 }
@@ -433,7 +434,7 @@
             break;
     }
     if ( imageName )
-        [self.repeatButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+        [self.repeatButton setImage:[UIImage imageNamed:[@"BeamMusicPlayerController.bundle/images/" stringByAppendingString:imageName]] forState:UIControlStateNormal];
 }
 
 #pragma mark Repeat mode
@@ -449,7 +450,7 @@
     self->shuffling = newShuffling;
     
     NSString* imageName = ( self.shuffling ? @"shuffle_on.png" : @"shuffle_off.png");
-    [self.shuffleButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    [self.shuffleButton setImage:[UIImage imageNamed:[@"BeamMusicPlayerController.bundle/images/" stringByAppendingString:imageName]] forState:UIControlStateNormal];
 }
 
 #pragma mark - Volume
@@ -526,9 +527,9 @@
  */
 -(void)adjustPlayButtonState {
     if ( !self.playing ){
-        self.playButton.image = [UIImage imageNamed:@"play.png"];
+        self.playButton.image = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/play.png"];
     } else {
-        self.playButton.image = [UIImage imageNamed:@"pause.png"];
+        self.playButton.image = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/pause.png"];
     }
 }
 

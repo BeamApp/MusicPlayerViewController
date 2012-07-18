@@ -82,7 +82,7 @@
 }
 
 -(void)awakeFromNib {
-    UIImage* fadeImage = [UIImage imageNamed:@"fade_overlay.png"];
+    UIImage* fadeImage = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/fade_overlay.png"];
 
     // Set the frame
     
