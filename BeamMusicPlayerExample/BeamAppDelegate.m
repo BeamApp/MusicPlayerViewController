@@ -46,33 +46,28 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        self.viewController = [[BeamMusicPlayerViewController alloc] initWithNibName:@"BeamMusicPlayerViewController_iPhone" bundle:nil];
-        
-
-        
-        
-        
-    } else {
-        self.viewController = [[BeamMusicPlayerViewController alloc] initWithNibName:@"BeamMusicPlayerViewController_iPad" bundle:nil];
-    }
-    
+    self.viewController = [BeamMusicPlayerViewController new];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
 
-
-    
 #if TARGET_IPHONE_SIMULATOR
     self.exampleProvider = [BeamMinimalExampleProvider new];
 
     self.viewController.dataSource = self.exampleProvider;
     self.viewController.delegate = self.exampleProvider;
 #else
-    self.exampleProvider = [BeamIpodExampleProvider new];
-    ((BeamIpodExampleProvider*)self.exampleProvider).controller = self.viewController;
-    self.viewController.dataSource = self.exampleProvider;
-    self.viewController.delegate = self.exampleProvider;
+    BeamMPMusicPlayerProvider *mpMusicPlayerProvider = [BeamMPMusicPlayerProvider new];
+    mpMusicPlayerProvider.controller = self.viewController;
+    NSAssert(self.viewController.delegate == mpMusicPlayerProvider, @"setController: sets itself as delegate");
+    NSAssert(self.viewController.dataSource == mpMusicPlayerProvider, @"setController: sets itself as datasource");
+    
+    mpMusicPlayerProvider.musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
+//    MPMediaQuery *mq = [MPMediaQuery songsQuery];
+//    [MPMusicPlayerController.iPodMusicPlayer setQueueWithQuery:mq];
+//    mpMusicPlayerProvider.mediaItems = mq.items;
+    
+    
+    self.exampleProvider = mpMusicPlayerProvider;
 #endif
 
 

@@ -36,7 +36,7 @@
 #import <UIKit/UIKit.h>
 
 #import "BeamMusicPlayerViewController.h"
-#import "BeamIpodExampleProvider.h"
+#import "BeamMPMusicPlayerProvider.h"
 
 @class BeamMusicPlayerViewController;
 
