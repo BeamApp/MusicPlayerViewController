@@ -76,7 +76,8 @@
 
 
 @property (nonatomic) CGFloat currentTrackLength; // The Length of the currently playing track
-@property (nonatomic) NSUInteger numberOfTracks; // Number of tracks
+@property (nonatomic) NSInteger numberOfTracks; // Number of tracks, <0 if unknown
+@property (readonly) BOOL numberOfTracksAvailable;
 
 @property (nonatomic) BOOL scrobbling; // Whether the player is currently scrobbling
 
@@ -208,6 +209,10 @@
 
 #pragma mark - Playback Management
 
+-(BOOL)numberOfTracksAvailable {
+    return self.numberOfTracks >= 0;
+}
+
 /**
  * Updates the UI to match the current track by requesting the information from the datasource.
  */
@@ -223,18 +228,20 @@
         // Copy the current track to another variable, otherwise we would just access the current one.
         NSUInteger track = self.currentTrack;
         
-        // Placeholder as long as we are loading
-        self.albumArtImageView.image = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/noartplaceholder.png"];
-        self.albumArtReflection.image = [self.albumArtImageView reflectedImageWithHeight:self.albumArtReflection.frame.size.height];
-        self.imageIsPlaceholder = YES;
-        
-        CATransition* transition = [CATransition animation];
-        transition.type = kCATransitionPush;
-        transition.subtype = self.lastDirectionChangePositive ? kCATransitionFromRight : kCATransitionFromLeft;
-        [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
-        [[self.albumArtImageView layer] addAnimation:transition forKey:@"SlideOutandInImagek"];
+        // TODO: this transition needs to be overhauled before going live
 
-        [[self.albumArtReflection layer] addAnimation:transition forKey:@"SlideOutandInImagek"];
+        // Placeholder as long as we are loading
+//        self.albumArtImageView.image = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/noartplaceholder.png"];
+//        self.albumArtReflection.image = [self.albumArtImageView reflectedImageWithHeight:self.albumArtReflection.frame.size.height];
+//        self.imageIsPlaceholder = YES;
+        
+//        CATransition* transition = [CATransition animation];
+//        transition.type = kCATransitionPush;
+//        transition.subtype = self.lastDirectionChangePositive ? kCATransitionFromRight : kCATransitionFromLeft;
+//        [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+//        [[self.albumArtImageView layer] addAnimation:transition forKey:@"SlideOutandInImagek"];
+//
+//        [[self.albumArtReflection layer] addAnimation:transition forKey:@"SlideOutandInImagek"];
 
 
         // Request the image. 
@@ -295,8 +302,6 @@
 -(void)next {
     self.lastDirectionChangePositive = YES;
     [self changeTrack:self->currentTrack+1];
-
-
 }
 
 -(void)previous {
@@ -309,15 +314,14 @@
  * Called when the player finished playing the current track. 
  */
 -(void)currentTrackFinished {
-    [self pause];
+    // TODO: deactivate automatic actions via additional property
+    // overhaul this method
     if ( self.repeatMode != MPMusicRepeatModeOne ){
-        [self next];
-        [self play];
+        // [self next];  - reactivate me
 
     } else {
         self->currentPlaybackPosition = 0;
         [self updateSeekUI];
-        [self play];
     }
 }
 
@@ -331,55 +335,54 @@
 /*
  * Changes the track to the new track given.
  */
--(void)changeTrack:(NSUInteger)newTrack {
+-(void)changeTrack:(NSInteger)newTrack {
     BOOL shouldChange = YES;
     if ( [self.delegate respondsToSelector:@selector(musicPlayer:shoulChangeTrack:) ]){
         shouldChange = [self.delegate musicPlayer:self shouldChangeTrack:newTrack];
     }
     
-    if ( newTrack > numberOfTracks-1 ){
+    if([self.dataSource respondsToSelector:@selector(numberOfTracksInPlayer:)])
+        self.numberOfTracks = [self.dataSource numberOfTracksInPlayer:self];
+    else
+        self.numberOfTracks = -1;
+
+    if (newTrack < 0 || (self.numberOfTracksAvailable && newTrack >= self.numberOfTracks)){
         shouldChange = NO;
         // If we can't next, stop the playback.
-        self->currentPlaybackPosition = self.currentTrackLength;
+        // TODO: notify delegate about the fact we felt off the playlist
         [self pause];
     }
     
     if ( shouldChange ){
-        [self pause];
-        
-        // Update state to match new track
-        self->currentPlaybackPosition = 0;
-        self.currentTrack = newTrack;
-        
-        self.currentTrackLength = [self.dataSource musicPlayer:self lengthForTrack:self.currentTrack];
-        self.numberOfTracks = [self.dataSource numberOfTracksInPlayer:self];
-        
-        // Slider
-        self.progressSlider.maximumValue = self.currentTrackLength;
-        self.progressSlider.minimumValue = 0;
-
         if ( [self.delegate respondsToSelector:@selector(musicPlayer:didChangeTrack:) ]){
-            [self.delegate musicPlayer:self didChangeTrack:newTrack];
+            newTrack = [self.delegate musicPlayer:self didChangeTrack:newTrack];
         }
-                
-        [self updateUIForCurrentTrack];
-        [self updateSeekUI];
-        [self updateTrackDisplay];
-        [self adjustDirectionalButtonStates];
-        [self play];
+        if(newTrack == NSNotFound) {
+            // TODO: notify delegate about the fact we felt off the playlist
+            [self pause];
+        } else {
+            self->currentPlaybackPosition = 0;
+            self.currentTrack = newTrack;
+            
+            [self reloadData];
+        }
     }
 }
 
 /**
- * Reloads data from the data source and updates the player. If the player is currently playing, the playback is stopped.
+ * Reloads data from the data source and updates the player.
  */
 -(void)reloadData {
-    if ( self.playing )
-        [self pause];
+    self.currentTrackLength = [self.dataSource musicPlayer:self lengthForTrack:self.currentTrack];
     
-    [self changeTrack:0];
+    // Slider
+    self.progressSlider.maximumValue = self.currentTrackLength;
+    self.progressSlider.minimumValue = 0;
+    
     [self updateUIForCurrentTrack];
-    
+    [self updateSeekUI];
+    [self updateTrackDisplay];
+    [self adjustDirectionalButtonStates];
 }
 
 /**
@@ -416,6 +419,7 @@
 -(void)updateTrackDisplay {
     if ( !self.scrobbling ){
         self.numberOfTracksLabel.text = [NSString stringWithFormat:@"Track %d of %d", self.currentTrack+1, self.numberOfTracks];
+        self.numberOfTracksLabel.hidden = !self.numberOfTracksAvailable;
     }
 }
 
@@ -484,6 +488,7 @@
 }
 
 -(IBAction)previousAction:(id)sender {
+    // TODO: handle skipToBeginning if playbacktime <= 3
     [self previous];
 }
 
@@ -509,13 +514,13 @@
  * Adjusts the directional buttons to comply with the shouldHide-Button settings.
  */
 -(void)adjustDirectionalButtonStates {
-    if ( self.currentTrack+1 == self.numberOfTracks && self.shouldHideNextTrackButtonAtBoundary ){
+    if (self.numberOfTracksAvailable && self.currentTrack+1 == self.numberOfTracks && self.shouldHideNextTrackButtonAtBoundary ){
         self.fastForwardButton.enabled = NO;
     } else {
         self.fastForwardButton.enabled = YES;
     }
     
-    if ( self.currentTrack == 0 && self.shouldHidePreviousTrackButtonAtBoundary ){
+    if (self.numberOfTracksAvailable && self.currentTrack == 0 && self.shouldHidePreviousTrackButtonAtBoundary ){
         self.rewindButton.enabled = NO;
     } else {
         self.rewindButton.enabled = YES;

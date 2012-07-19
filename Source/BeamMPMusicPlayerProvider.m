@@ -18,8 +18,6 @@
 -(id)init {
     self = [super init];
     if ( self ){
-        // TODO: subscribe for notifications
-        
         // This HACK hides the volume overlay when changing the volume.
         // It's insipired by http://stackoverflow.com/questions/3845222/iphone-sdk-how-to-disable-the-volume-indicator-view-if-the-hardware-buttons-ar
         MPVolumeView* view = [MPVolumeView new];
@@ -31,12 +29,45 @@
     return self;
 }
 
+-(void)handleVolumeDidChangeNotification {
+    self.controller.volume = self.musicPlayer.volume;
+}
+
+-(void)setMusicPlayer:(MPMusicPlayerController *)value {
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+
+    [nc removeObserver:self name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification object:musicPlayer];
+    [nc removeObserver:self name:MPMusicPlayerControllerPlaybackStateDidChangeNotification object:musicPlayer];
+    [nc removeObserver:self name:MPMusicPlayerControllerVolumeDidChangeNotification object:musicPlayer];
+    [musicPlayer endGeneratingPlaybackNotifications];
+    
+    musicPlayer = value;
+
+    [nc addObserver: self
+           selector: @selector (propagateMusicPlayerState)
+               name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification
+             object: musicPlayer];
+    [nc addObserver: self
+           selector: @selector (propagateMusicPlayerState)
+               name: MPMusicPlayerControllerPlaybackStateDidChangeNotification
+             object: musicPlayer];
+    [nc addObserver: self
+           selector: @selector (handleVolumeDidChangeNotification)
+               name: MPMusicPlayerControllerVolumeDidChangeNotification
+             object: musicPlayer];
+
+    [musicPlayer beginGeneratingPlaybackNotifications];
+    
+    [self propagateMusicPlayerState];
+}
+
 -(void)setController:(BeamMusicPlayerViewController *)value {
     controller.delegate = nil;
     controller.dataSource = nil;
     controller = value;
     controller.delegate = self;
     controller.dataSource = self;
+    [self propagateMusicPlayerState];
 }
 
 -(void)setMediaItems:(NSArray *)value {
@@ -44,57 +75,64 @@
     [self.controller reloadData];
 }
 
+-(MPMediaItem*)mediaItemAtIndex:(NSUInteger)index {
+    if(self.mediaItems == nil) 
+        return self.musicPlayer.nowPlayingItem;
+    else 
+        return [self.mediaItems objectAtIndex:index];
+}
+
 - (void)dealloc
 {
-    // TODO: unsubscribe from notifications
+    // explicit call of setters with nil to deregister from objects
+    self.musicPlayer = nil;
     self.controller = nil;
 }
 
 -(void)propagateMusicPlayerState {
-    self.controller.delegate = nil;
-    
-    [self.controller reloadData];
-    
-    // refactor: playing property in musicplayer? and/or setter method differently
-    [self.controller playTrack:self.musicPlayer.indexOfNowPlayingItem atPosition:self.musicPlayer.currentPlaybackTime volume:self.musicPlayer.volume];
-    if(self.musicPlayer.playbackState == MPMusicPlaybackStatePlaying) {
-        [self.controller play];
-    } else {
-        [self.controller pause];
-    }
+    if(self.controller && self.musicPlayer) {
+        self.controller.delegate = nil;
+        
+        // refactor: playing property in musicplayer? and/or setter method differently
+        [self.controller playTrack:self.musicPlayer.indexOfNowPlayingItem atPosition:self.musicPlayer.currentPlaybackTime volume:self.musicPlayer.volume];
+        if(self.musicPlayer.playbackState == MPMusicPlaybackStatePlaying) {
+            [self.controller play];
+        } else {
+            [self.controller pause];
+        }
 
-    self.controller.delegate = self;
+        self.controller.delegate = self;
+    }
 }
 
 -(NSString*)musicPlayer:(BeamMusicPlayerViewController *)player albumForTrack:(NSUInteger)trackNumber {
-    MPMediaItem* item = [self.mediaItems objectAtIndex:trackNumber];
+    MPMediaItem* item = [self mediaItemAtIndex:trackNumber];
     return [item valueForProperty:MPMediaItemPropertyAlbumTitle];
 }
 
 -(NSString*)musicPlayer:(BeamMusicPlayerViewController *)player artistForTrack:(NSUInteger)trackNumber {
-    MPMediaItem* item = [self.mediaItems objectAtIndex:trackNumber];
+    MPMediaItem* item = [self mediaItemAtIndex:trackNumber];
     return [item valueForProperty:MPMediaItemPropertyArtist];
 }
 
 -(NSString*)musicPlayer:(BeamMusicPlayerViewController *)player titleForTrack:(NSUInteger)trackNumber {
-    MPMediaItem* item = [self.mediaItems objectAtIndex:trackNumber];
+    MPMediaItem* item = [self mediaItemAtIndex:trackNumber];
     return [item valueForProperty:MPMediaItemPropertyTitle];
 }
 
 -(CGFloat)musicPlayer:(BeamMusicPlayerViewController *)player lengthForTrack:(NSUInteger)trackNumber {
-    MPMediaItem* item = [self.mediaItems objectAtIndex:trackNumber];
+    MPMediaItem* item = [self mediaItemAtIndex:trackNumber];
     return [[item valueForProperty:MPMediaItemPropertyPlaybackDuration] longValue];
     
 }
 
--(NSUInteger)numberOfTracksInPlayer:(BeamMusicPlayerViewController *)player
+-(NSInteger)numberOfTracksInPlayer:(BeamMusicPlayerViewController *)player
 {
-    return self.mediaItems.count;
+    return self.mediaItems ? self.mediaItems.count : -1;
 }
 
 -(void)musicPlayer:(BeamMusicPlayerViewController *)player artworkForTrack:(NSUInteger)trackNumber receivingBlock:(BeamMusicPlayerReceivingBlock)receivingBlock {
-    // TODO: check if it's current item, then take that
-    MPMediaItem* item = [self.mediaItems objectAtIndex:trackNumber];
+    MPMediaItem* item = [self mediaItemAtIndex:trackNumber];
     MPMediaItemArtwork* artwork = [item valueForProperty:MPMediaItemPropertyArtwork];
     if ( artwork ){
         UIImage* foo = [artwork imageWithSize:player.preferredSizeForCoverArt];
@@ -106,8 +144,19 @@
 
 #pragma mark Delegate Methods ( Used to control the music player )
 
--(void)musicPlayer:(BeamMusicPlayerViewController *)player didChangeTrack:(NSUInteger)track {
-    [self.musicPlayer setNowPlayingItem:[self.mediaItems objectAtIndex:track]];
+-(NSInteger)musicPlayer:(BeamMusicPlayerViewController *)player didChangeTrack:(NSUInteger)track {
+    if(self.mediaItems) {
+        [self.musicPlayer setNowPlayingItem:[self mediaItemAtIndex:track]];
+    } else {
+        int delta = track - self.musicPlayer.indexOfNowPlayingItem;
+        if(delta > 0)
+            [self.musicPlayer skipToNextItem];
+        if(delta == 0)
+            [self.musicPlayer skipToBeginning];
+        if(delta < 0)
+            [self.musicPlayer skipToPreviousItem];
+    }
+    return self.musicPlayer.indexOfNowPlayingItem;
 }
 
 -(void)musicPlayerDidStartPlaying:(BeamMusicPlayerViewController *)player {

@@ -26,7 +26,7 @@
     return 125;
 }
 
--(NSUInteger)numberOfTracksInPlayer:(BeamMusicPlayerViewController *)player {
+-(NSInteger)numberOfTracksInPlayer:(BeamMusicPlayerViewController *)player {
     return 3;
 }
 

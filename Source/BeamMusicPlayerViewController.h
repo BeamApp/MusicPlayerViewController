@@ -68,7 +68,7 @@
 /// --------------------------------
 
 /// The index of the currently set track
-@property (nonatomic) NSUInteger currentTrack; 
+@property (nonatomic) NSInteger currentTrack; 
 
 /// YES, if the player is in play-state
 @property (nonatomic,readonly) BOOL playing; 

@@ -76,8 +76,9 @@
  * You can implement this method if you need to react to the player changing tracks.
  * @param player the BeamMusicPlayerViewController changing the track
  * @param track a NSUInteger containing the number of the new track
+ * @return the actual track the delegate has changed to
  */
--(void)musicPlayer:(BeamMusicPlayerViewController*)player didChangeTrack:(NSUInteger)track;
+-(NSInteger)musicPlayer:(BeamMusicPlayerViewController*)player didChangeTrack:(NSUInteger)track;
 
 /**
  * Called when the player's volume changed

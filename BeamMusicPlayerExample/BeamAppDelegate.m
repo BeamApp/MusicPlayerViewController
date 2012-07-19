@@ -55,6 +55,7 @@
 
     self.viewController.dataSource = self.exampleProvider;
     self.viewController.delegate = self.exampleProvider;
+    [self.viewController reloadData];
 #else
     BeamMPMusicPlayerProvider *mpMusicPlayerProvider = [BeamMPMusicPlayerProvider new];
     mpMusicPlayerProvider.controller = self.viewController;
@@ -66,7 +67,6 @@
 //    [MPMusicPlayerController.iPodMusicPlayer setQueueWithQuery:mq];
 //    mpMusicPlayerProvider.mediaItems = mq.items;
     
-    
     self.exampleProvider = mpMusicPlayerProvider;
 #endif
 
@@ -74,7 +74,6 @@
 self.viewController.shouldHideNextTrackButtonAtBoundary = YES;
 self.viewController.shouldHidePreviousTrackButtonAtBoundary = YES;
 
-[self.viewController reloadData];
 [self.viewController play];
 return YES;
 

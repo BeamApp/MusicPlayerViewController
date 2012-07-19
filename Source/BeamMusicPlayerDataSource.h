@@ -61,9 +61,9 @@ typedef void(^BeamMusicPlayerReceivingBlock)(UIImage* image, NSError** error);
  * Returns the number of tracks for the given player. If you do not implement this method
  * or return anything smaller than 2, one track is assumed and the skip-buttons are disabled.
  * @param player the BeamMusicPlayerViewController that is making this request.
- * @return number of available tracks
+ * @return number of available tracks, -1 if unknown
  */
--(NSUInteger)numberOfTracksInPlayer:(BeamMusicPlayerViewController*)player;
+-(NSInteger)numberOfTracksInPlayer:(BeamMusicPlayerViewController*)player;
 
 /**
  * Returns the artwork for a given track.
