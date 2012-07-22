@@ -147,8 +147,6 @@
 /// @name Misc
 /// --------------------------------
 
-+(id)controllerFromNib;
-
 /// The preferred size for cover art in pixels
 @property (nonatomic, readonly) CGSize preferredSizeForCoverArt; 
 
