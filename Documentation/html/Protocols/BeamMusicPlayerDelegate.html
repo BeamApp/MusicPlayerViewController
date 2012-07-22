@@ -56,10 +56,6 @@
 	
 	<option value="//api/name/musicPlayer:shouldChangeTrack:">&nbsp;&nbsp;&nbsp;&nbsp;- musicPlayer:shouldChangeTrack:</option>
 	
-	<option value="//api/name/musicPlayerActionRequested:">&nbsp;&nbsp;&nbsp;&nbsp;- musicPlayerActionRequested:</option>
-	
-	<option value="//api/name/musicPlayerBackRequested:">&nbsp;&nbsp;&nbsp;&nbsp;- musicPlayerBackRequested:</option>
-	
 	<option value="//api/name/musicPlayerDidStartPlaying:">&nbsp;&nbsp;&nbsp;&nbsp;- musicPlayerDidStartPlaying:</option>
 	
 	<option value="//api/name/musicPlayerDidStopPlaying:">&nbsp;&nbsp;&nbsp;&nbsp;- musicPlayerDidStopPlaying:</option>
@@ -109,10 +105,6 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/musicPlayer:didSeekToPosition:">musicPlayer:didSeekToPosition:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/musicPlayer:shouldChangeTrack:">musicPlayer:shouldChangeTrack:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/musicPlayerActionRequested:">musicPlayerActionRequested:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/musicPlayerBackRequested:">musicPlayerBackRequested:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/musicPlayerDidStartPlaying:">musicPlayerDidStartPlaying:</a></span></li>
 	
@@ -253,20 +245,6 @@ and if the user stops the playback.</p></span>
 	<span class="tooltip">
 		<code><a href="#//api/name/musicPlayer:didChangeRepeatMode:">&ndash;&nbsp;musicPlayer:didChangeRepeatMode:</a></code>
 		<span class="tooltip"><p>Called when the player changes it&rsquo;s repeat mode.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/musicPlayerActionRequested:">&ndash;&nbsp;musicPlayerActionRequested:</a></code>
-		<span class="tooltip"><p>Called when the action button in the music view controller is pressed.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/musicPlayerBackRequested:">&ndash;&nbsp;musicPlayerBackRequested:</a></code>
-		<span class="tooltip"><p>Called when the back button in the music view controller is pressed.</p></span>
 	</span>
 	
 	
@@ -412,7 +390,7 @@ means there is no shuffling.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)musicPlayer:(BeamMusicPlayerViewController *)<em>player</em> didChangeTrack:(NSUInteger)<em>track</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (NSInteger)musicPlayer:(BeamMusicPlayerViewController *)<em>player</em> didChangeTrack:(NSUInteger)<em>track</em></code></div>
 
     
 	
@@ -432,6 +410,11 @@ means there is no shuffling.</p>
 	</div>
 	
 	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>the actual track the delegate has changed to</p>
+	</div>
 	
 	
 	
@@ -608,108 +591,6 @@ means there is no shuffling.</p>
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>If an implementation returns NO, the track will not be changed, if it returns YES the track will be changed. If you do not implement this method, YES is assumed.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BeamMusicPlayerDelegate.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/musicPlayerActionRequested:" title="musicPlayerActionRequested:"></a>
-	<h3 class="subsubtitle method-title">musicPlayerActionRequested:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Called when the action button in the music view controller is pressed.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)musicPlayerActionRequested:(BeamMusicPlayerViewController *)<em>musicPlayer</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>musicPlayer</em></dt>
-			<dd><p>the <a href="../Classes/BeamMusicPlayerViewController.html">BeamMusicPlayerViewController</a> that received the action</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>You can interact based on this event to present additional interaction options for a user or change behaviour.</p><div class="warning"><p><strong>Warning:</strong> The action button will only be visible if the delegate implements this method.</p></div>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BeamMusicPlayerDelegate.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/musicPlayerBackRequested:" title="musicPlayerBackRequested:"></a>
-	<h3 class="subsubtitle method-title">musicPlayerBackRequested:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Called when the back button in the music view controller is pressed.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)musicPlayerBackRequested:(BeamMusicPlayerViewController *)<em>musicPlayer</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>musicPlayer</em></dt>
-			<dd><p>the <a href="../Classes/BeamMusicPlayerViewController.html">BeamMusicPlayerViewController</a> that received the action</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>The delegate performs the proper action when the back button has been pushed</p><div class="warning"><p><strong>Warning:</strong> The back button will only be visible if the delegate implements this method.</p></div>
 	</div>
 	
 	
@@ -980,7 +861,7 @@ and if the user stops the playback.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 BeamApp UG. All rights reserved. (Last updated: 2012-06-01)</span><br />
+						<p><span class="copyright">&copy; 2012 BeamApp UG. All rights reserved. (Last updated: 2012-07-22)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
 						

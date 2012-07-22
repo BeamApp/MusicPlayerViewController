@@ -75,8 +75,8 @@
 		CB0DC57415B69ADE0045921A /* UIImageView+Reflection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Reflection.h"; sourceTree = "<group>"; };
 		CB0DC57515B69ADE0045921A /* UIImageView+Reflection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Reflection.m"; sourceTree = "<group>"; };
 		CB0DC58D15B6AD300045921A /* BeamMusicPlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeamMusicPlayerViewController.xib; sourceTree = "<group>"; };
-		CB0DC5A615B71BD00045921A /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libPods.a; path = "Pods/build/Release-iphoneos/libPods.a"; sourceTree = "<group>"; };
-		CB0DC5A915B71C940045921A /* BeamMPMusicPlayerProviderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; path = BeamMPMusicPlayerProviderTests.h; sourceTree = "<group>"; };
+		CB0DC5A615B71BD00045921A /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Release-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		CB0DC5A915B71C940045921A /* BeamMPMusicPlayerProviderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeamMPMusicPlayerProviderTests.h; sourceTree = "<group>"; };
 		CB0DC5AA15B71C940045921A /* BeamMPMusicPlayerProviderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeamMPMusicPlayerProviderTests.m; sourceTree = "<group>"; };
 		CB35A6F81576916C008318EE /* BeamMusicPlayerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeamMusicPlayerDataSource.h; sourceTree = "<group>"; };
 		CB35A6F91576916C008318EE /* BeamMusicPlayerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeamMusicPlayerDelegate.h; sourceTree = "<group>"; };
@@ -289,7 +289,7 @@
 /* Begin PBXLegacyTarget section */
 		CB35A70015769221008318EE /* appledoc */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "--project-name BeamMusicPlayerViewController --project-company \"BeamApp UG\" --company-id com.beamapp --output ${PROJECT_DIR}/Documentation --no-create-docset --no-repeat-first-par --logformat xcode ${PROJECT_DIR}/BeamMusicPlayerExample/Source/BeamMusicPlayerViewController.h ${PROJECT_DIR}/BeamMusicPlayerExample/Source/BeamMusicPlayerDataSource.h ${PROJECT_DIR}/BeamMusicPlayerExample/Source/BeamMusicPlayerDelegate.h";
+			buildArgumentsString = "--project-name BeamMusicPlayerViewController --project-company \"BeamApp UG\" --company-id com.beamapp --output ${PROJECT_DIR}/Documentation --no-create-docset --no-repeat-first-par --logformat xcode ${PROJECT_DIR}/Source/BeamMusicPlayerViewController.h ${PROJECT_DIR}/Source/BeamMusicPlayerDataSource.h ${PROJECT_DIR}/Source/BeamMusicPlayerDelegate.h";
 			buildConfigurationList = CB35A70115769221008318EE /* Build configuration list for PBXLegacyTarget "appledoc" */;
 			buildPhases = (
 			);
