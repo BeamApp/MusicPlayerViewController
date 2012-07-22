@@ -74,7 +74,7 @@
 @property (nonatomic,readonly) BOOL playing; 
 
 /// The Current Playback position in seconds
-@property (nonatomic,readonly) CGFloat currentPlaybackPosition; 
+@property (nonatomic) CGFloat currentPlaybackPosition; 
 
 /// The current repeat mode of the player.
 @property (nonatomic) MPMusicRepeatMode repeatMode; 
@@ -146,6 +146,8 @@
 /// --------------------------------
 /// @name Misc
 /// --------------------------------
+
++(id)controllerFromNib;
 
 /// The preferred size for cover art in pixels
 @property (nonatomic, readonly) CGSize preferredSizeForCoverArt; 
