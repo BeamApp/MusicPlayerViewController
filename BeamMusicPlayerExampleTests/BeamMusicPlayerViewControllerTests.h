@@ -1,9 +1,10 @@
 //
 //  BeamMusicPlayerViewControllerTests.h
-//  BeamMusicPlayerExample
+//  Part of BeamMusicPlayerViewController (license: New BSD)
+//  -> https://github.com/BeamApp/MusicPlayerViewController
 //
 //  Created by Heiko Behrens on 01.06.12.
-//  Copyright (c) 2012 n/a. All rights reserved.
+//  Copyright (c) 2012 BeamApp UG. All rights reserved.
 //
 
 #import <SenTestingKit/SenTestingKit.h>

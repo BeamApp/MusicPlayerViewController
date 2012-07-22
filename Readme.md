@@ -27,6 +27,6 @@ The Project contains an example that uses the MediaLibrary to provide data for t
 
 License
 -------
-The Project is licensed under the BSD License.
+The Project is licensed under the new BSD License (see file LICENSE).
 
 © 2012 Beam App UG ( haftungsbeschränkt )
