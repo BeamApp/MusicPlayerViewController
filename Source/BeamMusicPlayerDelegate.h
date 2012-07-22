@@ -108,26 +108,5 @@
  */
 -(void)musicPlayer:(BeamMusicPlayerViewController*)player didChangeRepeatMode:(MPMusicRepeatMode)repeatMode;
 
-/**
- * Called when the action button in the music view controller is pressed.
- *
- * You can interact based on this event to present additional interaction options for a user or change behaviour.
- * @param musicPlayer the BeamMusicPlayerViewController that received the action
- *
- * @warning The action button will only be visible if the delegate implements this method.
- */
--(void)musicPlayerActionRequested:(BeamMusicPlayerViewController*)musicPlayer;
-
-/**
- * Called when the back button in the music view controller is pressed.
- *
- * The delegate performs the proper action when the back button has been pushed
- * @param musicPlayer the BeamMusicPlayerViewController that received the action
- *
- * @warning The back button will only be visible if the delegate implements this method.
- */
-// TODO: is this really needed? How about some logic in the view controller to check if it can go back?
--(void)musicPlayerBackRequested:(BeamMusicPlayerViewController*)musicPlayer;
-
 @end
 

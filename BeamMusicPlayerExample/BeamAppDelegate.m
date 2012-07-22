@@ -47,6 +47,13 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.viewController = [BeamMusicPlayerViewController new];
+    self.viewController.backBlock = ^{
+        [[[UIAlertView alloc] initWithTitle:@"Action" message:@"The Player's back button was pressed." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+    };
+    self.viewController.actionBlock = ^{
+        [[[UIAlertView alloc] initWithTitle:@"Action" message:@"The Player's action button was pressed." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+    };
+    
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
 

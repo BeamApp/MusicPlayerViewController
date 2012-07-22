@@ -129,6 +129,7 @@
 @synthesize shouldHidePreviousTrackButtonAtBoundary;
 @synthesize navigationItem;
 @synthesize preferredSizeForCoverArt;
+@synthesize backBlock, actionBlock;
 
 - (void)viewDidLoad
 {
@@ -195,15 +196,8 @@
 
 -(void)setDelegate:(id<BeamMusicPlayerDelegate>)value {
     self->delegate = value;
-    self.navigationItem.rightBarButtonItem =
-        [self.delegate respondsToSelector:@selector(musicPlayerActionRequested:)]
-        ? self.actionButton
-        : nil;
-    
-    self.navigationItem.leftBarButtonItem =
-        [self.delegate respondsToSelector:@selector(musicPlayerBackRequested:)]
-        ? self.backButton
-        : nil;
+    self.navigationItem.rightBarButtonItem = self.actionBlock ? self.actionButton : nil;
+    self.navigationItem.leftBarButtonItem = self.backBlock ? self.backButton : nil;
 }
 
 
@@ -653,18 +647,16 @@
 }
 
 - (IBAction)backButtonAction:(id)sender {
-    if ( [self.delegate respondsToSelector:@selector(musicPlayerBackRequested:)]) {
-        [self.delegate musicPlayerBackRequested:self];
-    }
+    if (self.backBlock)
+        self.backBlock();
 }
 
 /*
  * Just forward the action message to the delegate
  */
 -(IBAction)actionButtonAction:(id)sender {
-    if ( [self.delegate respondsToSelector:@selector(musicPlayerActionRequested:)]) {
-        [self.delegate musicPlayerActionRequested:self];
-    }
+    if(self.actionBlock)
+        self.actionBlock();
 }
 
 #pragma mark Cover Art resolution handling

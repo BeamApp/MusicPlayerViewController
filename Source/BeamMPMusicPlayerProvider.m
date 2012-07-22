@@ -174,17 +174,4 @@
     [self.musicPlayer setCurrentPlaybackTime:position];
 }
 
--(void)musicPlayerActionRequested:(BeamMusicPlayerViewController *)musicPlayer {
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Action" message:@"The Player's action button was pressed." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
-    // TODO: make this available to the client
-    [alertView show];
-}
-
--(void)musicPlayerBackRequested:(BeamMusicPlayerViewController *)musicPlayer {
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Action" message:@"The Player's back button was pressed." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
-    // TODO: make this available to the client
-    [alertView show];
-}
-
-
 @end

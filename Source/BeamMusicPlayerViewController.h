@@ -137,6 +137,11 @@
 /// If set to yes, the Next-Track Button will be disabled if the last track of the set is played or set.
 @property (nonatomic) BOOL shouldHideNextTrackButtonAtBoundary; 
 
+/// Block to be executed if the user presses the back button at the top. Button is hidden, if nil.
+@property (nonatomic, copy) void (^backBlock)();
+
+/// Block to be executed if the user presses the action button at the top right. Button is hidden, if nil.
+@property (nonatomic, copy) void (^actionBlock)();
 
 /// --------------------------------
 /// @name Misc
@@ -149,5 +154,9 @@
 -(IBAction)nextAction:(id)sender;
 -(IBAction)playAction:(id)sender;
 -(IBAction)sliderValueChanged:(id)slider;
+
+
+
+
 
 @end
