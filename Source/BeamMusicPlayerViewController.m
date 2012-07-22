@@ -81,7 +81,6 @@
 
 @property (nonatomic) BOOL scrobbling; // Whether the player is currently scrobbling
 
-@property (nonatomic) BOOL imageIsPlaceholder; // Whether the currently shown image is a placeholder
 @property (nonatomic) BOOL lastDirectionChangePositive; // Whether the last direction change was positive.
 
 @property (nonatomic,weak) IBOutlet UINavigationItem* navigationItem;
@@ -124,12 +123,12 @@
 @synthesize repeatMode;
 @synthesize shuffling;
 @synthesize lastDirectionChangePositive;
-@synthesize imageIsPlaceholder;
 @synthesize shouldHideNextTrackButtonAtBoundary;
 @synthesize shouldHidePreviousTrackButtonAtBoundary;
 @synthesize navigationItem;
 @synthesize preferredSizeForCoverArt;
 @synthesize backBlock, actionBlock;
+@synthesize placeholderImageDelay;
 
 - (void)viewDidLoad
 {
@@ -174,6 +173,8 @@
     self.trackTitleLabel.textColor = [UIColor whiteColor];
     [self.trackTitleLabel setFont:[UIFont boldSystemFontOfSize:12]];
     
+    self.placeholderImageDelay = 0.5;
+    
 }
 
 - (void)viewDidUnload
@@ -207,6 +208,11 @@
     return self.numberOfTracks >= 0;
 }
 
+-(void)setAlbumArtToPlaceholder {
+    self.albumArtImageView.image = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/noartplaceholder.png"];
+    self.albumArtReflection.image = [self.albumArtImageView reflectedImageWithHeight:self.albumArtReflection.frame.size.height];
+}
+
 /**
  * Updates the UI to match the current track by requesting the information from the datasource.
  */
@@ -216,19 +222,14 @@
     self.trackTitleLabel.text = [self.dataSource musicPlayer:self titleForTrack:self.currentTrack];
     self.albumTitleLabel.text = [self.dataSource musicPlayer:self albumForTrack:self.currentTrack];
 
+    // set coverart to placeholder at a later point in time. Might be cancelled if datasource provides different image (see below)
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(setAlbumArtToPlaceholder) object:nil];
+    [self performSelector:@selector(setAlbumArtToPlaceholder) withObject:nil afterDelay:self.placeholderImageDelay];
+
     // We only request the coverart if the delegate responds to it.
     if ( [self.dataSource respondsToSelector:@selector(musicPlayer:artworkForTrack:receivingBlock:)]) {
         
-        // Copy the current track to another variable, otherwise we would just access the current one.
-        NSUInteger track = self.currentTrack;
-        
         // TODO: this transition needs to be overhauled before going live
-
-        // Placeholder as long as we are loading
-//        self.albumArtImageView.image = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/noartplaceholder.png"];
-//        self.albumArtReflection.image = [self.albumArtImageView reflectedImageWithHeight:self.albumArtReflection.frame.size.height];
-//        self.imageIsPlaceholder = YES;
-        
 //        CATransition* transition = [CATransition animation];
 //        transition.type = kCATransitionPush;
 //        transition.subtype = self.lastDirectionChangePositive ? kCATransitionFromRight : kCATransitionFromLeft;
@@ -237,28 +238,26 @@
 //
 //        [[self.albumArtReflection layer] addAnimation:transition forKey:@"SlideOutandInImagek"];
 
-
+        // Copy the current track to another variable, otherwise we would just access the current one.
+        NSUInteger track = self.currentTrack;
         // Request the image. 
         [self.dataSource musicPlayer:self artworkForTrack:self.currentTrack receivingBlock:^(UIImage *image, NSError *__autoreleasing *error) {
             if ( track == self.currentTrack ){
             
-                // If there is no image given, use the placeholder
+                // If there is no image given, stay with the placeholder
                 if ( image  != nil ){
+
                     dispatch_async(dispatch_get_main_queue(), ^{
-                    self.albumArtImageView.image = image;
-                    self.albumArtReflection.image = [self.albumArtImageView reflectedImageWithHeight:self.albumArtReflection.frame.size.height];
-                });
-            }
+                        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(setAlbumArtToPlaceholder) object:nil];
+                        self.albumArtImageView.image = image;
+                        self.albumArtReflection.image = [self.albumArtImageView reflectedImageWithHeight:self.albumArtReflection.frame.size.height];
+                    });
+                }
             
             } else {
-                NSLog(@"Discarded Response, Invalid for this cycle.");
+                NSLog(@"Discarded CoverArt for track: %d, current track already moved to %d.", track, self.currentTrack);
             }
         }];
-        
-    } else {
-        // Otherwise, we'll stick with the placeholder.
-        self.albumArtImageView.image = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/noartplaceholder.png"];
-        self.albumArtReflection.image = [self.albumArtImageView reflectedImageWithHeight:self.albumArtReflection.frame.size.height];
     }
 }
 

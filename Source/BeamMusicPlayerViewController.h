@@ -150,6 +150,9 @@
 /// The preferred size for cover art in pixels
 @property (nonatomic, readonly) CGSize preferredSizeForCoverArt; 
 
+/// Timespan before placeholder for albumart will be set (default is 0.5). Supports long loading times.
+@property (nonatomic, assign) float placeholderImageDelay;
+
 
 -(IBAction)nextAction:(id)sender;
 -(IBAction)playAction:(id)sender;
