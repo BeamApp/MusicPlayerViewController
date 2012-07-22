@@ -323,6 +323,17 @@
     [self play];
 }
 
+-(void)updateUI {
+    // Slider
+    self.progressSlider.maximumValue = self.currentTrackLength;
+    self.progressSlider.minimumValue = 0;
+    
+    [self updateUIForCurrentTrack];
+    [self updateSeekUI];
+    [self updateTrackDisplay];
+    [self adjustDirectionalButtonStates];
+}
+
 /*
  * Changes the track to the new track given.
  */
@@ -355,7 +366,8 @@
             self->currentPlaybackPosition = 0;
             self.currentTrack = newTrack;
             
-            [self reloadData];
+            self.currentTrackLength = [self.dataSource musicPlayer:self lengthForTrack:self.currentTrack];
+            [self updateUI];
         }
     }
 }
@@ -364,16 +376,13 @@
  * Reloads data from the data source and updates the player.
  */
 -(void)reloadData {
+    if([self.dataSource respondsToSelector:@selector(numberOfTracksInPlayer:)])
+        self.numberOfTracks = [self.dataSource numberOfTracksInPlayer:self];
+    else
+        self.numberOfTracks = -1;
     self.currentTrackLength = [self.dataSource musicPlayer:self lengthForTrack:self.currentTrack];
     
-    // Slider
-    self.progressSlider.maximumValue = self.currentTrackLength;
-    self.progressSlider.minimumValue = 0;
-    
-    [self updateUIForCurrentTrack];
-    [self updateSeekUI];
-    [self updateTrackDisplay];
-    [self adjustDirectionalButtonStates];
+    [self updateUI];
 }
 
 /**
