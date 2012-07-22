@@ -63,20 +63,21 @@
     NSAssert(self.viewController.dataSource == mpMusicPlayerProvider, @"setController: sets itself as datasource");
     
     mpMusicPlayerProvider.musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
-//    MPMediaQuery *mq = [MPMediaQuery songsQuery];
-//    [MPMusicPlayerController.iPodMusicPlayer setQueueWithQuery:mq];
-//    mpMusicPlayerProvider.mediaItems = mq.items;
-    
+
+    MPMediaQuery *mq = [MPMediaQuery songsQuery];
+    [MPMusicPlayerController.iPodMusicPlayer setQueueWithQuery:mq];
+    mpMusicPlayerProvider.mediaItems = mq.items;
     self.exampleProvider = mpMusicPlayerProvider;
+//    mpMusicPlayerProvider.musicPlayer.nowPlayingItem = [mpMusicPlayerProvider.mediaItems objectAtIndex:mpMusicPlayerProvider.mediaItems.count-3];
+    mpMusicPlayerProvider.musicPlayer.nowPlayingItem = [mpMusicPlayerProvider.mediaItems objectAtIndex:2];
+    
 #endif
 
+    self.viewController.shouldHideNextTrackButtonAtBoundary = YES;
+    self.viewController.shouldHidePreviousTrackButtonAtBoundary = YES;
 
-self.viewController.shouldHideNextTrackButtonAtBoundary = YES;
-self.viewController.shouldHidePreviousTrackButtonAtBoundary = YES;
-
-[self.viewController play];
-return YES;
-
+    [self.viewController play];
+    return YES;
 }
 
 

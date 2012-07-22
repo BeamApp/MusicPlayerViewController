@@ -268,9 +268,6 @@
     }
 }
 
-
-
-
 -(void)play {
     if ( !self.playing ){
         self->playing = YES;

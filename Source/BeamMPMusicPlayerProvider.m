@@ -76,7 +76,7 @@
 }
 
 -(MPMediaItem*)mediaItemAtIndex:(NSUInteger)index {
-    if(self.mediaItems == nil) 
+    if(self.mediaItems == nil || self.mediaItems.count == 0) 
         return self.musicPlayer.nowPlayingItem;
     else 
         return [self.mediaItems objectAtIndex:index];
@@ -126,8 +126,7 @@
     
 }
 
--(NSInteger)numberOfTracksInPlayer:(BeamMusicPlayerViewController *)player
-{
+-(NSInteger)numberOfTracksInPlayer:(BeamMusicPlayerViewController *)player {
     return self.mediaItems ? self.mediaItems.count : -1;
 }
 
@@ -177,14 +176,14 @@
 
 -(void)musicPlayerActionRequested:(BeamMusicPlayerViewController *)musicPlayer {
     UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Action" message:@"The Player's action button was pressed." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+    // TODO: make this available to the client
     [alertView show];
-    
 }
 
 -(void)musicPlayerBackRequested:(BeamMusicPlayerViewController *)musicPlayer {
     UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Action" message:@"The Player's back button was pressed." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+    // TODO: make this available to the client
     [alertView show];
-    
 }
 
 
