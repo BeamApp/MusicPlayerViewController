@@ -33,7 +33,7 @@ Using the component itself is simple. Because it is derived from a standard UIVi
 
     BeamMusicPlayerViewController* controller = [BeamMusicPlayerViewController new];
     controller.delegate = self;
-    controller.datasource = self;
+    controller.dataSource = self;
     // Push the controller or something else
 
 The Project contains an example that uses the MediaLibrary to provide data for the UI. You can use this as an starting point.
