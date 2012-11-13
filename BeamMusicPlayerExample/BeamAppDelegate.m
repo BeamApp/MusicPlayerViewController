@@ -10,7 +10,7 @@
 #import "BeamAppDelegate.h"
 
 #import "BeamMusicPlayerViewController.h"
-#import "BeamMinimalExampleProvider.h"
+#import "BeamAVMusicPlayerProvider.h"
 
 @implementation BeamAppDelegate
 
@@ -32,8 +32,31 @@
     [self.window makeKeyAndVisible];
 
 #if TARGET_IPHONE_SIMULATOR
-    self.exampleProvider = [BeamMinimalExampleProvider new];
-
+    //self.exampleProvider = [BeamMinimalExampleProvider new];
+    BeamAVMusicPlayerProvider *provider = [BeamAVMusicPlayerProvider new];
+    self.exampleProvider = provider;
+    
+    //https://itunes.apple.com/search?term=Greatest+Hits+II+I+Want+It+All&entity=song
+    
+    provider.trackDescription = @{
+        @"artistName": @"Queen",
+        @"trackName": @"I Want It All",
+        @"collectionName": @"Greatest Hits II",
+        @"trackTimeMillis":@241253,
+        @"previewUrl": @"http://a1508.phobos.apple.com/us/r1000/076/Music/9e/86/af/mzm.lpvqrikt.aac.p.m4a",
+        @"artworkUrl100": @"http://a1132.phobos.apple.com/us/r1000/020/Features/2a/e3/90/dj.xjaszmmz.100x100-75.jpg"
+    };
+    
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+//        NSURL *previewURL = [NSURL URLWithString:provider.trackDescription[@"previewUrl"]];
+//        NSData* previewData = [NSData dataWithContentsOfURL:previewURL];
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            NSError* error;
+//            provider.audioPlayer = [[AVAudioPlayer alloc] initWithData:previewData error:&error];
+//            [provider.audioPlayer play];
+//        });
+//    });
+    
     self.viewController.dataSource = self.exampleProvider;
     self.viewController.delegate = self.exampleProvider;
     [self.viewController reloadData];
