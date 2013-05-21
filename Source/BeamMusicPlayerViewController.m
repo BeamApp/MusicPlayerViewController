@@ -105,6 +105,8 @@
 {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/black_linen_v2"]];
+    
     // Scrobble overlay should always be visible on tall phones
     if(self.isTallPhone) {
         self.scrobbleOverlay.alpha = 1;
