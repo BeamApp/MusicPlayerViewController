@@ -1,4 +1,4 @@
-MusicPlayerViewController
+MusicPlayerViewController [![Build Status](https://travis-ci.org/BeamApp/MusicPlayerViewController.png?branch=master)](https://travis-ci.org/BeamApp/MusicPlayerViewController)
 =========================
 
 ![SCreenshot](https://github.com/BeamApp/MusicPlayerViewController/raw/master/Documentation/images/screen.png)
