@@ -25,7 +25,6 @@
 		97CA282B1577B68B003D8938 /* BeamMPMusicPlayerProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CA282A1577B68B003D8938 /* BeamMPMusicPlayerProvider.m */; };
 		97CA282D1577B6A9003D8938 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97CA282C1577B6A9003D8938 /* MediaPlayer.framework */; };
 		CB0DC57615B69ADE0045921A /* NSDateFormatter+Duration.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0DC57315B69ADE0045921A /* NSDateFormatter+Duration.m */; };
-		CB0DC57715B69ADE0045921A /* UIImageView+Reflection.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0DC57515B69ADE0045921A /* UIImageView+Reflection.m */; };
 		CB0DC58F15B6AD300045921A /* BeamMusicPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0DC58D15B6AD300045921A /* BeamMusicPlayerViewController.xib */; };
 		CB0DC5AB15B71C940045921A /* BeamMPMusicPlayerProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0DC5AA15B71C940045921A /* BeamMPMusicPlayerProviderTests.m */; };
 		CB273946174BA38100977530 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB273945174BA38100977530 /* Default-568h@2x.png */; };
@@ -75,8 +74,6 @@
 		97CA282C1577B6A9003D8938 /* MediaPlayer.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		CB0DC57215B69ADE0045921A /* NSDateFormatter+Duration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+Duration.h"; sourceTree = "<group>"; };
 		CB0DC57315B69ADE0045921A /* NSDateFormatter+Duration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+Duration.m"; sourceTree = "<group>"; };
-		CB0DC57415B69ADE0045921A /* UIImageView+Reflection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Reflection.h"; sourceTree = "<group>"; };
-		CB0DC57515B69ADE0045921A /* UIImageView+Reflection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Reflection.m"; sourceTree = "<group>"; };
 		CB0DC58D15B6AD300045921A /* BeamMusicPlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeamMusicPlayerViewController.xib; sourceTree = "<group>"; };
 		CB0DC5A615B71BD00045921A /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Release-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		CB0DC5A915B71C940045921A /* BeamMPMusicPlayerProviderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeamMPMusicPlayerProviderTests.h; sourceTree = "<group>"; };
@@ -251,8 +248,6 @@
 			children = (
 				CB0DC57215B69ADE0045921A /* NSDateFormatter+Duration.h */,
 				CB0DC57315B69ADE0045921A /* NSDateFormatter+Duration.m */,
-				CB0DC57415B69ADE0045921A /* UIImageView+Reflection.h */,
-				CB0DC57515B69ADE0045921A /* UIImageView+Reflection.m */,
 			);
 			name = Categories;
 			path = ../Source;
@@ -448,7 +443,6 @@
 				9755DA9E1578BE2800B5431E /* AutoScrollLabel.m in Sources */,
 				9708EED51579146F0097F43F /* BeamMinimalExampleProvider.m in Sources */,
 				CB0DC57615B69ADE0045921A /* NSDateFormatter+Duration.m in Sources */,
-				CB0DC57715B69ADE0045921A /* UIImageView+Reflection.m in Sources */,
 				CB397C85165257B600A90C78 /* BeamAVMusicPlayerProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

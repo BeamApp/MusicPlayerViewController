@@ -8,7 +8,6 @@
 //
 
 #import "BeamMusicPlayerViewController.h"
-#import "UIImageView+Reflection.h"
 #import "NSDateFormatter+Duration.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "AutoScrollLabel.h"
@@ -33,7 +32,6 @@
 @property (nonatomic,weak) IBOutlet UIBarButtonItem* playButton; // Play
 
 @property (nonatomic,weak) IBOutlet UIImageView* albumArtImageView; // Album Art Image View
-@property (nonatomic,weak) IBOutlet UIImageView* albumArtReflection; // It's reflection
 
 @property (nonatomic,strong) NSTimer* playbackTickTimer; // Ticks each seconds when playing.
 
@@ -75,7 +73,6 @@
 @synthesize progressSlider;
 @synthesize controlsToolbar;
 @synthesize albumArtImageView;
-@synthesize albumArtReflection;
 @synthesize delegate;
 @synthesize dataSource;
 @synthesize currentTrack;
@@ -108,10 +105,15 @@
 {
     [super viewDidLoad];
     
-    // Scrobble Ovelray alpha should be 0, initialize the gesture recognizer
-    self.scrobbleOverlay.alpha = 0;
-    self.coverArtGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(coverArtTapped:)];
-    [self.albumArtImageView addGestureRecognizer:self.coverArtGestureRecognizer];
+    // Scrobble overlay should always be visible on tall phones
+    if(self.isTallPhone) {
+        self.scrobbleOverlay.alpha = 1;
+    } else {
+        // on small phones, let tap toggle overlay
+        self.scrobbleOverlay.alpha = 0;
+        self.coverArtGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(coverArtTapped:)];
+        [self.albumArtImageView addGestureRecognizer:self.coverArtGestureRecognizer];
+    }
     
     // Knobs for the sliders
     UIImage* knob = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/VolumeKnob"];
@@ -126,7 +128,7 @@
     self.controlsToolbar.frame = toolbarRect;
 
     // Set UI to non-scrobble
-    [self setScrobbleUI:NO];
+    [self setScrobbleUI:NO animated:NO];
     
     // Set up labels. These are autoscrolling and need code-base setup.
     [self.artistNameLabel setShadowColor:[UIColor blackColor]];
@@ -182,6 +184,11 @@
     self.navigationItem.leftBarButtonItem = self.backBlock ? self.backButton : nil;
 }
 
+-(BOOL)isTallPhone {
+    CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+    return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) && (screenSize.height > 480.0f);
+}
+
 #pragma mark - Playback Management
 
 -(BOOL)numberOfTracksAvailable {
@@ -190,7 +197,6 @@
 
 -(void)setAlbumArtToPlaceholder {
     self.albumArtImageView.image = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/noartplaceholder.png"];
-    self.albumArtReflection.image = [self.albumArtImageView reflectedImageWithHeight:self.albumArtReflection.frame.size.height];
 }
 
 /**
@@ -230,7 +236,6 @@
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(setAlbumArtToPlaceholder) object:nil];
                         self.albumArtImageView.image = image;
-                        self.albumArtReflection.image = [self.albumArtImageView reflectedImageWithHeight:self.albumArtReflection.frame.size.height];
                     });
                 }
             
@@ -557,7 +562,7 @@
  */
 - (IBAction)sliderDidBeginScrubbing:(id)sender {
     self.scrobbling = YES;
-    [self setScrobbleUI:YES];
+    [self setScrobbleUI:YES animated:YES];
 }
 
 /**
@@ -565,16 +570,17 @@
  */
 - (IBAction)sliderDidEndScrubbing:(id)sender {
     self.scrobbling = NO;
-    [self setScrobbleUI:NO];
+    [self setScrobbleUI:NO animated:YES];
     [self updateTrackDisplay];
 }
+
 
 /*
  * Updates the UI according to the current scrobble state given.
  */
--(void)setScrobbleUI:(BOOL)scrobbleState {
+-(void)setScrobbleUI:(BOOL)scrobbleState animated:(BOOL)animated{
     float alpha = ( scrobbleState ? 1 : 0 );
-    [UIView animateWithDuration:0.25 animations:^{
+    [UIView animateWithDuration:animated?0.25:0 animations:^{
         self.repeatButton.alpha = 1-alpha;
         self.shuffleButton.alpha = 1-alpha;
         self.scrobbleHelpLabel.alpha = alpha;
