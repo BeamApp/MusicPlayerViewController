@@ -149,8 +149,9 @@
     
     self.placeholderImageDelay = 0.5;
 
-    self.actionBlock = nil;
-    self.backBlock = nil;
+    // force UI to update properly
+    self.actionBlock = self->actionBlock;
+    self.backBlock = self->backBlock;
 }
 
 - (void)viewDidUnload
