@@ -28,6 +28,7 @@
 		CB0DC57715B69ADE0045921A /* UIImageView+Reflection.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0DC57515B69ADE0045921A /* UIImageView+Reflection.m */; };
 		CB0DC58F15B6AD300045921A /* BeamMusicPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0DC58D15B6AD300045921A /* BeamMusicPlayerViewController.xib */; };
 		CB0DC5AB15B71C940045921A /* BeamMPMusicPlayerProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0DC5AA15B71C940045921A /* BeamMPMusicPlayerProviderTests.m */; };
+		CB273946174BA38100977530 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB273945174BA38100977530 /* Default-568h@2x.png */; };
 		CB35A6FF1576918F008318EE /* BeamMusicPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB35A6FE1576918F008318EE /* BeamMusicPlayerViewController.m */; };
 		CB397C85165257B600A90C78 /* BeamAVMusicPlayerProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = CB397C84165257B600A90C78 /* BeamAVMusicPlayerProvider.m */; };
 		CB397C8A16525BD800A90C78 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB397C8916525BD800A90C78 /* AVFoundation.framework */; };
@@ -80,6 +81,7 @@
 		CB0DC5A615B71BD00045921A /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Release-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		CB0DC5A915B71C940045921A /* BeamMPMusicPlayerProviderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeamMPMusicPlayerProviderTests.h; sourceTree = "<group>"; };
 		CB0DC5AA15B71C940045921A /* BeamMPMusicPlayerProviderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeamMPMusicPlayerProviderTests.m; sourceTree = "<group>"; };
+		CB273945174BA38100977530 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		CB35A6F81576916C008318EE /* BeamMusicPlayerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeamMusicPlayerDataSource.h; sourceTree = "<group>"; };
 		CB35A6F91576916C008318EE /* BeamMusicPlayerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeamMusicPlayerDelegate.h; sourceTree = "<group>"; };
 		CB35A6FD1576918F008318EE /* BeamMusicPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeamMusicPlayerViewController.h; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				97E9DA6C157682A700620689 /* Music Player */,
 				97B7AA4115760AAF0014E693 /* BeamAppDelegate.h */,
 				97B7AA4215760AAF0014E693 /* BeamAppDelegate.m */,
+				CB273945174BA38100977530 /* Default-568h@2x.png */,
 				97B7AA3915760AAF0014E693 /* Supporting Files */,
 			);
 			path = BeamMusicPlayerExample;
@@ -389,6 +392,7 @@
 				97B7AA3D15760AAF0014E693 /* InfoPlist.strings in Resources */,
 				CBCD885B15B44165001B7A1D /* BeamMusicPlayerController.bundle in Resources */,
 				CB0DC58F15B6AD300045921A /* BeamMusicPlayerViewController.xib in Resources */,
+				CB273946174BA38100977530 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
