@@ -13,10 +13,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "970D5BE2C3A94773A2507CBB"
-               BuildableName = "libPods.a"
-               BlueprintName = "Pods"
-               ReferencedContainer = "container:Pods.xcodeproj">
+               BlueprintIdentifier = "97B7AA5115760AAF0014E693"
+               BuildableName = "BeamMusicPlayerExampleTests.octest"
+               BlueprintName = "BeamMusicPlayerExampleTests"
+               ReferencedContainer = "container:BeamMusicPlayerExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -27,6 +27,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "97B7AA5115760AAF0014E693"
+               BuildableName = "BeamMusicPlayerExampleTests.octest"
+               BlueprintName = "BeamMusicPlayerExampleTests"
+               ReferencedContainer = "container:BeamMusicPlayerExample.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
