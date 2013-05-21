@@ -38,8 +38,12 @@ Using the component itself is simple. Because it is derived from a standard UIVi
 
 The Project contains an example that uses the MediaLibrary to provide data for the UI. You can use this as an starting point.
 
+Development
+-------
+You are more than welcome to contribute code to this project! Since this project relies on [CocoaPods](http://cocoapods.org/) while describing a Pod itself, make sure to open `BeamMusicPlayerExample.xcworkspace` instead of the project file.
+
 License
 -------
 The Project is licensed under the new BSD License (see file LICENSE).
 
-© 2012 Beam App UG ( haftungsbeschränkt )
+© 2013 Beam App UG ( haftungsbeschränkt )
