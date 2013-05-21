@@ -31,7 +31,7 @@
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
 
-#if TARGET_IPHONE_SIMULATOR
+#if true || TARGET_IPHONE_SIMULATOR
     //self.exampleProvider = [BeamMinimalExampleProvider new];
     BeamAVMusicPlayerProvider *provider = [BeamAVMusicPlayerProvider new];
     self.exampleProvider = provider;
@@ -47,18 +47,20 @@
         @"artworkUrl100": @"http://a1132.phobos.apple.com/us/r1000/020/Features/2a/e3/90/dj.xjaszmmz.100x100-75.jpg"
     };
     
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-//        NSURL *previewURL = [NSURL URLWithString:provider.trackDescription[@"previewUrl"]];
-//        NSData* previewData = [NSData dataWithContentsOfURL:previewURL];
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            NSError* error;
-//            provider.audioPlayer = [[AVAudioPlayer alloc] initWithData:previewData error:&error];
-//            [provider.audioPlayer play];
-//        });
-//    });
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        NSURL *previewURL = [NSURL URLWithString:provider.trackDescription[@"previewUrl"]];
+        NSData* previewData = [NSData dataWithContentsOfURL:previewURL];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSError* error;
+            provider.audioPlayer = [[AVAudioPlayer alloc] initWithData:previewData error:&error];
+            [provider.audioPlayer play];
+            [self.viewController reloadData];
+        });
+    });
     
     self.viewController.dataSource = self.exampleProvider;
     self.viewController.delegate = self.exampleProvider;
+    provider.controller = self.viewController;
     [self.viewController reloadData];
 #else
     BeamMPMusicPlayerProvider *mpMusicPlayerProvider = [BeamMPMusicPlayerProvider new];

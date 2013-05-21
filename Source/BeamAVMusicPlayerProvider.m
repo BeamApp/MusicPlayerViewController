@@ -7,6 +7,7 @@
 //
 
 #import "BeamAVMusicPlayerProvider.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 const NSString* BeamAVMusicPlayerProviderTrackDescriptionTitle = @"trackName";
 const NSString* BeamAVMusicPlayerProviderTrackDescriptionArtist = @"artistName";
@@ -15,6 +16,15 @@ const NSString* BeamAVMusicPlayerProviderTrackDescriptionLengthInMilliseconds = 
 const NSString* BeamAVMusicPlayerProviderTrackDescriptionArtworkUrl = @"artworkUrl100";
 
 @implementation BeamAVMusicPlayerProvider
+
+-(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
+    [self.controller stop];
+}
+
+-(void)setAudioPlayer:(AVAudioPlayer *)audioPlayer {
+    _audioPlayer = audioPlayer;
+    _audioPlayer.delegate = self;
+}
 
 -(NSString *)musicPlayer:(BeamMusicPlayerViewController *)player albumForTrack:(NSUInteger)trackNumber {
     return self.trackDescription[BeamAVMusicPlayerProviderTrackDescriptionTitle];
@@ -29,7 +39,26 @@ const NSString* BeamAVMusicPlayerProviderTrackDescriptionArtworkUrl = @"artworkU
 }
 
 -(CGFloat)musicPlayer:(BeamMusicPlayerViewController *)player lengthForTrack:(NSUInteger)trackNumber {
-    return [self.trackDescription[BeamAVMusicPlayerProviderTrackDescriptionLengthInMilliseconds] floatValue] * 1000;
+    if(self.audioPlayer)
+        return self.audioPlayer.duration;
+    
+    return [self.trackDescription[BeamAVMusicPlayerProviderTrackDescriptionLengthInMilliseconds] floatValue] / 1000.0f;
+}
+
+-(void)musicPlayerDidStartPlaying:(BeamMusicPlayerViewController *)player {
+    [self.audioPlayer play];
+}
+
+-(void)musicPlayerDidStopPlaying:(BeamMusicPlayerViewController *)player {
+    [self.audioPlayer pause];
+}
+
+-(void)musicPlayer:(BeamMusicPlayerViewController *)player didSeekToPosition:(CGFloat)position {
+    self.audioPlayer.currentTime = position;
+}
+
+-(void)musicPlayer:(BeamMusicPlayerViewController *)player didChangeVolume:(CGFloat)volume {
+    MPMusicPlayerController.iPodMusicPlayer.volume = volume;
 }
 
 -(NSURL*)artworkUrl {

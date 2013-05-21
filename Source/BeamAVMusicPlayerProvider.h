@@ -9,17 +9,18 @@
 #import <Foundation/Foundation.h>
 #import "BeamMusicPlayerDataSource.h"
 #import "BeamMusicPlayerDelegate.h"
+#import "BeamMusicPlayerViewController.h"
 #import <AVFoundation/AVFoundation.h>
-
 
 extern const NSString* BeamAVMusicPlayerProviderTrackDescriptionTitle;
 extern const NSString* BeamAVMusicPlayerProviderTrackDescriptionArtist;
 extern const NSString* BeamAVMusicPlayerProviderTrackDescriptionAlbum;
 extern const NSString* BeamAVMusicPlayerProviderTrackDescriptionLengthInMilliseconds;
 
-@interface BeamAVMusicPlayerProvider : NSObject<BeamMusicPlayerDelegate, BeamMusicPlayerDataSource>
+@interface BeamAVMusicPlayerProvider : NSObject<BeamMusicPlayerDelegate, BeamMusicPlayerDataSource, AVAudioPlayerDelegate>
 
-@property (strong) AVAudioPlayer* audioPlayer;
-@property (strong) NSDictionary* trackDescription;
+@property (nonatomic,strong) AVAudioPlayer* audioPlayer;
+@property (nonatomic, copy) NSDictionary* trackDescription;
+@property (nonatomic,strong) BeamMusicPlayerViewController* controller;
 
 @end

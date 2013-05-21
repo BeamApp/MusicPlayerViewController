@@ -84,6 +84,8 @@
  */
 -(void)pause;
 
+-(void)stop;
+
 /**
  * Skips to the next track. 
  *
