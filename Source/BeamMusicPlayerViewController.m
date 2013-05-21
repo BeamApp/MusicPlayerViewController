@@ -118,7 +118,7 @@
     UIImage* sliderBlueTrack = [[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/VolumeBlueTrack.png"] stretchableImageWithLeftCapWidth:5.0 topCapHeight:0];
     UIImage* slideWhiteTrack = [[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/VolumeWhiteTrack.png"] stretchableImageWithLeftCapWidth:5.0 topCapHeight:0];
     UIImage* knob = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/VolumeKnob"];
-    
+
     [[UISlider appearanceWhenContainedIn:[self class], nil] setThumbImage:knob forState:UIControlStateNormal];
 
     [[UISlider appearance] setMinimumTrackImage:sliderBlueTrack forState:UIControlStateNormal];
