@@ -148,7 +148,9 @@
     [self.trackTitleLabel setFont:[UIFont boldSystemFontOfSize:12]];
     
     self.placeholderImageDelay = 0.5;
-    
+
+    self.actionBlock = nil;
+    self.backBlock = nil;
 }
 
 - (void)viewDidUnload
@@ -169,12 +171,15 @@
     }
 }
 
--(void)setDelegate:(id<BeamMusicPlayerDelegate>)value {
-    self->delegate = value;
+- (void)setActionBlock:(void (^)())block {
+    self->actionBlock = block;
     self.navigationItem.rightBarButtonItem = self.actionBlock ? self.actionButton : nil;
-    self.navigationItem.leftBarButtonItem = self.backBlock ? self.backButton : nil;
 }
 
+- (void)setBackBlock:(void (^)())block {
+    self->backBlock = block;
+    self.navigationItem.leftBarButtonItem = self.backBlock ? self.backButton : nil;
+}
 
 #pragma mark - Playback Management
 
@@ -261,6 +266,12 @@
         [self adjustPlayButtonState];
 
     }
+}
+
+-(void)stop {
+    [self pause];
+    self.currentPlaybackPosition = 0;
+    [self updateSeekUI];
 }
 
 -(void)next {
