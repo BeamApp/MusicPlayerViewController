@@ -3,3 +3,4 @@ set -e
 
 brew update
 brew install xctool
+brew install appledoc

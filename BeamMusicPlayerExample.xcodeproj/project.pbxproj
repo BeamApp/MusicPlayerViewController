@@ -303,11 +303,11 @@
 /* Begin PBXLegacyTarget section */
 		CB35A70015769221008318EE /* appledoc */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "--project-name BeamMusicPlayerViewController --project-company \"BeamApp UG\" --company-id com.beamapp --output ${PROJECT_DIR}/Documentation --no-create-docset --no-repeat-first-par --logformat xcode ${PROJECT_DIR}/Source/BeamMusicPlayerViewController.h ${PROJECT_DIR}/Source/BeamMusicPlayerDataSource.h ${PROJECT_DIR}/Source/BeamMusicPlayerDelegate.h";
+			buildArgumentsString = "${PROJECT_DIR}/travis/appledoc.sh ${PROJECT_DIR}";
 			buildConfigurationList = CB35A70115769221008318EE /* Build configuration list for PBXLegacyTarget "appledoc" */;
 			buildPhases = (
 			);
-			buildToolPath = /usr/local/bin/appledoc;
+			buildToolPath = /bin/sh;
 			buildWorkingDirectory = "";
 			dependencies = (
 			);

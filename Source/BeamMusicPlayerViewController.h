@@ -84,6 +84,9 @@
  */
 -(void)pause;
 
+/**
+ * Stops the Player. If the player is already stopped, this method does nothing but seeks to the beginning of the current song.
+ */
 -(void)stop;
 
 /**
@@ -130,9 +133,6 @@
 @property (nonatomic, assign) float placeholderImageDelay;
 
 
--(IBAction)nextAction:(id)sender;
--(IBAction)playAction:(id)sender;
--(IBAction)sliderValueChanged:(id)slider;
 
 
 
