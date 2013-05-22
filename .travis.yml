@@ -3,3 +3,7 @@
 
   before_script: travis/before_script.sh
   script: travis/script.sh
+  notifications:
+    email:
+      recipients:
+        - HeikoBehrens@gmx.de  
