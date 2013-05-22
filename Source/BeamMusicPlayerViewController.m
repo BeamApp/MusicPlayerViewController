@@ -143,8 +143,6 @@
         }
     }
     
-    //TODO add method in DataSource to fetch Volume and set VolumeSlider initially
-    
     
     // Knobs for the sliders
     UIImage* knob = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/VolumeKnob"];
@@ -273,6 +271,11 @@
  * Updates the UI to match the current track by requesting the information from the datasource.
  */
 -(void)updateUIForCurrentTrack {
+
+    //set VolumeSlider initially
+    if([self.dataSource respondsToSelector:@selector(volumeForMusicPlayer:)]){
+        [self setVolume:[self.dataSource volumeForMusicPlayer:self]];
+    }
     
     self.artistNameLabel.text = [self.dataSource musicPlayer:self artistForTrack:self.currentTrack];
     self.trackTitleLabel.text = [self.dataSource musicPlayer:self titleForTrack:self.currentTrack];

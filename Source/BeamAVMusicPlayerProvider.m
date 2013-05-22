@@ -61,6 +61,11 @@ const NSString* BeamAVMusicPlayerProviderTrackDescriptionArtworkUrl = @"artworkU
     MPMusicPlayerController.iPodMusicPlayer.volume = volume;
 }
 
+-(CGFloat)volumeForMusicPlayer:(BeamMusicPlayerViewController*)player{
+    return MPMusicPlayerController.iPodMusicPlayer.volume;
+}
+
+
 -(NSURL*)artworkUrl {
     // TODO: derive higher-res image from artwork url
     return [NSURL URLWithString:self.trackDescription[BeamAVMusicPlayerProviderTrackDescriptionArtworkUrl]];
