@@ -224,7 +224,6 @@
 								<string key="NSFrame">{{148, 269}, {304, 23}}</string>
 								<reference key="NSSuperview" ref="457089202"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -374,6 +373,34 @@
 										</object>
 										<reference key="IBUIFontDescription" ref="479929073"/>
 										<reference key="IBUIFont" ref="995411530"/>
+									</object>
+									<object class="IBUILabel" id="371491633">
+										<reference key="NSNextResponder" ref="86840189"/>
+										<int key="NSvFlags">295</int>
+										<string key="NSFrame">{{27, 0}, {261, 21}}</string>
+										<reference key="NSSuperview" ref="86840189"/>
+										<reference key="NSWindow"/>
+										<string key="NSReuseIdentifierKey">_NS:9</string>
+										<bool key="IBUIOpaque">NO</bool>
+										<bool key="IBUIClipsSubviews">YES</bool>
+										<int key="IBUIContentMode">7</int>
+										<bool key="IBUIUserInteractionEnabled">NO</bool>
+										<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+										<string key="IBUIText">Slide your finger down to adjust the scrobbing rate.</string>
+										<reference key="IBUITextColor" ref="130056626"/>
+										<nil key="IBUIHighlightedColor"/>
+										<int key="IBUIBaselineAdjustment">0</int>
+										<float key="IBUIMinimumFontSize">10</float>
+										<int key="IBUITextAlignment">1</int>
+										<object class="IBUIFontDescription" key="IBUIFontDescription">
+											<int key="type">2</int>
+											<double key="pointSize">10</double>
+										</object>
+										<object class="NSFont" key="IBUIFont">
+											<string key="NSName">Helvetica-Bold</string>
+											<double key="NSSize">10</double>
+											<int key="NSfFlags">16</int>
+										</object>
 									</object>
 								</array>
 								<string key="NSFrame">{{142, 118}, {308, 150}}</string>
@@ -574,6 +601,14 @@
 						<reference key="destination" ref="817537130"/>
 					</object>
 					<int key="connectionID">144</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">scrobbleHelpLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="371491633"/>
+					</object>
+					<int key="connectionID">146</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -811,6 +846,7 @@
 							<reference ref="575811992"/>
 							<reference ref="174453185"/>
 							<reference ref="794049970"/>
+							<reference ref="371491633"/>
 						</array>
 						<reference key="parent" ref="457089202"/>
 					</object>
@@ -841,6 +877,12 @@
 						<reference key="parent" ref="86840189"/>
 						<string key="objectName">Repeat Button</string>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">145</int>
+						<reference key="object" ref="371491633"/>
+						<reference key="parent" ref="86840189"/>
+						<string key="objectName">Usage Hint Scrobble</string>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -857,6 +899,7 @@
 				<string key="123.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<real value="2" key="123.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="124.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="145.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="30.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="31.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="32.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -879,7 +922,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">144</int>
+			<int key="maxID">146</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -895,10 +938,13 @@
 					<string key="className">BeamMusicPlayerViewController</string>
 					<string key="superclassName">UIViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="actionButtonAction:">id</string>
 						<string key="backButtonAction:">id</string>
+						<string key="coverArtTapped:">id</string>
 						<string key="nextAction:">id</string>
 						<string key="playAction:">id</string>
 						<string key="previousAction:">id</string>
+						<string key="repeatModeButtonAction:">id</string>
 						<string key="shuffleButtonAction:">id</string>
 						<string key="sliderDidBeginScrubbing:">id</string>
 						<string key="sliderDidEndScrubbing:">id</string>
@@ -906,8 +952,16 @@
 						<string key="volumeSliderValueChanged:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="actionButtonAction:">
+							<string key="name">actionButtonAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="backButtonAction:">
 							<string key="name">backButtonAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="coverArtTapped:">
+							<string key="name">coverArtTapped:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="nextAction:">
@@ -920,6 +974,10 @@
 						</object>
 						<object class="IBActionInfo" key="previousAction:">
 							<string key="name">previousAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="repeatModeButtonAction:">
+							<string key="name">repeatModeButtonAction:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="shuffleButtonAction:">
