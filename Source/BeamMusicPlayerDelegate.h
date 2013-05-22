@@ -20,7 +20,7 @@
 
 @optional
 
-/* - intentionally fail to test email notifications
+/**
  * Called by the player after the player started playing a song.
  * @param player the BeamMusicPlayerViewController sending the message
  */
