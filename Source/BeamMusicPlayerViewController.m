@@ -18,6 +18,7 @@
 -(IBAction)nextAction:(id)sender;
 -(IBAction)playAction:(id)sender;
 -(IBAction)sliderValueChanged:(id)slider;
+-(IBAction)volumeSliderValueChanged:(id)sender;
 
 @property (nonatomic,weak) IBOutlet UISlider* volumeSlider; // Volume Slider
 @property (nonatomic,weak) IBOutlet OBSlider* progressSlider; // Progress Slider buried in the Progress View

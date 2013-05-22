@@ -134,8 +134,4 @@
 
 
 
--(IBAction)volumeSliderValueChanged:(id)sender;
-
-
-
 @end
