@@ -229,10 +229,18 @@
         self.albumArtImageView.frame = f;
         
         f = self.controlView.frame;
-        f.origin.x = UIInterfaceOrientationIsLandscape(toInterfaceOrientation) ? 650 : 184;
+        f.size.width = UIInterfaceOrientationIsLandscape(toInterfaceOrientation) ? 350 : 600;
+        f.origin.x = UIInterfaceOrientationIsLandscape(toInterfaceOrientation) ? 660 : 84;
         f.origin.y = UIInterfaceOrientationIsLandscape(toInterfaceOrientation) ? 220 : 675;
         self.controlView.frame = f;
+        
     }
+}
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+    [self.albumTitleLabel setNeedsLayout];
+    [self.artistNameLabel setNeedsLayout];
+    [self.trackTitleLabel setNeedsLayout];
+    
 }
 
 
