@@ -109,9 +109,11 @@
     [super viewDidLoad];
     
     // Scrobble Ovelray alpha should be 0, initialize the gesture recognizer
-    self.scrobbleOverlay.alpha = 0;
-    self.coverArtGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(coverArtTapped:)];
-    [self.albumArtImageView addGestureRecognizer:self.coverArtGestureRecognizer];
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
+        self.scrobbleOverlay.alpha = 0;
+        self.coverArtGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(coverArtTapped:)];
+        [self.albumArtImageView addGestureRecognizer:self.coverArtGestureRecognizer];
+    }
     
     // Knobs for the sliders
     

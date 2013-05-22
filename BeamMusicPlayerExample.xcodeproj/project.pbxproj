@@ -24,6 +24,7 @@
 		97B7AA6115760AAF0014E693 /* BeamMusicPlayerExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B7AA6015760AAF0014E693 /* BeamMusicPlayerExampleTests.m */; };
 		97CA282B1577B68B003D8938 /* BeamMPMusicPlayerProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CA282A1577B68B003D8938 /* BeamMPMusicPlayerProvider.m */; };
 		97CA282D1577B6A9003D8938 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97CA282C1577B6A9003D8938 /* MediaPlayer.framework */; };
+		A3CD1673174BC6BD0043ACEE /* BeamMusicPlayerViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3CD1672174BC6BD0043ACEE /* BeamMusicPlayerViewController~ipad.xib */; };
 		CB0DC57615B69ADE0045921A /* NSDateFormatter+Duration.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0DC57315B69ADE0045921A /* NSDateFormatter+Duration.m */; };
 		CB0DC57715B69ADE0045921A /* UIImageView+Reflection.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0DC57515B69ADE0045921A /* UIImageView+Reflection.m */; };
 		CB0DC58F15B6AD300045921A /* BeamMusicPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0DC58D15B6AD300045921A /* BeamMusicPlayerViewController.xib */; };
@@ -73,6 +74,7 @@
 		97CA28291577B68B003D8938 /* BeamMPMusicPlayerProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeamMPMusicPlayerProvider.h; sourceTree = "<group>"; };
 		97CA282A1577B68B003D8938 /* BeamMPMusicPlayerProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeamMPMusicPlayerProvider.m; sourceTree = "<group>"; };
 		97CA282C1577B6A9003D8938 /* MediaPlayer.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		A3CD1672174BC6BD0043ACEE /* BeamMusicPlayerViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "BeamMusicPlayerViewController~ipad.xib"; sourceTree = "<group>"; };
 		CB0DC57215B69ADE0045921A /* NSDateFormatter+Duration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+Duration.h"; sourceTree = "<group>"; };
 		CB0DC57315B69ADE0045921A /* NSDateFormatter+Duration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+Duration.m"; sourceTree = "<group>"; };
 		CB0DC57415B69ADE0045921A /* UIImageView+Reflection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Reflection.h"; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				CB35A6FD1576918F008318EE /* BeamMusicPlayerViewController.h */,
 				CB35A6FE1576918F008318EE /* BeamMusicPlayerViewController.m */,
 				CB0DC58D15B6AD300045921A /* BeamMusicPlayerViewController.xib */,
+				A3CD1672174BC6BD0043ACEE /* BeamMusicPlayerViewController~ipad.xib */,
 				CB35A6F81576916C008318EE /* BeamMusicPlayerDataSource.h */,
 				CB35A6F91576916C008318EE /* BeamMusicPlayerDelegate.h */,
 				97CA28291577B68B003D8938 /* BeamMPMusicPlayerProvider.h */,
@@ -393,6 +396,7 @@
 				CBCD885B15B44165001B7A1D /* BeamMusicPlayerController.bundle in Resources */,
 				CB0DC58F15B6AD300045921A /* BeamMusicPlayerViewController.xib in Resources */,
 				CB273946174BA38100977530 /* Default-568h@2x.png in Resources */,
+				A3CD1673174BC6BD0043ACEE /* BeamMusicPlayerViewController~ipad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

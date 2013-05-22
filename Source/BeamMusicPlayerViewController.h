@@ -134,7 +134,7 @@
 -(IBAction)playAction:(id)sender;
 -(IBAction)sliderValueChanged:(id)slider;
 
-
+-(IBAction)volumeSliderValueChanged:(id)sender;
 
 
 
