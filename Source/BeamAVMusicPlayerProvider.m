@@ -13,7 +13,8 @@ const NSString* BeamAVMusicPlayerProviderTrackDescriptionTitle = @"trackName";
 const NSString* BeamAVMusicPlayerProviderTrackDescriptionArtist = @"artistName";
 const NSString* BeamAVMusicPlayerProviderTrackDescriptionAlbum = @"collectionName";
 const NSString* BeamAVMusicPlayerProviderTrackDescriptionLengthInMilliseconds = @"trackTimeMillis";
-const NSString* BeamAVMusicPlayerProviderTrackDescriptionArtworkUrl = @"artworkUrl100";
+
+NSString* BeamAVMusicPlayerProviderTrackDescriptionArtworkPattern = @"^artworkUrl(\\d+)$";
 
 @implementation BeamAVMusicPlayerProvider
 
@@ -65,22 +66,60 @@ const NSString* BeamAVMusicPlayerProviderTrackDescriptionArtworkUrl = @"artworkU
     return MPMusicPlayerController.iPodMusicPlayer.volume;
 }
 
++(id)artworkUrlValueForSize:(int)size inDescription:(NSDictionary*)description {
+    static NSRegularExpression *regex;
+    if(!regex) {
+        regex = [NSRegularExpression regularExpressionWithPattern:BeamAVMusicPlayerProviderTrackDescriptionArtworkPattern options:0 error:nil];
+    }
+    
+    const int minCorridorSize = (int)(size * 0.9);
+    const int maxCorridorSize = size;
+    int largestSizeInCorridor = INT_MIN;
+    int largestSizeBelowCorridor = INT_MIN;
+    int smallestSizeAboveCorridor = INT_MAX;
 
--(NSURL*)artworkUrl {
-    // TODO: derive higher-res image from artwork url
-    return [NSURL URLWithString:self.trackDescription[BeamAVMusicPlayerProviderTrackDescriptionArtworkUrl]];
+    for(NSString* key in description.keyEnumerator) {
+        NSTextCheckingResult *match = [regex firstMatchInString:key options:0 range:NSMakeRange(0, key.length)];
+        if(match) {
+            NSRange matchRange = [match rangeAtIndex:1];
+            NSString *matchString = [key substringWithRange:matchRange];
+            int keySize = matchString.intValue;
+
+            if(keySize > maxCorridorSize)
+                smallestSizeAboveCorridor = MIN(smallestSizeAboveCorridor, keySize);
+            if(keySize < minCorridorSize)
+                largestSizeBelowCorridor = MAX(largestSizeBelowCorridor, keySize);
+            if(keySize >= minCorridorSize && keySize <= maxCorridorSize)
+                largestSizeInCorridor = MAX(keySize, largestSizeInCorridor);
+        }
+    }
+
+    int bestSize;
+    if(largestSizeInCorridor > INT_MIN)
+        bestSize = largestSizeInCorridor;
+    else if (smallestSizeAboveCorridor < INT_MAX)
+        bestSize = smallestSizeAboveCorridor;
+    else if (largestSizeBelowCorridor > INT_MIN)
+        bestSize = largestSizeBelowCorridor;
+    else
+        return nil;
+
+    NSString* key = [NSString stringWithFormat:@"artworkUrl%d", bestSize];
+    return description[key];
 }
 
 -(void)musicPlayer:(BeamMusicPlayerViewController *)player artworkForTrack:(NSUInteger)trackNumber receivingBlock:(BeamMusicPlayerReceivingBlock)receivingBlock {
-    NSURL *url = self.artworkUrl;
-    if(url)
+    int maxSide =  (int)ceil(MAX(player.preferredSizeForCoverArt.width, player.preferredSizeForCoverArt.height));
+    id urlValue = [self.class artworkUrlValueForSize:maxSide inDescription:self.trackDescription];
+    if(urlValue) {
+        NSURL *url = urlValue ? [NSURL URLWithString:urlValue] : nil;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
             NSData* urlData = [NSData dataWithContentsOfURL:url];
-            
+            NSLog(@"loading %@", url);
             UIImage* image = [UIImage imageWithData:urlData];
             receivingBlock(image,nil);
         });
-    
+    }
 }
 
 

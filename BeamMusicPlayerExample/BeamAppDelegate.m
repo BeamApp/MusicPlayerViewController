@@ -17,8 +17,18 @@
 @synthesize window = _window;
 @synthesize viewController = _viewController;
 @synthesize exampleProvider;
+
+
+-(BOOL)isUnderUnitTest {
+    NSArray *arguments = [[NSProcessInfo processInfo] arguments];
+    return [arguments containsObject:@"-SenTest"];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    if(self.isUnderUnitTest)
+        return YES;
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.viewController = [BeamMusicPlayerViewController new];
     self.viewController.backBlock = ^{
@@ -39,12 +49,15 @@
     //https://itunes.apple.com/search?term=Greatest+Hits+II+I+Want+It+All&entity=song
     
     provider.trackDescription = @{
-        @"artistName": @"Queen",
-        @"trackName": @"I Want It All",
-        @"collectionName": @"Greatest Hits II",
-        @"trackTimeMillis":@241253,
-        @"previewUrl": @"http://a1508.phobos.apple.com/us/r1000/076/Music/9e/86/af/mzm.lpvqrikt.aac.p.m4a",
-        @"artworkUrl100": @"http://a1132.phobos.apple.com/us/r1000/020/Features/2a/e3/90/dj.xjaszmmz.100x100-75.jpg"
+        @"artistName": @"Lana Del Rey",
+        @"trackName": @"Summertime Sadness",
+        @"collectionName": @"Born to Die",
+        @"trackTimeMillis":@265502,
+        @"previewUrl": @"http://a1525.phobos.apple.com/us/r1000/073/Music/4d/7e/85/mzm.rkneragg.aac.p.m4a",
+        @"artworkUrl100": @"http://a4.mzstatic.com/us/r1000/092/Music/6c/ed/86/mzi.oltlbval.100x100-75.jpg",
+        @"artworkUrl400": @"http://a4.mzstatic.com/us/r1000/092/Music/6c/ed/86/mzi.oltlbval.400x400-75.jpg",
+        @"artworkUrl600": @"http://a4.mzstatic.com/us/r1000/092/Music/6c/ed/86/mzi.oltlbval.600x600-75.jpg",
+        @"artworkUrl1200": @"http://a4.mzstatic.com/us/r1000/092/Music/6c/ed/86/mzi.oltlbval.1200x1200-75.jpg"
     };
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{

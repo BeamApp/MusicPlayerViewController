@@ -35,6 +35,7 @@
 		CB397C8A16525BD800A90C78 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB397C8916525BD800A90C78 /* AVFoundation.framework */; };
 		CB46FE1415795405004BE46A /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB46FE1315795405004BE46A /* libOCMock.a */; };
 		CB46FE17157955B7004BE46A /* BeamMusicPlayerViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB46FE16157955B7004BE46A /* BeamMusicPlayerViewControllerTests.m */; };
+		CB7723AF174E51ED0022EF58 /* BeamAVMusicPlayerProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7723AE174E51ED0022EF58 /* BeamAVMusicPlayerProviderTests.m */; };
 		CBCD885B15B44165001B7A1D /* BeamMusicPlayerController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CBCD885A15B44165001B7A1D /* BeamMusicPlayerController.bundle */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +102,7 @@
 		CB46FE1315795405004BE46A /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
 		CB46FE15157955B7004BE46A /* BeamMusicPlayerViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeamMusicPlayerViewControllerTests.h; sourceTree = "<group>"; };
 		CB46FE16157955B7004BE46A /* BeamMusicPlayerViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeamMusicPlayerViewControllerTests.m; sourceTree = "<group>"; };
+		CB7723AE174E51ED0022EF58 /* BeamAVMusicPlayerProviderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeamAVMusicPlayerProviderTests.m; sourceTree = "<group>"; };
 		CBCD885A15B44165001B7A1D /* BeamMusicPlayerController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BeamMusicPlayerController.bundle; sourceTree = "<group>"; };
 		D255CDAD8A6E4F49A1799F78 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -222,6 +224,7 @@
 				CB46FE0A1579539B004BE46A /* 3rd Party */,
 				97B7AA5F15760AAF0014E693 /* BeamMusicPlayerExampleTests.h */,
 				97B7AA6015760AAF0014E693 /* BeamMusicPlayerExampleTests.m */,
+				CB7723AE174E51ED0022EF58 /* BeamAVMusicPlayerProviderTests.m */,
 				CB46FE15157955B7004BE46A /* BeamMusicPlayerViewControllerTests.h */,
 				CB46FE16157955B7004BE46A /* BeamMusicPlayerViewControllerTests.m */,
 				CB0DC5A915B71C940045921A /* BeamMPMusicPlayerProviderTests.h */,
@@ -464,6 +467,7 @@
 				97B7AA6115760AAF0014E693 /* BeamMusicPlayerExampleTests.m in Sources */,
 				CB46FE17157955B7004BE46A /* BeamMusicPlayerViewControllerTests.m in Sources */,
 				CB0DC5AB15B71C940045921A /* BeamMPMusicPlayerProviderTests.m in Sources */,
+				CB7723AF174E51ED0022EF58 /* BeamAVMusicPlayerProviderTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

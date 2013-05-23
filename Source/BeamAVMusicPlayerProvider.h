@@ -23,4 +23,7 @@ extern const NSString* BeamAVMusicPlayerProviderTrackDescriptionLengthInMillisec
 @property (nonatomic, copy) NSDictionary* trackDescription;
 @property (nonatomic,strong) BeamMusicPlayerViewController* controller;
 
+
++(NSURL*)artworkUrlValueForSize:(int)size inDescription:(NSDictionary*)description;
+
 @end
