@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.homepage     = 'https://github.com/BeamApp/MusicPlayerViewController'
   s.license      = {:type => 'New BSD', :file => 'LICENSE'}
   s.authors      = { 'Moritz Haarmann' => 'http://momo.brauchtman.net', 'Heiko Behrens' => 'http://HeikoBehrens.net' }
-  s.source       = { :git => 'https://github.com/BeamApp/MusicPlayerViewController.git', :tag => '0.2.1' }
+  s.source       = { :git => 'https://github.com/BeamApp/MusicPlayerViewController.git', :tag => s.version.to_s }
   s.platform     = :ios, '5.0'
   s.source_files = 'Source/*.{h,m}'
   s.exclude_files = 'Source/BeamMPMusicPlayerProvider.{h,m}'
