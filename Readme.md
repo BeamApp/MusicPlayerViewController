@@ -14,7 +14,7 @@ MusicPlayerViewController has the following features
 
 Usage
 -------
-You can read the full [API Reference at CocoaDocs](http://cocoadocs.org/docsets/BeamMusicPlayerViewController/0.2.0/), but using the component itself is simple.
+You can read the full [API Reference at CocoaDocs](http://cocoadocs.org/docsets/BeamMusicPlayerViewController/), but using the component itself is simple.
 Since it is derived from a standard UIViewController, you can just instantiate it, set a delegate and datasource and are good to go.
 
     BeamMusicPlayerViewController* controller = [BeamMusicPlayerViewController new];
