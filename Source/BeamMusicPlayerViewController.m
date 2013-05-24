@@ -187,7 +187,18 @@
         
         [self.trackTitleLabel setShadowColor:[UIColor blackColor]];
         [self.trackTitleLabel setShadowOffset:CGSizeMake(0, -1)];
-
+        
+        // volume slider in navigation bar
+        UIImage* minImg = [[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/speakerSliderMinValue.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
+        UIImage* maxImg = [[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/speakerSliderMaxValue.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
+        UIImage* knobImg = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/speakerSliderKnob.png"];
+        [self.volumeSlider setThumbImage:knobImg forState:UIControlStateNormal];
+        [self.volumeSlider setThumbImage:knobImg forState:UIControlStateHighlighted];
+        // explicitly set tint colors to *any* color before setting TracnImage to overrule UIAppearance
+        self.volumeSlider.minimumTrackTintColor = UIColor.clearColor;
+        self.volumeSlider.maximumTrackTintColor = UIColor.clearColor;
+        [self.volumeSlider setMinimumTrackImage:minImg forState:UIControlStateNormal];
+        [self.volumeSlider setMaximumTrackImage:maxImg forState:UIControlStateNormal];
     }
     self.placeholderImageDelay = 0.5;
 

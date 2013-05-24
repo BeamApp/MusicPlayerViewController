@@ -445,17 +445,27 @@
 						<string key="NSFrame">{{2, 5}, {304, 23}}</string>
 						<reference key="NSSuperview" ref="752791413"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<float key="IBUIValue">0.5</float>
+						<object class="NSCustomResource" key="IBUIMinimumValueImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">BeamMusicPlayerController.bundle/images/speakerSliderMinIcon.png</string>
+						</object>
+						<object class="NSCustomResource" key="IBUIMaximumValueImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">BeamMusicPlayerController.bundle/images/speakerSliderMaxIcon.png</string>
+						</object>
 					</object>
 				</array>
 				<string key="NSFrameSize">{308, 32}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView" ref="922275320"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 			</object>
@@ -966,18 +976,58 @@
 					<string key="className">BeamMusicPlayerViewController</string>
 					<string key="superclassName">UIViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="actionButtonAction:">id</string>
+						<string key="backButtonAction:">id</string>
+						<string key="coverArtTapped:">id</string>
 						<string key="nextAction:">id</string>
 						<string key="playAction:">id</string>
+						<string key="previousAction:">id</string>
+						<string key="repeatModeButtonAction:">id</string>
+						<string key="shuffleButtonAction:">id</string>
+						<string key="sliderDidBeginScrubbing:">id</string>
+						<string key="sliderDidEndScrubbing:">id</string>
 						<string key="sliderValueChanged:">id</string>
 						<string key="volumeSliderValueChanged:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="actionButtonAction:">
+							<string key="name">actionButtonAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="backButtonAction:">
+							<string key="name">backButtonAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="coverArtTapped:">
+							<string key="name">coverArtTapped:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="nextAction:">
 							<string key="name">nextAction:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="playAction:">
 							<string key="name">playAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="previousAction:">
+							<string key="name">previousAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="repeatModeButtonAction:">
+							<string key="name">repeatModeButtonAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="shuffleButtonAction:">
+							<string key="name">shuffleButtonAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="sliderDidBeginScrubbing:">
+							<string key="name">sliderDidBeginScrubbing:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="sliderDidEndScrubbing:">
+							<string key="name">sliderDidEndScrubbing:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="sliderValueChanged:">
@@ -1155,6 +1205,8 @@
 			<string key="BeamMusicPlayerController.bundle/images/prevtrack">{16, 16}</string>
 			<string key="BeamMusicPlayerController.bundle/images/repeat_off.png">{16, 16}</string>
 			<string key="BeamMusicPlayerController.bundle/images/shuffle_off.png">{16, 16}</string>
+			<string key="BeamMusicPlayerController.bundle/images/speakerSliderMaxIcon.png">{16, 16}</string>
+			<string key="BeamMusicPlayerController.bundle/images/speakerSliderMinIcon.png">{16, 16}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>
