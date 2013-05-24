@@ -194,6 +194,12 @@
     // force UI to update properly
     self.actionBlock = self->actionBlock;
     self.backBlock = self->backBlock;
+    
+    // force re-layout according to interface orientation
+    dispatch_after(0, dispatch_get_current_queue(), ^{
+        [self willAnimateRotationToInterfaceOrientation:self.interfaceOrientation duration:0];
+        [self didRotateFromInterfaceOrientation:self.interfaceOrientation];
+    });
 }
 
 - (void)viewDidUnload
@@ -223,7 +229,7 @@
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         CGRect f = self.albumArtImageView.frame;
         f.origin.x = UIInterfaceOrientationIsLandscape(toInterfaceOrientation) ? 65 : 84;
-        f.origin.y = UIInterfaceOrientationIsLandscape(toInterfaceOrientation) ? (int)((self.view.frame.size.width-self.navigationBar.frame.size.height-f.size.height)/2)+self.navigationBar.frame.size.height : 65;
+        f.origin.y = UIInterfaceOrientationIsLandscape(toInterfaceOrientation) ? (int)((self.view.bounds.size.height-self.navigationBar.bounds.size.height-f.size.height)/2)+self.navigationBar.bounds.size.height : 65;
         self.albumArtImageView.frame = f;
         
         f = self.controlView.frame;
