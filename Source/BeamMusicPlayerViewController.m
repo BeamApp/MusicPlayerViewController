@@ -143,13 +143,19 @@
         }
     }
     
-    
-    // Knobs for the sliders
+    // Progess Slider
     UIImage* knob = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/VolumeKnob"];
+    [progressSlider setThumbImage:knob forState:UIControlStateNormal];
+    progressSlider.maximumTrackTintColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
     
-    [[UISlider appearanceWhenContainedIn:[self class], nil] setThumbImage:knob forState:UIControlStateNormal];
-    [[UISlider appearance] setMaximumTrackTintColor:[UIColor colorWithRed:100/255.0 green:160/255.0 blue:227/255.0 alpha:1]];
-    [[UISlider appearance] setMaximumTrackTintColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:1]];
+    // Volume Slider
+    UIImage* minImg = [[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/speakerSliderMinValue.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
+    UIImage* maxImg = [[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/speakerSliderMaxValue.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
+    UIImage* knobImg = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/speakerSliderKnob.png"];
+    [self.volumeSlider setThumbImage:knobImg forState:UIControlStateNormal];
+    [self.volumeSlider setThumbImage:knobImg forState:UIControlStateHighlighted];
+    [self.volumeSlider setMinimumTrackImage:minImg forState:UIControlStateNormal];
+    [self.volumeSlider setMaximumTrackImage:maxImg forState:UIControlStateNormal];
 
     // The Original Toolbar is 48px high in the iPod/Music app
     CGRect toolbarRect = self.controlsToolbar.frame;
@@ -187,18 +193,6 @@
         
         [self.trackTitleLabel setShadowColor:[UIColor blackColor]];
         [self.trackTitleLabel setShadowOffset:CGSizeMake(0, -1)];
-        
-        // volume slider in navigation bar
-        UIImage* minImg = [[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/speakerSliderMinValue.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
-        UIImage* maxImg = [[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/speakerSliderMaxValue.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
-        UIImage* knobImg = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/speakerSliderKnob.png"];
-        [self.volumeSlider setThumbImage:knobImg forState:UIControlStateNormal];
-        [self.volumeSlider setThumbImage:knobImg forState:UIControlStateHighlighted];
-        // explicitly set tint colors to *any* color before setting TracnImage to overrule UIAppearance
-        self.volumeSlider.minimumTrackTintColor = UIColor.clearColor;
-        self.volumeSlider.maximumTrackTintColor = UIColor.clearColor;
-        [self.volumeSlider setMinimumTrackImage:minImg forState:UIControlStateNormal];
-        [self.volumeSlider setMaximumTrackImage:maxImg forState:UIControlStateNormal];
     }
     self.placeholderImageDelay = 0.5;
 
