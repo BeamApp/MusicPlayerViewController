@@ -90,21 +90,6 @@
 							<string key="NSResourceName">BeamMusicPlayerController.bundle/images/noartplaceholder.png</string>
 						</object>
 					</object>
-					<object class="IBUIImageView" id="423748338">
-						<reference key="NSNextResponder" ref="774585933"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{0, 364}, {320, 13}}</string>
-						<reference key="NSSuperview" ref="774585933"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="578893802"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<object class="NSCustomResource" key="IBUIImage" id="996983771">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">BeamMusicPlayerController.bundle/images/shadow_highlight.png</string>
-						</object>
-					</object>
 					<object class="IBUIView" id="662525002">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">268</int>
@@ -117,7 +102,7 @@
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="682923431"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
-								<object class="NSColor" key="IBUIBackgroundColor">
+								<object class="NSColor" key="IBUIBackgroundColor" id="54823016">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MCAwAA</bytes>
 								</object>
@@ -434,12 +419,15 @@
 						<string key="NSFrame">{{0, 118}, {320, 64}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="423748338"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<float key="IBUIAlpha">0.0</float>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<reference key="IBUIImage" ref="996983771"/>
+						<object class="NSCustomResource" key="IBUIImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">BeamMusicPlayerController.bundle/images/shadow_highlight.png</string>
+						</object>
 					</object>
 				</array>
 				<string key="NSFrame">{{0, 20}, {320, 460}}</string>
@@ -545,10 +533,7 @@
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="580380735"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
-				<object class="NSColor" key="IBUIBackgroundColor" id="54823016">
-					<int key="NSColorSpace">3</int>
-					<bytes key="NSWhite">MCAwAA</bytes>
-				</object>
+				<reference key="IBUIBackgroundColor" ref="54823016"/>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUIView" id="53878954">
@@ -931,7 +916,6 @@
 							<reference ref="476195150"/>
 							<reference ref="662525002"/>
 							<reference ref="578893802"/>
-							<reference ref="423748338"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -1153,11 +1137,6 @@
 						<reference key="object" ref="293618477"/>
 						<reference key="parent" ref="546333562"/>
 					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">106</int>
-						<reference key="object" ref="423748338"/>
-						<reference key="parent" ref="774585933"/>
-					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -1165,7 +1144,6 @@
 				<string key="-1.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="-2.CustomClassName">UIResponder</string>
 				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="106.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="11.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="12.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="13.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1305,14 +1283,19 @@
 						<string key="albumTitleLabel">AutoScrollLabel</string>
 						<string key="artistNameLabel">AutoScrollLabel</string>
 						<string key="backButton">UIBarButtonItem</string>
+						<string key="controlView">UIView</string>
 						<string key="controlsToolbar">UIToolbar</string>
 						<string key="fastForwardButton">UIBarButtonItem</string>
+						<string key="fastForwardButtonIPad">UIButton</string>
+						<string key="navigationBar">UINavigationBar</string>
 						<string key="navigationItem">UINavigationItem</string>
 						<string key="numberOfTracksLabel">UILabel</string>
 						<string key="playButton">UIBarButtonItem</string>
+						<string key="playButtonIPad">UIButton</string>
 						<string key="progressSlider">OBSlider</string>
 						<string key="repeatButton">UIButton</string>
 						<string key="rewindButton">UIBarButtonItem</string>
+						<string key="rewindButtonIPad">UIButton</string>
 						<string key="scrobbleHelpLabel">UILabel</string>
 						<string key="scrobbleHighlightShadow">UIImageView</string>
 						<string key="scrobbleOverlay">UIView</string>
@@ -1343,6 +1326,10 @@
 							<string key="name">backButton</string>
 							<string key="candidateClassName">UIBarButtonItem</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="controlView">
+							<string key="name">controlView</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="controlsToolbar">
 							<string key="name">controlsToolbar</string>
 							<string key="candidateClassName">UIToolbar</string>
@@ -1350,6 +1337,14 @@
 						<object class="IBToOneOutletInfo" key="fastForwardButton">
 							<string key="name">fastForwardButton</string>
 							<string key="candidateClassName">UIBarButtonItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="fastForwardButtonIPad">
+							<string key="name">fastForwardButtonIPad</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="navigationBar">
+							<string key="name">navigationBar</string>
+							<string key="candidateClassName">UINavigationBar</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="navigationItem">
 							<string key="name">navigationItem</string>
@@ -1363,6 +1358,10 @@
 							<string key="name">playButton</string>
 							<string key="candidateClassName">UIBarButtonItem</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="playButtonIPad">
+							<string key="name">playButtonIPad</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="progressSlider">
 							<string key="name">progressSlider</string>
 							<string key="candidateClassName">OBSlider</string>
@@ -1374,6 +1373,10 @@
 						<object class="IBToOneOutletInfo" key="rewindButton">
 							<string key="name">rewindButton</string>
 							<string key="candidateClassName">UIBarButtonItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="rewindButtonIPad">
+							<string key="name">rewindButtonIPad</string>
+							<string key="candidateClassName">UIButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="scrobbleHelpLabel">
 							<string key="name">scrobbleHelpLabel</string>

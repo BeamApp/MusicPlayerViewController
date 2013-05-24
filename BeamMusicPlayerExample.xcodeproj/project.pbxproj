@@ -37,6 +37,8 @@
 		CB46FE17157955B7004BE46A /* BeamMusicPlayerViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB46FE16157955B7004BE46A /* BeamMusicPlayerViewControllerTests.m */; };
 		CB7723AF174E51ED0022EF58 /* BeamAVMusicPlayerProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7723AE174E51ED0022EF58 /* BeamAVMusicPlayerProviderTests.m */; };
 		CBCD885B15B44165001B7A1D /* BeamMusicPlayerController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CBCD885A15B44165001B7A1D /* BeamMusicPlayerController.bundle */; };
+		CBF68D25174FBD62005C6B47 /* BeamMusicPlayerTakeScreenshotsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CBF68D24174FBD62005C6B47 /* BeamMusicPlayerTakeScreenshotsTests.m */; };
+		CBF68D26174FC0FE005C6B47 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B7AA3615760AAF0014E693 /* CoreGraphics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +106,7 @@
 		CB46FE16157955B7004BE46A /* BeamMusicPlayerViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeamMusicPlayerViewControllerTests.m; sourceTree = "<group>"; };
 		CB7723AE174E51ED0022EF58 /* BeamAVMusicPlayerProviderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeamAVMusicPlayerProviderTests.m; sourceTree = "<group>"; };
 		CBCD885A15B44165001B7A1D /* BeamMusicPlayerController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BeamMusicPlayerController.bundle; sourceTree = "<group>"; };
+		CBF68D24174FBD62005C6B47 /* BeamMusicPlayerTakeScreenshotsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeamMusicPlayerTakeScreenshotsTests.m; sourceTree = "<group>"; };
 		D255CDAD8A6E4F49A1799F78 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -126,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBF68D26174FC0FE005C6B47 /* CoreGraphics.framework in Frameworks */,
 				97B7AA5415760AAF0014E693 /* SenTestingKit.framework in Frameworks */,
 				97B7AA5515760AAF0014E693 /* UIKit.framework in Frameworks */,
 				97B7AA5615760AAF0014E693 /* Foundation.framework in Frameworks */,
@@ -229,6 +233,7 @@
 				CB46FE16157955B7004BE46A /* BeamMusicPlayerViewControllerTests.m */,
 				CB0DC5A915B71C940045921A /* BeamMPMusicPlayerProviderTests.h */,
 				CB0DC5AA15B71C940045921A /* BeamMPMusicPlayerProviderTests.m */,
+				CBF68D24174FBD62005C6B47 /* BeamMusicPlayerTakeScreenshotsTests.m */,
 			);
 			path = BeamMusicPlayerExampleTests;
 			sourceTree = "<group>";
@@ -468,6 +473,7 @@
 				CB46FE17157955B7004BE46A /* BeamMusicPlayerViewControllerTests.m in Sources */,
 				CB0DC5AB15B71C940045921A /* BeamMPMusicPlayerProviderTests.m in Sources */,
 				CB7723AF174E51ED0022EF58 /* BeamAVMusicPlayerProviderTests.m in Sources */,
+				CBF68D25174FBD62005C6B47 /* BeamMusicPlayerTakeScreenshotsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

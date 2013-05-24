@@ -63,7 +63,11 @@ NSString* BeamAVMusicPlayerProviderTrackDescriptionArtworkPattern = @"^artworkUr
 }
 
 -(CGFloat)volumeForMusicPlayer:(BeamMusicPlayerViewController*)player{
+#if TARGET_IPHONE_SIMULATOR
+    return 0.6;
+#else
     return MPMusicPlayerController.iPodMusicPlayer.volume;
+#endif
 }
 
 +(id)artworkUrlValueForSize:(int)size inDescription:(NSDictionary*)description {

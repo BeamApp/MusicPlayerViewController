@@ -297,6 +297,7 @@
     [self performSelector:@selector(setAlbumArtToPlaceholder) withObject:nil afterDelay:self.placeholderImageDelay];
 
     // We only request the coverart if the delegate responds to it.
+    _customCovertArtLoaded = NO;
     if ( [self.dataSource respondsToSelector:@selector(musicPlayer:artworkForTrack:receivingBlock:)]) {
         
         // TODO: this transition needs to be overhauled before going live
@@ -320,6 +321,7 @@
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(setAlbumArtToPlaceholder) object:nil];
                         self.albumArtImageView.image = image;
+                        _customCovertArtLoaded = YES;
                     });
                 }
             
@@ -394,6 +396,7 @@
     self.volume = volume;
     [self changeTrack:track];
     self->currentPlaybackPosition = position;
+    [self updateSeekUI];
     [self play];
 }
 

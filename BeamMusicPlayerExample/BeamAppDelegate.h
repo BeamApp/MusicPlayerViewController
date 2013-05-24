@@ -21,4 +21,7 @@
 @property (strong, nonatomic) BeamMusicPlayerViewController *viewController;
 @property (strong, nonatomic) id<BeamMusicPlayerDataSource,BeamMusicPlayerDelegate> exampleProvider;
 
++(NSArray*)trackDescriptions;
+-(void)initViewMusicPlayerViewControllerWithDescription:(NSDictionary*)description;
+
 @end

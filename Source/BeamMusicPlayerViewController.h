@@ -127,7 +127,10 @@
 /// --------------------------------
 
 /// The preferred size for cover art in pixels
-@property (nonatomic, readonly) CGSize preferredSizeForCoverArt; 
+@property (nonatomic, readonly) CGSize preferredSizeForCoverArt;
+
+/// yes, if data source provided cover art for current song
+@property (nonatomic, readonly) BOOL customCovertArtLoaded;
 
 /// Timespan before placeholder for albumart will be set (default is 0.5). Supports long loading times.
 @property (nonatomic, assign) float placeholderImageDelay;
