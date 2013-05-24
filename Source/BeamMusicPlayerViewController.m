@@ -268,6 +268,11 @@
     return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) && (screenSize.height > 480.0f);
 }
 
+-(BOOL)isSmallPhone {
+    CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+    return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) && (screenSize.height <= 480.0f);
+}
+
 #pragma mark - Playback Management
 
 -(BOOL)numberOfTracksAvailable {
@@ -569,18 +574,21 @@
     [self previous];
 }
 
+-(void)showScrobbleOverlay:(BOOL)show animated:(BOOL)animated {
+    if(!self.isSmallPhone)
+        return;
+
+    [UIView animateWithDuration:animated?0.25:0 animations:^{
+        self.scrobbleOverlay.alpha = show ? 1 : 0;
+    }];
+}
+
 
 /**
  * Called when the cover art is tapped. Either shows or hides the scrobble-ui
  */
 -(IBAction)coverArtTapped:(id)sender {
-    [UIView animateWithDuration:0.25 animations:^{
-        if ( self.scrobbleOverlay.alpha == 0 ){
-            [self.scrobbleOverlay setAlpha:1];
-        } else {
-            [self.scrobbleOverlay setAlpha:0];
-        }
-    }];
+    [self showScrobbleOverlay:self.scrobbleOverlay.alpha == 0 animated:YES];
 }
 
 

@@ -144,6 +144,7 @@ CGImageRef UIGetScreenImage(); //private API for getting an image of the entire 
 
 -(void)initVCWithDescription:(NSDictionary *)description {
     [self.appDelegate initViewMusicPlayerViewControllerWithDescription:description];
+    [self.viewController showScrobbleOverlay:YES animated:NO];
 }
 
 -(void)testScreenshotForDescriptionAtIndex:(NSUInteger)index {

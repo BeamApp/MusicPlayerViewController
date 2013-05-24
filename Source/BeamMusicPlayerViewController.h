@@ -70,6 +70,15 @@
 
 
 /**
+ * Shows or Hides the scrobble overlay in 3.5 inch displays
+ *
+ * @param show Yes, to show, No to hide overlay
+ * @param animated Yes, to smoothly fade overlay
+ */
+-(void)showScrobbleOverlay:(BOOL)show animated:(BOOL)animated;
+
+
+/**
  * Starts playback. If the player is already playing, this method does nothing except wasting some cycles.
  */
 -(void)play;
