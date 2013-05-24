@@ -12,6 +12,18 @@ MusicPlayerViewController has the following features
 * Controllable using a data source and an optional delegate
 * Three Repeat Modes and Shuffle mode
 
+Usage
+-------
+You can read the full [API Reference at CocoaDocs](http://cocoadocs.org/docsets/BeamMusicPlayerViewController/0.2.0/), but using the component itself is simple.
+Since it is derived from a standard UIViewController, you can just instantiate it, set a delegate and datasource and are good to go.
+
+    BeamMusicPlayerViewController* controller = [BeamMusicPlayerViewController new];
+    controller.delegate = self;
+    controller.dataSource = self;
+    // Push the controller or something else
+
+The Project contains an example that uses the MediaLibrary to provide data for the UI. You can use this as an starting point.
+
 Installation
 ------------
 To use MusicPlayerViewController in your Project, just 
@@ -26,17 +38,6 @@ Alternatively, you can use the fabulous [CocoaPods](http://cocoapods.org/):
 2. run `pod install`
 
 and you are done.
-
-Usage
--------
-Using the component itself is simple. Because it is derived from a standard UIViewController, you can just instantiate it, set a delegate and datasource and are good to go.
-
-    BeamMusicPlayerViewController* controller = [BeamMusicPlayerViewController new];
-    controller.delegate = self;
-    controller.dataSource = self;
-    // Push the controller or something else
-
-The Project contains an example that uses the MediaLibrary to provide data for the UI. You can use this as an starting point.
 
 Development
 -------
