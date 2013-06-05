@@ -1,4 +1,4 @@
-MusicPlayerViewController [![Build Status](https://travis-ci.org/BeamApp/MusicPlayerViewController.png?branch=master)](https://travis-ci.org/BeamApp/MusicPlayerViewController)
+MusicPlayerViewController [![Build Status](https://travis-ci.org/BeamApp/MusicPlayerViewController.png?branch=master)](https://travis-ci.org/BeamApp/MusicPlayerViewController) [![Cocoa Pod](http://cocoapod-badges.herokuapp.com/v/BeamMusicPlayerViewController/badge.png)](http://cocoadocs.org/docsets/BeamMusicPlayerViewController/)
 =========================
 
 ![SCreenshot](https://github.com/BeamApp/MusicPlayerViewController/raw/master/Documentation/images/screen.png)
