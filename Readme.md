@@ -3,7 +3,7 @@ MusicPlayerViewController [![Build Status](https://travis-ci.org/BeamApp/MusicPl
 
 ![SCreenshot](https://github.com/BeamApp/MusicPlayerViewController/raw/master/Documentation/images/screen.png)
 
-MusicPlayerViewController aimes to be a drop-in component that serves as an UI for a Music Player on iPhone and iPhad by replicating the Music.app's user interface.
+MusicPlayerViewController aimes to be a drop-in component that serves as an UI for a Music Player on iPhone and iPad by replicating the Music.app's user interface.
 
 MusicPlayerViewController has the following features
 * UI for iPhone and iPad
