@@ -63,7 +63,7 @@
 }
 
 -(void)initViewMusicPlayerViewControllerWithDescription:(NSDictionary*)description {
-#if true || TARGET_IPHONE_SIMULATOR
+#if false || TARGET_IPHONE_SIMULATOR
     //self.exampleProvider = [BeamMinimalExampleProvider new];
     BeamAVMusicPlayerProvider *provider = [BeamAVMusicPlayerProvider new];
     self.exampleProvider = provider;
@@ -114,9 +114,9 @@
     self.viewController.backBlock = ^{
         [[[UIAlertView alloc] initWithTitle:@"Action" message:@"The Player's back button was pressed." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
     };
-    self.viewController.actionBlock = ^{
-        [[[UIAlertView alloc] initWithTitle:@"Action" message:@"The Player's action button was pressed." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
-    };
+//    self.viewController.actionBlock = ^{
+//        [[[UIAlertView alloc] initWithTitle:@"Action" message:@"The Player's action button was pressed." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+//    };
     
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];

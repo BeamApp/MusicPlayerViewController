@@ -114,6 +114,10 @@
  */
 -(void)previous;
 
+/**
+ * Skips to the specified track.
+ */
+-(void)changeTrack:(NSInteger)newTrack;
 
 /// --------------------------------
 /// @name Controlling User Interaction
@@ -128,7 +132,7 @@
 /// Block to be executed if the user presses the back button at the top. Button is hidden, if nil.
 @property (nonatomic, copy) void (^backBlock)();
 
-/// Block to be executed if the user presses the action button at the top right. Button is hidden, if nil.
+/// Block to be executed if the user presses the action button at the top right. If nil (the default) a button to display the playlist is shown.
 @property (nonatomic, copy) void (^actionBlock)();
 
 /// --------------------------------
@@ -144,6 +148,7 @@
 /// Timespan before placeholder for albumart will be set (default is 0.5). Supports long loading times.
 @property (nonatomic, assign) float placeholderImageDelay;
 
-
+/// Duration of the flip animation to show the playlist in seconds (default is 0.8). (Not present on iPad)
+@property (nonatomic) NSTimeInterval flipDuration;
 
 @end
