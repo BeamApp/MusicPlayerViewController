@@ -46,6 +46,7 @@
 	bufferSpaceBetweenLabels = LABEL_BUFFER_SPACE;
 	self.scrollView.showsVerticalScrollIndicator = NO;
 	self.scrollView.showsHorizontalScrollIndicator = NO;
+    self.scrollView.scrollsToTop = NO;
 	self.userInteractionEnabled = NO;
     
 

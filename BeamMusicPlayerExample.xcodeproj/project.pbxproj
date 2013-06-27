@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35DB90FB177BB2750039B53D /* BeamPlaylistTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DB90F6177BB2750039B53D /* BeamPlaylistTableViewCell.m */; };
+		35DB90FC177BB2750039B53D /* BeamRadialGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DB90F8177BB2750039B53D /* BeamRadialGradientView.m */; };
+		35DB90FD177BB2750039B53D /* BeamPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DB90FA177BB2750039B53D /* BeamPlaylistViewController.m */; };
 		6164600534AD45B89AACF5D9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D255CDAD8A6E4F49A1799F78 /* libPods.a */; };
 		9708EED51579146F0097F43F /* BeamMinimalExampleProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9708EED41579146F0097F43F /* BeamMinimalExampleProvider.m */; };
 		9755DA9E1578BE2800B5431E /* AutoScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9755DA9C1578BBA700B5431E /* AutoScrollLabel.m */; };
@@ -52,6 +55,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		35DB90F5177BB2750039B53D /* BeamPlaylistTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeamPlaylistTableViewCell.h; sourceTree = "<group>"; };
+		35DB90F6177BB2750039B53D /* BeamPlaylistTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeamPlaylistTableViewCell.m; sourceTree = "<group>"; };
+		35DB90F7177BB2750039B53D /* BeamRadialGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeamRadialGradientView.h; sourceTree = "<group>"; };
+		35DB90F8177BB2750039B53D /* BeamRadialGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeamRadialGradientView.m; sourceTree = "<group>"; };
+		35DB90F9177BB2750039B53D /* BeamPlaylistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeamPlaylistViewController.h; sourceTree = "<group>"; };
+		35DB90FA177BB2750039B53D /* BeamPlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeamPlaylistViewController.m; sourceTree = "<group>"; };
 		92FDA17ACE6F4C928D2E08D9 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		9708EED31579146F0097F43F /* BeamMinimalExampleProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BeamMinimalExampleProvider.h; path = "Example Providers/BeamMinimalExampleProvider.h"; sourceTree = "<group>"; };
 		9708EED41579146F0097F43F /* BeamMinimalExampleProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BeamMinimalExampleProvider.m; path = "Example Providers/BeamMinimalExampleProvider.m"; sourceTree = "<group>"; };
@@ -282,6 +291,12 @@
 				CB397C84165257B600A90C78 /* BeamAVMusicPlayerProvider.m */,
 				CB273947174C0EE200977530 /* BeamMusicPlayerTransparentToolbar.h */,
 				CB273948174C0EE200977530 /* BeamMusicPlayerTransparentToolbar.m */,
+				35DB90F5177BB2750039B53D /* BeamPlaylistTableViewCell.h */,
+				35DB90F6177BB2750039B53D /* BeamPlaylistTableViewCell.m */,
+				35DB90F7177BB2750039B53D /* BeamRadialGradientView.h */,
+				35DB90F8177BB2750039B53D /* BeamRadialGradientView.m */,
+				35DB90F9177BB2750039B53D /* BeamPlaylistViewController.h */,
+				35DB90FA177BB2750039B53D /* BeamPlaylistViewController.m */,
 			);
 			name = "Music Player";
 			path = ../Source;
@@ -462,6 +477,9 @@
 				CB0DC57615B69ADE0045921A /* NSDateFormatter+Duration.m in Sources */,
 				CB397C85165257B600A90C78 /* BeamAVMusicPlayerProvider.m in Sources */,
 				CB273949174C0EE200977530 /* BeamMusicPlayerTransparentToolbar.m in Sources */,
+				35DB90FB177BB2750039B53D /* BeamPlaylistTableViewCell.m in Sources */,
+				35DB90FC177BB2750039B53D /* BeamRadialGradientView.m in Sources */,
+				35DB90FD177BB2750039B53D /* BeamPlaylistViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
