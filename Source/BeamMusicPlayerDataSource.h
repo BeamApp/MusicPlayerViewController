@@ -56,6 +56,14 @@ typedef void(^BeamMusicPlayerReceivingBlock)(UIImage* image, NSError** error);
  */
 -(CGFloat)musicPlayer:(BeamMusicPlayerViewController*)player lengthForTrack:(NSUInteger)trackNumber;
 
+/**
+ * Returns the current position for the given track in the given BeamMusicPlayerViewController.
+ * @param player the BeamMusicPlayerViewController that is making this request.
+ * @param trackNumber the track number this request is for.
+ * @return current position in seconds.
+ */
+-(CGFloat)musicPlayer:(BeamMusicPlayerViewController*)player currentPositionForTrack:(NSUInteger)trackNumber;
+
 @optional
 
 /**

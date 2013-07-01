@@ -340,8 +340,8 @@
 -(void)play {
     if ( !self.playing ){
         self->playing = YES;
-        
-        self.playbackTickTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(playbackTick:) userInfo:nil repeats:YES];
+
+        [self startPlaybackTickTimer];
         
         if ( [self.delegate respondsToSelector:@selector(musicPlayerDidStartPlaying:)] ){
             [self.delegate musicPlayerDidStartPlaying:self];
@@ -353,9 +353,8 @@
 -(void)pause {
     if ( self.playing ){
         self->playing = NO;
-        [self.playbackTickTimer invalidate];
-        self.playbackTickTimer = nil;
-        
+        [self stopPlaybackTickTimer];
+
         if ( [self.delegate respondsToSelector:@selector(musicPlayerDidStopPlaying:)] ){
             [self.delegate musicPlayerDidStopPlaying:self];
         }
@@ -421,7 +420,7 @@
  */
 -(void)changeTrack:(NSInteger)newTrack {
     BOOL shouldChange = YES;
-    if ( [self.delegate respondsToSelector:@selector(musicPlayer:shoulChangeTrack:) ]){
+    if ( [self.delegate respondsToSelector:@selector(musicPlayer:shouldChangeTrack:) ]){
         shouldChange = [self.delegate musicPlayer:self shouldChangeTrack:newTrack];
     }
     
@@ -473,13 +472,22 @@
 -(void)playbackTick:(id)unused {
     // Only tick forward if not scrobbling.
     if ( !self.scrobbling ){
-        if ( self->currentPlaybackPosition+1.0 > self.currentTrackLength ){
+
+        [self syncPlaybackPosition];
+
+        if ( self->currentPlaybackPosition >= self.currentTrackLength ){
             [self currentTrackFinished];
         } else {
-            self->currentPlaybackPosition += 1.0f;
             [self updateSeekUI];
         }
     }
+}
+
+/**
+ * Get the current playback position from the data source
+ */
+- (void)syncPlaybackPosition {
+    self->currentPlaybackPosition = [dataSource musicPlayer:self currentPositionForTrack:self.currentTrack];
 }
 
 /*
@@ -768,5 +776,36 @@
     return [UIScreen mainScreen].scale;
 }
 
+/*
+ * Manage the timer interval
+ */
+-(void)setTimerInterval:(float)timerInterval {
+    BOOL playbackTimerExists = !!self.playbackTickTimer;
+
+    if (playbackTimerExists) {
+        [self stopPlaybackTickTimer];
+    }
+
+    _timerInterval = timerInterval;
+
+    if (playbackTimerExists) {
+        [self startPlaybackTickTimer];
+    }
+}
+
+/*
+ * Start the scrubbing slider update timer
+ */
+- (void)startPlaybackTickTimer {
+    self.playbackTickTimer = [NSTimer scheduledTimerWithTimeInterval:self.timerInterval target:self selector:@selector(playbackTick:) userInfo:nil repeats:YES];
+}
+
+/*
+ * Stop the scrubbing slider update timer
+ */
+- (void)stopPlaybackTickTimer {
+    [self.playbackTickTimer invalidate];
+    self.playbackTickTimer = nil;
+}
 
 @end
