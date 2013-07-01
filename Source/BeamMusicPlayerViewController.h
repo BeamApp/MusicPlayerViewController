@@ -144,6 +144,7 @@
 /// Timespan before placeholder for albumart will be set (default is 0.5). Supports long loading times.
 @property (nonatomic, assign) float placeholderImageDelay;
 
-
+/// The timer interval to update the scrubbing slider (default is 1 second)
+@property (nonatomic, assign) float timerInterval;
 
 @end
