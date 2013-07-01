@@ -126,5 +126,10 @@ NSString* BeamAVMusicPlayerProviderTrackDescriptionArtworkPattern = @"^artworkUr
     }
 }
 
+-(CGFloat)musicPlayer:(BeamMusicPlayerViewController*)player currentPositionForTrack:(NSUInteger)trackNumber
+{
+    return [self.audioPlayer currentTime];
+}
+
 
 @end
