@@ -8,13 +8,17 @@
 //
 
 #import "BeamMusicPlayerViewController.h"
-#import "UIImageView+Reflection.h"
 #import "NSDateFormatter+Duration.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "AutoScrollLabel.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface BeamMusicPlayerViewController()
+
+-(IBAction)nextAction:(id)sender;
+-(IBAction)playAction:(id)sender;
+-(IBAction)sliderValueChanged:(id)slider;
+-(IBAction)volumeSliderValueChanged:(id)sender;
 
 @property (nonatomic,weak) IBOutlet UISlider* volumeSlider; // Volume Slider
 @property (nonatomic,weak) IBOutlet OBSlider* progressSlider; // Progress Slider buried in the Progress View
@@ -32,8 +36,12 @@
 @property (nonatomic,weak) IBOutlet UIBarButtonItem* fastForwardButton; // Next Track
 @property (nonatomic,weak) IBOutlet UIBarButtonItem* playButton; // Play
 
+@property (nonatomic,weak) IBOutlet UIButton* rewindButtonIPad; // Previous Track
+@property (nonatomic,weak) IBOutlet UIButton* fastForwardButtonIPad; // Next Track
+@property (nonatomic,weak) IBOutlet UIButton* playButtonIPad; // Play
+
+
 @property (nonatomic,weak) IBOutlet UIImageView* albumArtImageView; // Album Art Image View
-@property (nonatomic,weak) IBOutlet UIImageView* albumArtReflection; // It's reflection
 
 @property (nonatomic,strong) NSTimer* playbackTickTimer; // Ticks each seconds when playing.
 
@@ -48,6 +56,7 @@
 @property (nonatomic,weak) IBOutlet UILabel* numberOfTracksLabel; // Track x of y or the scrobble speed
 @property (nonatomic,weak) IBOutlet UIImageView* scrobbleHighlightShadow; // It's reflection
 
+@property(nonatomic,weak) IBOutlet UIView* controlView;
 
 @property (nonatomic) CGFloat currentTrackLength; // The Length of the currently playing track
 @property (nonatomic) NSInteger numberOfTracks; // Number of tracks, <0 if unknown
@@ -58,6 +67,7 @@
 @property (nonatomic) BOOL lastDirectionChangePositive; // Whether the last direction change was positive.
 
 @property (nonatomic,weak) IBOutlet UINavigationItem* navigationItem;
+@property (nonatomic,weak) IBOutlet UINavigationBar* navigationBar;
 
 @end
 
@@ -71,11 +81,13 @@
 @synthesize rewindButton;
 @synthesize fastForwardButton;
 @synthesize playButton;
+@synthesize rewindButtonIPad;
+@synthesize fastForwardButtonIPad;
+@synthesize playButtonIPad;
 @synthesize volumeSlider;
 @synthesize progressSlider;
 @synthesize controlsToolbar;
 @synthesize albumArtImageView;
-@synthesize albumArtReflection;
 @synthesize delegate;
 @synthesize dataSource;
 @synthesize currentTrack;
@@ -108,21 +120,42 @@
 {
     [super viewDidLoad];
     
-    // Scrobble Ovelray alpha should be 0, initialize the gesture recognizer
-    self.scrobbleOverlay.alpha = 0;
-    self.coverArtGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(coverArtTapped:)];
-    [self.albumArtImageView addGestureRecognizer:self.coverArtGestureRecognizer];
+    self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/black_linen_v2"]];
     
-    // Knobs for the sliders
+    // Scrobble overlay should always be visible on tall phones
+    if(self.isTallPhone) {
+        self.scrobbleOverlay.alpha = 1;
+    } else {
+        // on small phones, let tap toggle overlay
+        if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
+            self.scrobbleOverlay.alpha = 0;
+            self.coverArtGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(coverArtTapped:)];
+            [self.albumArtImageView addGestureRecognizer:self.coverArtGestureRecognizer];
+        } else {
+            //on ipad use shadow behind cover art
+            self.albumArtImageView.layer.shadowColor = [UIColor blackColor].CGColor;
+            self.albumArtImageView.layer.shadowOpacity = 0.8;
+            self.albumArtImageView.layer.shadowRadius = 10.0;
+            self.albumArtImageView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
+            self.albumArtImageView.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.albumArtImageView.bounds].CGPath;
+            
+            
+        }
+    }
     
-    UIImage* sliderBlueTrack = [[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/VolumeBlueTrack.png"] stretchableImageWithLeftCapWidth:5.0 topCapHeight:0];
-    UIImage* slideWhiteTrack = [[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/VolumeWhiteTrack.png"] stretchableImageWithLeftCapWidth:5.0 topCapHeight:0];
+    // Progess Slider
     UIImage* knob = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/VolumeKnob"];
+    [progressSlider setThumbImage:knob forState:UIControlStateNormal];
+    progressSlider.maximumTrackTintColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
     
-    [[UISlider appearanceWhenContainedIn:[self class], nil] setThumbImage:knob forState:UIControlStateNormal];
-
-    [[UISlider appearance] setMinimumTrackImage:sliderBlueTrack forState:UIControlStateNormal];
-    [[UISlider appearance] setMaximumTrackImage:slideWhiteTrack forState:UIControlStateNormal];
+    // Volume Slider
+    UIImage* minImg = [[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/speakerSliderMinValue.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
+    UIImage* maxImg = [[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/speakerSliderMaxValue.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
+    UIImage* knobImg = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/speakerSliderKnob.png"];
+    [self.volumeSlider setThumbImage:knobImg forState:UIControlStateNormal];
+    [self.volumeSlider setThumbImage:knobImg forState:UIControlStateHighlighted];
+    [self.volumeSlider setMinimumTrackImage:minImg forState:UIControlStateNormal];
+    [self.volumeSlider setMaximumTrackImage:maxImg forState:UIControlStateNormal];
 
     // The Original Toolbar is 48px high in the iPod/Music app
     CGRect toolbarRect = self.controlsToolbar.frame;
@@ -130,25 +163,48 @@
     self.controlsToolbar.frame = toolbarRect;
 
     // Set UI to non-scrobble
-    [self setScrobbleUI:NO];
+    [self setScrobbleUI:NO animated:NO];
     
     // Set up labels. These are autoscrolling and need code-base setup.
     [self.artistNameLabel setShadowColor:[UIColor blackColor]];
     [self.artistNameLabel setShadowOffset:CGSizeMake(0, -1)];
-    [self.artistNameLabel setTextColor:[UIColor lightTextColor]];
-    [self.artistNameLabel setFont:[UIFont boldSystemFontOfSize:12]];
-
     
     [self.albumTitleLabel setShadowColor:[UIColor blackColor]];
     [self.albumTitleLabel setShadowOffset:CGSizeMake(0, -1)];
-    [self.albumTitleLabel setTextColor:[UIColor lightTextColor]];
-    [self.albumTitleLabel setFont:[UIFont boldSystemFontOfSize:12]];
 
-    self.trackTitleLabel.textColor = [UIColor whiteColor];
-    [self.trackTitleLabel setFont:[UIFont boldSystemFontOfSize:12]];
-    
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
+        [self.artistNameLabel setTextColor:[UIColor lightTextColor]];
+        [self.artistNameLabel setFont:[UIFont boldSystemFontOfSize:12]];
+        
+        [self.albumTitleLabel setTextColor:[UIColor lightTextColor]];
+        [self.albumTitleLabel setFont:[UIFont boldSystemFontOfSize:12]];
+        
+        self.trackTitleLabel.textColor = [UIColor whiteColor];
+        [self.trackTitleLabel setFont:[UIFont boldSystemFontOfSize:12]];
+    } else {
+        self.artistNameLabel.textColor = [UIColor lightTextColor];
+        [self.artistNameLabel setFont:[UIFont boldSystemFontOfSize:14]];
+        
+        self.albumTitleLabel.textColor = [UIColor lightTextColor];
+        [self.albumTitleLabel setFont:[UIFont boldSystemFontOfSize:14]];
+        
+        self.trackTitleLabel.textColor = [UIColor lightGrayColor];
+        [self.trackTitleLabel setFont:[UIFont boldSystemFontOfSize:18]];
+        
+        [self.trackTitleLabel setShadowColor:[UIColor blackColor]];
+        [self.trackTitleLabel setShadowOffset:CGSizeMake(0, -1)];
+    }
     self.placeholderImageDelay = 0.5;
+
+    // force UI to update properly
+    self.actionBlock = self->actionBlock;
+    self.backBlock = self->backBlock;
     
+    // force re-layout according to interface orientation
+    dispatch_after(0, dispatch_get_current_queue(), ^{
+        [self willAnimateRotationToInterfaceOrientation:self.interfaceOrientation duration:0];
+        [self didRotateFromInterfaceOrientation:self.interfaceOrientation];
+    });
 }
 
 - (void)viewDidUnload
@@ -160,6 +216,10 @@
     // Release any retained subviews of the main view.
 }
 
+-(NSUInteger)supportedInterfaceOrientations {
+    return ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
@@ -169,12 +229,49 @@
     }
 }
 
--(void)setDelegate:(id<BeamMusicPlayerDelegate>)value {
-    self->delegate = value;
+
+-(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        CGRect f = self.albumArtImageView.frame;
+        f.origin.x = UIInterfaceOrientationIsLandscape(toInterfaceOrientation) ? 65 : 84;
+        f.origin.y = UIInterfaceOrientationIsLandscape(toInterfaceOrientation) ? (int)((self.view.bounds.size.height-self.navigationBar.bounds.size.height-f.size.height)/2)+self.navigationBar.bounds.size.height : 65;
+        self.albumArtImageView.frame = f;
+        
+        f = self.controlView.frame;
+        f.size.width = UIInterfaceOrientationIsLandscape(toInterfaceOrientation) ? 350 : 600;
+        f.origin.x = UIInterfaceOrientationIsLandscape(toInterfaceOrientation) ? 660 : 84;
+        f.origin.y = UIInterfaceOrientationIsLandscape(toInterfaceOrientation) ? 220 : 675;
+        self.controlView.frame = f;
+        
+    }
+}
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+    [self.albumTitleLabel setNeedsLayout];
+    [self.artistNameLabel setNeedsLayout];
+    [self.trackTitleLabel setNeedsLayout];
+    
+}
+
+
+- (void)setActionBlock:(void (^)())block {
+    self->actionBlock = block;
     self.navigationItem.rightBarButtonItem = self.actionBlock ? self.actionButton : nil;
+}
+
+- (void)setBackBlock:(void (^)())block {
+    self->backBlock = block;
     self.navigationItem.leftBarButtonItem = self.backBlock ? self.backButton : nil;
 }
 
+-(BOOL)isTallPhone {
+    CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+    return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) && (screenSize.height > 480.0f);
+}
+
+-(BOOL)isSmallPhone {
+    CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+    return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) && (screenSize.height <= 480.0f);
+}
 
 #pragma mark - Playback Management
 
@@ -184,13 +281,17 @@
 
 -(void)setAlbumArtToPlaceholder {
     self.albumArtImageView.image = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/noartplaceholder.png"];
-    self.albumArtReflection.image = [self.albumArtImageView reflectedImageWithHeight:self.albumArtReflection.frame.size.height];
 }
 
 /**
  * Updates the UI to match the current track by requesting the information from the datasource.
  */
 -(void)updateUIForCurrentTrack {
+
+    //set VolumeSlider initially
+    if([self.dataSource respondsToSelector:@selector(volumeForMusicPlayer:)]){
+        [self setVolume:[self.dataSource volumeForMusicPlayer:self]];
+    }
     
     self.artistNameLabel.text = [self.dataSource musicPlayer:self artistForTrack:self.currentTrack];
     self.trackTitleLabel.text = [self.dataSource musicPlayer:self titleForTrack:self.currentTrack];
@@ -201,6 +302,7 @@
     [self performSelector:@selector(setAlbumArtToPlaceholder) withObject:nil afterDelay:self.placeholderImageDelay];
 
     // We only request the coverart if the delegate responds to it.
+    _customCovertArtLoaded = NO;
     if ( [self.dataSource respondsToSelector:@selector(musicPlayer:artworkForTrack:receivingBlock:)]) {
         
         // TODO: this transition needs to be overhauled before going live
@@ -224,7 +326,7 @@
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(setAlbumArtToPlaceholder) object:nil];
                         self.albumArtImageView.image = image;
-                        self.albumArtReflection.image = [self.albumArtImageView reflectedImageWithHeight:self.albumArtReflection.frame.size.height];
+                        _customCovertArtLoaded = YES;
                     });
                 }
             
@@ -263,6 +365,12 @@
     }
 }
 
+-(void)stop {
+    [self pause];
+    self.currentPlaybackPosition = 0;
+    [self updateSeekUI];
+}
+
 -(void)next {
     self.lastDirectionChangePositive = YES;
     [self changeTrack:self->currentTrack+1];
@@ -293,6 +401,7 @@
     self.volume = volume;
     [self changeTrack:track];
     self->currentPlaybackPosition = position;
+    [self updateSeekUI];
     [self play];
 }
 
@@ -465,18 +574,21 @@
     [self previous];
 }
 
+-(void)showScrobbleOverlay:(BOOL)show animated:(BOOL)animated {
+    if(!self.isSmallPhone)
+        return;
+
+    [UIView animateWithDuration:animated?0.25:0 animations:^{
+        self.scrobbleOverlay.alpha = show ? 1 : 0;
+    }];
+}
+
 
 /**
  * Called when the cover art is tapped. Either shows or hides the scrobble-ui
  */
 -(IBAction)coverArtTapped:(id)sender {
-    [UIView animateWithDuration:0.25 animations:^{
-        if ( self.scrobbleOverlay.alpha == 0 ){
-            [self.scrobbleOverlay setAlpha:1];
-        } else {
-            [self.scrobbleOverlay setAlpha:0];
-        }
-    }];
+    [self showScrobbleOverlay:self.scrobbleOverlay.alpha == 0 animated:YES];
 }
 
 
@@ -506,8 +618,10 @@
 -(void)adjustPlayButtonState {
     if ( !self.playing ){
         self.playButton.image = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/play.png"];
+        [self.playButtonIPad setImage:[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/play.png"] forState:UIControlStateNormal];
     } else {
         self.playButton.image = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/pause.png"];
+        [self.playButtonIPad setImage:[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/pause.png"] forState:UIControlStateNormal];
     }
 }
 
@@ -545,7 +659,7 @@
  */
 - (IBAction)sliderDidBeginScrubbing:(id)sender {
     self.scrobbling = YES;
-    [self setScrobbleUI:YES];
+    [self setScrobbleUI:YES animated:YES];
 }
 
 /**
@@ -553,16 +667,17 @@
  */
 - (IBAction)sliderDidEndScrubbing:(id)sender {
     self.scrobbling = NO;
-    [self setScrobbleUI:NO];
+    [self setScrobbleUI:NO animated:YES];
     [self updateTrackDisplay];
 }
+
 
 /*
  * Updates the UI according to the current scrobble state given.
  */
--(void)setScrobbleUI:(BOOL)scrobbleState {
+-(void)setScrobbleUI:(BOOL)scrobbleState animated:(BOOL)animated{
     float alpha = ( scrobbleState ? 1 : 0 );
-    [UIView animateWithDuration:0.25 animations:^{
+    [UIView animateWithDuration:animated?0.25:0 animations:^{
         self.repeatButton.alpha = 1-alpha;
         self.shuffleButton.alpha = 1-alpha;
         self.scrobbleHelpLabel.alpha = alpha;

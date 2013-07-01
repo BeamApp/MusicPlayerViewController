@@ -70,6 +70,15 @@
 
 
 /**
+ * Shows or Hides the scrobble overlay in 3.5 inch displays
+ *
+ * @param show Yes, to show, No to hide overlay
+ * @param animated Yes, to smoothly fade overlay
+ */
+-(void)showScrobbleOverlay:(BOOL)show animated:(BOOL)animated;
+
+
+/**
  * Starts playback. If the player is already playing, this method does nothing except wasting some cycles.
  */
 -(void)play;
@@ -83,6 +92,11 @@
  * Pauses the player. If the player is already paused, this method does nothing except generating some heat.
  */
 -(void)pause;
+
+/**
+ * Stops the Player. If the player is already stopped, this method does nothing but seeks to the beginning of the current song.
+ */
+-(void)stop;
 
 /**
  * Skips to the next track. 
@@ -122,17 +136,13 @@
 /// --------------------------------
 
 /// The preferred size for cover art in pixels
-@property (nonatomic, readonly) CGSize preferredSizeForCoverArt; 
+@property (nonatomic, readonly) CGSize preferredSizeForCoverArt;
+
+/// yes, if data source provided cover art for current song
+@property (nonatomic, readonly) BOOL customCovertArtLoaded;
 
 /// Timespan before placeholder for albumart will be set (default is 0.5). Supports long loading times.
 @property (nonatomic, assign) float placeholderImageDelay;
-
-
--(IBAction)nextAction:(id)sender;
--(IBAction)playAction:(id)sender;
--(IBAction)sliderValueChanged:(id)slider;
-
-
 
 
 

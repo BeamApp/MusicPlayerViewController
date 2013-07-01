@@ -151,6 +151,12 @@
 
 - (void) scroll
 {
+    //nothing to scroll
+    if (label[0].frame.size.width <= self.scrollView.frame.size.width){
+        return;
+    }
+    
+    
 	// Prevent multiple calls
 	if (isScrolling){
 //		return;

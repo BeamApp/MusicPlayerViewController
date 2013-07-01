@@ -1,2 +1,2 @@
 platform :ios
-dependency 'OBSlider'
+pod 'OBSlider',       '~> 1.1.0'

@@ -1,16 +1,28 @@
-MusicPlayerViewController
+MusicPlayerViewController [![Build Status](https://travis-ci.org/BeamApp/MusicPlayerViewController.png?branch=master)](https://travis-ci.org/BeamApp/MusicPlayerViewController) [![Cocoa Pod](http://cocoapod-badges.herokuapp.com/v/BeamMusicPlayerViewController/badge.png)](http://cocoadocs.org/docsets/BeamMusicPlayerViewController/)
 =========================
 
 ![SCreenshot](https://github.com/BeamApp/MusicPlayerViewController/raw/master/Documentation/images/screen.png)
 
-MusicPlayerViewController aimes to be a drop-in component that serves as an UI for a Music Player on iPhone and is replicating the Music.app's user interface.
+MusicPlayerViewController aimes to be a drop-in component that serves as an UI for a Music Player on iPhone and iPad by replicating the Music.app's user interface.
 
 MusicPlayerViewController has the following features
-* Music.app like UI
+* UI for iPhone and iPad
 * Support for variable-speed scrobbling
 * Support for resolution/device-dependent cover art
 * Controllable using a data source and an optional delegate
 * Three Repeat Modes and Shuffle mode
+
+Usage
+-------
+You can read the full [API Reference at CocoaDocs](http://cocoadocs.org/docsets/BeamMusicPlayerViewController/), but using the component itself is simple.
+Since it is derived from a standard UIViewController, you can just instantiate it, set a delegate and datasource and are good to go.
+
+    BeamMusicPlayerViewController* controller = [BeamMusicPlayerViewController new];
+    controller.delegate = self;
+    controller.dataSource = self;
+    // Push the controller or something else
+
+The Project contains an example that uses the MediaLibrary to provide data for the UI. You can use this as an starting point.
 
 Installation
 ------------
@@ -27,19 +39,12 @@ Alternatively, you can use the fabulous [CocoaPods](http://cocoapods.org/):
 
 and you are done.
 
-Usage
+Development
 -------
-Using the component itself is simple. Because it is derived from a standard UIViewController, you can just instantiate it, set a delegate and datasource and are good to go.
-
-    BeamMusicPlayerViewController* controller = [BeamMusicPlayerViewController new];
-    controller.delegate = self;
-    controller.datasource = self;
-    // Push the controller or something else
-
-The Project contains an example that uses the MediaLibrary to provide data for the UI. You can use this as an starting point.
+You are more than welcome to contribute code to this project! Since this project relies on [CocoaPods](http://cocoapods.org/) while describing a Pod itself, make sure to open `BeamMusicPlayerExample.xcworkspace` instead of the project file.
 
 License
 -------
 The Project is licensed under the new BSD License (see file LICENSE).
 
-© 2012 Beam App UG ( haftungsbeschränkt )
+© 2013 Beam App UG ( haftungsbeschränkt )
