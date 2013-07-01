@@ -42,4 +42,8 @@
     });
 }
 
+-(CGFloat)musicPlayer:(BeamMusicPlayerViewController*)player currentPositionForTrack:(NSUInteger)trackNumber {
+    return player.currentPlaybackPosition + 1.0f;
+}
+
 @end

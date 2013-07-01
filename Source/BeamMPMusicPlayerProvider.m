@@ -175,4 +175,8 @@
     [self.musicPlayer setCurrentPlaybackTime:position];
 }
 
+-(CGFloat)musicPlayer:(BeamMusicPlayerViewController*)player currentPositionForTrack:(NSUInteger)trackNumber {
+    return self.musicPlayer.currentPlaybackTime;
+}
+
 @end
