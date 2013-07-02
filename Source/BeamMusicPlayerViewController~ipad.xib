@@ -228,7 +228,6 @@
 										<string key="NSFrame">{{220, 55}, {74, 74}}</string>
 										<reference key="NSSuperview" ref="86840189"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -445,7 +444,6 @@
 						<string key="NSFrame">{{2, 5}, {304, 23}}</string>
 						<reference key="NSSuperview" ref="752791413"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -631,6 +629,14 @@
 						<reference key="destination" ref="922275320"/>
 					</object>
 					<int key="connectionID">151</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">navigationItem</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="247436677"/>
+					</object>
+					<int key="connectionID">152</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -960,7 +966,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">151</int>
+			<int key="maxID">152</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -981,6 +987,7 @@
 						<string key="coverArtTapped:">id</string>
 						<string key="nextAction:">id</string>
 						<string key="playAction:">id</string>
+						<string key="playlistButtonTapped:">id</string>
 						<string key="previousAction:">id</string>
 						<string key="repeatModeButtonAction:">id</string>
 						<string key="shuffleButtonAction:">id</string>
@@ -1008,6 +1015,10 @@
 						</object>
 						<object class="IBActionInfo" key="playAction:">
 							<string key="name">playAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="playlistButtonTapped:">
+							<string key="name">playlistButtonTapped:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="previousAction:">
@@ -1044,6 +1055,7 @@
 						<string key="albumArtImageView">UIImageView</string>
 						<string key="albumTitleLabel">AutoScrollLabel</string>
 						<string key="artistNameLabel">AutoScrollLabel</string>
+						<string key="artworkPlaylistContainer">UIView</string>
 						<string key="backButton">UIBarButtonItem</string>
 						<string key="controlView">UIView</string>
 						<string key="controlsToolbar">UIToolbar</string>
@@ -1083,6 +1095,10 @@
 						<object class="IBToOneOutletInfo" key="artistNameLabel">
 							<string key="name">artistNameLabel</string>
 							<string key="candidateClassName">AutoScrollLabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="artworkPlaylistContainer">
+							<string key="name">artworkPlaylistContainer</string>
+							<string key="candidateClassName">UIView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="backButton">
 							<string key="name">backButton</string>

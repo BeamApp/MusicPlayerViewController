@@ -12,6 +12,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "AutoScrollLabel.h"
 #import <QuartzCore/QuartzCore.h>
+#import "BeamPlaylistViewController.h"
 
 @interface BeamMusicPlayerViewController()
 
@@ -31,6 +32,7 @@
 
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *actionButton; // retain, since controller keeps a reference while it might be detached from view hierarchy
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *backButton; // retain, since controller keeps a reference while it might be detached from view hierarchy
+@property (nonatomic, retain) UIBarButtonItem *playlistButton; // Button which is shown, when actionBlock is nil (the default)
 
 @property (nonatomic,weak) IBOutlet UIBarButtonItem* rewindButton; // Previous Track
 @property (nonatomic,weak) IBOutlet UIBarButtonItem* fastForwardButton; // Next Track
@@ -40,7 +42,7 @@
 @property (nonatomic,weak) IBOutlet UIButton* fastForwardButtonIPad; // Next Track
 @property (nonatomic,weak) IBOutlet UIButton* playButtonIPad; // Play
 
-
+@property (nonatomic, weak) IBOutlet UIView *artworkPlaylistContainer; // Container for albumArtImageView and playlistTableView (not present on iPad)
 @property (nonatomic,weak) IBOutlet UIImageView* albumArtImageView; // Album Art Image View
 
 @property (nonatomic,strong) NSTimer* playbackTickTimer; // Ticks each seconds when playing.
@@ -68,6 +70,10 @@
 
 @property (nonatomic,weak) IBOutlet UINavigationItem* navigationItem;
 @property (nonatomic,weak) IBOutlet UINavigationBar* navigationBar;
+
+@property (nonatomic, strong) UIButton *playlistToggleButton; // Button that toggles between artwork and playlist (PopOver on iPad)
+@property (nonatomic, readonly, strong) BeamPlaylistViewController *playlistViewController; // View controller that displays the playlist (created lazy)
+@property (nonatomic, strong) UIPopoverController *playlistPopoverController; // Popover controller to display the playlist (iPad only)
 
 @end
 
@@ -115,6 +121,17 @@
 @synthesize preferredSizeForCoverArt;
 @synthesize backBlock, actionBlock;
 @synthesize placeholderImageDelay;
+@synthesize playlistViewController = _playlistViewController;
+
+- (id)init
+{
+    self = [super init];
+    if (self)
+    {
+        self.flipDuration = 0.8;
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -196,6 +213,18 @@
     }
     self.placeholderImageDelay = 0.5;
 
+    
+    // Create the playlist button
+    UIImage *barButtonBackground = [[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/bar_button"] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 4.0f, 0.0f, 4.0f)];
+    
+    UIButton *playlistButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 40.0f, 30.0f)];
+    [playlistButton setImage:[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/playlist"] forState:UIControlStateNormal];
+    [playlistButton setBackgroundImage:barButtonBackground forState:UIControlStateNormal];
+    [playlistButton addTarget:self action:@selector(playlistButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [playlistButton.imageView setContentMode:UIViewContentModeScaleAspectFit];
+    self.playlistToggleButton = playlistButton;
+    self.playlistButton = [[UIBarButtonItem alloc] initWithCustomView:playlistButton];
+    
     // force UI to update properly
     self.actionBlock = self->actionBlock;
     self.backBlock = self->backBlock;
@@ -255,7 +284,7 @@
 
 - (void)setActionBlock:(void (^)())block {
     self->actionBlock = block;
-    self.navigationItem.rightBarButtonItem = self.actionBlock ? self.actionButton : nil;
+    self.navigationItem.rightBarButtonItem = self.actionBlock ? self.actionButton : self.playlistButton;
 }
 
 - (void)setBackBlock:(void (^)())block {
@@ -273,6 +302,17 @@
     return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) && (screenSize.height <= 480.0f);
 }
 
+- (BeamPlaylistViewController *)playlistViewController
+{
+    if (!_playlistViewController)
+    {
+        _playlistViewController = [[BeamPlaylistViewController alloc] initWithStyle:UITableViewStylePlain];
+        _playlistViewController.playerViewController = self;
+    }
+    
+    return _playlistViewController;
+}
+
 #pragma mark - Playback Management
 
 -(BOOL)numberOfTracksAvailable {
@@ -281,6 +321,12 @@
 
 -(void)setAlbumArtToPlaceholder {
     self.albumArtImageView.image = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/noartplaceholder.png"];
+    
+    // Update the small artwork if present
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone && self.playlistVisible)
+    {
+        [self.playlistToggleButton setImage:self.albumArtImageView.image forState:UIControlStateNormal];
+    }
 }
 
 /**
@@ -326,6 +372,11 @@
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(setAlbumArtToPlaceholder) object:nil];
                         self.albumArtImageView.image = image;
+                        // Update the small artwork if present
+                        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone && self.playlistVisible)
+                        {
+                            [self.playlistToggleButton setImage:self.albumArtImageView.image forState:UIControlStateNormal];
+                        }
                         _customCovertArtLoaded = YES;
                     });
                 }
@@ -413,6 +464,8 @@
     [self updateSeekUI];
     [self updateTrackDisplay];
     [self adjustDirectionalButtonStates];
+    
+    [self.playlistViewController updateUI];
 }
 
 /*
@@ -599,7 +652,126 @@
     [self showScrobbleOverlay:self.scrobbleOverlay.alpha == 0 animated:YES];
 }
 
+- (IBAction)playlistButtonTapped:(id)sender
+{
+    if (self.playlistVisible)
+    {
+        [self dismissPlaylist];
+    }
+    else
+    {
+        [self showPlaylist];
+    }
+}
 
+#pragma mark - Playlist
+
+- (BOOL)isPlaylistVisible
+{
+    return (self.playlistViewController.tableView.superview != nil);
+}
+
+- (void)showPlaylist
+{
+    if (self.playlistVisible)
+        return;
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+    {
+        // TODO: playlistToggleButton is dimmed even if adjustsImageWhenDisabled is NO.
+        self.playlistViewController.tableView.frame = self.artworkPlaylistContainer.bounds;
+        
+        // Flip to playlist
+        [UIView transitionWithView:self.artworkPlaylistContainer
+                          duration:self.flipDuration
+                           options:UIViewAnimationOptionTransitionFlipFromRight
+                        animations:^{
+                            self.albumArtImageView.hidden = YES;
+                            self.scrobbleOverlay.hidden = YES;
+                            self.scrobbleHighlightShadow.hidden = YES;
+                            
+                            [self.artworkPlaylistContainer addSubview:self.playlistViewController.tableView];
+                        }
+                        completion:^(BOOL finished){
+                            // Scroll the current song visible
+                            if (finished)
+                            {
+                                NSIndexPath *currentTrackIndexPath = [NSIndexPath indexPathForRow:self.currentTrack inSection:0];
+                                NSArray *visibleIndexPaths = [self.playlistViewController.tableView indexPathsForVisibleRows];
+                                if (![visibleIndexPaths containsObject:currentTrackIndexPath])
+                                {
+                                    [self.playlistViewController.tableView scrollToRowAtIndexPath:currentTrackIndexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+                                }
+                            }
+                            
+                            
+                        }];
+        
+        self.playlistToggleButton.adjustsImageWhenDisabled = NO;
+        
+        // Change playlistButton to artworkButton
+        [UIView transitionWithView:self.playlistToggleButton
+                          duration:self.flipDuration
+                           options:UIViewAnimationOptionTransitionFlipFromRight
+                        animations:^{
+                            [self.playlistToggleButton setBackgroundImage:nil forState:UIControlStateNormal];
+                            [self.playlistToggleButton setImage:self.albumArtImageView.image forState:UIControlStateNormal];
+                        }
+                        completion:^(BOOL finished){
+                            self.playlistToggleButton.adjustsImageWhenDisabled = YES;
+                        }];
+        
+        
+    }
+    else
+    {
+        UIPopoverController *popoverController = [[UIPopoverController alloc] initWithContentViewController:self.playlistViewController];
+        [popoverController presentPopoverFromBarButtonItem:self.navigationItem.rightBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+        self.playlistPopoverController = popoverController;
+    }
+}
+
+- (void)dismissPlaylist
+{
+    if (!self.playlistVisible)
+        return;
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+    {
+        // Flip to artwork
+        [UIView transitionWithView:self.artworkPlaylistContainer
+                          duration:self.flipDuration
+                           options:UIViewAnimationOptionTransitionFlipFromLeft
+                        animations:^{
+                            [self.playlistViewController.tableView removeFromSuperview];
+                            
+                            self.albumArtImageView.hidden = NO;
+                            self.scrobbleOverlay.hidden = NO;
+                            self.scrobbleHighlightShadow.hidden = NO;
+                        }
+                        completion:nil];
+        
+        self.playlistToggleButton.adjustsImageWhenDisabled = NO;
+        
+        // Change artworkButton to playlistButton
+        [UIView transitionWithView:self.playlistToggleButton
+                          duration:self.flipDuration
+                           options:UIViewAnimationOptionTransitionFlipFromLeft
+                        animations:^{
+                            
+                            [self.playlistToggleButton setBackgroundImage:[[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/bar_button"] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 4.0f, 0.0f, 4.0f)] forState:UIControlStateNormal];
+                            [self.playlistToggleButton setImage:[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/playlist"] forState:UIControlStateNormal];
+                        }
+                        completion:^(BOOL finished){
+                            self.playlistToggleButton.adjustsImageWhenDisabled = YES;
+                        }];
+    }
+    else
+    {
+        [self.playlistPopoverController dismissPopoverAnimated:YES];
+        self.playlistPopoverController = nil;
+    }
+}
 
 #pragma mark - Playback button state management
 
