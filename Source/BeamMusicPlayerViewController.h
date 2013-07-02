@@ -116,6 +116,7 @@
 
 /**
  * Skips to the specified track.
+ * @param newTrack the track that's to be played
  */
 -(void)changeTrack:(NSInteger)newTrack;
 
