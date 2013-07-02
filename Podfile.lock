@@ -1,10 +1,13 @@
 PODS:
   - OBSlider (1.1.0)
+  - OCMock (2.1.1)
 
 DEPENDENCIES:
   - OBSlider (~> 1.1.0)
+  - OCMock
 
 SPEC CHECKSUMS:
   OBSlider: 1eae1ad6fea0af687f7dde0366003044c4ba3d27
+  OCMock: 79212e5e328378af5cfd6edb5feacfd6c49cd8a3
 
-COCOAPODS: 0.19.1
+COCOAPODS: 0.21.0
