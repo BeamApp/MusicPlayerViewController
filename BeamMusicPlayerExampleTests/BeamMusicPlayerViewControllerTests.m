@@ -47,11 +47,11 @@
 
 
 - (void)testActionButtonVisibility {
-    STAssertNil(viewController.navigationItem.rightBarButtonItem, @"action button invisible");
+    STAssertTrue(viewController.navigationItem.rightBarButtonItem == [viewController performSelector:@selector(playlistButton)], @"playlist button visible");
     viewController.actionBlock = ^{};
-    STAssertNotNil(viewController.navigationItem.rightBarButtonItem, @"action button visible");
+    STAssertTrue(viewController.navigationItem.rightBarButtonItem == [viewController performSelector:@selector(actionButton)], @"action button visible");
     viewController.actionBlock = nil;
-    STAssertNil(viewController.navigationItem.rightBarButtonItem, @"action button invisible, again");
+    STAssertTrue(viewController.navigationItem.rightBarButtonItem == [viewController performSelector:@selector(playlistButton)], @"playlist button visible again");
 }
 
 - (void)testBackButtonInvisibleIfNoDelegateMethod {
@@ -60,6 +60,15 @@
     STAssertNotNil(viewController.navigationItem.leftBarButtonItem, @"back button visible");
     viewController.backBlock = nil;
     STAssertNil(viewController.navigationItem.leftBarButtonItem, @"back button invisible, again");
+}
+
+- (void)testPlaylistVisibility
+{
+    STAssertFalse(viewController.playlistVisible, @"playlist not shown");
+    [viewController showPlaylist];
+    STAssertTrue(viewController.playlistVisible, @"playlist shown");
+    [viewController dismissPlaylist];
+    STAssertFalse(viewController.playlistVisible, @"playlist dismissed");
 }
 
 

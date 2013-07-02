@@ -120,6 +120,25 @@
 -(void)changeTrack:(NSInteger)newTrack;
 
 /// --------------------------------
+/// @name Controlling the playlist
+/// --------------------------------
+
+/**
+ * YES if the playlist is visible.
+ */
+@property (nonatomic, readonly, getter = isPlaylistVisible) BOOL playlistVisible;
+
+/**
+ * Shows the playlist if it isn't shown already.
+ */
+- (void)showPlaylist;
+
+/**
+ * Dismisses the playlist if it is present.
+ */
+- (void)dismissPlaylist;
+
+/// --------------------------------
 /// @name Controlling User Interaction
 /// --------------------------------
 
