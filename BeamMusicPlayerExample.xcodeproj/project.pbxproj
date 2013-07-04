@@ -28,6 +28,7 @@
 		97CA282B1577B68B003D8938 /* BeamMPMusicPlayerProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 97CA282A1577B68B003D8938 /* BeamMPMusicPlayerProvider.m */; };
 		97CA282D1577B6A9003D8938 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97CA282C1577B6A9003D8938 /* MediaPlayer.framework */; };
 		A3CD1673174BC6BD0043ACEE /* BeamMusicPlayerViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3CD1672174BC6BD0043ACEE /* BeamMusicPlayerViewController~ipad.xib */; };
+		CAD8534D7F2E416582F6286D /* libPods-BeamMusicPlayerExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 987337C95B38471493465F78 /* libPods-BeamMusicPlayerExampleTests.a */; };
 		CB0DC57615B69ADE0045921A /* NSDateFormatter+Duration.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0DC57315B69ADE0045921A /* NSDateFormatter+Duration.m */; };
 		CB0DC58F15B6AD300045921A /* BeamMusicPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB0DC58D15B6AD300045921A /* BeamMusicPlayerViewController.xib */; };
 		CB0DC5AB15B71C940045921A /* BeamMPMusicPlayerProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0DC5AA15B71C940045921A /* BeamMPMusicPlayerProviderTests.m */; };
@@ -36,7 +37,6 @@
 		CB35A6FF1576918F008318EE /* BeamMusicPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB35A6FE1576918F008318EE /* BeamMusicPlayerViewController.m */; };
 		CB397C85165257B600A90C78 /* BeamAVMusicPlayerProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = CB397C84165257B600A90C78 /* BeamAVMusicPlayerProvider.m */; };
 		CB397C8A16525BD800A90C78 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB397C8916525BD800A90C78 /* AVFoundation.framework */; };
-		CB46FE1415795405004BE46A /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB46FE1315795405004BE46A /* libOCMock.a */; };
 		CB46FE17157955B7004BE46A /* BeamMusicPlayerViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB46FE16157955B7004BE46A /* BeamMusicPlayerViewControllerTests.m */; };
 		CB7723AF174E51ED0022EF58 /* BeamAVMusicPlayerProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7723AE174E51ED0022EF58 /* BeamAVMusicPlayerProviderTests.m */; };
 		CBCD885B15B44165001B7A1D /* BeamMusicPlayerController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CBCD885A15B44165001B7A1D /* BeamMusicPlayerController.bundle */; };
@@ -55,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0AB0B18603F24A928F0C5160 /* Pods-BeamMusicPlayerExampleTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeamMusicPlayerExampleTests.xcconfig"; path = "Pods/Pods-BeamMusicPlayerExampleTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 		35DB90F5177BB2750039B53D /* BeamPlaylistTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeamPlaylistTableViewCell.h; sourceTree = "<group>"; };
 		35DB90F6177BB2750039B53D /* BeamPlaylistTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeamPlaylistTableViewCell.m; sourceTree = "<group>"; };
 		35DB90F7177BB2750039B53D /* BeamRadialGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeamRadialGradientView.h; sourceTree = "<group>"; };
@@ -86,6 +87,7 @@
 		97CA28291577B68B003D8938 /* BeamMPMusicPlayerProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeamMPMusicPlayerProvider.h; sourceTree = "<group>"; };
 		97CA282A1577B68B003D8938 /* BeamMPMusicPlayerProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeamMPMusicPlayerProvider.m; sourceTree = "<group>"; };
 		97CA282C1577B6A9003D8938 /* MediaPlayer.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		987337C95B38471493465F78 /* libPods-BeamMusicPlayerExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BeamMusicPlayerExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3CD1672174BC6BD0043ACEE /* BeamMusicPlayerViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "BeamMusicPlayerViewController~ipad.xib"; sourceTree = "<group>"; };
 		CB0DC57215B69ADE0045921A /* NSDateFormatter+Duration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+Duration.h"; sourceTree = "<group>"; };
 		CB0DC57315B69ADE0045921A /* NSDateFormatter+Duration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+Duration.m"; sourceTree = "<group>"; };
@@ -104,13 +106,6 @@
 		CB397C84165257B600A90C78 /* BeamAVMusicPlayerProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeamAVMusicPlayerProvider.m; sourceTree = "<group>"; };
 		CB397C8716525BBF00A90C78 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		CB397C8916525BD800A90C78 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		CB46FE0D157953AD004BE46A /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
-		CB46FE0E157953AD004BE46A /* OCMArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
-		CB46FE0F157953AD004BE46A /* OCMConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMConstraint.h; sourceTree = "<group>"; };
-		CB46FE10157953AD004BE46A /* OCMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMock.h; sourceTree = "<group>"; };
-		CB46FE11157953AD004BE46A /* OCMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockObject.h; sourceTree = "<group>"; };
-		CB46FE12157953AD004BE46A /* OCMockRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockRecorder.h; sourceTree = "<group>"; };
-		CB46FE1315795405004BE46A /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
 		CB46FE15157955B7004BE46A /* BeamMusicPlayerViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeamMusicPlayerViewControllerTests.h; sourceTree = "<group>"; };
 		CB46FE16157955B7004BE46A /* BeamMusicPlayerViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeamMusicPlayerViewControllerTests.m; sourceTree = "<group>"; };
 		CB7723AE174E51ED0022EF58 /* BeamAVMusicPlayerProviderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeamAVMusicPlayerProviderTests.m; sourceTree = "<group>"; };
@@ -142,7 +137,7 @@
 				97B7AA5415760AAF0014E693 /* SenTestingKit.framework in Frameworks */,
 				97B7AA5515760AAF0014E693 /* UIKit.framework in Frameworks */,
 				97B7AA5615760AAF0014E693 /* Foundation.framework in Frameworks */,
-				CB46FE1415795405004BE46A /* libOCMock.a in Frameworks */,
+				CAD8534D7F2E416582F6286D /* libPods-BeamMusicPlayerExampleTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +175,7 @@
 				97B7AA3115760AAF0014E693 /* Frameworks */,
 				97B7AA2F15760AAF0014E693 /* Products */,
 				92FDA17ACE6F4C928D2E08D9 /* Pods.xcconfig */,
+				0AB0B18603F24A928F0C5160 /* Pods-BeamMusicPlayerExampleTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -200,6 +196,7 @@
 				97B7AA3615760AAF0014E693 /* CoreGraphics.framework */,
 				97B7AA5315760AAF0014E693 /* SenTestingKit.framework */,
 				D255CDAD8A6E4F49A1799F78 /* libPods.a */,
+				987337C95B38471493465F78 /* libPods-BeamMusicPlayerExampleTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -234,7 +231,6 @@
 			isa = PBXGroup;
 			children = (
 				97B7AA5A15760AAF0014E693 /* Supporting Files */,
-				CB46FE0A1579539B004BE46A /* 3rd Party */,
 				97B7AA5F15760AAF0014E693 /* BeamMusicPlayerExampleTests.h */,
 				97B7AA6015760AAF0014E693 /* BeamMusicPlayerExampleTests.m */,
 				CB7723AE174E51ED0022EF58 /* BeamAVMusicPlayerProviderTests.m */,
@@ -302,28 +298,6 @@
 			path = ../Source;
 			sourceTree = "<group>";
 		};
-		CB46FE0A1579539B004BE46A /* 3rd Party */ = {
-			isa = PBXGroup;
-			children = (
-				CB46FE0C157953AD004BE46A /* OCMock */,
-			);
-			name = "3rd Party";
-			sourceTree = "<group>";
-		};
-		CB46FE0C157953AD004BE46A /* OCMock */ = {
-			isa = PBXGroup;
-			children = (
-				CB46FE1315795405004BE46A /* libOCMock.a */,
-				CB46FE0D157953AD004BE46A /* NSNotificationCenter+OCMAdditions.h */,
-				CB46FE0E157953AD004BE46A /* OCMArg.h */,
-				CB46FE0F157953AD004BE46A /* OCMConstraint.h */,
-				CB46FE10157953AD004BE46A /* OCMock.h */,
-				CB46FE11157953AD004BE46A /* OCMockObject.h */,
-				CB46FE12157953AD004BE46A /* OCMockRecorder.h */,
-			);
-			path = OCMock;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXLegacyTarget section */
@@ -366,10 +340,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 97B7AA6715760AAF0014E693 /* Build configuration list for PBXNativeTarget "BeamMusicPlayerExampleTests" */;
 			buildPhases = (
+				3512CD7B141C47FB9A10148F /* Check Pods Manifest.lock */,
 				97B7AA4D15760AAF0014E693 /* Sources */,
 				97B7AA4E15760AAF0014E693 /* Frameworks */,
 				97B7AA4F15760AAF0014E693 /* Resources */,
 				97B7AA5015760AAF0014E693 /* ShellScript */,
+				1EE4C0C43A0F4680B1AC6E0F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -434,6 +410,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1EE4C0C43A0F4680B1AC6E0F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-BeamMusicPlayerExampleTests-resources.sh\"\n";
+		};
+		3512CD7B141C47FB9A10148F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+		};
 		97B7AA5015760AAF0014E693 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -614,6 +618,7 @@
 		};
 		97B7AA6815760AAF0014E693 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AB0B18603F24A928F0C5160 /* Pods-BeamMusicPlayerExampleTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BeamMusicPlayerExample.app/BeamMusicPlayerExample";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -622,22 +627,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BeamMusicPlayerExample/BeamMusicPlayerExample-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"\"${PODS_ROOT}/Headers\"",
-					"\"${PODS_ROOT}/Headers/OBSlider\"",
-					"\"$(SRCROOT)/BeamMusicPlayerExampleTests/OCMock\"",
-				);
 				INFOPLIST_FILE = "BeamMusicPlayerExampleTests/BeamMusicPlayerExampleTests-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/BeamMusicPlayerExampleTests/OCMock\"",
-				);
-				OTHER_LDFLAGS = (
-					"-force_load",
-					"\"$(SRCROOT)/BeamMusicPlayerExampleTests/OCMock/libOCMock.a\"",
-					"-ObjC",
-				);
-				PODS_ROOT = "${SRCROOT}/Pods";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
@@ -646,6 +636,7 @@
 		};
 		97B7AA6915760AAF0014E693 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AB0B18603F24A928F0C5160 /* Pods-BeamMusicPlayerExampleTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BeamMusicPlayerExample.app/BeamMusicPlayerExample";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -654,22 +645,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BeamMusicPlayerExample/BeamMusicPlayerExample-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"\"${PODS_ROOT}/Headers\"",
-					"\"${PODS_ROOT}/Headers/OBSlider\"",
-					"\"$(SRCROOT)/BeamMusicPlayerExampleTests/OCMock\"",
-				);
 				INFOPLIST_FILE = "BeamMusicPlayerExampleTests/BeamMusicPlayerExampleTests-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/BeamMusicPlayerExampleTests/OCMock\"",
-				);
-				OTHER_LDFLAGS = (
-					"-force_load",
-					"\"$(SRCROOT)/BeamMusicPlayerExampleTests/OCMock/libOCMock.a\"",
-					"-ObjC",
-				);
-				PODS_ROOT = "${SRCROOT}/Pods";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
