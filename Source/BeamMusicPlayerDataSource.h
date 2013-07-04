@@ -59,13 +59,6 @@ typedef void(^BeamMusicPlayerReceivingBlock)(UIImage* image, NSError** error);
 @optional
 
 /**
- * Returns the volume for the given BeamMusicPlayerViewController
- * @param player the BeamMusicPlayerViewController that is making this request.
- * @return volume A float holding the volume on a range from 0.0f to 1.0f
- */
--(CGFloat)volumeForMusicPlayer:(BeamMusicPlayerViewController*)player;
-
-/**
  * Returns the number of tracks for the given player. If you do not implement this method
  * or return anything smaller than 2, one track is assumed and the skip-buttons are disabled.
  * @param player the BeamMusicPlayerViewController that is making this request.

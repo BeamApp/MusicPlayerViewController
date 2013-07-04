@@ -65,6 +65,9 @@
 - (void)testPlaylistVisibility
 {
     STAssertFalse(viewController.playlistVisible, @"playlist not shown");
+    // TODO: For iPad (and the UIPopoverController used to display the playlist) something like this is needed:
+    //STAssertNotNil(viewController.view.window, @"view has window");
+    // But it fails even on iPhone. Why?
     [viewController showPlaylist];
     STAssertTrue(viewController.playlistVisible, @"playlist shown");
     [viewController dismissPlaylist];

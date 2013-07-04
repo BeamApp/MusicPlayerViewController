@@ -19,9 +19,8 @@
 -(IBAction)nextAction:(id)sender;
 -(IBAction)playAction:(id)sender;
 -(IBAction)sliderValueChanged:(id)slider;
--(IBAction)volumeSliderValueChanged:(id)sender;
 
-@property (nonatomic,weak) IBOutlet UISlider* volumeSlider; // Volume Slider
+@property (nonatomic, weak) IBOutlet UIView *volumeViewContainer; // Parent of MPVolumeView (which is created in viewDidLoad:)
 @property (nonatomic,weak) IBOutlet OBSlider* progressSlider; // Progress Slider buried in the Progress View
 
 @property (nonatomic,weak) IBOutlet AutoScrollLabel* trackTitleLabel; // The Title Label
@@ -90,7 +89,7 @@
 @synthesize rewindButtonIPad;
 @synthesize fastForwardButtonIPad;
 @synthesize playButtonIPad;
-@synthesize volumeSlider;
+@synthesize volumeViewContainer;
 @synthesize progressSlider;
 @synthesize controlsToolbar;
 @synthesize albumArtImageView;
@@ -133,6 +132,26 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self)
+    {
+        self.flipDuration = 0.8;
+    }
+    return self;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self)
+    {
+        self.flipDuration = 0.8;
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -166,14 +185,25 @@
     progressSlider.maximumTrackTintColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
     
     // Volume Slider
+    // Adding MPVolumeView in xibs is not supported yet, so the instance has to be created programmatically
+    volumeViewContainer.backgroundColor = [UIColor clearColor];
+    // Center MPVolumeView to it's container
+    CGRect volumeViewFrame = CGRectInset(volumeViewContainer.bounds, 20.0f, 0.0f);
+    MPVolumeView *volumeView = [[MPVolumeView alloc] initWithFrame:volumeViewFrame];
+    [volumeView sizeToFit];
+    volumeView.center = CGPointMake(volumeViewContainer.bounds.size.width / 2.0f, volumeViewContainer.bounds.size.height    / 2.0f);
+    // Customize the volumeSlider
     UIImage* minImg = [[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/speakerSliderMinValue.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
     UIImage* maxImg = [[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/speakerSliderMaxValue.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
-    UIImage* knobImg = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/speakerSliderKnob.png"];
-    [self.volumeSlider setThumbImage:knobImg forState:UIControlStateNormal];
-    [self.volumeSlider setThumbImage:knobImg forState:UIControlStateHighlighted];
-    [self.volumeSlider setMinimumTrackImage:minImg forState:UIControlStateNormal];
-    [self.volumeSlider setMaximumTrackImage:maxImg forState:UIControlStateNormal];
-
+    // Since there is a bug/glitch in iOS with setting the thumb, we need to use an image with 5pt transparency at the bottom
+    UIImage* knobImg = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/mpSpeakerSliderKnob.png"];
+    [volumeView setVolumeThumbImage:knobImg forState:UIControlStateNormal];
+    [volumeView setVolumeThumbImage:knobImg forState:UIControlStateHighlighted];
+    [volumeView setMinimumVolumeSliderImage:minImg forState:UIControlStateNormal];
+    [volumeView setMaximumVolumeSliderImage:maxImg forState:UIControlStateNormal];
+    [volumeViewContainer addSubview:volumeView];
+    volumeView = nil;
+    
     // The Original Toolbar is 48px high in the iPod/Music app
     CGRect toolbarRect = self.controlsToolbar.frame;
     toolbarRect.size.height = 48;
@@ -334,11 +364,6 @@
  */
 -(void)updateUIForCurrentTrack {
 
-    //set VolumeSlider initially
-    if([self.dataSource respondsToSelector:@selector(volumeForMusicPlayer:)]){
-        [self setVolume:[self.dataSource volumeForMusicPlayer:self]];
-    }
-    
     self.artistNameLabel.text = [self.dataSource musicPlayer:self artistForTrack:self.currentTrack];
     self.trackTitleLabel.text = [self.dataSource musicPlayer:self titleForTrack:self.currentTrack];
     self.albumTitleLabel.text = [self.dataSource musicPlayer:self albumForTrack:self.currentTrack];
@@ -448,8 +473,8 @@
     }
 }
 
--(void)playTrack:(NSUInteger)track atPosition:(CGFloat)position volume:(CGFloat)volume {
-    self.volume = volume;
+- (void)playTrack:(NSUInteger)track atPosition:(CGFloat)position {
+
     [self changeTrack:track];
     self->currentPlaybackPosition = position;
     [self updateSeekUI];
@@ -474,7 +499,7 @@
  */
 -(void)changeTrack:(NSInteger)newTrack {
     BOOL shouldChange = YES;
-    if ( [self.delegate respondsToSelector:@selector(musicPlayer:shoulChangeTrack:) ]){
+    if ( [self.delegate respondsToSelector:@selector(musicPlayer:shouldChangeTrack:) ]){
         shouldChange = [self.delegate musicPlayer:self shouldChangeTrack:newTrack];
     }
     
@@ -590,22 +615,6 @@
     
     NSString* imageName = ( self.shuffling ? @"shuffle_on.png" : @"shuffle_off.png");
     [self.shuffleButton setImage:[UIImage imageNamed:[@"BeamMusicPlayerController.bundle/images/" stringByAppendingString:imageName]] forState:UIControlStateNormal];
-}
-
-#pragma mark - Volume
-
-/*
- * Setting the volume really just changes the slider
- */
--(void)setVolume:(CGFloat)volume {
-    self.volumeSlider.value = volume;
-}
-
-/*
- * The Volume value is the slider value
- */
--(CGFloat)volume {
-    return self.volumeSlider.value;
 }
 
 #pragma mark - User Interface ACtions
@@ -870,15 +879,6 @@
     
     [self updateSeekUI];
     
-}
-
-/*
- * Action triggered by the volume slider
- */
--(IBAction)volumeSliderValueChanged:(id)sender {
-    if ( [self.delegate respondsToSelector:@selector(musicPlayer:didChangeVolume:)]) {
-        [self.delegate musicPlayer:self didChangeVolume:self.volumeSlider.value];
-    }
 }
 
 /*

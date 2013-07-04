@@ -16,30 +16,11 @@
 @synthesize controller;
 @synthesize mediaItems;
 
--(id)init {
-    self = [super init];
-    if ( self ){
-        // This HACK hides the volume overlay when changing the volume.
-        // It's insipired by http://stackoverflow.com/questions/3845222/iphone-sdk-how-to-disable-the-volume-indicator-view-if-the-hardware-buttons-ar
-        MPVolumeView* view = [MPVolumeView new];
-        // Put it far offscreen
-        view.frame = CGRectMake(1000, 1000, 120, 12);
-        [[UIApplication sharedApplication].keyWindow addSubview:view];
-    }
-    
-    return self;
-}
-
--(void)handleVolumeDidChangeNotification {
-    self.controller.volume = self.musicPlayer.volume;
-}
-
 -(void)setMusicPlayer:(MPMusicPlayerController *)value {
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 
     [nc removeObserver:self name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification object:musicPlayer];
     [nc removeObserver:self name:MPMusicPlayerControllerPlaybackStateDidChangeNotification object:musicPlayer];
-    [nc removeObserver:self name:MPMusicPlayerControllerVolumeDidChangeNotification object:musicPlayer];
     [musicPlayer endGeneratingPlaybackNotifications];
     
     musicPlayer = value;
@@ -51,10 +32,6 @@
     [nc addObserver: self
            selector: @selector (propagateMusicPlayerState)
                name: MPMusicPlayerControllerPlaybackStateDidChangeNotification
-             object: musicPlayer];
-    [nc addObserver: self
-           selector: @selector (handleVolumeDidChangeNotification)
-               name: MPMusicPlayerControllerVolumeDidChangeNotification
              object: musicPlayer];
 
     [musicPlayer beginGeneratingPlaybackNotifications];
@@ -95,7 +72,7 @@
         self.controller.delegate = nil;
         
         // refactor: playing property in musicplayer? and/or setter method differently
-        [self.controller playTrack:self.musicPlayer.indexOfNowPlayingItem atPosition:self.musicPlayer.currentPlaybackTime volume:self.musicPlayer.volume];
+        [self.controller playTrack:self.musicPlayer.indexOfNowPlayingItem atPosition:self.musicPlayer.currentPlaybackTime];
         if(self.musicPlayer.playbackState == MPMusicPlaybackStatePlaying) {
             [self.controller play];
         } else {
@@ -165,10 +142,6 @@
 
 -(void)musicPlayerDidStopPlaying:(BeamMusicPlayerViewController *)player {
     [self.musicPlayer pause];
-}
-
--(void)musicPlayer:(BeamMusicPlayerViewController *)player didChangeVolume:(CGFloat)volume {
-    [self.musicPlayer setVolume:volume];
 }
 
 -(void)musicPlayer:(BeamMusicPlayerViewController *)player didSeekToPosition:(CGFloat)position {

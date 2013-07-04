@@ -56,17 +56,13 @@
 /// YES, if the player is shuffling
 @property (nonatomic) BOOL shuffling; 
 
-/// The Volume of the player. Valid values range from 0.0f to 1.0f
-@property (nonatomic) CGFloat volume;
-
 /**
  * Plays a given track using the supplied options.
  *
  * @param track the track that's to be played
  * @param position the position in the track at which the playback should begin
- * @param volume the Volume of the playback 
  */
--(void)playTrack:(NSUInteger)track atPosition:(CGFloat)position volume:(CGFloat)volume;
+-(void)playTrack:(NSUInteger)track atPosition:(CGFloat)position;
 
 
 /**
