@@ -20,7 +20,9 @@
 -(IBAction)playAction:(id)sender;
 -(IBAction)sliderValueChanged:(id)slider;
 
-@property (nonatomic, weak) IBOutlet UIView *volumeViewContainer; // Parent of MPVolumeView (which is created in viewDidLoad:)
+@property (nonatomic, weak) IBOutlet UIView *volumeViewContainer; // Parent of MPVolumeView (Outlet to change background color if needed)
+@property (nonatomic, weak) IBOutlet MPVolumeView *volumeView; // Volume slider (at bottom on iPhone, at top on iPad)
+
 @property (nonatomic,weak) IBOutlet OBSlider* progressSlider; // Progress Slider buried in the Progress View
 
 @property (nonatomic,weak) IBOutlet AutoScrollLabel* trackTitleLabel; // The Title Label
@@ -185,24 +187,26 @@
     progressSlider.maximumTrackTintColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
     
     // Volume Slider
-    // Adding MPVolumeView in xibs is not supported yet, so the instance has to be created programmatically
     volumeViewContainer.backgroundColor = [UIColor clearColor];
-    // Center MPVolumeView to it's container
-    CGRect volumeViewFrame = CGRectInset(volumeViewContainer.bounds, 20.0f, 0.0f);
-    MPVolumeView *volumeView = [[MPVolumeView alloc] initWithFrame:volumeViewFrame];
-    [volumeView sizeToFit];
-    volumeView.center = CGPointMake(volumeViewContainer.bounds.size.width / 2.0f, volumeViewContainer.bounds.size.height    / 2.0f);
-    // Customize the volumeSlider
+#if TARGET_IPHONE_SIMULATOR
+    UILabel *notSupportedLabel = [[UILabel alloc] init];
+    notSupportedLabel.frame = volumeViewContainer.bounds;
+    notSupportedLabel.text = @"VOLUME NOT SUPPORTED ON SIMULATOR";
+    notSupportedLabel.backgroundColor = [UIColor clearColor];
+    notSupportedLabel.textColor = [UIColor whiteColor];
+    notSupportedLabel.textAlignment = NSTextAlignmentCenter;
+    notSupportedLabel.adjustsFontSizeToFitWidth = YES;
+    [volumeViewContainer addSubview:notSupportedLabel];
+#else
     UIImage* minImg = [[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/speakerSliderMinValue.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
     UIImage* maxImg = [[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/speakerSliderMaxValue.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
     // Since there is a bug/glitch in iOS with setting the thumb, we need to use an image with 5pt transparency at the bottom
     UIImage* knobImg = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/mpSpeakerSliderKnob.png"];
-    [volumeView setVolumeThumbImage:knobImg forState:UIControlStateNormal];
-    [volumeView setVolumeThumbImage:knobImg forState:UIControlStateHighlighted];
-    [volumeView setMinimumVolumeSliderImage:minImg forState:UIControlStateNormal];
-    [volumeView setMaximumVolumeSliderImage:maxImg forState:UIControlStateNormal];
-    [volumeViewContainer addSubview:volumeView];
-    volumeView = nil;
+    [self.volumeView setVolumeThumbImage:knobImg forState:UIControlStateNormal];
+    [self.volumeView setVolumeThumbImage:knobImg forState:UIControlStateHighlighted];
+    [self.volumeView setMinimumVolumeSliderImage:minImg forState:UIControlStateNormal];
+    [self.volumeView setMaximumVolumeSliderImage:maxImg forState:UIControlStateNormal];
+#endif
     
     // The Original Toolbar is 48px high in the iPod/Music app
     CGRect toolbarRect = self.controlsToolbar.frame;
