@@ -228,6 +228,7 @@
 										<string key="NSFrame">{{220, 55}, {74, 74}}</string>
 										<reference key="NSSuperview" ref="86840189"/>
 										<reference key="NSWindow"/>
+										<reference key="NSNextKeyView"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -438,32 +439,28 @@
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUISlider" id="922275320">
+					<object class="IBUIView" id="29199116">
 						<reference key="NSNextResponder" ref="752791413"/>
-						<int key="NSvFlags">295</int>
-						<string key="NSFrame">{{2, 5}, {304, 23}}</string>
+						<int key="NSvFlags">290</int>
+						<string key="NSFrame">{{10, 5}, {288, 22}}</string>
 						<reference key="NSSuperview" ref="752791413"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<bool key="IBUIOpaque">NO</bool>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MSAwAA</bytes>
+							<object class="NSColorSpace" key="NSCustomColorSpace">
+								<int key="NSID">2</int>
+							</object>
+						</object>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<int key="IBUIContentHorizontalAlignment">0</int>
-						<int key="IBUIContentVerticalAlignment">0</int>
-						<float key="IBUIValue">0.5</float>
-						<object class="NSCustomResource" key="IBUIMinimumValueImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">BeamMusicPlayerController.bundle/images/speakerSliderMinIcon.png</string>
-						</object>
-						<object class="NSCustomResource" key="IBUIMaximumValueImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">BeamMusicPlayerController.bundle/images/speakerSliderMaxIcon.png</string>
-						</object>
 					</object>
 				</array>
 				<string key="NSFrameSize">{308, 32}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="922275320"/>
+				<reference key="NSNextKeyView" ref="29199116"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 			</object>
@@ -624,19 +621,27 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">volumeSlider</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="922275320"/>
-					</object>
-					<int key="connectionID">151</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">navigationItem</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="247436677"/>
 					</object>
 					<int key="connectionID">152</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">volumeViewContainer</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="752791413"/>
+					</object>
+					<int key="connectionID">154</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">volumeView</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="29199116"/>
+					</object>
+					<int key="connectionID">156</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -742,15 +747,6 @@
 						<int key="IBEventType">7</int>
 					</object>
 					<int key="connectionID">129</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">volumeSliderValueChanged:</string>
-						<reference key="source" ref="922275320"/>
-						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">13</int>
-					</object>
-					<int key="connectionID">150</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -917,13 +913,13 @@
 						<int key="objectID">147</int>
 						<reference key="object" ref="752791413"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="922275320"/>
+							<reference ref="29199116"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">149</int>
-						<reference key="object" ref="922275320"/>
+						<int key="objectID">155</int>
+						<reference key="object" ref="29199116"/>
 						<reference key="parent" ref="752791413"/>
 					</object>
 				</array>
@@ -944,7 +940,8 @@
 				<string key="124.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="145.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="147.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="149.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="155.CustomClassName">MPVolumeView</string>
+				<string key="155.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="30.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="31.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="32.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -966,7 +963,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">152</int>
+			<int key="maxID">156</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -982,33 +979,11 @@
 					<string key="className">BeamMusicPlayerViewController</string>
 					<string key="superclassName">UIViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="actionButtonAction:">id</string>
-						<string key="backButtonAction:">id</string>
-						<string key="coverArtTapped:">id</string>
 						<string key="nextAction:">id</string>
 						<string key="playAction:">id</string>
-						<string key="playlistButtonTapped:">id</string>
-						<string key="previousAction:">id</string>
-						<string key="repeatModeButtonAction:">id</string>
-						<string key="shuffleButtonAction:">id</string>
-						<string key="sliderDidBeginScrubbing:">id</string>
-						<string key="sliderDidEndScrubbing:">id</string>
 						<string key="sliderValueChanged:">id</string>
-						<string key="volumeSliderValueChanged:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="actionButtonAction:">
-							<string key="name">actionButtonAction:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="backButtonAction:">
-							<string key="name">backButtonAction:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="coverArtTapped:">
-							<string key="name">coverArtTapped:</string>
-							<string key="candidateClassName">id</string>
-						</object>
 						<object class="IBActionInfo" key="nextAction:">
 							<string key="name">nextAction:</string>
 							<string key="candidateClassName">id</string>
@@ -1017,36 +992,8 @@
 							<string key="name">playAction:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="playlistButtonTapped:">
-							<string key="name">playlistButtonTapped:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="previousAction:">
-							<string key="name">previousAction:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="repeatModeButtonAction:">
-							<string key="name">repeatModeButtonAction:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="shuffleButtonAction:">
-							<string key="name">shuffleButtonAction:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="sliderDidBeginScrubbing:">
-							<string key="name">sliderDidBeginScrubbing:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="sliderDidEndScrubbing:">
-							<string key="name">sliderDidEndScrubbing:</string>
-							<string key="candidateClassName">id</string>
-						</object>
 						<object class="IBActionInfo" key="sliderValueChanged:">
 							<string key="name">sliderValueChanged:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="volumeSliderValueChanged:">
-							<string key="name">volumeSliderValueChanged:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>
@@ -1077,7 +1024,8 @@
 						<string key="timeElapsedLabel">UILabel</string>
 						<string key="timeRemainingLabel">UILabel</string>
 						<string key="trackTitleLabel">AutoScrollLabel</string>
-						<string key="volumeSlider">UISlider</string>
+						<string key="volumeView">MPVolumeView</string>
+						<string key="volumeViewContainer">UIView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="actionButton">
@@ -1184,14 +1132,26 @@
 							<string key="name">trackTitleLabel</string>
 							<string key="candidateClassName">AutoScrollLabel</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="volumeSlider">
-							<string key="name">volumeSlider</string>
-							<string key="candidateClassName">UISlider</string>
+						<object class="IBToOneOutletInfo" key="volumeView">
+							<string key="name">volumeView</string>
+							<string key="candidateClassName">MPVolumeView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="volumeViewContainer">
+							<string key="name">volumeViewContainer</string>
+							<string key="candidateClassName">UIView</string>
 						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/BeamMusicPlayerViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">MPVolumeView</string>
+					<string key="superclassName">UIView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/MPVolumeView.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -1221,8 +1181,6 @@
 			<string key="BeamMusicPlayerController.bundle/images/prevtrack">{16, 16}</string>
 			<string key="BeamMusicPlayerController.bundle/images/repeat_off.png">{16, 16}</string>
 			<string key="BeamMusicPlayerController.bundle/images/shuffle_off.png">{16, 16}</string>
-			<string key="BeamMusicPlayerController.bundle/images/speakerSliderMaxIcon.png">{16, 16}</string>
-			<string key="BeamMusicPlayerController.bundle/images/speakerSliderMinIcon.png">{16, 16}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>

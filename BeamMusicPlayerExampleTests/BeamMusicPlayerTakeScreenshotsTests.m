@@ -150,7 +150,7 @@ CGImageRef UIGetScreenImage(); //private API for getting an image of the entire 
 -(void)testScreenshotForDescriptionAtIndex:(NSUInteger)index {
     NSDictionary *description = BeamAppDelegate.trackDescriptions[index];
     [self initVCWithDescription:description];
-    [self.viewController playTrack:0 atPosition:67 volume:0.6];
+    [self.viewController playTrack:0 atPosition:67];
     [self waitFor:^BOOL {
         return self.viewController.customCovertArtLoaded;
     }];

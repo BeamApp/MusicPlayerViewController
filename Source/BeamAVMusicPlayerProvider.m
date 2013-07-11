@@ -58,18 +58,6 @@ NSString* BeamAVMusicPlayerProviderTrackDescriptionArtworkPattern = @"^artworkUr
     self.audioPlayer.currentTime = position;
 }
 
--(void)musicPlayer:(BeamMusicPlayerViewController *)player didChangeVolume:(CGFloat)volume {
-    MPMusicPlayerController.iPodMusicPlayer.volume = volume;
-}
-
--(CGFloat)volumeForMusicPlayer:(BeamMusicPlayerViewController*)player{
-#if TARGET_IPHONE_SIMULATOR
-    return 0.6;
-#else
-    return MPMusicPlayerController.iPodMusicPlayer.volume;
-#endif
-}
-
 +(id)artworkUrlValueForSize:(int)size inDescription:(NSDictionary*)description {
     static NSRegularExpression *regex;
     if(!regex) {

@@ -82,15 +82,6 @@
 -(NSInteger)musicPlayer:(BeamMusicPlayerViewController*)player didChangeTrack:(NSUInteger)track;
 
 /**
- * Called when the player's volume changed
- *
- * Note that this not actually change the volume of anything, but is rather a result of a change in the internal state of the BeamMusicPlayerViewController. If you want to change the volume of a playback module, you can implement this method.
- * @param player The BeamMusicPlayerViewController changing the volume
- * @param volume A float holding the volume on a range from 0.0f to 1.0f
- */
--(void)musicPlayer:(BeamMusicPlayerViewController*)player didChangeVolume:(CGFloat)volume;
-
-/**
  * Called when the player changes it's shuffle state.
  *
  * YES indicates the player is shuffling now, i.e. randomly selecting a next track from the valid range of tracks, NO
