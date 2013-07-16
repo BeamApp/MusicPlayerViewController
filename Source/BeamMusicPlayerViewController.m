@@ -189,16 +189,16 @@
     // Volume Slider
     volumeViewContainer.backgroundColor = [UIColor clearColor];
 #if TARGET_IPHONE_SIMULATOR
-    UILabel *notSupportedLabel = [[UILabel alloc] init];
-    notSupportedLabel.frame = volumeViewContainer.bounds;
-    notSupportedLabel.text = @"volume control only supported on device";
-    notSupportedLabel.backgroundColor = [UIColor clearColor];
-    notSupportedLabel.textColor = [UIColor whiteColor];
-    notSupportedLabel.alpha = 0.5;
-    notSupportedLabel.textAlignment = NSTextAlignmentCenter;
-    notSupportedLabel.adjustsFontSizeToFitWidth = YES;
-    notSupportedLabel.font = [UIFont systemFontOfSize:12];
-    [volumeViewContainer addSubview:notSupportedLabel];
+    if(!self.isIOS5_0) {
+        UILabel *notSupportedLabel = [[UILabel alloc] init];
+        notSupportedLabel.frame = volumeViewContainer.bounds;
+        notSupportedLabel.text = @"No Volume Available";
+        notSupportedLabel.backgroundColor = [UIColor clearColor];
+        notSupportedLabel.textColor = [UIColor whiteColor];
+        notSupportedLabel.textAlignment = NSTextAlignmentCenter;
+        notSupportedLabel.font = [UIFont boldSystemFontOfSize:13];
+        [volumeViewContainer addSubview:notSupportedLabel];
+    }
 #else
     UIImage* minImg = [[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/speakerSliderMinValue.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
     UIImage* maxImg = [[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/speakerSliderMaxValue.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
@@ -326,6 +326,10 @@
 - (void)setBackBlock:(void (^)())block {
     self->backBlock = block;
     self.navigationItem.leftBarButtonItem = self.backBlock ? self.backButton : nil;
+}
+
+-(BOOL)isIOS5_0 {
+    return ([UIDevice.currentDevice.systemVersion compare:@"5.1" options:NSNumericSearch]) == NSOrderedAscending;
 }
 
 -(BOOL)isTallPhone {
