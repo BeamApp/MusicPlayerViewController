@@ -63,7 +63,7 @@
 }
 
 -(void)initViewMusicPlayerViewControllerWithDescription:(NSDictionary*)description {
-#if false || TARGET_IPHONE_SIMULATOR
+#if true || TARGET_IPHONE_SIMULATOR
     //self.exampleProvider = [BeamMinimalExampleProvider new];
     BeamAVMusicPlayerProvider *provider = [BeamAVMusicPlayerProvider new];
     self.exampleProvider = provider;
