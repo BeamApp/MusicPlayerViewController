@@ -191,11 +191,13 @@
 #if TARGET_IPHONE_SIMULATOR
     UILabel *notSupportedLabel = [[UILabel alloc] init];
     notSupportedLabel.frame = volumeViewContainer.bounds;
-    notSupportedLabel.text = @"VOLUME NOT SUPPORTED ON SIMULATOR";
+    notSupportedLabel.text = @"volume control only supported on device";
     notSupportedLabel.backgroundColor = [UIColor clearColor];
     notSupportedLabel.textColor = [UIColor whiteColor];
+    notSupportedLabel.alpha = 0.5;
     notSupportedLabel.textAlignment = NSTextAlignmentCenter;
     notSupportedLabel.adjustsFontSizeToFitWidth = YES;
+    notSupportedLabel.font = [UIFont systemFontOfSize:12];
     [volumeViewContainer addSubview:notSupportedLabel];
 #else
     UIImage* minImg = [[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/speakerSliderMinValue.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
