@@ -58,6 +58,7 @@
 @property (nonatomic,weak) IBOutlet UILabel* scrobbleHelpLabel; // The Scrobble Usage hint Label
 @property (nonatomic,weak) IBOutlet UILabel* numberOfTracksLabel; // Track x of y or the scrobble speed
 @property (nonatomic,weak) IBOutlet UIImageView* scrobbleHighlightShadow; // It's reflection
+@property (nonatomic,weak) IBOutlet UIImageView *scrobbleBackgroundImage;
 
 @property(nonatomic,weak) IBOutlet UIView* controlView;
 
@@ -170,14 +171,14 @@
             self.coverArtGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(coverArtTapped:)];
             [self.albumArtImageView addGestureRecognizer:self.coverArtGestureRecognizer];
         } else {
-            //on ipad use shadow behind cover art
-            self.albumArtImageView.layer.shadowColor = [UIColor blackColor].CGColor;
-            self.albumArtImageView.layer.shadowOpacity = 0.8;
-            self.albumArtImageView.layer.shadowRadius = 10.0;
-            self.albumArtImageView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
-            self.albumArtImageView.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.albumArtImageView.bounds].CGPath;
-            
-            
+            if(!self.isIOS7) {
+                //on ipad use shadow behind cover art
+                self.albumArtImageView.layer.shadowColor = [UIColor blackColor].CGColor;
+                self.albumArtImageView.layer.shadowOpacity = 0.8;
+                self.albumArtImageView.layer.shadowRadius = 10.0;
+                self.albumArtImageView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
+                self.albumArtImageView.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.albumArtImageView.bounds].CGPath;
+            }
         }
     }
     
@@ -185,6 +186,10 @@
     UIImage* knob = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/VolumeKnob"];
     [progressSlider setThumbImage:knob forState:UIControlStateNormal];
     progressSlider.maximumTrackTintColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
+    UIImage* minImg = [[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/speakerSliderMinValue.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
+    UIImage* maxImg = [[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/speakerSliderMaxValue.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
+    [progressSlider setMinimumTrackImage:minImg forState:UIControlStateNormal];
+    [progressSlider setMaximumTrackImage:maxImg forState:UIControlStateNormal];
     
     // Volume Slider
     volumeViewContainer.backgroundColor = [UIColor clearColor];
@@ -200,8 +205,6 @@
         [volumeViewContainer addSubview:notSupportedLabel];
     }
 #else
-    UIImage* minImg = [[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/speakerSliderMinValue.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
-    UIImage* maxImg = [[UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/speakerSliderMaxValue.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
     // Since there is a bug/glitch in iOS with setting the thumb, we need to use an image with 5pt transparency at the bottom
     UIImage* knobImg = [UIImage imageNamed:@"BeamMusicPlayerController.bundle/images/mpSpeakerSliderKnob.png"];
     [self.volumeView setVolumeThumbImage:knobImg forState:UIControlStateNormal];
@@ -247,6 +250,25 @@
         [self.trackTitleLabel setShadowColor:[UIColor blackColor]];
         [self.trackTitleLabel setShadowOffset:CGSizeMake(0, -1)];
     }
+    
+    if(self.isIOS7) {
+        CGFloat statusBarHeight = UIApplication.sharedApplication.statusBarFrame.size.height;
+        self.navigationBar.frame = CGRectOffset(self.navigationBar.frame, 0, statusBarHeight);
+        self.navigationBar.tintColor = UIColor.whiteColor;
+        CGRect f = self.artworkPlaylistContainer.frame;
+        f.origin.y += statusBarHeight;
+        f.size.height -= statusBarHeight;
+        self.artworkPlaylistContainer.frame = f;
+        if(self.isTallPhone) {
+            self.artworkPlaylistContainer.backgroundColor = UIColor.clearColor;
+            self.scrobbleHighlightShadow.hidden = YES;
+            self.scrobbleBackgroundImage.hidden = YES;
+        }
+        
+        self.controlsToolbar.tintColor = UIColor.whiteColor;
+        self.progressSlider.frame = CGRectOffset(self.progressSlider.frame, 0, -3);
+    }
+    
     self.placeholderImageDelay = 0.5;
 
     
@@ -276,6 +298,7 @@
 {
     self.actionButton = nil;
     self.backButton = nil;
+    [self setScrobbleBackgroundImage:nil];
     [super viewDidUnload];
     self.coverArtGestureRecognizer = nil;
     // Release any retained subviews of the main view.
@@ -297,16 +320,23 @@
 
 -(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        CGFloat statusBarHeight = UIInterfaceOrientationIsLandscape(toInterfaceOrientation) ? UIApplication.sharedApplication.statusBarFrame.size.width : UIApplication.sharedApplication.statusBarFrame.size.height;
+        CGFloat dy = self.isIOS7 ? statusBarHeight : 0;
         CGRect f = self.albumArtImageView.frame;
-        f.origin.x = UIInterfaceOrientationIsLandscape(toInterfaceOrientation) ? 65 : 84;
-        f.origin.y = UIInterfaceOrientationIsLandscape(toInterfaceOrientation) ? (int)((self.view.bounds.size.height-self.navigationBar.bounds.size.height-f.size.height)/2)+self.navigationBar.bounds.size.height : 65;
+        f.origin.x = UIInterfaceOrientationIsLandscape(toInterfaceOrientation) ? 65 + dy : 84;
+        f.origin.y = UIInterfaceOrientationIsLandscape(toInterfaceOrientation) ? (int)((self.view.bounds.size.height-self.navigationBar.bounds.size.height-f.size.height)/2)+self.navigationBar.bounds.size.height : 65 + dy;
         self.albumArtImageView.frame = f;
         
         f = self.controlView.frame;
         f.size.width = UIInterfaceOrientationIsLandscape(toInterfaceOrientation) ? 350 : 600;
-        f.origin.x = UIInterfaceOrientationIsLandscape(toInterfaceOrientation) ? 660 : 84;
-        f.origin.y = UIInterfaceOrientationIsLandscape(toInterfaceOrientation) ? 220 : 675;
+        f.origin.x = UIInterfaceOrientationIsLandscape(toInterfaceOrientation) ? 660 + dy : 84;
+        f.origin.y = UIInterfaceOrientationIsLandscape(toInterfaceOrientation) ? 220 : 675 + dy;
         self.controlView.frame = f;
+        
+        // workaround: on iOS7 the progress slider grows while rotating, force size
+        f = self.progressSlider.frame;
+        f.size.width = self.controlView.bounds.size.width - 2 * f.origin.x;
+        self.progressSlider.frame = f;
         
     }
 }
@@ -331,6 +361,29 @@
 -(BOOL)isIOS5_0 {
     return ([UIDevice.currentDevice.systemVersion compare:@"5.1" options:NSNumericSearch]) == NSOrderedAscending;
 }
+
+-(BOOL)isIOS7 {
+    NSLog(@"__IPHONE_OS_VERSION_MAX_ALLOWED: %d", __IPHONE_OS_VERSION_MAX_ALLOWED);
+    NSLog(@"__IPHONE_6_1: %d", __IPHONE_6_1);
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_6_1
+    return ([UIDevice.currentDevice.systemVersion compare:@"7" options:NSNumericSearch]) >= NSOrderedSame;
+#else
+    return NO;
+#endif
+}
+
+
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_6_1
+
+-(UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
+- (UIBarPosition)positionForBar:(id <UIBarPositioning>)bar {
+    return UIBarPositionTopAttached;
+}
+#endif
+
 
 -(BOOL)isTallPhone {
     CGSize screenSize = [[UIScreen mainScreen] bounds].size;
@@ -887,8 +940,9 @@
 /*
  * Action triggered by the continous track progress slider
  */
--(IBAction)sliderValueChanged:(id)slider {
+-(IBAction)sliderValueChanged:(UISlider*)slider {
     self->currentPlaybackPosition = self.progressSlider.value;
+    NSLog(@"slider.controlState: %@", slider.currentMinimumTrackImage);
     [self updateUIForScrubbingSpeed: self.progressSlider.scrubbingSpeed];
     
     if ( [self.delegate respondsToSelector:@selector(musicPlayer:didSeekToPosition:)]) {
