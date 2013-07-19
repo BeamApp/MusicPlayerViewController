@@ -1,0 +1,5 @@
+#include "Pods-BeamMusicPlayerViewController.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/BeamMusicPlayerViewController" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AutoScrollLabel" "${PODS_ROOT}/Headers/BeamMusicPlayerViewController" "${PODS_ROOT}/Headers/OBSlider" "${PODS_ROOT}/Headers/OCMock"
+OTHER_LDFLAGS = -ObjC ${PODS_BEAMMUSICPLAYERVIEWCONTROLLER_OTHER_LDFLAGS}
+PODS_ROOT = ${SRCROOT}

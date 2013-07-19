@@ -1,13 +1,31 @@
 PODS:
+  - AutoScrollLabel (0.0.1)
+  - BeamMusicPlayerViewController (0.2.2):
+    - AutoScrollLabel (~> 0.0.1)
+    - BeamMusicPlayerViewController/Categories
+    - BeamMusicPlayerViewController/MediaPlayer
+    - OBSlider (~> 1.1.0)
+  - BeamMusicPlayerViewController/Categories (0.2.2):
+    - AutoScrollLabel (~> 0.0.1)
+    - OBSlider (~> 1.1.0)
+  - BeamMusicPlayerViewController/MediaPlayer (0.2.2):
+    - AutoScrollLabel (~> 0.0.1)
+    - OBSlider (~> 1.1.0)
   - OBSlider (1.1.0)
-  - OCMock (2.1.1)
+  - OCMock (2.2)
 
 DEPENDENCIES:
-  - OBSlider (~> 1.1.0)
+  - BeamMusicPlayerViewController (from `./`)
   - OCMock
 
-SPEC CHECKSUMS:
-  OBSlider: 1eae1ad6fea0af687f7dde0366003044c4ba3d27
-  OCMock: 79212e5e328378af5cfd6edb5feacfd6c49cd8a3
+EXTERNAL SOURCES:
+  BeamMusicPlayerViewController:
+    :path: ./
 
-COCOAPODS: 0.21.0
+SPEC CHECKSUMS:
+  AutoScrollLabel: 10a03d16cd76a29a67449d8dfccffd4d2890e9bb
+  BeamMusicPlayerViewController: cad6db0ec6c8273684bdf0e3bfea55fa7c61053e
+  OBSlider: 1eae1ad6fea0af687f7dde0366003044c4ba3d27
+  OCMock: 5300ae6b75398fc3ae6cbf9102191333d35f6852
+
+COCOAPODS: 0.22.2
