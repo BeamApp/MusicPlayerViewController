@@ -213,6 +213,11 @@
     [self.volumeView setMaximumVolumeSliderImage:maxImg forState:UIControlStateNormal];
 #endif
     
+    // explicitly tint buttons
+    rewindButton.tintColor = UIColor.whiteColor;
+    playButton.tintColor = UIColor.whiteColor;
+    fastForwardButton.tintColor = UIColor.whiteColor;
+    
     // The Original Toolbar is 48px high in the iPod/Music app
     CGRect toolbarRect = self.controlsToolbar.frame;
     toolbarRect.size.height = 48;
