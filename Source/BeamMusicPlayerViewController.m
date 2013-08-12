@@ -10,7 +10,7 @@
 #import "BeamMusicPlayerViewController.h"
 #import "NSDateFormatter+Duration.h"
 #import <MediaPlayer/MediaPlayer.h>
-#import "AutoScrollLabel.h"
+#import <AutoScrollLabel/AutoScrollLabel.h>
 #import <QuartzCore/QuartzCore.h>
 #import "BeamPlaylistViewController.h"
 
