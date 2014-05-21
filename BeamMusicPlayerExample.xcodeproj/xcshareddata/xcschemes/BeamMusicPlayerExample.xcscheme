@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "95D169E59DFF45CC9DD1F704"
+               BlueprintIdentifier = "C4489A59316C42678A6858FB"
                BuildableName = "libPods-OBSlider.a"
                BlueprintName = "Pods-OBSlider"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "57A654E741BD44D58A1F51E4"
+               BlueprintIdentifier = "1558A557351A4DCD9D65F761"
                BuildableName = "libPods.a"
                BlueprintName = "Pods"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -42,7 +42,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8A0A029AA37B4F6C81BF0F8E"
+               BlueprintIdentifier = "52237BFDCABB412589A0D135"
                BuildableName = "libPods-BeamMusicPlayerExampleTests-OCMock.a"
                BlueprintName = "Pods-BeamMusicPlayerExampleTests-OCMock"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -56,7 +56,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0B8B6842A5864DA99DB2E852"
+               BlueprintIdentifier = "0E34F283BFFA49B488F16549"
                BuildableName = "libPods-BeamMusicPlayerExampleTests.a"
                BlueprintName = "Pods-BeamMusicPlayerExampleTests"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
