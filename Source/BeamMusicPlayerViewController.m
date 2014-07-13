@@ -224,7 +224,7 @@
     
 #endif
     
-    // explicitly tint buttons
+    // explicit tint buttons (remove typo in comment, here ;)
     rewindButton.tintColor = UIColor.whiteColor;
     playButton.tintColor = UIColor.whiteColor;
     fastForwardButton.tintColor = UIColor.whiteColor;
